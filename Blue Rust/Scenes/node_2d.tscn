@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6ybemtm7acku"]
+
+[ext_resource type="Texture2D" uid="uid://cf65mcf2jbo3q" path="res://icon.svg" id="1_ng230"]
+[ext_resource type="Script" path="res://Scenes/CharacterBody2D.gd" id="2_asoya"]
+[ext_resource type="Texture2D" uid="uid://coaw60bkvg5tp" path="res://Assets/Character_Placeholder.png" id="3_kflvc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5bvt"]
+texture = ExtResource("1_ng230")
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_1d7ad"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_q5bvt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rfad"]
+size = Vector2(16, 32)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1d7ad")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 262145, 2, 65537, 262145, 2, 131069, 262145, 2, 131070, 262145, 2, 131071, 262145, 2, 65538, 262145, 2, 65539, 262145, 2, 65540, 262145, 2, 65541, 262145, 2, 65542, 262145, 2, 65543, 262145, 2, 65544, 262145, 2, 65545, 262145, 2, 65546, 262145, 2, 65547, 262145, 2)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(10, -10)
+script = ExtResource("2_asoya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-2, -6)
+shape = SubResource("RectangleShape2D_3rfad")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(-2, -6)
+target_position = Vector2(0, 32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-2, -4.57031)
+scale = Vector2(0.635417, 0.739522)
+texture = ExtResource("3_kflvc")
+hframes = 3
+vframes = 3
+frame = 2
