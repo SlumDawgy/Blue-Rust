@@ -32,7 +32,7 @@ Game Designer
 
 Programmer
 
-     Kuroma
+     Kuroma (Leonardo Oliveira)
 
 Sound Design
 
