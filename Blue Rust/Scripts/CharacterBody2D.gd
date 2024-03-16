@@ -53,6 +53,7 @@ var positionToReach : Vector2
 var returnGrappling : bool = false
 var grapplingHookProjectile
 var hookPathActive : bool = true
+var aimAssistActive : bool = true
 
 # Power Ups Activation
 var doubleJumpUpgrade : bool = false
@@ -362,11 +363,12 @@ func _on_damage_collision_body_shape_exited(body_rid, body, body_shape_index, lo
 	pass # Replace with function body.
 
 func get_hookPath():
-	if hookPathActive == true and grapplingActive == true:
-		pass
-	elif hookPathActive == true:
+	if hookPathActive == true:
 		hookPath.remove_point(1)
-		if get_parent().get_node("aimAssist") != null:
+		if get_parent().get_node("Grappling") != null:
+			print(10)
+			hookPath.add_point(get_parent().get_node("Grappling").positionToReach.normalized() * 128)
+		elif get_parent().get_node("aimAssist") != null:
 			hookPath.add_point(to_local(get_parent().get_node("aimAssist").position).normalized() * 128)
 		else:
 			hookPath.add_point(get_local_mouse_position().normalized() * 128)
@@ -382,52 +384,53 @@ func animations(type):
 
 
 func _on_mouse_follower_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.is_in_group("Tile"):
-		
-		var coords = body.get_coords_for_body_rid(body_rid)
-	# Find Grapplable Object and move Player
-		if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Grapple":
-			if get_parent().get_node("aimAssist") != null:
-				get_parent().get_node("aimAssist").free()
+	if aimAssistActive == true:
+		if body.is_in_group("Tile"):
 			
-			
-			var aimAssist = Sprite2D.new()
-			
-			aimAssist.texture = aiming
-			aimAssist.name = "aimAssist"
-			aimAssist.position = body.map_to_local(coords)
-			
-			get_parent().add_child(aimAssist)
-			
-			var aimAssistArea = Area2D.new()
-			aimAssistArea.name = "aimAssistArea"
-			
-			var aimAssistAreaCollision = CollisionShape2D.new()
-			
-			aimAssistAreaCollision.shape = CircleShape2D.new()
-			aimAssistAreaCollision.shape.set_radius(32)
-			
-			aimAssistArea.connect("area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
-			aimAssistArea.position = body.map_to_local(coords)
-			
-			aimAssistArea.add_child(aimAssistAreaCollision)
-			
-			get_parent().add_child(aimAssistArea)
+			var coords = body.get_coords_for_body_rid(body_rid)
+		# Find Grapplable Object and move Player
+			if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Grapple":
+				if get_parent().get_node("aimAssist") != null:
+					get_parent().get_node("aimAssist").position = body.map_to_local(coords)
+				
+				
+				else:
+				
+					var aimAssist = Sprite2D.new()
+					
+					aimAssist.texture = aiming
+					aimAssist.name = "aimAssist"
+					aimAssist.position = body.map_to_local(coords)
+					
+					get_parent().add_child(aimAssist)
+					
+					var aimAssistArea = Area2D.new()
+					aimAssistArea.name = "aimAssistArea"
+					
+					var aimAssistAreaCollision = CollisionShape2D.new()
+					
+					aimAssistAreaCollision.shape = CircleShape2D.new()
+					aimAssistAreaCollision.shape.set_radius(32)
+					
+					aimAssistArea.connect("area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
+					aimAssistArea.position = body.map_to_local(coords)
+					
+					aimAssistArea.add_child(aimAssistAreaCollision)
+					
+					get_parent().add_child(aimAssistArea)
 
 			
 
 func _on_aimAssistArea_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	if area != null:
-		if area.is_in_group("Mouse"):
-			if get_parent().get_node("aimAssist") != null:
-				get_parent().get_node("aimAssist").free()
-		
-			if get_parent().get_node("aimAssistArea") != null:
-				aimAssistAreaFree()
-	
-	
-	pass
+	if aimAssistActive == true:
+		if area != null:
+			if area.is_in_group("Mouse"):
+				if get_parent().get_node("aimAssist") != null:
+					get_parent().get_node("aimAssist").free()
+			
+				if get_parent().get_node("aimAssistArea") != null:
+					aimAssistAreaFree()
 
 func aimAssistAreaFree():
 	get_parent().get_node("aimAssistArea").disconnect("_on_aimAssistArea_area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
-	get_parent().get_node("aimAssistArea").free()
+	get_parent().get_node("aimAssistArea").queue_free()
