@@ -19,7 +19,7 @@ func _process(delta):
 		pass
 	elif global_position != player.global_position:
 		if position.distance_to(player.position) < 30:
-			position += (player.position - position).normalized() / 1.5
+			position += (player.position - position).normalized() / 5
 		else:
 			position += (player.position - position).normalized()
 	

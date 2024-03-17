@@ -31,9 +31,6 @@ const SPEED : float = 115.0
 var aim
 var aiming
 
-# Collision
-var collision : Rect2
-
 # Jump Variables
 var coyoteTime : float = 0.01
 var jumpBuffering : bool = false
@@ -95,8 +92,6 @@ func _physics_process(delta):
 	# Power Ups
 	useDash(delta)
 	
-	# Get Collision
-	get_collision()
 	
 	# Mantle Edges
 	checkingWall()
@@ -220,6 +215,7 @@ func grappling(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 		
+		
 		var directionToPosition = (to_local(position) - get_local_mouse_position()).normalized()
 		grapplingHookChild.rotation =  PI + atan2(directionToPosition.y, directionToPosition.x) 
 
@@ -234,17 +230,14 @@ func grappling(delta):
 	
 	elif returnGrappling == true and  get_parent().get_node("Grappling") != null:
 		get_parent().get_node("Grappling").endGrapple(position, delta)
-	
-	get_parent().get_node("Grappling").collision.position = to_local(get_parent().get_node("Grappling").position) + Vector2(-8, -8)
-	get_parent().get_node("Grappling").collision.end = to_local(get_parent().get_node("Grappling").position) + Vector2(8, 8)
 
+	
 	if get_local_mouse_position().x - to_local(position).x > 0:
 		rope.remove_point(2)
 		rope.add_point(to_local(get_parent().get_node("Grappling").position) + Vector2(0, -4))
 	else:
 		rope.remove_point(2)
 		rope.add_point(to_local(get_parent().get_node("Grappling").position) + Vector2(0, 4))
-
 
 # Grappling Max Range Return
 func _on_max_grappling_range_area_exited(area):
@@ -274,10 +267,6 @@ func hanging():
 	
 	pass
 
-# get collision
-func get_collision():
-	collision.position = to_local(position) + Vector2(-16, -16)
-	collision.end = to_local(position) + Vector2(16, 16)
 
 # Power Ups Activation
 func doubleJumpActivation():
@@ -297,7 +286,6 @@ func useDash(delta):
 		velocity.y = move_toward(0, 0, 0)
 
 func useItem():
-	print(10)
 	pass
 
 func dead():
@@ -366,7 +354,6 @@ func get_hookPath():
 	if hookPathActive == true:
 		hookPath.remove_point(1)
 		if get_parent().get_node("Grappling") != null:
-			print(10)
 			hookPath.add_point(get_parent().get_node("Grappling").positionToReach.normalized() * 128)
 		elif get_parent().get_node("aimAssist") != null:
 			hookPath.add_point(to_local(get_parent().get_node("aimAssist").position).normalized() * 128)
@@ -392,6 +379,7 @@ func _on_mouse_follower_body_shape_entered(body_rid, body, body_shape_index, loc
 			if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Grapple":
 				if get_parent().get_node("aimAssist") != null:
 					get_parent().get_node("aimAssist").position = body.map_to_local(coords)
+					get_parent().get_node("aimAssistArea").position = body.map_to_local(coords)
 				
 				
 				else:
@@ -410,10 +398,12 @@ func _on_mouse_follower_body_shape_entered(body_rid, body, body_shape_index, loc
 					var aimAssistAreaCollision = CollisionShape2D.new()
 					
 					aimAssistAreaCollision.shape = CircleShape2D.new()
-					aimAssistAreaCollision.shape.set_radius(32)
+					aimAssistAreaCollision.shape.set_radius(64)
 					
 					aimAssistArea.connect("area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
 					aimAssistArea.position = body.map_to_local(coords)
+					aimAssistArea.collision_layer = 2
+					aimAssistArea.collision_mask = 2
 					
 					aimAssistArea.add_child(aimAssistAreaCollision)
 					
@@ -434,3 +424,12 @@ func _on_aimAssistArea_area_shape_exited(area_rid, area, area_shape_index, local
 func aimAssistAreaFree():
 	get_parent().get_node("aimAssistArea").disconnect("_on_aimAssistArea_area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
 	get_parent().get_node("aimAssistArea").queue_free()
+
+	pass # Replace with function body.
+
+
+func _on_grappling_collision_area_entered(area):
+	if area.is_in_group("Grappling") and area.isMoving == false:
+		area.collided = true
+		print(10)
+	pass # Replace with function body.

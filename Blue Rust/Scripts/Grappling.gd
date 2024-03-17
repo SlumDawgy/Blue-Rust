@@ -7,13 +7,13 @@ var cantReturn : bool = false
 
 var player
 
-var collision: Rect2
+var collided : bool = false
 
 var aim : bool = false
 var endGrappleBool : bool = false
 var notWall : bool = false
 
-const speed : float = 500.0
+const speed : float = 200.0
 const characterSpeed : float = 250.0
 
 
@@ -26,7 +26,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
 	if isMoving == true:
 		position += positionToReach.normalized() * speed * delta
 	
@@ -40,7 +39,7 @@ func _physics_process(delta):
 			endGrappleBool = true
 			canMovePlayer = false
 	
-	if collision.intersects(player.collision) and isMoving == false: 	# Queue free the projectile
+	if collided and isMoving == false:
 		player.returnGrappling = false
 		player.grapplingActive = false
 		

@@ -17,7 +17,7 @@ a = Vector2(-10, -16)
 b = Vector2(10, -16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ee68"]
-size = Vector2(32, 36)
+size = Vector2(28, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0usam"]
 atlas = ExtResource("5_cydp5")
@@ -96,8 +96,6 @@ radius = 16.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(16, -16)
-collision_layer = 3
-collision_mask = 3
 script = ExtResource("1_cjoav")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
@@ -108,6 +106,8 @@ shape = SubResource("CapsuleShape2D_tplrn")
 target_position = Vector2(0, 32)
 
 [node name="MaxGrapplingRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MaxGrapplingRange"]
 position = Vector2(0, -0.5)
@@ -128,23 +128,27 @@ shape = SubResource("SegmentShape2D_oyj74")
 [node name="checkWallLeft" type="RayCast2D" parent="."]
 position = Vector2(-8, -8)
 target_position = Vector2(-9, 0)
+collision_mask = 32768
 
 [node name="checkWallUp" type="RayCast2D" parent="."]
 position = Vector2(8, -16)
 target_position = Vector2(14, 0)
+collision_mask = 32768
 
 [node name="checkWall" type="RayCast2D" parent="."]
 position = Vector2(8, -8)
 target_position = Vector2(9, 0)
+collision_mask = 32768
 
 [node name="checkWallUpLeft" type="RayCast2D" parent="."]
 position = Vector2(-8, -16)
 target_position = Vector2(-14, 0)
+collision_mask = 32768
 
 [node name="DamageCollision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageCollision"]
-position = Vector2(0, -1)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_6ee68")
 
 [node name="Rope" type="Line2D" parent="."]
@@ -163,6 +167,9 @@ speed_scale = 2.0
 default_color = Color(1, 1, 0, 0.290196)
 
 [node name="Mouse_Follower" type="Area2D" parent="." groups=["Mouse"]]
+position = Vector2(3, 0)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse_Follower"]
 position = Vector2(-2, -1)
@@ -170,6 +177,7 @@ shape = SubResource("CircleShape2D_pjb5h")
 
 [connection signal="area_exited" from="MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
 [connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]
+[connection signal="area_entered" from="DamageCollision" to="." method="_on_grappling_collision_area_entered"]
 [connection signal="body_shape_entered" from="DamageCollision" to="." method="_on_damage_collision_body_shape_entered"]
 [connection signal="body_shape_exited" from="DamageCollision" to="." method="_on_damage_collision_body_shape_exited"]
 [connection signal="body_shape_entered" from="Mouse_Follower" to="." method="_on_mouse_follower_body_shape_entered"]

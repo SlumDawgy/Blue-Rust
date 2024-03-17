@@ -76,6 +76,11 @@ Reset={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Character"
+2d_physics/layer_2="Grapple"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
