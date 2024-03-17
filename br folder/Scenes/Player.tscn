@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=3 uid="uid://bkam2bdf3y0ig"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_cjoav"]
+[ext_resource type="Texture2D" uid="uid://dltbjcjvkcpu6" path="res://Assets/Placeholder.png" id="2_tt0lw"]
+[ext_resource type="Texture2D" uid="uid://bbg4cfp21a8ou" path="res://Assets/Oriana_Evans_Rope.png" id="4_ekxcq"]
+[ext_resource type="Texture2D" uid="uid://dabpryu58cbph" path="res://Assets/Running.png" id="5_cydp5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tplrn"]
+radius = 12.0
+height = 33.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnib2"]
+radius = 128.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oyj74"]
+a = Vector2(-10, -16)
+b = Vector2(10, -16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ee68"]
+size = Vector2(32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0usam"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(2, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jfpt"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(31, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iity3"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(60, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y5ev"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(89, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcg0b"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(118, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvt3x"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(147, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_504lx"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(176, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_370ax"]
+atlas = ExtResource("5_cydp5")
+region = Rect2(205, 0, 28, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g51n2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tt0lw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0usam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jfpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iity3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y5ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcg0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvt3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_504lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_370ax")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjb5h"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(16, -16)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_cjoav")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_tplrn")
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+
+[node name="MaxGrapplingRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MaxGrapplingRange"]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_wnib2")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Polygon2D" type="Polygon2D" parent="MaxGrapplingRange"]
+visible = false
+z_index = -1
+color = Color(1, 1, 0, 0.258824)
+polygon = PackedVector2Array(0, -128, 35, -123, 66, -110, 91, -90, 110, -67, 123, -35, 127, -2, 123, 30, 112, 64, 92, 90, 63, 109, 34, 123, 1, 129, -32, 123, -63, 110, -90, 91, -111, 65, -124, 31, -128, -1, -122, -38, -112, -67, -90, -93, -65, -111, -29, -126)
+
+[node name="Head" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource("SegmentShape2D_oyj74")
+
+[node name="checkWallLeft" type="RayCast2D" parent="."]
+position = Vector2(-8, -8)
+target_position = Vector2(-9, 0)
+
+[node name="checkWallUp" type="RayCast2D" parent="."]
+position = Vector2(8, -16)
+target_position = Vector2(14, 0)
+
+[node name="checkWall" type="RayCast2D" parent="."]
+position = Vector2(8, -8)
+target_position = Vector2(9, 0)
+
+[node name="checkWallUpLeft" type="RayCast2D" parent="."]
+position = Vector2(-8, -16)
+target_position = Vector2(-14, 0)
+
+[node name="DamageCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageCollision"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_6ee68")
+
+[node name="Rope" type="Line2D" parent="."]
+width = 32.0
+texture = ExtResource("4_ekxcq")
+texture_mode = 1
+joint_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.96875, 1)
+sprite_frames = SubResource("SpriteFrames_g51n2")
+speed_scale = 2.0
+
+[node name="HookPath" type="Line2D" parent="."]
+default_color = Color(1, 1, 0, 0.290196)
+
+[node name="Mouse_Follower" type="Area2D" parent="." groups=["Mouse"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse_Follower"]
+position = Vector2(-2, -1)
+shape = SubResource("CircleShape2D_pjb5h")
+
+[connection signal="area_exited" from="MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
+[connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]
+[connection signal="body_shape_entered" from="DamageCollision" to="." method="_on_damage_collision_body_shape_entered"]
+[connection signal="body_shape_exited" from="DamageCollision" to="." method="_on_damage_collision_body_shape_exited"]
+[connection signal="body_shape_entered" from="Mouse_Follower" to="." method="_on_mouse_follower_body_shape_entered"]

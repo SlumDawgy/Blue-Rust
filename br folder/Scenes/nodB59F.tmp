@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6ybemtm7acku"]
+
+[ext_resource type="Texture2D" uid="uid://cf65mcf2jbo3q" path="res://icon.svg" id="1_ng230"]
+[ext_resource type="PackedScene" uid="uid://bkam2bdf3y0ig" path="res://Scenes/Player.tscn" id="2_c1c3h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5bvt"]
+texture = ExtResource("1_ng230")
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_1d7ad"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_q5bvt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4uoe"]
+
+[sub_resource type="Gradient" id="Gradient_w647c"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vcp1u"]
+gradient = SubResource("Gradient_w647c")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="." groups=["Wall"]]
+tile_set = SubResource("TileSet_1d7ad")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 262145, 2, 65537, 262145, 2, 131069, 262145, 2, 131070, 262145, 2, 131071, 262145, 2, 65538, 262145, 2, 65539, 262145, 2, 65540, 262145, 2, 65541, 262145, 2, 65542, 262145, 2, 65543, 262145, 2, 65544, 262145, 2, 65545, 262145, 2, 65546, 262145, 2, 65547, 262145, 2, 131068, 262145, 2, 131067, 262145, 2, 131066, 262145, 2, 131065, 262145, 2, 131064, 262145, 2, 131063, 262145, 2, 131062, 262145, 2, 131061, 262145, 2, 131060, 262145, 2, -65540, 262145, 2, -4, 262145, 2, 65532, 262145, 2, -131067, 262145, 2, -65531, 262145, 2, 5, 262145, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Grapple"]]
+position = Vector2(-1, -174)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_d4uoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.3125, 0.34375)
+texture = SubResource("GradientTexture2D_vcp1u")
+
+[node name="Player" parent="." instance=ExtResource("2_c1c3h")]
+position = Vector2(-109, -193)
