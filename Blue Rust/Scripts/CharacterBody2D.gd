@@ -21,7 +21,7 @@ extends CharacterBody2D
 # Movement variables
 var moveActive : bool = true
 var grapplingActive : bool = false
-var hangingActive : bool = false
+var mantlingActive : bool = false
 var deadActive : bool = false
 
 # Speed
@@ -52,6 +52,10 @@ var grapplingHookProjectile
 var hookPathActive : bool = true
 var aimAssistActive : bool = true
 
+var hangingActive : bool = false
+var balancing : bool = false
+var littleDash : bool = false
+
 # Power Ups Activation
 var doubleJumpUpgrade : bool = false
 var dashUpgrade : bool = true
@@ -80,10 +84,31 @@ func _physics_process(delta):
 		walk(delta)
 	if grapplingActive:
 		grappling(delta)
-	if hangingActive:
-		hanging()
+	if mantlingActive:
+		mantling()
 	if deadActive:
 		dead()
+	if hangingActive:
+		hanging()
+	if  balancing == true:
+		animation.play("Hanging")
+
+		if animation.frame == 4:
+			hangingActive = false
+			moveActive = true
+			balancing = false
+		
+			var direction
+				
+			if animation.flip_h == false:
+					direction = 1
+			else:
+				direction = -1
+			
+			jumping = true
+			littleDash = true
+			velocity.x = 200 * direction
+			velocity.y = -200
 	
 	# Damage
 	if takingDamage:
@@ -110,7 +135,7 @@ func _physics_process(delta):
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node("Grappling") == null and hangingActive == false:
+	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node("Grappling") == null and mantlingActive == false and hangingActive == false:
 		grapplingActive = true
 		moveActive = false
 		jumping = false
@@ -139,16 +164,18 @@ func _process(delta):
 # Walking / Running
 func walk(delta):
 	var direction = Input.get_axis("MoveLeft", "MoveRight")
-	if direction:
+	if direction and littleDash == false:
 		velocity.x = direction * SPEED
 		
 		if direction == -1:
 			animation.flip_h = true
-			animations("running")
+			if animation.animation != "running" and jumping == false:
+				animations("running")
 		else:
 			animation.flip_h = false
-			animations("running")
-	else:
+			if animation.animation != "running" and jumping == false:
+				animations("running")
+	elif littleDash == false:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animations("default")
 	
@@ -161,6 +188,8 @@ func walk(delta):
 		coyoteTime = 0.5
 		dashUses = 1
 		canHangle = true
+		balancing = false
+		littleDash = false
 
 	# Jump + Jump Buffering + Coyote Time + Double Jump
 	if (Input.is_action_just_pressed("Jump") and coyoteTime > 0) or (jumpBuffering and is_on_floor()):
@@ -190,6 +219,8 @@ func walk(delta):
 		
 	
 	if jumping == true:
+		if animation.animation != "Jump":
+			animation.play("Jump")
 		if position.y <= jumpHeight:
 			jumping = false
 			jumpHolding = false
@@ -212,6 +243,7 @@ func grappling(delta):
 		grapplingHookChild.aim = true
 	
 	if get_parent().get_node("Grappling") == null:
+		littleDash = false
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 		
@@ -245,28 +277,57 @@ func _on_max_grappling_range_area_exited(area):
 		returnGrappling = true
 	pass # Replace with function body.
 
-# Hanging
-func hanging():
-	moveActive = false
-	grapplingActive = false
-	velocity.x = move_toward(velocity.x, 0, SPEED)
-	velocity.y = move_toward(0, 0, 0)
-	
-	if Input.is_action_just_pressed("Crouch"):
-		moveActive = true
-		hangingActive = false
-	
-	if Input.is_action_just_pressed("Jump"):
-		moveActive = true
-		hangingActive = false
-		jumpHeight = position.y - 48
-		jumping = true
-		gravityVar = 0.5
-		coyoteTime = -1
-		jumpBuffering = false
+# mantling
+func mantling():
+	if grapplingActive:
+		mantlingActive = false
+	elif grapplingActive == false:
+		if animation.animation != "mantling":
+			animation.play("mantling")
+		moveActive = false
+		grapplingActive = false
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(0, 0, 0)
+		
+		if Input.is_action_just_pressed("Crouch"):
+			moveActive = true
+			mantlingActive = false
+		
+		if Input.is_action_just_pressed("Jump"):
+			moveActive = true
+			mantlingActive = false
+			jumpHeight = position.y - 48
+			jumping = true
+			gravityVar = 0.5
+			coyoteTime = -1
+			jumpBuffering = false
 	
 	pass
 
+func hanging():
+	velocity.x = move_toward(0,0,0)
+	
+	if animation.animation != "Hanging":
+		animations("Hanging")
+	moveActive = false
+	mantlingActive = false
+	jumping = false
+	grapplingActive = false
+	velocity.y = move_toward(0, 0, 0)
+	
+	if Input.is_action_just_pressed("MoveLeft"):
+		animation.flip_h = true
+	elif Input.is_action_just_pressed("MoveRight"):
+		animation.flip_h = false	
+	
+	if Input.is_action_just_pressed("Jump"):
+		balancing = true
+	
+	elif Input.is_action_just_pressed("Crouch"):
+		moveActive = true
+		hangingActive = false
+	
+	pass
 
 # Power Ups Activation
 func doubleJumpActivation():
@@ -291,7 +352,7 @@ func useItem():
 func dead():
 	grapplingActive = false
 	moveActive = false
-	hangingActive = false
+	mantlingActive = false
 	velocity.y = move_toward(0, 0, 0)
 	velocity.x = move_toward(0, 0, 0)
 	dashUses = 0
@@ -312,16 +373,22 @@ func checkingWall():
 	if checkWallLeft.is_colliding() and is_on_floor() == false:
 		colliderLeft = checkWallLeft.get_collider()
 	
+	
+	
 	if collider != null:
 		if collider.is_in_group("Tile"):
 			if checkWallUp.is_colliding() == false and canHangle == true and jumping == false:
-				hangingActive = true
+				animation.flip_h = false
+				mantlingActive = true
+				position =  round(collider.to_local(position) / Vector2(16, 16))*16 + Vector2(16, -16)
 				canHangle = false
 	
 	if colliderLeft != null:
 		if colliderLeft.is_in_group("Tile"):
 			if checkWallUpLeft.is_colliding() == false and canHangle == true and jumping == false:
-				hangingActive = true
+				position = round(colliderLeft.to_local(position) / Vector2(16, 16))*16 + Vector2(-16, -16)
+				animation.flip_h = true
+				mantlingActive = true
 				canHangle = false
 
 
@@ -363,10 +430,14 @@ func get_hookPath():
 		hookPath.clear_points()
 
 func animations(type):
-	if jumping == true:
-		animation.frame = 7
+	if jumping == false and is_on_floor() == false and animation.animation != "mantling" and hangingActive == false:
+		animation.play("Fall")
 	else:
 		animation.play(type)
+		
+	if type == "Hanging" and balancing == false:
+		animation.frame = 0
+		animation.pause()
 
 
 
@@ -425,11 +496,4 @@ func aimAssistAreaFree():
 	get_parent().get_node("aimAssistArea").disconnect("_on_aimAssistArea_area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
 	get_parent().get_node("aimAssistArea").queue_free()
 
-	pass # Replace with function body.
-
-
-func _on_grappling_collision_area_entered(area):
-	if area.is_in_group("Grappling") and area.isMoving == false:
-		area.collided = true
-		print(10)
 	pass # Replace with function body.

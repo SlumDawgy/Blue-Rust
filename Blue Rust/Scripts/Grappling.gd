@@ -13,7 +13,7 @@ var aim : bool = false
 var endGrappleBool : bool = false
 var notWall : bool = false
 
-const speed : float = 200.0
+const speed : float = 300.0
 const characterSpeed : float = 250.0
 
 
@@ -39,12 +39,13 @@ func _physics_process(delta):
 			endGrappleBool = true
 			canMovePlayer = false
 	
-	if collided and isMoving == false:
+	if position.distance_to(player.position) < 8 and isMoving == false:
 		player.returnGrappling = false
 		player.grapplingActive = false
 		
-		if Input.is_action_pressed("GrapplingHook") == true and canMovePlayer == true: # active Hanging if it reaches a grapplable surface
+		if Input.is_action_pressed("GrapplingHook") == true and canMovePlayer == true: # active mantling if it reaches a grapplable surface
 			player.hangingActive = true
+			player.position = position + Vector2(0, 24)
 		else: # active Move if it returned
 			player.moveActive = true
 		
