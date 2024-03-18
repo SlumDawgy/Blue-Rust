@@ -78,7 +78,7 @@ func _physics_process(delta):
 	if hangingActive:
 		hanging()
 	if  balancing == true:
-		animation.play("Hanging")
+		animation.play("right_hanging")
 
 		if animation.frame == 4:
 			hangingActive = false
@@ -134,16 +134,18 @@ func walk(delta):
 		target_velocity.x = direction * SPEED
 		
 		if direction == -1:
-			animation.flip_h = true
-			if animation.animation != "running2" and jumping == false:
-				animations("running2")
+			if animation.animation != "left_running" and jumping == false:
+				animations("left_running")
 		else:
-			animation.flip_h = false
-			if animation.animation != "running2" and jumping == false:
-				animations("running2")
+			if animation.animation != "right_running" and jumping == false:
+				animations("right_running")
 	elif littleDash == false:
 		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
-		animations("Idle")
+		
+		if animation.animation == "right_running":
+			animations("right_idle")
+		elif animation.animation == "left_running":
+			animations("left_idle")
 	
 	# Add Jump Buffering
 	if jumpBufferingCast.is_colliding() and Input.is_action_just_pressed("Jump"):
@@ -187,8 +189,11 @@ func walk(delta):
 		
 	
 	if jumping == true:
-		if animation.animation != "jump2":
-			animation.play("jump2")
+		if animation.animation != "right_jump":
+			if velocity.x >= 0:
+				animation.play("right_jump")
+			elif velocity.x < 0:
+				animation.play("left_jump")
 		if position.y <= jumpHeight:
 			jumping = false
 			jumpHolding = false
@@ -251,8 +256,8 @@ func mantling():
 	if grapplingActive:
 		mantlingActive = false
 	elif grapplingActive == false:
-		if animation.animation != "mantling":
-			animation.play("mantling")
+		if animation.animation != "right_mantling":
+			animation.play("right_mantling")
 		moveActive = false
 		grapplingActive = false
 		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
@@ -277,18 +282,13 @@ func mantling():
 func hanging():
 	target_velocity.x = move_toward(0,0,0)
 	
-	if animation.animation != "Hanging":
-		animations("Hanging")
+	if animation.animation != "right_hanging":
+		animations("right_hanging")
 	moveActive = false
 	mantlingActive = false
 	jumping = false
 	grapplingActive = false
 	target_velocity.y = move_toward(0, 0, 0)
-	
-	if Input.is_action_just_pressed("MoveLeft"):
-		animation.flip_h = true
-	elif Input.is_action_just_pressed("MoveRight"):
-		animation.flip_h = false	
 	
 	if Input.is_action_just_pressed("Jump"):
 		balancing = true
@@ -322,12 +322,15 @@ func damage():
 		target_velocity = Vector2(-700, -300)
 
 func animations(type):
-	if jumping == false and is_on_floor() == false and animation.animation != "mantling" and hangingActive == false:
-		animation.play("fall2")
+	if jumping == false and is_on_floor() == false and animation.animation != "right_mantling" and hangingActive == false:
+		if velocity.x >= 0:
+			animation.play("right_fall")
+		elif velocity.x < 0:
+			animation.play("left_fall")
 	else:
 		animation.play(type)
 		
-	if type == "Hanging" and balancing == false:
+	if type == "right_hanging" and balancing == false:
 		animation.frame = 0
 		animation.pause()
 
