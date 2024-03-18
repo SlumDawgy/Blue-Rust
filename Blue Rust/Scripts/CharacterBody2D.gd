@@ -97,6 +97,13 @@ func _physics_process(delta):
 			target_velocity.x = 200 * direction
 			target_velocity.y = -200
 	
+	# Fall Animation
+	if jumping == false and is_on_floor() == false and animation.animation != "right_mantling" and hangingActive == false:
+		if animation.animation.begins_with("right"):
+			animation.play("right_fall")
+		elif  animation.animation.begins_with("left"):
+			animation.play("left_fall")
+	
 	# Damage
 	if takingDamage:
 		damage()
@@ -142,9 +149,9 @@ func walk(delta):
 	elif littleDash == false:
 		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
 		
-		if animation.animation == "right_running":
+		if animation.animation.begins_with("right"):
 			animations("right_idle")
-		elif animation.animation == "left_running":
+		elif animation.animation.begins_with("left"):
 			animations("left_idle")
 	
 	# Add Jump Buffering
@@ -157,15 +164,20 @@ func walk(delta):
 		dashUses = 1
 		if target_velocity.y > 0:
 			target_velocity.y = 0
+
 		canMantle = true
 		balancing = false
 		littleDash = false
+		if animation.animation == "right_fall":
+			animations("right_idle")
+		elif animation.animation == "left_fall":
+			animations("left_idle")
 
 	# Jump + Jump Buffering + Coyote Time + Double Jump
 	if (Input.is_action_just_pressed("Jump") and coyoteTime > 0) or (jumpBuffering and is_on_floor()):
 		jumpHeight = position.y - 32
 		jumping = true
-		gravityVar = 0.5
+		gravityVar = 1
 		coyoteTime = -1
 		jumpBuffering = false
 		jumpHolding = true
@@ -189,15 +201,15 @@ func walk(delta):
 		
 	
 	if jumping == true:
-		if animation.animation != "right_jump":
-			if velocity.x >= 0:
-				animation.play("right_jump")
-			elif velocity.x < 0:
-				animation.play("left_jump")
+		if animation.animation != "right_jump" and animation.animation.begins_with("right"):
+			animation.play("right_jump")
+			print(10)
+		if animation.animation != "left_jump" and animation.animation.begins_with("left"):
+			animation.play("left_jump")
 		if position.y <= jumpHeight:
 			jumping = false
 			jumpHolding = false
-			gravityVar = 1.5
+			gravityVar = 1
 			target_velocity.y = move_toward(0, target_velocity.y, SPEED)
 		target_velocity.y = jump_target_velocity
 	
@@ -322,13 +334,7 @@ func damage():
 		target_velocity = Vector2(-700, -300)
 
 func animations(type):
-	if jumping == false and is_on_floor() == false and animation.animation != "right_mantling" and hangingActive == false:
-		if velocity.x >= 0:
-			animation.play("right_fall")
-		elif velocity.x < 0:
-			animation.play("left_fall")
-	else:
-		animation.play(type)
+	animation.play(type)
 		
 	if type == "right_hanging" and balancing == false:
 		animation.frame = 0

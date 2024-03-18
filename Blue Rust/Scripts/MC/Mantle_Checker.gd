@@ -17,6 +17,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	checkingWall()
+	
+	if player.mantlingActive == false:
+		player.animation.flip_h = false
 	pass
 
 func checkingWall():
