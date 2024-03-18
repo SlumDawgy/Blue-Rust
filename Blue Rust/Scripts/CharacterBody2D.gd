@@ -1,22 +1,12 @@
 extends CharacterBody2D
 
-@onready var jumpBufferingCast = $RayCast2D2
-
-@onready var checkWall = $checkWall
-@onready var checkWallUp = $checkWallUp
-
-@onready var checkWallLeft = $checkWallLeft
-@onready var checkWallUpLeft = $checkWallUpLeft
-
-@onready var rope = $Rope
-
-@onready var maxRangePol = $MaxGrapplingRange/Polygon2D
-@onready var hookPath = $HookPath
+@onready var jumpBufferingCast = $jumpBufferingCast
 
 @onready var animation = $AnimatedSprite2D
 
 # Mouse Follower
-@onready var mouseFollower = $Mouse_Follower
+@onready var mouseFollower = $Aim_Assist
+@onready var rope = $Rope
 
 # Movement variables
 var moveActive : bool = true
@@ -26,10 +16,7 @@ var deadActive : bool = false
 
 # Speed
 const SPEED : float = 115.0
-
-# Aim Dots
-var aim
-var aiming
+var target_velocity : Vector2
 
 # Jump Variables
 var coyoteTime : float = 0.01
@@ -38,12 +25,12 @@ var doubleJump : bool = false
 var jumpHolding : bool = false
 
 var jumpHeight : float
-var jumpVelocity : float = -200.0
+var jump_target_velocity : float = -200.0
 var jumping : bool = false
 var gravityVar : float = 1
 
 # Can mantle edge
-var canHangle : bool = true
+var canMantle : bool = true
 
 # Grappling Hook
 var positionToReach : Vector2
@@ -74,16 +61,16 @@ var damageInvencibility = 0
 
 func _ready():
 	grapplingHookProjectile = preload("res://Scenes/Grappling.tscn")
-	aim = preload("res://Assets/Aim.png")
-	aiming = preload("res://Assets/Aiming.png")
-	hookPath.add_point(to_local(position))
 
 func _physics_process(delta):
+	velocity = target_velocity
+	
 	# Movements
 	if moveActive:
 		walk(delta)
 	if grapplingActive:
 		grappling(delta)
+		canMantle = false
 	if mantlingActive:
 		mantling()
 	if deadActive:
@@ -107,8 +94,8 @@ func _physics_process(delta):
 			
 			jumping = true
 			littleDash = true
-			velocity.x = 200 * direction
-			velocity.y = -200
+			target_velocity.x = 200 * direction
+			target_velocity.y = -200
 	
 	# Damage
 	if takingDamage:
@@ -116,26 +103,17 @@ func _physics_process(delta):
 	
 	# Power Ups
 	useDash(delta)
-	
-	
-	# Mantle Edges
-	checkingWall()
-	
-	# Start Movements
 
 	move_and_slide()
 
 	# Body Collision
 	damageInvencibility -= delta
 	
-	# hook Path
-	get_hookPath()
-	
 	mouseFollower.position = get_local_mouse_position()
 
 
-func _process(delta):
-	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node("Grappling") == null and mantlingActive == false and hangingActive == false:
+func _process(_delta):
+	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node_or_null("Grappling") == null and mantlingActive == false and hangingActive == false:
 		grapplingActive = true
 		moveActive = false
 		jumping = false
@@ -148,36 +126,24 @@ func _process(delta):
 	# Use Item
 	if Input.is_action_just_pressed("useItem"):
 		useItem()
-	
-	# Aim
-	if Input.is_action_just_pressed('Aim'):
-		maxRangePol.visible = true
-		Input.set_custom_mouse_cursor(aiming, Input.get_current_cursor_shape(), Vector2(16,16))
-		
-		pass
-	
-	if Input.is_action_just_released("Aim"):
-		maxRangePol.visible = false
-		Input.set_custom_mouse_cursor(aim, Input.get_current_cursor_shape(), Vector2(16,16))
-		pass
 
 # Walking / Running
 func walk(delta):
 	var direction = Input.get_axis("MoveLeft", "MoveRight")
 	if direction and littleDash == false:
-		velocity.x = direction * SPEED
+		target_velocity.x = direction * SPEED
 		
 		if direction == -1:
 			animation.flip_h = true
-			if animation.animation != "running" and jumping == false:
-				animations("running")
+			if animation.animation != "running2" and jumping == false:
+				animations("running2")
 		else:
 			animation.flip_h = false
-			if animation.animation != "running" and jumping == false:
-				animations("running")
+			if animation.animation != "running2" and jumping == false:
+				animations("running2")
 	elif littleDash == false:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		animations("default")
+		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
+		animations("Idle")
 	
 	# Add Jump Buffering
 	if jumpBufferingCast.is_colliding() and Input.is_action_just_pressed("Jump"):
@@ -187,7 +153,9 @@ func walk(delta):
 	if is_on_floor():
 		coyoteTime = 0.5
 		dashUses = 1
-		canHangle = true
+		if target_velocity.y > 0:
+			target_velocity.y = 0
+		canMantle = true
 		balancing = false
 		littleDash = false
 
@@ -219,32 +187,31 @@ func walk(delta):
 		
 	
 	if jumping == true:
-		if animation.animation != "Jump":
-			animation.play("Jump")
+		if animation.animation != "jump2":
+			animation.play("jump2")
 		if position.y <= jumpHeight:
 			jumping = false
 			jumpHolding = false
 			gravityVar = 1.5
-			velocity.y = move_toward(0, velocity.y, SPEED)
-		velocity.y = jumpVelocity
+			target_velocity.y = move_toward(0, target_velocity.y, SPEED)
+		target_velocity.y = jump_target_velocity
 	
 	if not is_on_floor():
-		velocity.y += gravity * delta * gravityVar
+		target_velocity.y += gravity * delta * gravityVar
 		coyoteTime -= delta * 3
 
 # Grappling
 func grappling(delta):
-	velocity.y = gravity * delta * 1.5
+	target_velocity.y = gravity * delta * 1.5
 	
 	var grapplingHookChild = grapplingHookProjectile.instantiate()
-	var Pixels : int
 	
 	if Input.is_action_pressed('Aim') and grapplingHookChild.aim == false and is_on_floor():
 		grapplingHookChild.aim = true
 	
-	if get_parent().get_node("Grappling") == null:
+	if get_parent().get_node_or_null("Grappling") == null:
 		littleDash = false
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
 		
 		
 		
@@ -252,7 +219,7 @@ func grappling(delta):
 		grapplingHookChild.rotation =  PI + atan2(directionToPosition.y, directionToPosition.x) 
 
 
-		if get_parent().get_node("aimAssist") != null:
+		if get_parent().get_node_or_null("aimAssist") != null:
 			grapplingHookChild.positionToReach = to_local(get_parent().get_node("aimAssist").position)
 		else:
 			grapplingHookChild.positionToReach = get_local_mouse_position()
@@ -260,21 +227,23 @@ func grappling(delta):
 		
 		get_parent().add_child(grapplingHookChild)
 	
-	elif returnGrappling == true and  get_parent().get_node("Grappling") != null:
+	elif returnGrappling == true and  get_parent().get_node_or_null("Grappling") != null:
 		get_parent().get_node("Grappling").endGrapple(position, delta)
 
-	
 	if get_local_mouse_position().x - to_local(position).x > 0:
-		rope.remove_point(2)
+		if rope.get_point_count() > 1:
+			rope.remove_point(1)
 		rope.add_point(to_local(get_parent().get_node("Grappling").position) + Vector2(0, -4))
 	else:
-		rope.remove_point(2)
+		if rope.get_point_count() > 1:
+			rope.remove_point(1)
 		rope.add_point(to_local(get_parent().get_node("Grappling").position) + Vector2(0, 4))
 
 # Grappling Max Range Return
 func _on_max_grappling_range_area_exited(area):
-	if area == get_parent().get_node("Grappling") and get_parent().get_node("Grappling").isMoving == true:
-		returnGrappling = true
+	if get_parent().get_node_or_null("Grappling") != null:
+		if area == get_parent().get_node("Grappling") and get_parent().get_node("Grappling").isMoving == true:
+			returnGrappling = true
 	pass # Replace with function body.
 
 # mantling
@@ -286,10 +255,11 @@ func mantling():
 			animation.play("mantling")
 		moveActive = false
 		grapplingActive = false
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(0, 0, 0)
+		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
+		target_velocity.y = move_toward(0, 0, 0)
 		
 		if Input.is_action_just_pressed("Crouch"):
+			canMantle = false
 			moveActive = true
 			mantlingActive = false
 		
@@ -305,7 +275,7 @@ func mantling():
 	pass
 
 func hanging():
-	velocity.x = move_toward(0,0,0)
+	target_velocity.x = move_toward(0,0,0)
 	
 	if animation.animation != "Hanging":
 		animations("Hanging")
@@ -313,7 +283,7 @@ func hanging():
 	mantlingActive = false
 	jumping = false
 	grapplingActive = false
-	velocity.y = move_toward(0, 0, 0)
+	target_velocity.y = move_toward(0, 0, 0)
 	
 	if Input.is_action_just_pressed("MoveLeft"):
 		animation.flip_h = true
@@ -323,11 +293,47 @@ func hanging():
 	if Input.is_action_just_pressed("Jump"):
 		balancing = true
 	
-	elif Input.is_action_just_pressed("Crouch"):
+	if Input.is_action_just_released("GrapplingHook"):
 		moveActive = true
 		hangingActive = false
 	
 	pass
+
+func useItem():
+	pass
+
+func dead():
+	grapplingActive = false
+	moveActive = false
+	mantlingActive = false
+	target_velocity.y = move_toward(0, 0, 0)
+	target_velocity.x = move_toward(0, 0, 0)
+	dashUses = 0
+
+func damage():
+	if damageInvencibility < 0:
+		target_velocity.x = move_toward(0,0,0)
+		if get_parent().get_node_or_null("Grappling") != null:
+			get_parent().get_node("Grappling").position = position
+		
+		moveActive = true
+		get_parent().get_node("Camera/GameUI").decreaseHealth()
+		damageInvencibility = 1
+		target_velocity = Vector2(-700, -300)
+
+func animations(type):
+	if jumping == false and is_on_floor() == false and animation.animation != "mantling" and hangingActive == false:
+		animation.play("fall2")
+	else:
+		animation.play(type)
+		
+	if type == "Hanging" and balancing == false:
+		animation.frame = 0
+		animation.pause()
+
+
+	pass # Replace with function body.
+
 
 # Power Ups Activation
 func doubleJumpActivation():
@@ -341,159 +347,7 @@ func useDash(delta):
 	
 	if dashTime > 0 and grapplingActive == false:
 		dashTime -= delta
-		velocity = get_local_mouse_position().normalized() * 1000
+		target_velocity = get_local_mouse_position().normalized() * 1000
 	elif dashTime < 0:
 		dashTime = 0
-		velocity.y = move_toward(0, 0, 0)
-
-func useItem():
-	pass
-
-func dead():
-	grapplingActive = false
-	moveActive = false
-	mantlingActive = false
-	velocity.y = move_toward(0, 0, 0)
-	velocity.x = move_toward(0, 0, 0)
-	dashUses = 0
-
-
-func _on_head_body_entered(body):
-	jumping = false
-	gravityVar = 1
-	velocity.y = move_toward(0, velocity.y, SPEED)
-	pass # Replace with function body.
-
-func checkingWall():
-	var collider
-	var colliderLeft
-	
-	if checkWall.is_colliding() and is_on_floor() == false:
-		collider = checkWall.get_collider()
-	if checkWallLeft.is_colliding() and is_on_floor() == false:
-		colliderLeft = checkWallLeft.get_collider()
-	
-	
-	
-	if collider != null:
-		if collider.is_in_group("Tile"):
-			if checkWallUp.is_colliding() == false and canHangle == true and jumping == false:
-				animation.flip_h = false
-				mantlingActive = true
-				position =  round(collider.to_local(position) / Vector2(16, 16))*16 + Vector2(16, -16)
-				canHangle = false
-	
-	if colliderLeft != null:
-		if colliderLeft.is_in_group("Tile"):
-			if checkWallUpLeft.is_colliding() == false and canHangle == true and jumping == false:
-				position = round(colliderLeft.to_local(position) / Vector2(16, 16))*16 + Vector2(-16, -16)
-				animation.flip_h = true
-				mantlingActive = true
-				canHangle = false
-
-
-func damage():
-	if damageInvencibility < 0:
-		get_parent().get_node("Camera/GameUI").decreaseHealth()
-		damageInvencibility = 1
-		velocity = Vector2(-700, -300)
-
-
-
-func _on_damage_collision_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	
-	if body.is_in_group("Tile"):
-		var coords = body.get_coords_for_body_rid(body_rid)
-	# Find Grapplable Object and move Player
-		if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Water":
-			takingDamage = true
-
-
-func _on_damage_collision_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	if body.is_in_group("Tile"):
-		var coords = body.get_coords_for_body_rid(body_rid)
-	# Find Grapplable Object and move Player
-		if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Water":
-			takingDamage = false
-	pass # Replace with function body.
-
-func get_hookPath():
-	if hookPathActive == true:
-		hookPath.remove_point(1)
-		if get_parent().get_node("Grappling") != null:
-			hookPath.add_point(get_parent().get_node("Grappling").positionToReach.normalized() * 128)
-		elif get_parent().get_node("aimAssist") != null:
-			hookPath.add_point(to_local(get_parent().get_node("aimAssist").position).normalized() * 128)
-		else:
-			hookPath.add_point(get_local_mouse_position().normalized() * 128)
-	else:
-		hookPath.clear_points()
-
-func animations(type):
-	if jumping == false and is_on_floor() == false and animation.animation != "mantling" and hangingActive == false:
-		animation.play("Fall")
-	else:
-		animation.play(type)
-		
-	if type == "Hanging" and balancing == false:
-		animation.frame = 0
-		animation.pause()
-
-
-
-func _on_mouse_follower_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if aimAssistActive == true:
-		if body.is_in_group("Tile"):
-			
-			var coords = body.get_coords_for_body_rid(body_rid)
-		# Find Grapplable Object and move Player
-			if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Grapple":
-				if get_parent().get_node("aimAssist") != null:
-					get_parent().get_node("aimAssist").position = body.map_to_local(coords)
-					get_parent().get_node("aimAssistArea").position = body.map_to_local(coords)
-				
-				
-				else:
-				
-					var aimAssist = Sprite2D.new()
-					
-					aimAssist.texture = aiming
-					aimAssist.name = "aimAssist"
-					aimAssist.position = body.map_to_local(coords)
-					
-					get_parent().add_child(aimAssist)
-					
-					var aimAssistArea = Area2D.new()
-					aimAssistArea.name = "aimAssistArea"
-					
-					var aimAssistAreaCollision = CollisionShape2D.new()
-					
-					aimAssistAreaCollision.shape = CircleShape2D.new()
-					aimAssistAreaCollision.shape.set_radius(64)
-					
-					aimAssistArea.connect("area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
-					aimAssistArea.position = body.map_to_local(coords)
-					aimAssistArea.collision_layer = 2
-					aimAssistArea.collision_mask = 2
-					
-					aimAssistArea.add_child(aimAssistAreaCollision)
-					
-					get_parent().add_child(aimAssistArea)
-
-			
-
-func _on_aimAssistArea_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	if aimAssistActive == true:
-		if area != null:
-			if area.is_in_group("Mouse"):
-				if get_parent().get_node("aimAssist") != null:
-					get_parent().get_node("aimAssist").free()
-			
-				if get_parent().get_node("aimAssistArea") != null:
-					aimAssistAreaFree()
-
-func aimAssistAreaFree():
-	get_parent().get_node("aimAssistArea").disconnect("_on_aimAssistArea_area_shape_exited", Callable(self, "_on_aimAssistArea_area_shape_exited"))
-	get_parent().get_node("aimAssistArea").queue_free()
-
-	pass # Replace with function body.
+		target_velocity.y = move_toward(0, 0, 0)

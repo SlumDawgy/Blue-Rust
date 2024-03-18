@@ -8,6 +8,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_c1c3h")]
+visible = true
 position = Vector2(104, -40)
 
 [node name="Label" type="Label" parent="."]
