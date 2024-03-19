@@ -35,11 +35,10 @@ func checkingWall():
 	
 	if collider != null:
 		if collider.is_in_group("Tile"):
-			
 			if checkWallUp.is_colliding() == false and player.canMantle == true and player.jumping == false:
+				player.position = collider.map_to_local(collider.local_to_map(player.position)) - Vector2(4, 0)
 				player.animation.flip_h = false
 				player.mantlingActive = true
-				player.position = collider.map_to_local(collider.local_to_map(player.position)) - Vector2(4, 0)
 	
 	if colliderLeft != null:
 		if colliderLeft.is_in_group("Tile"):

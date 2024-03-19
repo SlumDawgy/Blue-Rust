@@ -22,7 +22,9 @@ var target_velocity : Vector2
 var coyoteTime : float = 0.01
 var jumpBuffering : bool = false
 var doubleJump : bool = false
+
 var jumpHolding : bool = false
+var jumpTimer : float = 0.0
 
 var jumpHeight : float
 var jump_target_velocity : float = -200.0
@@ -63,6 +65,9 @@ func _ready():
 	grapplingHookProjectile = preload("res://Scenes/Grappling.tscn")
 
 func _physics_process(delta):
+	if jumpHolding == true:
+		jumpTimer += delta
+	
 	velocity = target_velocity
 	
 	# Movements
@@ -168,6 +173,8 @@ func walk(delta):
 		canMantle = true
 		balancing = false
 		littleDash = false
+		jumpTimer = 0
+		
 		if animation.animation == "right_fall":
 			animations("right_idle")
 		elif animation.animation == "left_fall":
@@ -175,35 +182,42 @@ func walk(delta):
 
 	# Jump + Jump Buffering + Coyote Time + Double Jump
 	if (Input.is_action_just_pressed("Jump") and coyoteTime > 0) or (jumpBuffering and is_on_floor()):
-		jumpHeight = position.y - 32
-		jumping = true
-		gravityVar = 1
-		coyoteTime = -1
 		jumpBuffering = false
+		coyoteTime = -1
+		jumpHeight = position.y - 32
+		gravityVar = 1
 		jumpHolding = true
+		
+		jumping = true
 		
 		if doubleJumpUpgrade == true:
 			doubleJump = true
+		
+	
+	if (Input.is_action_just_released("Jump")):
+			jumpHolding = false
+			jumpTimer = 0
+	elif jumpTimer >= 0.1:
+			jumpHolding = false
+			jumpTimer = 0
 			jumpHeight -= 32
 	
-	elif doubleJump == true and Input.is_action_just_pressed("Jump") and is_on_floor() == false:
+	if doubleJump == true and Input.is_action_just_pressed("Jump") and is_on_floor() == false:
 		jumpHeight = position.y - 48
 		jumping = true
 		gravityVar = 0.5
 		coyoteTime = -1
 		jumpBuffering = false
 		doubleJump = false
-		jumpHolding = true
-	
-	if (Input.is_action_pressed("Jump")) and jumping == true and position.y < jumpHeight + 8 and jumpHolding == true:
-		jumpHeight -= 32
-		jumpHolding = false
 		
+		if (Input.is_action_pressed("Jump")) and jumpTimer >= 0.1:
+			if jumpHolding == true:
+				jumpHeight -= 32
+			jumpHolding = false
 	
 	if jumping == true:
 		if animation.animation != "right_jump" and animation.animation.begins_with("right"):
 			animation.play("right_jump")
-			print(10)
 		if animation.animation != "left_jump" and animation.animation.begins_with("left"):
 			animation.play("left_jump")
 		if position.y <= jumpHeight:
