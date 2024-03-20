@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkam2bdf3y0ig"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_cjoav"]
+[ext_resource type="Texture2D" uid="uid://dltbjcjvkcpu6" path="res://Assets/Placeholder.png" id="2_tt0lw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y42tm"]
+size = Vector2(32, 32)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(10, -10)
+script = ExtResource("1_cjoav")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y42tm")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+
+[node name="Placeholder" type="Sprite2D" parent="."]
+texture = ExtResource("2_tt0lw")

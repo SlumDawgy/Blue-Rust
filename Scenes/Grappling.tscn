@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bebb75lmf4ffi"]
+
+[ext_resource type="Script" path="res://Scripts/Grappling.gd" id="1_c7ubf"]
+[ext_resource type="Texture2D" uid="uid://dwa60aiwwybp0" path="res://Assets/Oriana_Evans_Hook.png" id="2_cvms0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b2db"]
+size = Vector2(8, 8)
+
+[node name="Grappling" type="Area2D" groups=["Grappling"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_c7ubf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.14684, -0.0540276)
+shape = SubResource("RectangleShape2D_3b2db")
+
+[node name="OrianaEvansHook" type="Sprite2D" parent="."]
+position = Vector2(19.6284, -5.52028)
+texture = ExtResource("2_cvms0")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
