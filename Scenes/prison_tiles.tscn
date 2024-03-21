@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://clj1vymbke5yo"]
 
-[ext_resource type="Texture2D" uid="uid://bbvs1k86y0u0w" path="res://Assets/PrisonTileSet.png" id="1_ytdnh"]
+[ext_resource type="Texture2D" uid="uid://dny25gvc2j6lr" path="res://Assets/PrisonTileSet.png" id="1_ytdnh"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_75jc1"]
 tile_data = PackedInt32Array(0, 1572864, 3, 65536, 1572864, 4, 131072, 1572864, 5, 196608, 1572864, 6, 1, 1638400, 3, 65537, 1638400, 4, 131073, 1638400, 5, 196609, 1638400, 6, 65538, 1703936, 4, 131074, 1703936, 5, 196610, 1703936, 6)
@@ -1351,11 +1351,6 @@ texture = ExtResource("1_ytdnh")
 14:6/0/physics_layer_1/angular_velocity = 0.0
 14:6/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 14:6/0/physics_layer_2/angular_velocity = 0.0
-15:7/animation_columns = 4
-15:7/animation_frame_0/duration = 0.2
-15:7/animation_frame_1/duration = 0.2
-15:7/animation_frame_2/duration = 0.2
-15:7/animation_frame_3/duration = 0.2
 15:7/0 = 0
 15:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:7/0/physics_layer_0/angular_velocity = 0.0
@@ -1363,11 +1358,7 @@ texture = ExtResource("1_ytdnh")
 15:7/0/physics_layer_1/angular_velocity = 0.0
 15:7/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 15:7/0/physics_layer_2/angular_velocity = 0.0
-15:8/animation_columns = 4
-15:8/animation_frame_0/duration = 0.2
-15:8/animation_frame_1/duration = 0.2
-15:8/animation_frame_2/duration = 0.2
-15:8/animation_frame_3/duration = 0.2
+15:8/animation_columns = 1
 15:8/0 = 0
 15:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:8/0/physics_layer_0/angular_velocity = 0.0
@@ -1375,11 +1366,7 @@ texture = ExtResource("1_ytdnh")
 15:8/0/physics_layer_1/angular_velocity = 0.0
 15:8/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 15:8/0/physics_layer_2/angular_velocity = 0.0
-15:9/animation_columns = 4
-15:9/animation_frame_0/duration = 0.2
-15:9/animation_frame_1/duration = 0.2
-15:9/animation_frame_2/duration = 0.2
-15:9/animation_frame_3/duration = 0.2
+15:9/animation_columns = 1
 15:9/0 = 0
 15:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:9/0/physics_layer_0/angular_velocity = 0.0
@@ -1839,11 +1826,25 @@ texture = ExtResource("1_ytdnh")
 20:6/0/texture_origin = Vector2i(8, 8)
 20:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:6/0/physics_layer_0/angular_velocity = 0.0
-20:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.9375, -15.9375, -15.9375, 15.8125, 16.0625, 15.9375, 15.9375, -15.8125)
+20:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-23.8649, -23.9532, -23.6881, 8.04334, 8, 8, 7.95495, -23.9532)
 20:6/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 20:6/0/physics_layer_1/angular_velocity = 0.0
 20:6/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 20:6/0/physics_layer_2/angular_velocity = 0.0
+16:5/0 = 0
+16:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:5/0/physics_layer_0/angular_velocity = 0.0
+16:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+16:5/0/physics_layer_1/angular_velocity = 0.0
+16:5/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+16:5/0/physics_layer_2/angular_velocity = 0.0
+17:5/0 = 0
+17:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+17:5/0/physics_layer_0/angular_velocity = 0.0
+17:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+17:5/0/physics_layer_1/angular_velocity = 0.0
+17:5/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+17:5/0/physics_layer_2/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_b03c0"]
 physics_layer_0/collision_layer = 32769
