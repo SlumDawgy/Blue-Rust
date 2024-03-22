@@ -69,7 +69,7 @@ func movingPivot():
 				1: armPivo.position = Vector2(1, -5.5)
 	
 	
-	if animation == "right_mantling" or animation == "right_hanging" or animation == "left_hanging":
+	if animation == "right_mantling" or animation == "right_hanging" or animation == "left_hanging" or animation == "left_damage" or animation == "right_damage":
 		armPivo.visible = false
 	else:
 		armPivo.visible = true

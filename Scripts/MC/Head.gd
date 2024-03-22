@@ -12,5 +12,5 @@ func _on_body_entered(_body):
 	
 	if _body != player:
 		player.jumping = false
-		player.gravityVar = 1
+		player.gravityVar = 0.75
 	pass # Replace with function body.

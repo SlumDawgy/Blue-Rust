@@ -96,15 +96,13 @@ func _physics_process(delta):
 			animation.play("left_hanging")
 			direction = -1
 
-		if animation.frame == 4:
-			hangingActive = false
-			moveActive = true
-			balancing = false
-			
-			jumping = true
-			littleDash = true
-			target_velocity.x = 200 * direction
-			target_velocity.y = -200
+
+		hangingActive = false
+		balancing = false
+		littleDash = true
+		target_velocity.x = 200 * direction
+		target_velocity.y = -200
+		moveActive = true
 	
 	# Fall Animation
 	if jumping == false and is_on_floor() == false and animation.animation != "right_mantling" and hangingActive == false:
@@ -123,19 +121,22 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# Body Collision
-	damageInvencibility -= delta
+	if damageInvencibility > 0:
+		damageInvencibility -= delta
 	
 	mouseFollower.position = get_local_mouse_position()
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node_or_null("Grappling") == null and mantlingActive == false and hangingActive == false and deadActive == false:
+	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node_or_null("Grappling") == null and mantlingActive == false and hangingActive == false and deadActive == false and dashTime == 0:
 		grapplingActive = true
 		moveActive = false
 		jumping = false
-		gravityVar = 1
+		gravityVar = 0.75
 	
-	if Input.is_action_just_pressed("Dash") and dashUpgrade == true and dashUses > 0:
+	if Input.is_action_just_pressed("Dash") and dashUpgrade == true and dashUses > 0 and hangingActive == false and grapplingActive == false:
+		target_velocity = Vector2(0,0)
+		littleDash = false
 		dashTime = 0.1
 		dashUses -= 1
 	
@@ -192,7 +193,7 @@ func walk(delta):
 	if (Input.is_action_just_pressed("Jump")and coyoteTime > 0) or (jumpBuffering and is_on_floor()):
 		jumpBuffering = false
 		jumpHeight = position.y - 32
-		gravityVar = 1
+		gravityVar = 0.75
 		jumpHolding = true
 		jumping = true
 		
@@ -225,7 +226,7 @@ func walk(delta):
 		if position.y <= jumpHeight:
 			jumping = false
 			jumpHolding = false
-			gravityVar = 1
+			gravityVar = 0.75
 			target_velocity.y = move_toward(0, target_velocity.y, SPEED)
 		target_velocity.y = jump_target_velocity
 	
@@ -312,7 +313,7 @@ func mantling():
 func hanging():
 	target_velocity.x = move_toward(0,0,0)
 	
-	if animation.animation != "right_hanging" or animation.animation != "left_hanging0":
+	if animation.animation != "right_hanging" or animation.animation != "left_hanging":
 		if animation.animation.begins_with("right"):
 			animations("right_hanging")
 		elif animation.animation.begins_with("left"):
@@ -354,17 +355,22 @@ func dead():
 
 func damage():
 	if damageInvencibility <= 0:
-		target_velocity.x = move_toward(0,0,0)
 		if get_parent().get_node_or_null("Grappling") != null:
 			get_parent().get_node("Grappling").position = position
 		moveActive = true
 		get_parent().get_node("Camera/GameUI").decreaseHealth()
-		damageInvencibility = 0.5
+		damageInvencibility = 0.2
 		target_velocity = Vector2(-700, -300)
 
 func animations(type):
-	animation.play(type)
-		
+	if damageInvencibility > 0:
+		if animation.animation.begins_with("left"):
+			animation.play("left_damage")
+		else:
+			animation.play("right_damage")
+	else:
+		animation.play(type)
+	
 	if type == "right_hanging" and balancing == false:
 		animation.frame = 0
 		animation.pause()
@@ -386,7 +392,7 @@ func dashActivation():
 # Power Ups Uses
 func useDash(delta):
 	
-	if dashTime > 0 and grapplingActive == false:
+	if dashTime > 0:
 		dashTime -= delta
 		target_velocity = get_local_mouse_position().normalized() * 1000
 	elif dashTime < 0:

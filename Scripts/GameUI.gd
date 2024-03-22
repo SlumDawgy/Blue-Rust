@@ -36,7 +36,7 @@ func decreaseHealth():
 		currentHealth -= 1
 
 	if get_node("HBoxContainer/Heart" + str(currentHealth + 1)) != null:
-		get_node("HBoxContainer/Heart" + str(currentHealth + 1)).texture = load("res://Assets/Laturn/laturn_empty.png")
+		get_node("HBoxContainer/Heart" + str(currentHealth + 1)).texture = load("res://Assets/Sprites/Laturn/laturn_empty.png")
 	
 
 func increaseHealth():
@@ -44,7 +44,7 @@ func increaseHealth():
 		currentHealth += 1
 	
 	if get_node("HBoxContainer/Heart" + str(currentHealth)) != null:
-		get_node("HBoxContainer/Heart" + str(currentHealth)).texture = load("res://Assets/Laturn/laturn_full.png")
+		get_node("HBoxContainer/Heart" + str(currentHealth)).texture = load("res://Assets/Sprites/Laturn/laturn_full.png")
 
 func increaseMaxHealth():
 	maxHealth += 1
@@ -58,7 +58,7 @@ func increaseMaxHealth():
 	get_node("HBoxContainer").add_child(newHeart)
 	
 	for restore in range(1, maxHealth + 1):
-		get_node("HBoxContainer/Heart" + str(restore)).texture = load("res://Assets/Laturn/laturn_full.png")
+		get_node("HBoxContainer/Heart" + str(restore)).texture = load("res://Assets/Sprites/Laturn/laturn_full.png")
 		
 
 func decreaseMaxHealth():

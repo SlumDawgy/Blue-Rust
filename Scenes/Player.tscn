@@ -1,7 +1,8 @@
-[gd_scene load_steps=66 format=3 uid="uid://bkam2bdf3y0ig"]
+[gd_scene load_steps=75 format=3 uid="uid://bkam2bdf3y0ig"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_cjoav"]
 [ext_resource type="Script" path="res://Scripts/MC/MaxGrapplingRange.gd" id="2_2taa3"]
+[ext_resource type="Texture2D" uid="uid://cscvteima64k0" path="res://Assets/Sprites/AimIndicatorLine.png" id="3_7wh65"]
 [ext_resource type="Script" path="res://Scripts/MC/Head.gd" id="3_ab1od"]
 [ext_resource type="Texture2D" uid="uid://bbg4cfp21a8ou" path="res://Assets/Sprites/Oriana_Evans_Rope.png" id="4_ekxcq"]
 [ext_resource type="Script" path="res://Scripts/MC/DamageCollision.gd" id="4_ki1l8"]
@@ -9,17 +10,30 @@
 [ext_resource type="Texture2D" uid="uid://ssjayeubca24" path="res://Assets/Sprites/MC Animations/JumpAim_Left.png" id="4_pno48"]
 [ext_resource type="Texture2D" uid="uid://gr75qj1l030l" path="res://Assets/Sprites/MC Animations/Mantling.png" id="4_qy8sh"]
 [ext_resource type="Texture2D" uid="uid://b1xpp1heheveo" path="res://Assets/Sprites/MC Animations/Idle_Left.png" id="5_6cari"]
+[ext_resource type="Texture2D" uid="uid://betmhd52c0obp" path="res://Assets/Sprites/MC Animations/Damage_Left-Sheet.png" id="5_i5y1c"]
 [ext_resource type="Texture2D" uid="uid://djohfhqtln0f5" path="res://Assets/Sprites/MC Animations/Hang_Left.png" id="5_wxmkb"]
 [ext_resource type="Texture2D" uid="uid://dcjhc0blyrvnf" path="res://Assets/Sprites/MC Animations/IdleAim.png" id="6_f7sye"]
 [ext_resource type="Texture2D" uid="uid://cyi7o0l2hrlev" path="res://Assets/Sprites/MC Animations/RunningAim_Left.png" id="6_h0476"]
 [ext_resource type="Texture2D" uid="uid://bposq7ccc2wdp" path="res://Assets/Sprites/MC Animations/JumpAim.png" id="7_4hi78"]
 [ext_resource type="Texture2D" uid="uid://65u5f6kv35d7" path="res://Assets/Sprites/MC Animations/RunningAim.png" id="9_h2gw4"]
 [ext_resource type="Texture2D" uid="uid://d21rfx17natuj" path="res://Assets/Sprites/MC Animations/Arm.png" id="9_vrk3f"]
+[ext_resource type="Texture2D" uid="uid://3dq0x3rbvs0f" path="res://Assets/Sprites/MC Animations/Damage_Right-Sheet.png" id="10_obr2m"]
 [ext_resource type="Script" path="res://Scripts/MC/Animations.gd" id="10_xc0nu"]
 [ext_resource type="Script" path="res://Scripts/MC/Mouse_Follower.gd" id="12_bl1ec"]
 [ext_resource type="Script" path="res://Scripts/MC/HookPath.gd" id="12_kslgm"]
 [ext_resource type="Script" path="res://Scripts/MC/Mantle_Checker.gd" id="14_d260u"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylu6d"]
+atlas = ExtResource("5_i5y1c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxwps"]
+atlas = ExtResource("5_i5y1c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uom5t"]
+atlas = ExtResource("5_i5y1c")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgi3h"]
 atlas = ExtResource("4_pno48")
@@ -92,6 +106,18 @@ region = Rect2(177, 0, 29, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfcni"]
 atlas = ExtResource("6_h0476")
 region = Rect2(206, 0, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqw0j"]
+atlas = ExtResource("10_obr2m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apdeo"]
+atlas = ExtResource("10_obr2m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta7yp"]
+atlas = ExtResource("10_obr2m")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8awh"]
 atlas = ExtResource("7_4hi78")
@@ -185,6 +211,20 @@ region = Rect2(204, 0, 29, 34)
 animations = [{
 "frames": [{
 "duration": 0.5,
+"texture": SubResource("AtlasTexture_ylu6d")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_nxwps")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_uom5t")
+}],
+"loop": true,
+"name": &"left_damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_hgi3h")
 }, {
 "duration": 0.5,
@@ -198,16 +238,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2tf02")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_8f7yr")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_d5d1e")
 }, {
-"duration": 0.5,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_illke")
 }, {
-"duration": 0.5,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_11sq2")
 }],
 "loop": true,
@@ -263,6 +303,20 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqw0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apdeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta7yp")
+}],
+"loop": true,
+"name": &"right_damage",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_r8awh")
 }, {
@@ -277,16 +331,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yvcmv")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_3d37g")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_ut3w2")
 }, {
-"duration": 0.5,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_o4qag")
 }, {
-"duration": 0.5,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_wsns0")
 }],
 "loop": false,
@@ -364,7 +418,7 @@ radius = 12.0
 height = 31.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnib2"]
-radius = 128.0
+radius = 120.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_oyj74"]
 a = Vector2(-7, -16)
@@ -388,13 +442,14 @@ texture_mode = 1
 joint_mode = 2
 
 [node name="HookPath" type="Line2D" parent="."]
-default_color = Color(1, 1, 0, 0.290196)
+texture = ExtResource("3_7wh65")
+texture_mode = 1
 script = ExtResource("12_kslgm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 1.032)
 sprite_frames = SubResource("SpriteFrames_g51n2")
-animation = &"left_fall"
+animation = &"right_damage"
 speed_scale = 2.0
 script = ExtResource("10_xc0nu")
 
@@ -457,22 +512,22 @@ shape = SubResource("CircleShape2D_pjb5h")
 script = ExtResource("14_d260u")
 
 [node name="checkWallLeft" type="RayCast2D" parent="Mantle_Checker"]
-position = Vector2(-5, 1)
+position = Vector2(-5, -5)
 target_position = Vector2(-9, 0)
 collision_mask = 32768
 
 [node name="checkWallUp" type="RayCast2D" parent="Mantle_Checker"]
-position = Vector2(1, -13)
+position = Vector2(1, -12)
 target_position = Vector2(14, 0)
 collision_mask = 32768
 
 [node name="checkWall" type="RayCast2D" parent="Mantle_Checker"]
-position = Vector2(5, 1)
+position = Vector2(5, -5)
 target_position = Vector2(9, 0)
 collision_mask = 32768
 
 [node name="checkWallUpLeft" type="RayCast2D" parent="Mantle_Checker"]
-position = Vector2(-1, -13)
+position = Vector2(-1, -12)
 target_position = Vector2(-14, 0)
 collision_mask = 32768
 
