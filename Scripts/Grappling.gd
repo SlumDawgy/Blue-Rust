@@ -17,9 +17,14 @@ const speed : float = 300.0
 const characterSpeed : float = 250.0
 
 
+var audios
+var canPlayRetrieve = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("Player")
+	audios = player.get_node("Audios")
+	audios.grappleShoot.play()
 	
 	pass # Replace with function body.
 
@@ -58,10 +63,8 @@ func _physics_process(delta):
 	pass
 
 func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
-	
 	if body.is_in_group("Tile"):
 		var coords = body.get_coords_for_body_rid(body_rid)
-	
 		
 	# Find Grapplable Object and move Player
 		if body.get_cell_tile_data(1, coords) != null:
@@ -78,9 +81,15 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 	
 # Move player to grappling hook
 func movePlayer(playerFirstPosition, delta):
+	if audios.grappleRetrieve.is_playing() == false and canPlayRetrieve:
+		canPlayRetrieve = false
+		audios.grappleRetrieve.play()
 	player.position += (position - playerFirstPosition).normalized() * characterSpeed * delta
 
 # Return grapplingHook
 func endGrapple(playerFirstPosition, delta):
+	if audios.grappleRetrieve.is_playing() == false and canPlayRetrieve:
+		canPlayRetrieve = false
+		audios.grappleRetrieve.play()
 	isMoving = false
 	position += (playerFirstPosition - position).normalized() * speed * delta

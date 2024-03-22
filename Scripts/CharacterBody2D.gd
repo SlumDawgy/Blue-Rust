@@ -29,7 +29,7 @@ var jumpTimer : float = 0.0
 var jumpHeight : float
 var jump_target_velocity : float = -200.0
 var jumping : bool = false
-var gravityVar : float = 1
+var gravityVar : float = 0.75
 
 # Can mantle edge
 var canMantle : bool = true
@@ -64,8 +64,12 @@ var difficulty := 0
 var doubleJumpUpgrade : bool = false
 var dashUpgrade : bool = false
 
+# Sounds
+var audios
+
 func _ready():
 	grapplingHookProjectile = preload("res://Scenes/Grappling.tscn")
+	audios = get_node("Audios")
 
 func _physics_process(delta):
 	
@@ -138,6 +142,7 @@ func _process(_delta):
 		target_velocity = Vector2(0,0)
 		littleDash = false
 		dashTime = 0.1
+		canMantle = false
 		dashUses -= 1
 	
 	# Use Item
@@ -354,6 +359,7 @@ func dead():
 	dashUses = 0
 
 func damage():
+	audios.hurt.play()
 	if damageInvencibility <= 0:
 		if get_parent().get_node_or_null("Grappling") != null:
 			get_parent().get_node("Grappling").position = position
@@ -397,6 +403,7 @@ func useDash(delta):
 		target_velocity = get_local_mouse_position().normalized() * 1000
 	elif dashTime < 0:
 		dashTime = 0
+		canMantle = true
 		target_velocity.y = move_toward(0, 0, 0)
 
 
