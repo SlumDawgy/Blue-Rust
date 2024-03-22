@@ -1826,7 +1826,7 @@ texture = ExtResource("1_ytdnh")
 20:6/0/texture_origin = Vector2i(8, 8)
 20:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:6/0/physics_layer_0/angular_velocity = 0.0
-20:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-23.8649, -23.9532, -23.6881, 8.04334, 8, 8, 7.95495, -23.9532)
+20:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-23.8649, -23.9532, -23.6881, 8.04334, 8, 8, 7.87889, -24.0264)
 20:6/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 20:6/0/physics_layer_1/angular_velocity = 0.0
 20:6/0/physics_layer_2/linear_velocity = Vector2(0, 0)
@@ -1845,6 +1845,13 @@ texture = ExtResource("1_ytdnh")
 17:5/0/physics_layer_1/angular_velocity = 0.0
 17:5/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 17:5/0/physics_layer_2/angular_velocity = 0.0
+19:0/0 = 0
+19:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+19:0/0/physics_layer_0/angular_velocity = 0.0
+19:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+19:0/0/physics_layer_1/angular_velocity = 0.0
+19:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+19:0/0/physics_layer_2/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_b03c0"]
 physics_layer_0/collision_layer = 32769
