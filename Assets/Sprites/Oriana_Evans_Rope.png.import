@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1xpp1heheveo"
-path="res://.godot/imported/Idle_Left.png-df78bb5eb1519d72212fc480f94bc256.ctex"
+uid="uid://bbg4cfp21a8ou"
+path="res://.godot/imported/Oriana_Evans_Rope.png-b055be9fdbd7cef9031425d14e75523d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/Idle_Left.png"
-dest_files=["res://.godot/imported/Idle_Left.png-df78bb5eb1519d72212fc480f94bc256.ctex"]
+source_file="res://Assets/Sprites/Oriana_Evans_Rope.png"
+dest_files=["res://.godot/imported/Oriana_Evans_Rope.png-b055be9fdbd7cef9031425d14e75523d.ctex"]
 
 [params]
 

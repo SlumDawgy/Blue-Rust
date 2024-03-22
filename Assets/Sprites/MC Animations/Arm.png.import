@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgp1hgfpbsoua"
-path="res://.godot/imported/JumpnadFall.png-355c85a102319b262c26bda2871a84e5.ctex"
+uid="uid://d21rfx17natuj"
+path="res://.godot/imported/Arm.png-89b1e7343f64c7bc9e65fbe8f4614e82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/JumpnadFall.png"
-dest_files=["res://.godot/imported/JumpnadFall.png-355c85a102319b262c26bda2871a84e5.ctex"]
+source_file="res://Assets/Sprites/MC Animations/Arm.png"
+dest_files=["res://.godot/imported/Arm.png-89b1e7343f64c7bc9e65fbe8f4614e82.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ssjayeubca24"
-path="res://.godot/imported/JumpAim_Left.png-0dc29e574d8859c252441f96bf0e1e9a.ctex"
+path="res://.godot/imported/JumpAim_Left.png-0acca308fda688923dc424ca102c9fb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/JumpAim_Left.png"
-dest_files=["res://.godot/imported/JumpAim_Left.png-0dc29e574d8859c252441f96bf0e1e9a.ctex"]
+source_file="res://Assets/Sprites/MC Animations/JumpAim_Left.png"
+dest_files=["res://.godot/imported/JumpAim_Left.png-0acca308fda688923dc424ca102c9fb1.ctex"]
 
 [params]
 

@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://Assets/Aim.png"
+mouse_cursor/custom_image="res://Assets/Sprites/Aim.png"
 mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 

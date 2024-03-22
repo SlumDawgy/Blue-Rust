@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d21rfx17natuj"
-path="res://.godot/imported/Arm.png-36e7c233b66a0683228fafc0b8214fdd.ctex"
+uid="uid://db0txljfg3vuu"
+path="res://.godot/imported/Laturn_animation.png-73b67c6a891f2f64bea34acfe7ca32c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/Arm.png"
-dest_files=["res://.godot/imported/Arm.png-36e7c233b66a0683228fafc0b8214fdd.ctex"]
+source_file="res://Assets/Sprites/Laturn/Laturn_animation.png"
+dest_files=["res://.godot/imported/Laturn_animation.png-73b67c6a891f2f64bea34acfe7ca32c4.ctex"]
 
 [params]
 

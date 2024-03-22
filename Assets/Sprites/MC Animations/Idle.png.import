@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbdsflgsh2pkp"
-path="res://.godot/imported/Hang.png-d0ba7d6a1aa0a9a5c224775ecaba1c36.ctex"
+uid="uid://b4vs6vowqhaii"
+path="res://.godot/imported/Idle.png-1cb96659b81aa304d857a6e7825d448f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/Hang.png"
-dest_files=["res://.godot/imported/Hang.png-d0ba7d6a1aa0a9a5c224775ecaba1c36.ctex"]
+source_file="res://Assets/Sprites/MC Animations/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-1cb96659b81aa304d857a6e7825d448f.ctex"]
 
 [params]
 

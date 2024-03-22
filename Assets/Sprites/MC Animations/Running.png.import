@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dny25gvc2j6lr"
-path="res://.godot/imported/PrisonTileSet.png-78ba1b9462627287a7e0aaded020cecb.ctex"
+uid="uid://c6f44d1tie5j3"
+path="res://.godot/imported/Running.png-30e3838d7500deb0bfb24d089c043728.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PrisonTileSet.png"
-dest_files=["res://.godot/imported/PrisonTileSet.png-78ba1b9462627287a7e0aaded020cecb.ctex"]
+source_file="res://Assets/Sprites/MC Animations/Running.png"
+dest_files=["res://.godot/imported/Running.png-30e3838d7500deb0bfb24d089c043728.ctex"]
 
 [params]
 

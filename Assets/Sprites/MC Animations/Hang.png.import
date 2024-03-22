@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://65u5f6kv35d7"
-path="res://.godot/imported/RunningAim.png-5013f8b27f30fe1438de06f2296bc669.ctex"
+uid="uid://cbdsflgsh2pkp"
+path="res://.godot/imported/Hang.png-5fff61a0ce4e344e2b0de69803efbc42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/RunningAim.png"
-dest_files=["res://.godot/imported/RunningAim.png-5013f8b27f30fe1438de06f2296bc669.ctex"]
+source_file="res://Assets/Sprites/MC Animations/Hang.png"
+dest_files=["res://.godot/imported/Hang.png-5fff61a0ce4e344e2b0de69803efbc42.ctex"]
 
 [params]
 

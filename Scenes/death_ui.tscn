@@ -1,7 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://drr6s5skpb062"]
 
 [ext_resource type="Script" path="res://Scripts/death_ui.gd" id="1_jfwu8"]
-[ext_resource type="Texture2D" uid="uid://db0txljfg3vuu" path="res://Assets/Laturn/Laturn_animation.png" id="2_5qsnk"]
+[ext_resource type="Texture2D" uid="uid://db0txljfg3vuu" path="res://Assets/Sprites/Laturn/Laturn_animation.png" id="2_5qsnk"]
+
 
 [sub_resource type="Curve" id="Curve_hlrmg"]
 _data = [Vector2(0.0604396, 0.153846), 0.0, 0.0, 0, 0]

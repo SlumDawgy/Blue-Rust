@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bposq7ccc2wdp"
-path="res://.godot/imported/JumpAim.png-64e60930d09eefe6c863b64b50dd8c67.ctex"
+uid="uid://dcjhc0blyrvnf"
+path="res://.godot/imported/IdleAim.png-9c8bf00d5f9f0131a72efc91c7085d0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/JumpAim.png"
-dest_files=["res://.godot/imported/JumpAim.png-64e60930d09eefe6c863b64b50dd8c67.ctex"]
+source_file="res://Assets/Sprites/MC Animations/IdleAim.png"
+dest_files=["res://.godot/imported/IdleAim.png-9c8bf00d5f9f0131a72efc91c7085d0c.ctex"]
 
 [params]
 

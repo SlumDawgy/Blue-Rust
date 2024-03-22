@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w1gkvkdnsfsf"
-path="res://.godot/imported/Water.png-b2e18ca3bc1ee31d8f0e6ddd4a76a170.ctex"
+uid="uid://b6ohivjrjv5l8"
+path="res://.godot/imported/SavePoint.png-370a8183cdbaa4e3f51a9b284b4ad63f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Water.png"
-dest_files=["res://.godot/imported/Water.png-b2e18ca3bc1ee31d8f0e6ddd4a76a170.ctex"]
+source_file="res://Assets/Sprites/SavePoint.png"
+dest_files=["res://.godot/imported/SavePoint.png-370a8183cdbaa4e3f51a9b284b4ad63f.ctex"]
 
 [params]
 

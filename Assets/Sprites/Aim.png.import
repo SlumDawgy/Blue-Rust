@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y2w0o6p0ua4c"
-path="res://.godot/imported/laturn_full.png-f9114d3b25a2cfac6fd673d353729693.ctex"
+uid="uid://d20bxc60twf01"
+path="res://.godot/imported/Aim.png-945c70d7a08d05ab3297d29f756d047a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Laturn/laturn_full.png"
-dest_files=["res://.godot/imported/laturn_full.png-f9114d3b25a2cfac6fd673d353729693.ctex"]
+source_file="res://Assets/Sprites/Aim.png"
+dest_files=["res://.godot/imported/Aim.png-945c70d7a08d05ab3297d29f756d047a.ctex"]
 
 [params]
 

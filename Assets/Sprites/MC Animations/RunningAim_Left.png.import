@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6ohivjrjv5l8"
-path="res://.godot/imported/SavePoint.png-5a2cda820a98e685c80adf9e7d47063e.ctex"
+uid="uid://cyi7o0l2hrlev"
+path="res://.godot/imported/RunningAim_Left.png-e6b6de34a695ad9b3c1b0a6515667a2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SavePoint.png"
-dest_files=["res://.godot/imported/SavePoint.png-5a2cda820a98e685c80adf9e7d47063e.ctex"]
+source_file="res://Assets/Sprites/MC Animations/RunningAim_Left.png"
+dest_files=["res://.godot/imported/RunningAim_Left.png-e6b6de34a695ad9b3c1b0a6515667a2c.ctex"]
 
 [params]
 

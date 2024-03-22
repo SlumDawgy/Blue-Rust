@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djohfhqtln0f5"
-path="res://.godot/imported/Hang_Left.png-49f8ccbd8b2c6a5ac900b186c7e371fe.ctex"
+uid="uid://y2w0o6p0ua4c"
+path="res://.godot/imported/laturn_full.png-6a6ed2dbbd1434490cb9249b385a7227.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/Hang_Left.png"
-dest_files=["res://.godot/imported/Hang_Left.png-49f8ccbd8b2c6a5ac900b186c7e371fe.ctex"]
+source_file="res://Assets/Sprites/Laturn/laturn_full.png"
+dest_files=["res://.godot/imported/laturn_full.png-6a6ed2dbbd1434490cb9249b385a7227.ctex"]
 
 [params]
 

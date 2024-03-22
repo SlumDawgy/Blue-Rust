@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6f44d1tie5j3"
-path="res://.godot/imported/Running.png-28dd7476cc3780982ed30a9d7fff88a2.ctex"
+uid="uid://dwa60aiwwybp0"
+path="res://.godot/imported/Oriana_Evans_Hook.png-58cb2d5a32140e55450d4ca260019ce5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/Running.png"
-dest_files=["res://.godot/imported/Running.png-28dd7476cc3780982ed30a9d7fff88a2.ctex"]
+source_file="res://Assets/Sprites/Oriana_Evans_Hook.png"
+dest_files=["res://.godot/imported/Oriana_Evans_Hook.png-58cb2d5a32140e55450d4ca260019ce5.ctex"]
 
 [params]
 

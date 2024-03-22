@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0cve1168egr4"
-path="res://.godot/imported/laturn_empty.png-f0867984c3500546879327fae2c8aa16.ctex"
+uid="uid://b1xpp1heheveo"
+path="res://.godot/imported/Idle_Left.png-13b8aa187944754a44fefe7f638534c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Laturn/laturn_empty.png"
-dest_files=["res://.godot/imported/laturn_empty.png-f0867984c3500546879327fae2c8aa16.ctex"]
+source_file="res://Assets/Sprites/MC Animations/Idle_Left.png"
+dest_files=["res://.godot/imported/Idle_Left.png-13b8aa187944754a44fefe7f638534c5.ctex"]
 
 [params]
 

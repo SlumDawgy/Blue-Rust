@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gr75qj1l030l"
-path="res://.godot/imported/Mantling.png-b3ce2f50f404c516e989438839f11417.ctex"
+uid="uid://dny25gvc2j6lr"
+path="res://.godot/imported/PrisonTileSet.png-f11c3b4a9415ea955c12e9a96ec87dd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MC Animations/Mantling.png"
-dest_files=["res://.godot/imported/Mantling.png-b3ce2f50f404c516e989438839f11417.ctex"]
+source_file="res://Assets/Sprites/PrisonTileSet.png"
+dest_files=["res://.godot/imported/PrisonTileSet.png-f11c3b4a9415ea955c12e9a96ec87dd9.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://clj1vymbke5yo"]
 
-[ext_resource type="Texture2D" uid="uid://dny25gvc2j6lr" path="res://Assets/PrisonTileSet.png" id="1_ytdnh"]
+[ext_resource type="Texture2D" uid="uid://dny25gvc2j6lr" path="res://Assets/Sprites/PrisonTileSet.png" id="1_qp46f"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_75jc1"]
 tile_data = PackedInt32Array(0, 1572864, 3, 65536, 1572864, 4, 131072, 1572864, 5, 196608, 1572864, 6, 1, 1638400, 3, 65537, 1638400, 4, 131073, 1638400, 5, 196609, 1638400, 6, 65538, 1703936, 4, 131074, 1703936, 5, 196610, 1703936, 6)
@@ -18,7 +18,7 @@ tile_data = PackedInt32Array(0, 1376256, 0, 65536, 1376256, 1, 131072, 1376256, 
 tile_data = PackedInt32Array(0, 1769472, 7, 65536, 1769472, 8, 131072, 1769472, 9, 1, 1835008, 7, 65537, 1835008, 8, 131073, 1835008, 9, 2, 1900544, 7, 65538, 1900544, 8, 131074, 1900544, 9)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqjd0"]
-texture = ExtResource("1_ytdnh")
+texture = ExtResource("1_qp46f")
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0

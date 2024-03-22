@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwa60aiwwybp0"
-path="res://.godot/imported/Oriana_Evans_Hook.png-de10e8298dd23d1dc6fba0e772689429.ctex"
+uid="uid://dgp1hgfpbsoua"
+path="res://.godot/imported/JumpnadFall.png-4c5857fdc412d1f564d3695c7162cc7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Oriana_Evans_Hook.png"
-dest_files=["res://.godot/imported/Oriana_Evans_Hook.png-de10e8298dd23d1dc6fba0e772689429.ctex"]
+source_file="res://Assets/Sprites/MC Animations/JumpnadFall.png"
+dest_files=["res://.godot/imported/JumpnadFall.png-4c5857fdc412d1f564d3695c7162cc7f.ctex"]
 
 [params]
 

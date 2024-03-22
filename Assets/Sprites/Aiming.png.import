@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbg4cfp21a8ou"
-path="res://.godot/imported/Oriana_Evans_Rope.png-539f874a7812c0919b01403d036cb48c.ctex"
+uid="uid://lvwvkmqcy8b8"
+path="res://.godot/imported/Aiming.png-d64f9888be11b1e968e043361dc32a7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Oriana_Evans_Rope.png"
-dest_files=["res://.godot/imported/Oriana_Evans_Rope.png-539f874a7812c0919b01403d036cb48c.ctex"]
+source_file="res://Assets/Sprites/Aiming.png"
+dest_files=["res://.godot/imported/Aiming.png-d64f9888be11b1e968e043361dc32a7b.ctex"]
 
 [params]
 

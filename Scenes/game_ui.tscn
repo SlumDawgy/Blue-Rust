@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlfvlfcjgtiv"]
 
 [ext_resource type="Script" path="res://Scripts/GameUI.gd" id="1_eu326"]
-[ext_resource type="Texture2D" uid="uid://y2w0o6p0ua4c" path="res://Assets/Laturn/laturn_full.png" id="2_ham3w"]
+[ext_resource type="Texture2D" uid="uid://y2w0o6p0ua4c" path="res://Assets/Sprites/Laturn/laturn_full.png" id="2_ham3w"]
+
 
 [node name="GameUI" type="Control"]
 z_index = 1
