@@ -13,8 +13,8 @@ Dash (Using grapple to propel in direction): X + direction you are facing
 Jump: Spacebar
 
 Grapple: right click = quick grapple + maintain grapple position (hold)
-	    left click = aim grapple 
-     
+		left click = aim grapple 
+	 
 Item use: Q
 
 Interact: E
@@ -28,17 +28,20 @@ Art Style: 2D Pixel
 Team:
 Game Designer
 
-    Eric Siddiqui
+	Eric Siddiqui
 
 Programmer
 
-     Kuroma (Leonardo Oliveira)
+	 Kuroma (Leonardo Oliveira)
 
 Sound Design
 
-     Thistle (Gorden Smith)
+	 Thistle (Gorden Smith)
 
 Art
 
-     Mookie_Fan (Oriana Evans)
+	 Mookie_Fan (Oriana Evans), Billy Newcomb
 
+Music & Sound
+
+	Billy Newcomb
