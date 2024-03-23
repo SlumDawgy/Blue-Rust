@@ -544,12 +544,15 @@ script = ExtResource("23_u8754")
 
 [node name="GrappleShoot" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("24_py4v2")
+bus = &"SFX"
 
 [node name="GrappleRetrieve" type="AudioStreamPlayer" parent="Audios"]
 stream = SubResource("AudioStreamWAV_3ut5u")
+bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("24_jh371")
+bus = &"SFX"
 
 [connection signal="area_exited" from="MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
 [connection signal="body_entered" from="Head" to="Head" method="_on_body_entered"]
