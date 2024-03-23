@@ -49,8 +49,8 @@ var dashUses : int = 1
 
 # Damage
 var takingDamage = false
-var hookPathActive : bool = false
-var aimAssistActive : bool = false
+var hookPathActive : bool = true
+var aimAssistActive : bool = true
 # Get gravity
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -364,7 +364,7 @@ func damage():
 		if get_parent().get_node_or_null("Grappling") != null:
 			get_parent().get_node("Grappling").position = position
 		moveActive = true
-		get_parent().get_node("Camera/GameUI").decreaseHealth()
+		get_parent().get_node("Camera/CanvasLayer/GameUI").decreaseHealth()
 		damageInvencibility = 0.2
 		target_velocity = Vector2(-700, -300)
 
@@ -409,12 +409,17 @@ func useDash(delta):
 
 func decreaseDifficulty():
 	difficulty += 1
-	
+
 	if difficulty == 1:
-		hookPathActive = true
-	elif difficulty == 2:
-		aimAssistActive = true
-	elif difficulty == 3:
-		difficulty = 0
-		hookPathActive = false
 		aimAssistActive = false
+		if get_parent().get_node_or_null("aimAssistArea") != null:
+			get_parent().get_node_or_null("aimAssistArea").queue_free()
+		if get_parent().get_node_or_null("aimAssist") != null:
+			get_parent().get_node_or_null("aimAssist").free()
+	elif difficulty == 2:
+		hookPathActive = false
+	elif difficulty > 2:
+		difficulty = 0
+		hookPathActive = true
+		aimAssistActive = true
+		
