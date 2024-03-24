@@ -704,6 +704,7 @@ size = Vector2(24, 64)
 size = Vector2(10, 42)
 
 [node name="First_Boss" type="CharacterBody2D"]
+collision_layer = 32776
 script = ExtResource("1_7v45d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

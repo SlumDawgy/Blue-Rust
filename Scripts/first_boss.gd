@@ -173,6 +173,7 @@ func stunned(delta):
 			animation.play(healthState[healthStateCounter] + "_BackUp")
 		
 		elif animation.frame == 5:
+			chargeAttackCD = 5.0
 			isStunned = false
 			isMoving = true
 			canReceiveDamage = false

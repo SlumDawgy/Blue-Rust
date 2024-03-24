@@ -129,6 +129,8 @@ func _physics_process(delta):
 	
 	if damageInvencibility > 0:
 		damageInvencibility -= delta
+	else:
+		set_collision_layer_value(4, true)
 	
 	mouseFollower.position = get_local_mouse_position()
 
@@ -368,8 +370,9 @@ func damage():
 			get_parent().get_node("Grappling").position = position
 		moveActive = true
 		get_parent().get_node("Camera/CanvasLayer/GameUI").decreaseHealth()
-		damageInvencibility = 0.6
-		target_velocity = Vector2(-700, -300)
+		damageInvencibility = 1
+		target_velocity = Vector2(0, -400)
+		set_collision_layer_value(4, false)
 
 func animations(type):
 	if damageInvencibility > 0:
