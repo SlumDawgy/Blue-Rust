@@ -70,7 +70,7 @@ func decreaseMaxHealth():
 		get_node("HBoxContainer/Heart" + str(maxHealth + 1)).queue_free()
 
 func endGame():
-	get_parent().get_parent().get_node("Player").deadActive = true
+	player.deadActive = true
 	var deathScreenChild = deathScreen.instantiate()
 	
 	if get_parent().get_node("Death_UI") == null:

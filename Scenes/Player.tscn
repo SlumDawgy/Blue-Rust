@@ -493,6 +493,7 @@ color = Color(1, 1, 0, 0.258824)
 polygon = PackedVector2Array(0, -128, 35, -123, 66, -110, 91, -90, 110, -67, 123, -35, 127, -2, 123, 30, 112, 64, 92, 90, 63, 109, 34, 123, 1, 129, -32, 123, -63, 110, -90, 91, -111, 65, -124, 31, -128, -1, -122, -38, -112, -67, -90, -93, -65, -111, -29, -126)
 
 [node name="Head" type="Area2D" parent="."]
+position = Vector2(1, -1)
 script = ExtResource("3_ab1od")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]

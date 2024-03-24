@@ -7,10 +7,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func _on_body_entered(_body):
+func _on_body_entered(body):
 	var player = get_parent()
 	
-	if _body != player:
+	if body != player:
 		player.jumping = false
 		player.gravityVar = 0.75
+		player.target_velocity.y = move_toward(0, player.target_velocity.y, player.SPEED)
 	pass # Replace with function body.
