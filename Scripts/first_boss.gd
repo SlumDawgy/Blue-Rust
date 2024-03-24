@@ -18,17 +18,18 @@ var isMoving := true
 var isTakingDamage := false
 var isCharging := false
 var isShooting := false
+var isDying := false
 
 var canDoDamage := false
 
 var attackCD := 1.0
 var chargeAttackCD := 5.0
 
-var chargeCD := 3.0
+var chargeCD := 1.0
 
 var health := 3
 var healthState := ["FullHealth", "HalfHealth", "LowHealth"]
-var healthStateCounter = 2
+var healthStateCounter = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,7 +42,9 @@ func _process(delta):
 	attackCD -= delta
 	chargeAttackCD -= delta
 	
-	if isTakingDamage:
+	if isDying:
+		die()
+	elif isTakingDamage:
 		damage()
 	elif isMoving:
 		move()
@@ -49,6 +52,8 @@ func _process(delta):
 		attack()
 	elif isCharging:
 		charge(delta)
+	
+
 	
 	move_and_slide()
 
@@ -59,12 +64,12 @@ func _process(delta):
 		isAttacking = true
 		isMoving = false
 	
-	if abs(player.position.x - position.x) > 96 and chargeAttackCD < 0:
+	if abs(player.position.x - position.x) > 128 and chargeAttackCD < 0:
 		isCharging = true
 		isMoving = false
 		isAttacking = false
 	
-	if abs(player.position.x - position.x) < 45 and abs(player.position.y - position.y) < 49:
+	if abs(player.position.x - position.x) < 45 and abs(player.position.y - position.y) < 49 and isDying == false:
 		player.damage()
 
 
@@ -102,6 +107,7 @@ func charge(delta):
 		chargeCD -= delta
 	
 	elif animation.animation == (healthState[healthStateCounter] + "_Charge") && chargeCD < 0:
+		animation.frame = 1
 		if animation.flip_h == false:
 			velocity.x = -chargeSpeed
 		elif animation.flip_h == true:
@@ -120,13 +126,13 @@ func charge(delta):
 			isCharging = false
 			isMoving = true
 			chargeAttackCD = 5
-			chargeCD = 3
+			chargeCD = 1
 	elif colliderRight != null:
 		if  colliderRight.is_in_group("Tile") and velocity.x > 0:
 			isCharging = false
 			isMoving = true
 			chargeAttackCD = 5
-			chargeCD = 3
+			chargeCD = 1
 		elif colliderRight.is_in_group("Player") and velocity.x > 0:
 			player.damage()
 			isCharging = false
@@ -140,18 +146,27 @@ func stunned():
 	pass
 
 func damage():
-	if animation.animation != (healthState[healthStateCounter] + "Damage"):
-		animation.play(healthState[healthStateCounter] + "Damage")
+	if animation.animation != (healthState[healthStateCounter] + "_Damage"):
+		isMoving = false
+		animation.play(healthState[healthStateCounter] + "_Damage")
 	
-	if animation.frame == 3:
+	if animation.frame == 2:
 		health -= 1
 		healthStateCounter += 1
 		isTakingDamage = false
 		isMoving = true
 	
+	if health == 0:
+		isDying = true
+	
 	pass
 
 func die():
+	animation.play("Death")
+	velocity.x = 0
+	if animation.frame == 2:
+		player.dashActivation()
+		queue_free()
 	pass
 
 

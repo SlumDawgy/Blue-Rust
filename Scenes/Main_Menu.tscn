@@ -45,7 +45,7 @@ focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Options")
 texture_normal = ExtResource("3_onirk")
 texture_pressed = ExtResource("4_tx6gk")
-texture_focused = ExtResource("5_mauky")
+texture_hover = ExtResource("5_mauky")
 script = ExtResource("6_55xu1")
 
 [node name="Options" type="TextureButton" parent="."]
@@ -59,7 +59,7 @@ focus_neighbor_top = NodePath("../Start_Button")
 focus_neighbor_bottom = NodePath("../Quit")
 texture_normal = ExtResource("4_lpv1d")
 texture_pressed = ExtResource("7_640ed")
-texture_focused = ExtResource("8_ovpdc")
+texture_hover = ExtResource("8_ovpdc")
 
 [node name="Quit" type="TextureButton" parent="."]
 layout_mode = 0
@@ -72,7 +72,7 @@ focus_neighbor_top = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../Start_Button")
 texture_normal = ExtResource("5_3a7xd")
 texture_pressed = ExtResource("10_6oq8k")
-texture_focused = ExtResource("11_7snne")
+texture_hover = ExtResource("11_7snne")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Start_Button" to="." method="_on_start_pressed"]

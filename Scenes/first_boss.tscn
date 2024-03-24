@@ -1,8 +1,9 @@
-[gd_scene load_steps=66 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=69 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://br4k7nckc7trq" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
 [ext_resource type="Texture2D" uid="uid://csesklajrnlpm" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Slash-Sheet.png" id="2_ccuwb"]
+[ext_resource type="Texture2D" uid="uid://d1rury84163ul" path="res://Assets/Sprites/Boss/EnemyAtomiton_Death-Sheet.png" id="2_eyfvr"]
 [ext_resource type="Texture2D" uid="uid://dcc2m8jcnmndo" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Charge-Sheet.png" id="2_g8tcs"]
 [ext_resource type="Texture2D" uid="uid://5gbv2osw46a" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Damaged-Sheet.png" id="3_rrh61"]
 [ext_resource type="Texture2D" uid="uid://bm83h2i72pueq" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Charge-Sheet.png" id="6_tqe2c"]
@@ -13,6 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://bce5kmpfqclf3" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Damaged-Sheet.png" id="11_51ump"]
 [ext_resource type="Texture2D" uid="uid://dxjmgvs006k16" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Slash-Sheet.png" id="12_6bx2k"]
 [ext_resource type="Texture2D" uid="uid://cnmsvqfnaglc6" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="13_plf7l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
+atlas = ExtResource("2_eyfvr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcm2m"]
+atlas = ExtResource("2_eyfvr")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41trn"]
 atlas = ExtResource("2_g8tcs")
@@ -209,6 +218,20 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_huc5v"]
 animations = [{
 "frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_l4802")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_pcm2m")
+}, {
+"duration": 5.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_41trn")
 }, {
@@ -300,7 +323,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1cewb")
 }],
-"loop": true,
+"loop": false,
 "name": &"HalfHealth_Damage",
 "speed": 5.0
 }, {
@@ -345,13 +368,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_ls88t")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_lft61")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_jlhmv")
 }],
 "loop": true,
@@ -368,7 +391,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rkji0")
 }],
-"loop": true,
+"loop": false,
 "name": &"LowHealth_Damage",
 "speed": 5.0
 }, {
@@ -428,8 +451,7 @@ script = ExtResource("1_7v45d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Charge"
-frame_progress = 0.0110993
+animation = &"Death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2gxtn")

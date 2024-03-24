@@ -161,12 +161,13 @@ func walk(delta):
 	if direction and littleDash == false:
 		target_velocity.x = direction * SPEED
 		
-		if direction == -1:
+		if direction < 0:
 			if animation.animation != "left_running" and jumping == false:
 				animations("left_running")
-		else:
+		elif direction > 0:
 			if animation.animation != "right_running" and jumping == false:
 				animations("right_running")
+
 	elif littleDash == false:
 		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
 		
