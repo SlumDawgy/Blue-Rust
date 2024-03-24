@@ -16,7 +16,7 @@ func _process(_delta):
 		$AnimatedSprite2D.play("default")
 	
 	if canSave == true and Input.is_action_just_pressed("useItem"):
-		get_parent().get_node("Camera/GameUI").respawnPosition = player.position
+		get_parent().get_node("Camera/CanvasLayer/GameUI").respawnPosition = player.position
 	pass
 
 
