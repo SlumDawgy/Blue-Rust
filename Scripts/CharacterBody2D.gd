@@ -361,13 +361,13 @@ func dead():
 	dashUses = 0
 
 func damage():
-	audios.hurt.play()
 	if damageInvencibility <= 0:
+		audios.hurt.play()
 		if get_parent().get_node_or_null("Grappling") != null:
 			get_parent().get_node("Grappling").position = position
 		moveActive = true
 		get_parent().get_node("Camera/CanvasLayer/GameUI").decreaseHealth()
-		damageInvencibility = 0.2
+		damageInvencibility = 0.6
 		target_velocity = Vector2(-700, -300)
 
 func animations(type):

@@ -428,7 +428,8 @@ script = ExtResource("1_7v45d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Slash"
+animation = &"LowHealth_Charge"
+frame_progress = 0.0110993
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2gxtn")
@@ -442,6 +443,14 @@ shape = SubResource("RectangleShape2D_fwyoi")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(48, 0)
 shape = SubResource("RectangleShape2D_fyu8d")
+
+[node name="WallCollision" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="WallCollision"]
+target_position = Vector2(40, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallCollision"]
+target_position = Vector2(-40, 0)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

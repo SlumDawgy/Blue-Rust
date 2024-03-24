@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d62phlyp568e"]
+[gd_scene load_steps=14 format=3 uid="uid://bis8puyxq2i8f"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_pu854"]
 [ext_resource type="Texture2D" uid="uid://dd7wknj106c5h" path="res://Assets/Sprites/Title.png" id="2_mor0q"]
@@ -38,8 +38,8 @@ texture = ExtResource("3_qq4la")
 layout_mode = 0
 offset_left = 233.0
 offset_top = 401.0
-offset_right = 300.0
-offset_bottom = 441.0
+offset_right = 325.0
+offset_bottom = 418.0
 scale = Vector2(2.25, 2.25)
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Options")
@@ -52,8 +52,8 @@ script = ExtResource("6_55xu1")
 layout_mode = 0
 offset_left = 233.0
 offset_top = 449.0
-offset_right = 329.0
-offset_bottom = 489.0
+offset_right = 332.0
+offset_bottom = 463.0
 scale = Vector2(2.25, 2.25)
 focus_neighbor_top = NodePath("../Start_Button")
 focus_neighbor_bottom = NodePath("../Quit")
@@ -66,7 +66,7 @@ layout_mode = 0
 offset_left = 233.0
 offset_top = 497.0
 offset_right = 288.0
-offset_bottom = 537.0
+offset_bottom = 512.0
 scale = Vector2(2.25, 2.25)
 focus_neighbor_top = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../Start_Button")

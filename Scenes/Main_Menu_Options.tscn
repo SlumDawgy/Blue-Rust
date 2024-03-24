@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvm0b8f6djt30"]
+[gd_scene load_steps=4 format=3 uid="uid://dqcpb4lqt6l2u"]
 
 [ext_resource type="Texture2D" uid="uid://d0ua4uysgmbmh" path="res://Assets/Sprites/UIBackGroundSprite.png" id="2_e1vrw"]
 [ext_resource type="Script" path="res://Scripts/GrabFocusForButton.gd" id="3_fn01q"]
