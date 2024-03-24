@@ -36,11 +36,11 @@ Programmer
 
 Sound Design
 
-	 Thistle (Gorden Smith)
+	 Billy Newcomb
 
 Art
 
-	 Mookie_Fan (Oriana Evans), Billy Newcomb
+	 Mookie_Fan (Oriana Evans), Billy Newcomb, Eric Siddiqui
 
 Music & Sound
 
