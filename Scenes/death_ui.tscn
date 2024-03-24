@@ -88,28 +88,28 @@ grow_vertical = 2
 script = ExtResource("1_jfwu8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(656, 304)
+position = Vector2(12, 28)
 scale = Vector2(15.5, 1803.5)
 texture = SubResource("CurveXYZTexture_88y7u")
 
 [node name="Continue" type="Button" parent="."]
 layout_mode = 0
-offset_left = 376.0
-offset_top = 321.5
-offset_right = 483.0
-offset_bottom = 371.5
+offset_left = -180.0
+offset_top = 30.0
+offset_right = -73.0
+offset_bottom = 80.0
 text = "Continue"
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 658.0
-offset_top = 321.5
-offset_right = 767.0
-offset_bottom = 371.5
+offset_left = 102.0
+offset_top = 30.0
+offset_right = 211.0
+offset_bottom = 80.0
 text = "Quit"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(573, 322.5)
+position = Vector2(17, 31)
 sprite_frames = SubResource("SpriteFrames_gsaaf")
 frame_progress = 0.50561
 speed_scale = 2.0
