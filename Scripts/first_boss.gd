@@ -19,8 +19,10 @@ var isTakingDamage := false
 var isCharging := false
 var isShooting := false
 var isDying := false
+var isStunned := false
 
 var canDoDamage := false
+var canReceiveDamage := false
 
 var attackCD := 1.0
 var chargeAttackCD := 5.0
@@ -29,11 +31,14 @@ var chargeCD := 1.0
 
 var health := 3
 var healthState := ["FullHealth", "HalfHealth", "LowHealth"]
-var healthStateCounter = 0
+var healthStateCounter := 0
+
+var stunCD := 3.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("Player")
+	$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
 	pass # Replace with function body.
 
 
@@ -42,10 +47,15 @@ func _process(delta):
 	attackCD -= delta
 	chargeAttackCD -= delta
 	
+	if isStunned == false:
+		stunCD = 3.0
+	
 	if isDying:
 		die()
 	elif isTakingDamage:
 		damage()
+	elif isStunned:
+		stunned(delta)
 	elif isMoving:
 		move()
 	elif isAttacking:
@@ -68,9 +78,6 @@ func _process(delta):
 		isCharging = true
 		isMoving = false
 		isAttacking = false
-	
-	if abs(player.position.x - position.x) < 45 and abs(player.position.y - position.y) < 49 and isDying == false:
-		player.damage()
 
 
 func attack():
@@ -79,10 +86,21 @@ func attack():
 		animation.play(healthState[healthStateCounter] + "_Slash")
 		
 	elif animation.animation == (healthState[healthStateCounter] + "_Slash"):
-		if animation.frame == 3:
+		if animation.frame == 1:
+			$AnimatedSprite2D/Node2D/AnimatedSprite2D.play("default")
+			$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = true
+			if animation.flip_h == true:
+				$AnimatedSprite2D/Node2D/AnimatedSprite2D.flip_v = true
+				$AnimatedSprite2D/Node2D.rotation_degrees = 180
+			else:
+				$AnimatedSprite2D/Node2D/AnimatedSprite2D.flip_v = false
+				$AnimatedSprite2D/Node2D.rotation_degrees = 0
+		
+		elif animation.frame == 3:
 			isAttacking = false
 			isMoving = true
 			attackCD = 1
+			$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
 			if canDoDamage == true:
 				player.damage()
 
@@ -124,13 +142,13 @@ func charge(delta):
 	if colliderLeft != null:
 		if colliderLeft.is_in_group("Tile") and velocity.x < 0:
 			isCharging = false
-			isMoving = true
+			isStunned = true
 			chargeAttackCD = 5
 			chargeCD = 1
 	elif colliderRight != null:
 		if  colliderRight.is_in_group("Tile") and velocity.x > 0:
 			isCharging = false
-			isMoving = true
+			isStunned = true
 			chargeAttackCD = 5
 			chargeCD = 1
 		elif colliderRight.is_in_group("Player") and velocity.x > 0:
@@ -142,7 +160,23 @@ func charge(delta):
 			chargeCD = 3
 	pass
 
-func stunned():
+func stunned(delta):
+	stunCD -= delta
+	canReceiveDamage = true
+	
+	if animation.animation != (healthState[healthStateCounter] + "_Stunned") and stunCD > 0:
+		animation.play(healthState[healthStateCounter] + "_Stunned")
+	
+	if stunCD < 0:
+		
+		if animation.animation != (healthState[healthStateCounter] + "_BackUp"):
+			animation.play(healthState[healthStateCounter] + "_BackUp")
+		
+		elif animation.frame == 5:
+			isStunned = false
+			isMoving = true
+			canReceiveDamage = false
+
 	pass
 
 func damage():
@@ -179,4 +213,22 @@ func _on_area_2d_body_entered(body : CharacterBody2D):
 func _on_area_2d_body_exited(body : CharacterBody2D):
 	if body.is_in_group("Player"):
 		canDoDamage = false
+	pass # Replace with function body.
+
+
+func _on_area_2d_2_body_entered(body : CharacterBody2D):
+	if body.is_in_group("Player"):
+		player.damage()
+	pass # Replace with function body.
+
+
+
+func _on_damagable_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	if area.is_in_group("Grappling") and canReceiveDamage:
+		isTakingDamage = true
+		$AnimatedSprite2D/Node2D/GPUParticles2D.emitting = true
+		canReceiveDamage = false
+		isStunned = false
+		isMoving = true
+		
 	pass # Replace with function body.
