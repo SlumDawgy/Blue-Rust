@@ -145,6 +145,13 @@ func charge(delta):
 			isStunned = true
 			chargeAttackCD = 5
 			chargeCD = 1
+		elif colliderLeft.is_in_group("Player") and velocity.x < 0:
+			player.damage()
+			isCharging = false
+			isMoving = true
+			chargeAttackCD = 5
+			attackCD = 2
+			chargeCD = 3
 	elif colliderRight != null:
 		if  colliderRight.is_in_group("Tile") and velocity.x > 0:
 			isCharging = false
