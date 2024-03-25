@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bis8puyxq2i8f"]
+[gd_scene load_steps=15 format=3 uid="uid://bis8puyxq2i8f"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_pu854"]
 [ext_resource type="Texture2D" uid="uid://dd7wknj106c5h" path="res://Assets/Sprites/Title.png" id="2_mor0q"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b7sqbt0mibst2" path="res://Assets/Sprites/OptionsButton_Selected.png" id="8_ovpdc"]
 [ext_resource type="Texture2D" uid="uid://ci5vu78coor7b" path="res://Assets/Sprites/QuitButton_Pressed.png" id="10_6oq8k"]
 [ext_resource type="Texture2D" uid="uid://dey2vfo6ve86c" path="res://Assets/Sprites/QuitButton_Selected.png" id="11_7snne"]
+[ext_resource type="PackedScene" uid="uid://xbddjqb3wxm2" path="res://Scenes/scenetransition.tscn" id="14_0kjxk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -73,6 +74,8 @@ focus_neighbor_bottom = NodePath("../Start_Button")
 texture_normal = ExtResource("5_3a7xd")
 texture_pressed = ExtResource("10_6oq8k")
 texture_hover = ExtResource("11_7snne")
+
+[node name="Scenetransition" parent="." instance=ExtResource("14_0kjxk")]
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Start_Button" to="." method="_on_start_pressed"]
