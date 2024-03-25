@@ -78,6 +78,7 @@ animations = [{
 }]
 
 [node name="Death_UI" type="Control"]
+process_mode = 2
 z_index = 1
 layout_mode = 3
 anchors_preset = 15

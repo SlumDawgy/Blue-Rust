@@ -10,17 +10,19 @@ var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_parent()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	checkingWall()
-	
-	if player.mantlingActive == false:
-		player.animation.flip_h = false
-	pass
+	if !is_instance_valid(player):
+		player = get_parent()
+	else:
+		checkingWall()
+		
+		if player.mantlingActive == false:
+			player.animation.flip_h = false
+		pass
 
 func checkingWall():
 	var collider

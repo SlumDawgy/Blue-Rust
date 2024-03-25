@@ -60,6 +60,10 @@ var damageInvencibility := 0.0
 # Difficulty
 var difficulty := 0
 
+# Health
+var currentHealth := 3
+var maxHealth := 3
+
 # Power Ups Activation
 var doubleJumpUpgrade : bool = false
 var dashUpgrade : bool = false
@@ -429,4 +433,17 @@ func decreaseDifficulty():
 		difficulty = 0
 		hookPathActive = true
 		aimAssistActive = true
-		
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"difficulty" : difficulty,
+		"doubleJumpUpgrade" : doubleJumpUpgrade,
+		"dashUpgrade" : dashUpgrade,
+		"currentHealth" : currentHealth,
+		"maxHealth" : maxHealth
+	}
+	return save_dict

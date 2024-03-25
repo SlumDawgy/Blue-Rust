@@ -19,6 +19,7 @@ func _on_mouse_follower_body_shape_entered(body_rid, body, _body_shape_index, _l
 				if body.get_cell_tile_data(1, coords).get_custom_data("CollisionType") == "Grapple":
 					if player.get_parent().get_node_or_null("aimAssist") != null:
 						player.get_parent().get_node("aimAssist").position = body.map_to_local(coords)
+					if player.get_parent().get_node_or_null("aimAssistArea") != null:
 						player.get_parent().get_node("aimAssistArea").position = body.map_to_local(coords)
 					
 					

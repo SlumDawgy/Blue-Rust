@@ -439,7 +439,7 @@ data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 format = 1
 stereo = true
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Persist", "Player"]]
 position = Vector2(16, -16)
 collision_mask = 45
 slide_on_ceiling = false
@@ -523,22 +523,22 @@ script = ExtResource("14_d260u")
 [node name="checkWallLeft" type="RayCast2D" parent="Mantle_Checker"]
 position = Vector2(-5, -5)
 target_position = Vector2(-9, 0)
-collision_mask = 32768
+collision_mask = 8
 
 [node name="checkWallUp" type="RayCast2D" parent="Mantle_Checker"]
 position = Vector2(1, -12)
 target_position = Vector2(14, 0)
-collision_mask = 32768
+collision_mask = 8
 
 [node name="checkWall" type="RayCast2D" parent="Mantle_Checker"]
 position = Vector2(5, -5)
 target_position = Vector2(9, 0)
-collision_mask = 32768
+collision_mask = 8
 
 [node name="checkWallUpLeft" type="RayCast2D" parent="Mantle_Checker"]
 position = Vector2(-1, -12)
 target_position = Vector2(-14, 0)
-collision_mask = 32768
+collision_mask = 8
 
 [node name="Audios" type="Node2D" parent="."]
 script = ExtResource("23_u8754")

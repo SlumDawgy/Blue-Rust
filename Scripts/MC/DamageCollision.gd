@@ -3,11 +3,10 @@ extends Area2D
 var player
 
 func _ready():
-	player = get_parent()
-
+	pass
 
 func _on_damage_collision_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
-	
+	player = get_parent()
 	if body.is_in_group("Tile"):
 		var coords = body.get_coords_for_body_rid(body_rid)
 		if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Water":
@@ -15,6 +14,7 @@ func _on_damage_collision_body_shape_entered(body_rid, body, _body_shape_index, 
 
 
 func _on_damage_collision_body_shape_exited(body_rid, body, _body_shape_index, _local_shape_index):
+	player = get_parent()
 	if body.is_in_group("Tile"):
 		var coords = body.get_coords_for_body_rid(body_rid)
 		if body.get_cell_tile_data(0, coords).get_custom_data("CollisionType") == "Water":

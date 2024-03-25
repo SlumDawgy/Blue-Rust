@@ -5,6 +5,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	modulate.a = 0
+	get_tree().paused = true
 	pass # Replace with function body.
 
 
@@ -29,5 +30,7 @@ func _on_continue_button_down():
 
 
 func _on_quit_button_down():
+	if FileAccess.file_exists("user://savegame.save"):
+		DirAccess.remove_absolute("user://savegame.save")
 	get_tree().quit()
 	pass # Replace with function body.
