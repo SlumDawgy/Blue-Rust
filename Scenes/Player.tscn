@@ -441,7 +441,6 @@ stereo = true
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(16, -16)
-collision_layer = 9
 script = ExtResource("1_cjoav")
 
 [node name="Rope" type="Line2D" parent="."]
