@@ -259,7 +259,7 @@ func _on_area_2d_2_body_entered(body : CharacterBody2D):
 
 
 
-func _on_damagable_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+func _on_damagable_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
 	if area.is_in_group("Grappling") and canReceiveDamage:
 		isTakingDamage = true
 		$AnimatedSprite2D/Node2D/GPUParticles2D.emitting = true

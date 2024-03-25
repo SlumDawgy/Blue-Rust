@@ -1,15 +1,13 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_game()
+	get_tree().paused = false
+	if FileAccess.file_exists("user://savegame.save"):
+		load_game()
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):

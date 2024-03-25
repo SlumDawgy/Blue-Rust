@@ -92,7 +92,7 @@ func endGame():
 		player.deadActive = true
 		var deathScreenChild = deathScreen.instantiate()
 		
-		if get_parent().get_node("Death_UI") == null:
+		if get_parent().get_node_or_null("Death_UI") == null:
 			get_parent().add_child(deathScreenChild)
 
 func respawn():
