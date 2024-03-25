@@ -21,6 +21,9 @@ func _process(_delta):
 		var loadMaxHealth : int = player.maxHealth
 		var loadCurrentHealth : int = player.currentHealth
 		
+		if loadCurrentHealth < 0:
+			loadCurrentHealth = 1
+		
 		while(maxHealth != loadMaxHealth):
 			if maxHealth < loadMaxHealth:
 				increaseMaxHealth()
