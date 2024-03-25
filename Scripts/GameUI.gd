@@ -15,20 +15,22 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if !is_instance_valid(player):
+		
 		player = get_tree().get_first_node_in_group("Player")
 		
-		if maxHealth != player.maxHealth:
-			while(maxHealth != player.maxHealth):
-				if maxHealth < player.maxHealth:
-					increaseMaxHealth()
-				elif maxHealth > player.maxHealth:
-					decreaseMaxHealth()
-		if currentHealth != player.currentHealth:
-			while(currentHealth != player.currentHealth):
-				if currentHealth < player.currentHealth:
-					increaseHealth()
-				elif currentHealth > player.currentHealth:
-					decreaseHealth()
+		var loadMaxHealth : int = player.maxHealth
+		var loadCurrentHealth : int = player.currentHealth
+		
+		while(maxHealth != loadMaxHealth):
+			if maxHealth < loadMaxHealth:
+				increaseMaxHealth()
+			elif maxHealth > loadMaxHealth:
+				decreaseMaxHealth()
+		while(currentHealth != loadCurrentHealth):
+			if currentHealth < loadCurrentHealth:
+				increaseHealth()
+			elif currentHealth > loadCurrentHealth:
+				decreaseHealth()
 	else:
 		if Input.is_action_just_pressed("ui_right"):
 			increaseHealth()

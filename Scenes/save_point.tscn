@@ -1289,6 +1289,7 @@ frame_progress = 0.436237
 speed_scale = 10.0
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -104.0
 offset_top = -64.0
 offset_right = 212.0

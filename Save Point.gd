@@ -1,6 +1,7 @@
 extends Area2D
 
 var canSave = false
+@onready var gameUI = $"../Camera/CanvasLayer/GameUI"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,11 +11,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+		
 	if $AnimatedSprite2D.is_playing() == false:
 		$AnimatedSprite2D.play("default")
 	
 	if canSave == true and Input.is_action_just_pressed("useItem"):
 		save_game()
+		while (gameUI.currentHealth < gameUI.maxHealth):
+			gameUI.increaseHealth()
 		$Label.set_text("SAVED!")
 	pass
 
