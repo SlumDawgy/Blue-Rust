@@ -48,43 +48,47 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if canReceiveDamage:
-		$AnimatedSprite2D/Node2D/Aiming.visible = true
+	if !is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("Player")
 	else:
-		$AnimatedSprite2D/Node2D/Aiming.visible = false
 	
-	attackCD -= delta
-	chargeAttackCD -= delta
-	
-	if isStunned == false:
-		stunCD = 3.0
-	
-	if isDying:
-		die()
-	elif isTakingDamage:
-		damage()
-	elif isStunned:
-		stunned(delta)
-	elif isMoving:
-		move()
-	elif isAttacking:
-		attack()
-	elif isCharging:
-		charge(delta)
-	
-	move_and_slide()
+		if canReceiveDamage:
+			$AnimatedSprite2D/Node2D/Aiming.visible = true
+		else:
+			$AnimatedSprite2D/Node2D/Aiming.visible = false
+		
+		attackCD -= delta
+		chargeAttackCD -= delta
+		
+		if isStunned == false:
+			stunCD = 3.0
+		
+		if isDying:
+			die()
+		elif isTakingDamage:
+			damage()
+		elif isStunned:
+			stunned(delta)
+		elif isMoving:
+			move()
+		elif isAttacking:
+			attack()
+		elif isCharging:
+			charge(delta)
+		
+		move_and_slide()
 
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	
-	if canDoDamage == true and attackCD <= 0 and isCharging == false:
-		isAttacking = true
-		isMoving = false
-	
-	if abs(player.position.x - position.x) > 128 and chargeAttackCD < 0:
-		isCharging = true
-		isMoving = false
-		isAttacking = false
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		
+		if canDoDamage == true and attackCD <= 0 and isCharging == false:
+			isAttacking = true
+			isMoving = false
+		
+		if abs(player.position.x - position.x) > 128 and chargeAttackCD < 0:
+			isCharging = true
+			isMoving = false
+			isAttacking = false
 
 
 func attack():
@@ -208,7 +212,7 @@ func damage():
 	if animation.frame == 2:
 		animation.speed_scale *= 1.2
 		speed *= 1.35
-		chargeSpeed *= 1.5
+		chargeSpeed *= 1.35
 		chargeCD -= 0.2
 		health -= 1
 		healthStateCounter += 1
