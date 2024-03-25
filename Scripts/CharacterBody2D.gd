@@ -130,7 +130,7 @@ func _physics_process(delta):
 	if damageInvencibility > 0:
 		damageInvencibility -= delta
 	else:
-		set_collision_layer_value(4, true)
+		set_collision_layer_value(5, true)
 	
 	mouseFollower.position = get_local_mouse_position()
 
@@ -185,7 +185,8 @@ func walk(delta):
 	# Is On Floor activations
 	if is_on_floor():
 		coyoteTime = 0.5
-		dashUses = 1
+		if dashTime <= 0:
+			dashUses = 1
 		if target_velocity.y > 0:
 			target_velocity.y = 0
 
@@ -371,8 +372,8 @@ func damage():
 		moveActive = true
 		get_parent().get_node("Camera/CanvasLayer/GameUI").decreaseHealth()
 		damageInvencibility = 0.6
-		target_velocity = Vector2(0, -400)
-		set_collision_layer_value(4, false)
+		target_velocity = Vector2(0, -300)
+		set_collision_layer_value(5, false)
 
 func animations(type):
 	if damageInvencibility > 0:

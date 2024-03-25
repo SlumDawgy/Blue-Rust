@@ -570,13 +570,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.2,
+"duration": 0.3,
 "texture": SubResource("AtlasTexture_ls88t")
 }, {
-"duration": 0.2,
+"duration": 0.3,
 "texture": SubResource("AtlasTexture_lft61")
 }, {
-"duration": 0.2,
+"duration": 0.3,
 "texture": SubResource("AtlasTexture_jlhmv")
 }],
 "loop": true,
@@ -718,14 +718,15 @@ size = Vector2(24, 64)
 size = Vector2(48, 42)
 
 [node name="First_Boss" type="CharacterBody2D"]
-collision_layer = 32776
-collision_mask = 32776
+collision_layer = 32784
+collision_mask = 24
+platform_floor_layers = 4294901760
 script = ExtResource("1_7v45d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"HalfHealth_Charge"
+animation = &"LowHealth_Charge"
 
 [node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
@@ -770,11 +771,15 @@ shape = SubResource("RectangleShape2D_fyu8d")
 
 [node name="RayCast2D" type="RayCast2D" parent="WallCollision"]
 target_position = Vector2(40, 0)
+collision_mask = 8
 
 [node name="RayCast2D2" type="RayCast2D" parent="WallCollision"]
 target_position = Vector2(-48, 0)
+collision_mask = 8
 
 [node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 48
+collision_mask = 48
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(8, 0)
@@ -783,8 +788,8 @@ shape = SubResource("ConvexPolygonShape2D_wi6mj")
 one_way_collision_margin = 0.0
 
 [node name="Damagable" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 16
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
 position = Vector2(0, -5)

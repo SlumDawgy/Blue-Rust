@@ -72,8 +72,6 @@ func _physics_process(delta):
 	elif isCharging:
 		charge(delta)
 	
-
-	
 	move_and_slide()
 
 	if not is_on_floor():
@@ -135,7 +133,8 @@ func charge(delta):
 	
 	elif animation.animation == (healthState[healthStateCounter] + "_Charge") && chargeCD < 0:
 		animation.frame = 1
-		audios.charge.play()
+		if audios.charge.playing == false:
+			audios.charge.play()
 		if animation.flip_h == false:
 			velocity.x = -chargeSpeed
 		elif animation.flip_h == true:
@@ -162,7 +161,7 @@ func charge(delta):
 			isMoving = true
 			chargeAttackCD = 5
 			attackCD = 2
-			chargeCD = 3
+			chargeCD = 1
 	elif colliderRight != null:
 		if  colliderRight.is_in_group("Tile") and velocity.x > 0:
 			isCharging = false
@@ -176,7 +175,7 @@ func charge(delta):
 			isMoving = true
 			chargeAttackCD = 5
 			attackCD = 2
-			chargeCD = 3
+			chargeCD = 1
 	pass
 
 func stunned(delta):
@@ -207,12 +206,17 @@ func damage():
 		audios.bossHurt.play()
 	
 	if animation.frame == 2:
+		animation.speed_scale *= 1.2
+		speed *= 1.35
+		chargeSpeed *= 1.5
+		chargeCD -= 0.2
 		health -= 1
 		healthStateCounter += 1
 		isTakingDamage = false
 		isMoving = true
 	
 	if health == 0:
+		animation.speed_scale = 1
 		isDying = true
 	
 	pass

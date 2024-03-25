@@ -441,7 +441,8 @@ stereo = true
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(16, -16)
-collision_layer = 9
+collision_mask = 45
+slide_on_ceiling = false
 script = ExtResource("1_cjoav")
 
 [node name="Rope" type="Line2D" parent="."]
@@ -478,8 +479,6 @@ position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_tplrn")
 
 [node name="MaxGrapplingRange" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("2_2taa3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MaxGrapplingRange"]
