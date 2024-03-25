@@ -39,11 +39,12 @@ var stunCD := 3.0
 func _ready():
 	player = get_parent().get_node("Player")
 	$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
+	set_physics_process(false)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	attackCD -= delta
 	chargeAttackCD -= delta
 	

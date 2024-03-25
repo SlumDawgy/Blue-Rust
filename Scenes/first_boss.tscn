@@ -701,7 +701,7 @@ size = Vector2(24, 64)
 size = Vector2(24, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpoy"]
-size = Vector2(10, 42)
+size = Vector2(48, 42)
 
 [node name="First_Boss" type="CharacterBody2D"]
 collision_layer = 32776
@@ -766,7 +766,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
-position = Vector2(3, -5)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_ccpoy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
