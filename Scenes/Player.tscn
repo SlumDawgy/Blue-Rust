@@ -494,6 +494,7 @@ polygon = PackedVector2Array(0, -128, 35, -123, 66, -110, 91, -90, 110, -67, 123
 
 [node name="Head" type="Area2D" parent="."]
 position = Vector2(1, -1)
+collision_mask = 8
 script = ExtResource("3_ab1od")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
