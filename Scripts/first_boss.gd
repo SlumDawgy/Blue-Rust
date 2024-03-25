@@ -35,6 +35,9 @@ var healthStateCounter := 0
 
 var stunCD := 3.0
 
+
+@onready var audios = $Audios
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("Player")
@@ -127,6 +130,7 @@ func charge(delta):
 	
 	elif animation.animation == (healthState[healthStateCounter] + "_Charge") && chargeCD < 0:
 		animation.frame = 1
+		audios.charge.play()
 		if animation.flip_h == false:
 			velocity.x = -chargeSpeed
 		elif animation.flip_h == true:
@@ -146,6 +150,7 @@ func charge(delta):
 			isStunned = true
 			chargeAttackCD = 5
 			chargeCD = 1
+			audios.wallHit.play()
 		elif colliderLeft.is_in_group("Player") and velocity.x < 0:
 			player.damage()
 			isCharging = false
@@ -159,6 +164,7 @@ func charge(delta):
 			isStunned = true
 			chargeAttackCD = 5
 			chargeCD = 1
+			audios.wallHit.play()
 		elif colliderRight.is_in_group("Player") and velocity.x > 0:
 			player.damage()
 			isCharging = false
@@ -179,6 +185,7 @@ func stunned(delta):
 		
 		if animation.animation != (healthState[healthStateCounter] + "_BackUp"):
 			animation.play(healthState[healthStateCounter] + "_BackUp")
+			audios.retrieve.play()
 		
 		elif animation.frame == 5:
 			chargeAttackCD = 5.0
@@ -192,6 +199,7 @@ func damage():
 	if animation.animation != (healthState[healthStateCounter] + "_Damage"):
 		isMoving = false
 		animation.play(healthState[healthStateCounter] + "_Damage")
+		audios.bossHurt.play()
 	
 	if animation.frame == 2:
 		health -= 1
@@ -207,7 +215,12 @@ func damage():
 func die():
 	animation.play("Death")
 	velocity.x = 0
-	if animation.frame == 2:
+	if animation.frame == 1:
+			if audios.bossDie.playing == false:
+				audios.bossDie.play()
+			$"../AudioStreamPlayer".playing = true
+			$"../BossFight".playing = false
+	elif animation.frame == 2:
 		player.dashActivation()
 		queue_free()
 	pass

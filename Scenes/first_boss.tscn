@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=114 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://br4k7nckc7trq" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -22,6 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://087h27venkp2" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="15_gnlw0"]
 [ext_resource type="Texture2D" uid="uid://dd6fmoshuauaq" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="16_s2gkb"]
 [ext_resource type="Texture2D" uid="uid://80ejoj5ig6xx" path="res://Assets/Sprites/Boss/BrokenPiece1.png" id="22_4vuif"]
+[ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
+[ext_resource type="AudioStream" uid="uid://cn6qa6nppsaqc" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
+[ext_resource type="AudioStream" uid="uid://cik2fhgdc0u1g" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
+[ext_resource type="AudioStream" uid="uid://dbutr05wqk34x" path="res://Assets/Sounds/02. Wall hit.WAV" id="26_idy6h"]
+[ext_resource type="AudioStream" uid="uid://cjn34s1tetr1y" path="res://Assets/Sounds/03. Charge.WAV" id="27_h1uwv"]
+[ext_resource type="AudioStream" uid="uid://7v0hh8ae4tc2" path="res://Assets/Sounds/02. Retrieve.WAV" id="28_5x8d2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
 atlas = ExtResource("2_eyfvr")
@@ -359,13 +365,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_41trn")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_w6p6s")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_dngc4")
 }],
 "loop": true,
@@ -461,13 +467,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_ykfdf")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_aqcht")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_jhrn1")
 }],
 "loop": true,
@@ -710,7 +716,7 @@ script = ExtResource("1_7v45d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"FullHealth_Slash"
+animation = &"HalfHealth_Charge"
 
 [node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
@@ -768,6 +774,24 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_ccpoy")
+
+[node name="Audios" type="Node2D" parent="."]
+script = ExtResource("23_8bsgf")
+
+[node name="BossHurt" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("23_xu5fh")
+
+[node name="BossDie" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("24_rk238")
+
+[node name="WallHit" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("26_idy6h")
+
+[node name="Charge" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("27_h1uwv")
+
+[node name="Retrieve" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("28_5x8d2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

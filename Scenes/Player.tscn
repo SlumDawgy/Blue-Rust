@@ -441,6 +441,7 @@ stereo = true
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(16, -16)
+collision_layer = 9
 script = ExtResource("1_cjoav")
 
 [node name="Rope" type="Line2D" parent="."]
@@ -554,6 +555,9 @@ bus = &"SFX"
 [node name="Hurt" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("24_jh371")
 bus = &"SFX"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [connection signal="area_exited" from="MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
 [connection signal="body_entered" from="Head" to="Head" method="_on_body_entered"]
