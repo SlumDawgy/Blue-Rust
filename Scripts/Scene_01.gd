@@ -2,7 +2,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().paused = false
+	if get_tree().paused == true:
+		get_tree().paused = false
 	if FileAccess.file_exists("user://savegame.save"):
 		load_game()
 	pass # Replace with function body.
