@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=116 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://br4k7nckc7trq" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bap2s88w1n587" path="res://Assets/Sprites/Boss/SlashEffect.png" id="15_bhv6r"]
 [ext_resource type="Texture2D" uid="uid://087h27venkp2" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="15_gnlw0"]
 [ext_resource type="Texture2D" uid="uid://dd6fmoshuauaq" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="16_s2gkb"]
+[ext_resource type="Texture2D" uid="uid://lvwvkmqcy8b8" path="res://Assets/Sprites/Aiming.png" id="21_etkqa"]
 [ext_resource type="Texture2D" uid="uid://80ejoj5ig6xx" path="res://Assets/Sprites/Boss/BrokenPiece1.png" id="22_4vuif"]
 [ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
 [ext_resource type="AudioStream" uid="uid://cn6qa6nppsaqc" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
@@ -677,18 +678,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_84bqq"]
+min_value = -1.0
+max_value = 0.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_nxxgc"]
+curve_y = SubResource("Curve_84bqq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rnwv2"]
 particle_flag_disable_z = true
 angle_min = -30.0
 angle_max = 150.0
-direction = Vector3(1, 1, 0)
+direction = Vector3(0, 1, 0)
 spread = 0.0
-angular_velocity_min = -120.0
-angular_velocity_max = 120.0
-directional_velocity_min = 10.0
-directional_velocity_max = 15.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+directional_velocity_min = 5.0
+directional_velocity_max = 10.0
 directional_velocity_curve = SubResource("CurveXYZTexture_nxxgc")
 radial_velocity_min = 20.0
 radial_velocity_max = 40.0
@@ -711,6 +719,7 @@ size = Vector2(48, 42)
 
 [node name="First_Boss" type="CharacterBody2D"]
 collision_layer = 32776
+collision_mask = 32776
 script = ExtResource("1_7v45d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -720,6 +729,12 @@ animation = &"HalfHealth_Charge"
 
 [node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
+
+[node name="Aiming" type="Sprite2D" parent="AnimatedSprite2D/Node2D"]
+visible = false
+modulate = Color(1, 0.12549, 0.0862745, 0.521569)
+scale = Vector2(2, 2)
+texture = ExtResource("21_etkqa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D/Node2D"]
 position = Vector2(-24, 0)
@@ -731,7 +746,7 @@ emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_rnwv2")
 texture = ExtResource("22_4vuif")
-lifetime = 3.0
+lifetime = 6.0
 one_shot = true
 speed_scale = 4.0
 explosiveness = 1.0

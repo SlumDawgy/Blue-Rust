@@ -1290,11 +1290,11 @@ speed_scale = 10.0
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -32.0
+offset_left = -152.0
 offset_top = -64.0
-offset_right = 128.0
+offset_right = 164.0
 offset_bottom = -8.0
-text = "PRESS E"
+text = "CHECKPOINT CURRENTLY NOT WORKING"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

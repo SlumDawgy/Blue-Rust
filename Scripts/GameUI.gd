@@ -77,9 +77,5 @@ func endGame():
 		get_parent().add_child(deathScreenChild)
 
 func respawn():
-	player.position = respawnPosition
-	player.moveActive = true
-	for i in range(maxHealth):
-		increaseHealth()
-	player.deadActive = false
+	get_tree().reload_current_scene()
 	pass

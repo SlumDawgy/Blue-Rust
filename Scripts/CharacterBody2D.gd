@@ -370,7 +370,7 @@ func damage():
 			get_parent().get_node("Grappling").position = position
 		moveActive = true
 		get_parent().get_node("Camera/CanvasLayer/GameUI").decreaseHealth()
-		damageInvencibility = 1
+		damageInvencibility = 0.6
 		target_velocity = Vector2(0, -400)
 		set_collision_layer_value(4, false)
 

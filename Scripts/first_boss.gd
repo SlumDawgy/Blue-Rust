@@ -48,6 +48,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if canReceiveDamage:
+		$AnimatedSprite2D/Node2D/Aiming.visible = true
+	else:
+		$AnimatedSprite2D/Node2D/Aiming.visible = false
+	
 	attackCD -= delta
 	chargeAttackCD -= delta
 	
@@ -222,6 +227,7 @@ func die():
 			$"../BossFight".playing = false
 	elif animation.frame == 2:
 		player.dashActivation()
+		$"../Label3".visible = true
 		queue_free()
 	pass
 
