@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnqnvcvxruqmh"
-path="res://.godot/imported/OptionsButton_Pressed.png-ede1de9b7762039508ec95aa7f4f4d78.ctex"
+uid="uid://d0ua4uysgmbmh"
+path="res://.godot/imported/UIBackGroundSprite.png-33cf63ed027893eb8af02679180a0ad9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/OptionsButton_Pressed.png"
-dest_files=["res://.godot/imported/OptionsButton_Pressed.png-ede1de9b7762039508ec95aa7f4f4d78.ctex"]
+source_file="res://Assets/Sprites/UI/UIBackGroundSprite.png"
+dest_files=["res://.godot/imported/UIBackGroundSprite.png-33cf63ed027893eb8af02679180a0ad9.ctex"]
 
 [params]
 

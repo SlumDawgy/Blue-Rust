@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsu2vtln4lj3x"
-path="res://.godot/imported/SpaceSprite.png-bccb7480fa4477c494aebe423df34505.ctex"
+uid="uid://ckiokixbk6eo3"
+path="res://.godot/imported/OptionsButton.png-71bd5acdd2ee45c413b850958f30f48e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/SpaceSprite.png"
-dest_files=["res://.godot/imported/SpaceSprite.png-bccb7480fa4477c494aebe423df34505.ctex"]
+source_file="res://Assets/Sprites/UI/Buttons/OptionsButton.png"
+dest_files=["res://.godot/imported/OptionsButton.png-71bd5acdd2ee45c413b850958f30f48e.ctex"]
 
 [params]
 

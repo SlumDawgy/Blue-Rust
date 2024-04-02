@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyb6jvs4e4hmb"
-path="res://.godot/imported/ESprite.png-0454056ed98bdf4b73212360d13d9315.ctex"
+uid="uid://ds765re63lfqx"
+path="res://.godot/imported/PowerUpDrop-Sheet.png-e482c8be1ec0216ade53de1fe4f220b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/ESprite.png"
-dest_files=["res://.godot/imported/ESprite.png-0454056ed98bdf4b73212360d13d9315.ctex"]
+source_file="res://Assets/Sprites/Items/PowerUpDrop-Sheet.png"
+dest_files=["res://.godot/imported/PowerUpDrop-Sheet.png-e482c8be1ec0216ade53de1fe4f220b4.ctex"]
 
 [params]
 

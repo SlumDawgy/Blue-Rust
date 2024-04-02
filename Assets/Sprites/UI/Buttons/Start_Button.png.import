@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo3h3wm2awhfs"
-path="res://.godot/imported/ParallaxImage.png-b513ca3f3951477f2892e31d91eccfab.ctex"
+uid="uid://bonbqn4h8ewip"
+path="res://.godot/imported/Start_Button.png-0fa976548fb9e8a094f0e88226ff4786.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ParallaxImage.png"
-dest_files=["res://.godot/imported/ParallaxImage.png-b513ca3f3951477f2892e31d91eccfab.ctex"]
+source_file="res://Assets/Sprites/UI/Buttons/Start_Button.png"
+dest_files=["res://.godot/imported/Start_Button.png-0fa976548fb9e8a094f0e88226ff4786.ctex"]
 
 [params]
 

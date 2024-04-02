@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckiokixbk6eo3"
-path="res://.godot/imported/OptionsButton.png-7296fd5cf2d0bc11c670763ceb5d6d46.ctex"
+uid="uid://cv4m7p3d8iwc4"
+path="res://.godot/imported/PrisonTileSet.png-297a02b532cde3b3be714c07577af0fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/OptionsButton.png"
-dest_files=["res://.godot/imported/OptionsButton.png-7296fd5cf2d0bc11c670763ceb5d6d46.ctex"]
+source_file="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png"
+dest_files=["res://.godot/imported/PrisonTileSet.png-297a02b532cde3b3be714c07577af0fd.ctex"]
 
 [params]
 

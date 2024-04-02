@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://clj1vymbke5yo"]
 
-[ext_resource type="Texture2D" uid="uid://cv4m7p3d8iwc4" path="res://Assets/Sprites/PrisonTileSet.png" id="1_qp46f"]
+[ext_resource type="Texture2D" uid="uid://cv4m7p3d8iwc4" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="1_qp46f"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_75jc1"]
 tile_data = PackedInt32Array(0, 1572864, 3, 65536, 1572864, 4, 131072, 1572864, 5, 196608, 1572864, 6, 1, 1638400, 3, 65537, 1638400, 4, 131073, 1638400, 5, 196609, 1638400, 6, 65538, 1703936, 4, 131074, 1703936, 5, 196610, 1703936, 6)

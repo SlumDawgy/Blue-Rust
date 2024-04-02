@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bonbqn4h8ewip"
-path="res://.godot/imported/Start_Button.png-654df9e66db22b6d1cd036345eb43812.ctex"
+uid="uid://b1leyc0lsx5l0"
+path="res://.godot/imported/SpaceSprite.png-67d6048828609c59763fc86fc77d6017.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Start_Button.png"
-dest_files=["res://.godot/imported/Start_Button.png-654df9e66db22b6d1cd036345eb43812.ctex"]
+source_file="res://Assets/Sprites/UI/Icons/SpaceSprite.png"
+dest_files=["res://.godot/imported/SpaceSprite.png-67d6048828609c59763fc86fc77d6017.ctex"]
 
 [params]
 

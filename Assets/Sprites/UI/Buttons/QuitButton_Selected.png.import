@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckm26r8ton6sl"
-path="res://.godot/imported/ParallaxImageBG.png-45176dd60e1c3402312fc37e24cd0f3b.ctex"
+uid="uid://dey2vfo6ve86c"
+path="res://.godot/imported/QuitButton_Selected.png-eadfbec6277d35d23eff9de4140b1202.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ParallaxImageBG.png"
-dest_files=["res://.godot/imported/ParallaxImageBG.png-45176dd60e1c3402312fc37e24cd0f3b.ctex"]
+source_file="res://Assets/Sprites/UI/Buttons/QuitButton_Selected.png"
+dest_files=["res://.godot/imported/QuitButton_Selected.png-eadfbec6277d35d23eff9de4140b1202.ctex"]
 
 [params]
 

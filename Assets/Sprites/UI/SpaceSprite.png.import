@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1leyc0lsx5l0"
-path="res://.godot/imported/SpaceSprite.png-5d97e8ffd017800c589e52c37e8598ac.ctex"
+uid="uid://bsu2vtln4lj3x"
+path="res://.godot/imported/SpaceSprite.png-dddfaff26da8270bb847de395d10bffd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/SpaceSprite.png"
-dest_files=["res://.godot/imported/SpaceSprite.png-5d97e8ffd017800c589e52c37e8598ac.ctex"]
+source_file="res://Assets/Sprites/UI/SpaceSprite.png"
+dest_files=["res://.godot/imported/SpaceSprite.png-dddfaff26da8270bb847de395d10bffd.ctex"]
 
 [params]
 

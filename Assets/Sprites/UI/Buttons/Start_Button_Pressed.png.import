@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g748a7tdcoos"
-path="res://.godot/imported/MouseInputSprite.png-52655949ffeaf8bbd999018fe8a7722e.ctex"
+uid="uid://c3s6wrvxhc3kh"
+path="res://.godot/imported/Start_Button_Pressed.png-3430f4eef62746014d9711aaca09f4f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/MouseInputSprite.png"
-dest_files=["res://.godot/imported/MouseInputSprite.png-52655949ffeaf8bbd999018fe8a7722e.ctex"]
+source_file="res://Assets/Sprites/UI/Buttons/Start_Button_Pressed.png"
+dest_files=["res://.godot/imported/Start_Button_Pressed.png-3430f4eef62746014d9711aaca09f4f4.ctex"]
 
 [params]
 
