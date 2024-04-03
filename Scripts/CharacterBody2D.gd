@@ -66,7 +66,7 @@ var maxHealth := 3
 
 # Power Ups Activation
 var doubleJumpUpgrade : bool = false
-var dashUpgrade : bool = false
+var dashUpgrade : bool = true
 
 # Sounds
 var audios
@@ -146,11 +146,10 @@ func _process(_delta):
 		jumping = false
 		gravityVar = 0.75
 	
-	if Input.is_action_just_pressed("Dash") and dashUpgrade == true and dashUses > 0 and hangingActive == false and grapplingActive == false:
+	if Input.is_action_just_pressed("Dash") and dashUpgrade == true and dashUses > 0 and hangingActive == false and grapplingActive == false and mantlingActive == false:
 		target_velocity = Vector2(0,0)
 		littleDash = false
 		dashTime = 0.1
-		canMantle = false
 		dashUses -= 1
 	
 	# Use Item
@@ -412,6 +411,7 @@ func useDash(delta):
 	if dashTime > 0:
 		dashTime -= delta
 		target_velocity = get_local_mouse_position().normalized() * 1000
+		canMantle = false
 	elif dashTime < 0:
 		dashTime = 0
 		canMantle = true
