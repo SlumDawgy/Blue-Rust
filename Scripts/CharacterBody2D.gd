@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @onready var jumpBufferingCast = $jumpBufferingCast
 
 @onready var animation = $AnimatedSprite2D
@@ -72,7 +73,7 @@ var dashUpgrade : bool = true
 var audios
 
 func _ready():
-	grapplingHookProjectile = preload("res://Scenes/Grappling.tscn")
+	grapplingHookProjectile = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
 	audios = get_node("Audios")
 
 func _physics_process(delta):

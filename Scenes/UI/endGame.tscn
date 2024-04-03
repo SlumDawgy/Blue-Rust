@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4oucs3l1xhsm"]
+
+[ext_resource type="Texture2D" uid="uid://d0ua4uysgmbmh" path="res://Assets/Sprites/UI/UIBackGroundSprite.png" id="1_7gaap"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UiBackGroundSprite" type="Sprite2D" parent="."]
+modulate = Color(0.0666667, 0.192157, 0.278431, 1)
+position = Vector2(568, 328)
+scale = Vector2(4.10417, 4.11111)
+texture = ExtResource("1_7gaap")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 160.0
+offset_right = 1152.0
+offset_bottom = 552.0
+theme_override_font_sizes/font_size = 55
+text = "This is the end of the demo!
+ Thank you for playing. We will continue to update this project and your continued support is greatly appreciated!"
+horizontal_alignment = 1
+autowrap_mode = 2
