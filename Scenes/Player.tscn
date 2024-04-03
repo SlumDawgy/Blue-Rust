@@ -446,12 +446,14 @@ slide_on_ceiling = false
 script = ExtResource("1_cjoav")
 
 [node name="Rope" type="Line2D" parent="."]
+visible = false
 width = 32.0
 texture = ExtResource("4_ekxcq")
 texture_mode = 1
 joint_mode = 2
 
 [node name="HookPath" type="Line2D" parent="."]
+visible = false
 texture = ExtResource("3_7wh65")
 texture_mode = 1
 script = ExtResource("12_kslgm")
@@ -472,14 +474,17 @@ rotation = -1.5708
 texture = ExtResource("9_vrk3f")
 
 [node name="jumpBufferingCast" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(0, 32)
 collision_mask = 8
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_tplrn")
 
 [node name="MaxGrapplingRange" type="Area2D" parent="."]
+visible = false
 script = ExtResource("2_2taa3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MaxGrapplingRange"]
@@ -494,6 +499,7 @@ color = Color(1, 1, 0, 0.258824)
 polygon = PackedVector2Array(0, -128, 35, -123, 66, -110, 91, -90, 110, -67, 123, -35, 127, -2, 123, 30, 112, 64, 92, 90, 63, 109, 34, 123, 1, 129, -32, 123, -63, 110, -90, 91, -111, 65, -124, 31, -128, -1, -122, -38, -112, -67, -90, -93, -65, -111, -29, -126)
 
 [node name="Head" type="Area2D" parent="."]
+visible = false
 position = Vector2(1, -1)
 collision_mask = 8
 script = ExtResource("3_ab1od")
@@ -502,6 +508,7 @@ script = ExtResource("3_ab1od")
 shape = SubResource("SegmentShape2D_oyj74")
 
 [node name="DamageCollision" type="Area2D" parent="."]
+visible = false
 scale = Vector2(1.48, 1)
 collision_mask = 4
 script = ExtResource("4_ki1l8")
@@ -511,6 +518,7 @@ position = Vector2(0.0198936, 0.028492)
 shape = SubResource("CapsuleShape2D_ctim5")
 
 [node name="Aim_Assist" type="Area2D" parent="." groups=["Mouse"]]
+visible = false
 position = Vector2(3, 0)
 collision_layer = 2
 collision_mask = 2
@@ -529,7 +537,7 @@ target_position = Vector2(-9, 0)
 collision_mask = 8
 
 [node name="checkWallUp" type="RayCast2D" parent="Mantle_Checker"]
-position = Vector2(1, -12)
+position = Vector2(1, -10)
 target_position = Vector2(14, 0)
 collision_mask = 8
 
@@ -539,7 +547,7 @@ target_position = Vector2(9, 0)
 collision_mask = 8
 
 [node name="checkWallUpLeft" type="RayCast2D" parent="Mantle_Checker"]
-position = Vector2(-1, -12)
+position = Vector2(-1, -10)
 target_position = Vector2(-14, 0)
 collision_mask = 8
 
