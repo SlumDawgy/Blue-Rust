@@ -36,14 +36,14 @@ func checkingWall():
 	
 	
 	if collider != null:
-		if collider.is_in_group("Tile") and player.damageInvencibility <= 0:
+		if collider.is_in_group("Tile") and player.damageInvincibility <= 0:
 			if checkWallUp.is_colliding() == false and player.canMantle == true and player.jumping == false:
 				player.position = collider.map_to_local(collider.local_to_map(player.position)) - Vector2(4, 0)
 				player.animation.flip_h = false
 				player.mantlingActive = true
 	
 	if colliderLeft != null:
-		if colliderLeft.is_in_group("Tile") and player.damageInvencibility <= 0:
+		if colliderLeft.is_in_group("Tile") and player.damageInvincibility <= 0:
 			if checkWallUpLeft.is_colliding() == false and player.canMantle == true and player.jumping == false:
 				player.position = colliderLeft.map_to_local(colliderLeft.local_to_map(player.position)) + Vector2(4, 0)
 				player.animation.flip_h = true
