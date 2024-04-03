@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4oucs3l1xhsm"]
 
-[ext_resource type="Texture2D" uid="uid://d0ua4uysgmbmh" path="res://Assets/Sprites/UIBackGroundSprite.png" id="1_7gaap"]
+[ext_resource type="Texture2D" uid="uid://d0ua4uysgmbmh" path="res://Assets/Sprites/UI/UIBackGroundSprite.png" id="1_7gaap"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
