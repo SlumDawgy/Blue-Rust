@@ -4,7 +4,7 @@ var aiming
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	aiming = preload("res://Assets/Sprites/Aiming.png")
+	aiming = preload("res://Assets/Sprites/Player/Aiming.png")
 	pass # Replace with function body.
 
 func _on_mouse_follower_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):

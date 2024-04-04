@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0t1twfy5falu"
-path="res://.godot/imported/Aiming.png-d64f9888be11b1e968e043361dc32a7b.ctex"
+uid="uid://dw4ki62friogy"
+path="res://.godot/imported/CityTiles.png-bf4f5f3e21c4dfd7f68e55eb042bed7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Aiming.png"
-dest_files=["res://.godot/imported/Aiming.png-d64f9888be11b1e968e043361dc32a7b.ctex"]
+source_file="res://Assets/Sprites/TileSets/City/CityTiles.png"
+dest_files=["res://.godot/imported/CityTiles.png-bf4f5f3e21c4dfd7f68e55eb042bed7c.ctex"]
 
 [params]
 

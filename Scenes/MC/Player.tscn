@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_cjoav"]
 [ext_resource type="Script" path="res://Scripts/MC/MaxGrapplingRange.gd" id="2_2taa3"]
-[ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/AimIndicatorLine.png" id="3_7wh65"]
+[ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/Player/AimIndicatorLine.png" id="3_7wh65"]
 [ext_resource type="Script" path="res://Scripts/MC/Head.gd" id="3_ab1od"]
-[ext_resource type="Texture2D" uid="uid://dpff0lfvkuvuc" path="res://Assets/Sprites/Oriana_Evans_Rope.png" id="4_ekxcq"]
+[ext_resource type="Texture2D" uid="uid://dpff0lfvkuvuc" path="res://Assets/Sprites/Player/Oriana_Evans_Rope.png" id="4_ekxcq"]
 [ext_resource type="Script" path="res://Scripts/MC/DamageCollision.gd" id="4_ki1l8"]
 [ext_resource type="Texture2D" uid="uid://cjb7pcrhvhy3" path="res://Assets/Sprites/MC Animations/Hang.png" id="4_mxrui"]
 [ext_resource type="Texture2D" uid="uid://biarxsbtlrjrt" path="res://Assets/Sprites/MC Animations/JumpAim_Left.png" id="4_pno48"]

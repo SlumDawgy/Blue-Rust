@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv2kx865vsqtt"
-path="res://.godot/imported/Aim.png-945c70d7a08d05ab3297d29f756d047a.ctex"
+uid="uid://cvhv7n800d42o"
+path="res://.godot/imported/Oriana_Evans_Hook.png-daae66f0fa348186cec12a7629d0ac62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Aim.png"
-dest_files=["res://.godot/imported/Aim.png-945c70d7a08d05ab3297d29f756d047a.ctex"]
+source_file="res://Assets/Sprites/Player/Oriana_Evans_Hook.png"
+dest_files=["res://.godot/imported/Oriana_Evans_Hook.png-daae66f0fa348186cec12a7629d0ac62.ctex"]
 
 [params]
 

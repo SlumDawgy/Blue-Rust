@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lknikypg370e"
-path="res://.godot/imported/AimIndicatorLine.png-aabe71a297cdeef63c7d9fdb6e0a1ea7.ctex"
+uid="uid://dv2kx865vsqtt"
+path="res://.godot/imported/Aim.png-03739e0d9a62f6223a5325c2f364eb07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/AimIndicatorLine.png"
-dest_files=["res://.godot/imported/AimIndicatorLine.png-aabe71a297cdeef63c7d9fdb6e0a1ea7.ctex"]
+source_file="res://Assets/Sprites/Player/Aim.png"
+dest_files=["res://.godot/imported/Aim.png-03739e0d9a62f6223a5325c2f364eb07.ctex"]
 
 [params]
 

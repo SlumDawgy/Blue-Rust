@@ -7,8 +7,8 @@ var aiming
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	aim = preload("res://Assets/Sprites/Aim.png")
-	aiming = preload("res://Assets/Sprites/Aiming.png")
+	aim = preload("res://Assets/Sprites/Player/Aim.png")
+	aiming = preload("res://Assets/Sprites/Player/Aiming.png")
 	pass # Replace with function body.
 
 
