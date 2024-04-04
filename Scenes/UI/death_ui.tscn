@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://drr6s5skpb062"]
+
+[ext_resource type="Script" path="res://Scripts/death_ui.gd" id="1_jfwu8"]
+
+[sub_resource type="Curve" id="Curve_hlrmg"]
+_data = [Vector2(0.0604396, 0.153846), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_aaxr1"]
+_data = [Vector2(0.104396, 0.153846), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_4qng3"]
+_data = [Vector2(0.0494506, 0.131868), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_88y7u"]
+curve_x = SubResource("Curve_hlrmg")
+curve_y = SubResource("Curve_aaxr1")
+curve_z = SubResource("Curve_4qng3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hjey"]
+region = Rect2(942, 0, 157, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1u5t"]
+region = Rect2(785, 0, 157, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a77l"]
+region = Rect2(628, 0, 157, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3d4h"]
+region = Rect2(471, 0, 157, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dknim"]
+region = Rect2(314, 0, 157, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmw7o"]
+region = Rect2(157, 0, 157, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pglog"]
+region = Rect2(0, 0, 157, 213)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsaaf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hjey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1u5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a77l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3d4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dknim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmw7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pglog")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Death_UI" type="Control"]
+process_mode = 2
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfwu8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(656, 304)
+scale = Vector2(15.5, 1803.5)
+texture = SubResource("CurveXYZTexture_88y7u")
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 321.5
+offset_right = 483.0
+offset_bottom = 371.5
+text = "Continue"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 658.0
+offset_top = 321.5
+offset_right = 767.0
+offset_bottom = 371.5
+text = "Quit"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(573, 322.5)
+sprite_frames = SubResource("SpriteFrames_gsaaf")
+frame_progress = 0.50561
+speed_scale = 2.0
+
+[connection signal="button_down" from="Continue" to="." method="_on_continue_button_down"]
+[connection signal="button_down" from="Quit" to="." method="_on_quit_button_down"]

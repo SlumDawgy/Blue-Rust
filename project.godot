@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Blue Rust"
-run/main_scene="res://Scenes/Main_Menu.tscn"
+run/main_scene="res://Scenes/UI/Main_Menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/delta_smoothing=false
 config/icon="res://icon.svg"
@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 [audio]
 
 driver/mix_rate=48000
+
+[autoload]
+
+GlobalPaths="*res://Scripts/GlobalPaths.gd"
 
 [display]
 

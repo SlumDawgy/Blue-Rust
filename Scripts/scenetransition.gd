@@ -15,4 +15,4 @@ func transition():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Fade_To_Black":
 		emit_signal("transitioned")
-		get_tree().change_scene_to_file("res://Scenes/node_2d.tscn")
+		get_tree().change_scene_to_file(GlobalPaths.PRISON_SCENE_PATH)

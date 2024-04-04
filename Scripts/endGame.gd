@@ -14,5 +14,5 @@ func _on_body_entered(body):
 		if FileAccess.file_exists("user://savegame.save"):
 			DirAccess.remove_absolute("user://savegame.save")
 		get_tree().paused = true
-		get_tree().change_scene_to_file("res://Scenes/endGame.tscn")
+		get_tree().change_scene_to_file(GlobalPaths.END_GAME_SCENE_PATH)
 	pass # Replace with function body.

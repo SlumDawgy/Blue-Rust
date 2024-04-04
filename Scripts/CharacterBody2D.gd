@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @onready var jumpBufferingCast = $jumpBufferingCast
 
 @onready var animation = $AnimatedSprite2D
@@ -55,7 +56,7 @@ var aimAssistActive : bool = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Damage
-var damageInvencibility := 0.0
+var damageInvincibility := 0.0
 
 # Difficulty
 var difficulty := 0
@@ -72,7 +73,7 @@ var dashUpgrade : bool = true
 var audios
 
 func _ready():
-	grapplingHookProjectile = preload("res://Scenes/Grappling.tscn")
+	grapplingHookProjectile = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
 	audios = get_node("Audios")
 
 func _physics_process(delta):
@@ -131,8 +132,8 @@ func _physics_process(delta):
 	# Body Collision
 	
 	
-	if damageInvencibility > 0:
-		damageInvencibility -= delta
+	if damageInvincibility > 0:
+		damageInvincibility -= delta
 	else:
 		set_collision_layer_value(5, true)
 	
@@ -347,10 +348,11 @@ func hanging():
 	if Input.is_action_just_released("GrapplingHook"):
 		moveActive = true
 		hangingActive = false
-	
-	if Input.is_action_just_pressed("MoveLeft"):
+		
+	var cursorXcoord = (to_local(position) - get_local_mouse_position()).normalized().x
+	if (Input.is_action_just_pressed("MoveLeft")) or (cursorXcoord > 0):
 		animations("left_hanging")
-	elif Input.is_action_just_pressed("MoveRight"):
+	elif (Input.is_action_just_pressed("MoveRight")) or (cursorXcoord < 0):
 		animations("right_hanging")
 	
 	pass
@@ -368,18 +370,18 @@ func dead():
 	dashUses = 0
 
 func damage():
-	if damageInvencibility <= 0:
+	if damageInvincibility <= 0:
 		audios.hurt.play()
 		if get_parent().get_node_or_null("Grappling") != null:
 			get_parent().get_node("Grappling").position = position
 		moveActive = true
 		get_parent().get_node("Camera/CanvasLayer/GameUI").decreaseHealth()
-		damageInvencibility = 0.8
+		damageInvincibility = 0.8
 		target_velocity = Vector2(0, -300)
 		set_collision_layer_value(5, false)
 
 func animations(type):
-	if damageInvencibility > 0:
+	if damageInvincibility > 0:
 		if animation.animation.begins_with("left"):
 			animation.play("left_damage")
 		else:

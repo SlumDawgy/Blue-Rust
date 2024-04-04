@@ -1,6 +1,6 @@
 extends Control
 
-var optionsScene = preload(("res://Scenes/Main_Menu_Options.tscn"))
+var optionsScene = preload(GlobalPaths.OPTIONS_SCREEN_PATH)
 
 func _ready():
 	$Scenetransition.fadetonormal()
