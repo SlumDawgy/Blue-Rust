@@ -97,8 +97,8 @@ func endGame():
 		player.deadActive = true
 		var deathScreenChild = deathScreen.instantiate()
 		
-		if get_node_or_null("./Grappling") != null:
-			get_node_or_null("./Grappling").queue_free()
+		if player.get_parent().get_node_or_null("Grappling") != null:
+			player.get_parent().get_node_or_null("Grappling").queue_free()
 		
 		if get_parent().get_node_or_null("Death_UI") == null:
 			get_parent().add_child(deathScreenChild)

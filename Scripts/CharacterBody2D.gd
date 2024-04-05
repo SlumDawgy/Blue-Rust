@@ -9,11 +9,15 @@ extends CharacterBody2D
 @onready var mouseFollower = $Aim_Assist
 @onready var rope = $Rope
 
+# Mouse position tracker
+var cursorXcoord
+
 # Movement variables
 var moveActive : bool = true
 var grapplingActive : bool = false
 var mantlingActive : bool = false
 var deadActive : bool = false
+var dashActive : bool = false
 
 # Speed
 const SPEED : float = 115.0
@@ -47,6 +51,7 @@ var littleDash : bool = false
 # Dash
 var dashTime : float = 0.0
 var dashUses : int = 1
+var dashDirection := 0
 
 # Damage
 var takingDamage = false
@@ -77,6 +82,7 @@ func _ready():
 	audios = get_node("Audios")
 
 func _physics_process(delta):
+	cursorXcoord = (to_local(position) - get_local_mouse_position()).normalized().x
 	
 	if jumpHolding == true:
 		jumpTimer += delta
@@ -98,11 +104,11 @@ func _physics_process(delta):
 	if  balancing == true:
 		var direction = 0
 		
-		if animation.animation.begins_with("right"):
-			animation.play("right_hanging")
+		animations("hanging", " ")
+		
+		if cursorXcoord <= 0:
 			direction = 1
-		elif animation.animation.begins_with("left"):
-			animation.play("left_hanging")
+		elif cursorXcoord > 0:
 			direction = -1
 
 
@@ -115,17 +121,15 @@ func _physics_process(delta):
 	
 	# Fall Animation
 	if jumping == false and is_on_floor() == false and animation.animation != "right_mantling" and hangingActive == false:
-		if animation.animation.begins_with("right"):
-			animations("right_fall")
-		elif  animation.animation.begins_with("left"):
-			animations("left_fall")
+		animations("fall", " ")
 	
 	# Damage
 	if takingDamage:
 		damage()
 	
 	# Power Ups
-	useDash(delta)
+	if dashActive:
+		useDash(delta)
 
 	move_and_slide()
 
@@ -148,9 +152,10 @@ func _process(_delta):
 		gravityVar = 0.75
 	
 	if Input.is_action_just_pressed("Dash") and dashUpgrade == true and dashUses > 0 and hangingActive == false and grapplingActive == false and mantlingActive == false:
+		dashActive = true
 		target_velocity = Vector2(0,0)
 		littleDash = false
-		dashTime = 0.1
+		dashTime = 0.3
 		dashUses -= 1
 	
 	# Use Item
@@ -167,20 +172,16 @@ func walk(delta):
 	if direction and littleDash == false:
 		target_velocity.x = direction * SPEED
 		
-		if direction < 0:
-			if animation.animation != "left_running" and jumping == false:
-				animations("left_running")
-		elif direction > 0:
-			if animation.animation != "right_running" and jumping == false:
-				animations("right_running")
+		if direction != 0:
+			if jumping == false:
+				if direction == 1:
+					animations("running", "right")
+				elif direction == -1:
+					animations("running", "left")
 
 	elif littleDash == false:
 		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
-		
-		if animation.animation.begins_with("right"):
-			animations("right_idle")
-		elif animation.animation.begins_with("left"):
-			animations("left_idle")
+		animations("idle", " ")
 	
 	# Add Jump Buffering
 	if jumpBufferingCast.is_colliding() and Input.is_action_just_pressed("Jump"):
@@ -198,11 +199,6 @@ func walk(delta):
 		balancing = false
 		littleDash = false
 		jumpTimer = 0
-		
-		if animation.animation == "right_fall":
-			animations("right_idle")
-		elif animation.animation == "left_fall":
-			animations("left_idle")
 
 	# Jump + Jump Buffering + Coyote Time + Double Jump
 	if (Input.is_action_just_pressed("Jump")and coyoteTime > 0) or (jumpBuffering and is_on_floor()):
@@ -234,10 +230,8 @@ func walk(delta):
 	
 	if jumping == true:
 		coyoteTime = -1
-		if animation.animation != "right_jump" and animation.animation.begins_with("right"):
-			animations("right_jump")
-		if animation.animation != "left_jump" and animation.animation.begins_with("left"):
-			animations("left_jump")
+		if animation.animation != "right_jump" or animation.animation != "left_jump":
+			animations("jump", " ")
 		if position.y <= jumpHeight:
 			jumping = false
 			jumpHolding = false
@@ -301,7 +295,7 @@ func mantling():
 		mantlingActive = false
 	elif grapplingActive == false:
 		if animation.animation != "right_mantling":
-			animations("right_mantling")
+			animations("mantling", " ")
 		moveActive = false
 		grapplingActive = false
 		balancing = false
@@ -310,9 +304,9 @@ func mantling():
 		target_velocity.y = move_toward(0, 0, 0)
 		
 		if Input.is_action_just_pressed("Crouch"):
-			canMantle = false
 			moveActive = true
 			mantlingActive = false
+			canMantle = false
 		
 		if Input.is_action_just_pressed("Jump"):
 			moveActive = true
@@ -329,10 +323,7 @@ func hanging():
 	target_velocity.x = move_toward(0,0,0)
 	
 	if animation.animation != "right_hanging" or animation.animation != "left_hanging":
-		if animation.animation.begins_with("right"):
-			animations("right_hanging")
-		elif animation.animation.begins_with("left"):
-			animations("left_hanging")
+		animations("hanging", " ")
 	
 	
 	moveActive = false
@@ -349,11 +340,7 @@ func hanging():
 		moveActive = true
 		hangingActive = false
 		
-	var cursorXcoord = (to_local(position) - get_local_mouse_position()).normalized().x
-	if (Input.is_action_just_pressed("MoveLeft")) or (cursorXcoord > 0):
-		animations("left_hanging")
-	elif (Input.is_action_just_pressed("MoveRight")) or (cursorXcoord < 0):
-		animations("right_hanging")
+	animations("hanging", " ")
 	
 	pass
 
@@ -380,19 +367,29 @@ func damage():
 		target_velocity = Vector2(0, -300)
 		set_collision_layer_value(5, false)
 
-func animations(type):
-	if damageInvincibility > 0:
-		if animation.animation.begins_with("left"):
-			animation.play("left_damage")
-		else:
-			animation.play("right_damage")
+func animations(type, directionX):
+	var direction
+	if cursorXcoord < 0 or type == "mantling":
+		direction = "right_"
 	else:
-		animation.play(type)
+		direction = "left_"
+		
+	if directionX == "right":
+		direction = "right_"
+	elif directionX == "left":
+		direction = "left_"
 	
-	if type == "right_hanging" and balancing == false:
-		animation.frame = 0
-		animation.pause()
-	elif type == "left_hanging" and balancing == false:
+	if damageInvincibility > 0:
+			animation.play(direction + "damage")
+	elif dashActive and (animation.animation != "left_dash" or animation.animation != "right_dash"):
+		if dashDirection == 1:
+			animation.play("right_dash")
+		else:
+			animation.play("left_dash")
+	else:
+		animation.play(direction + type)
+	
+	if type == "hanging" and balancing == false:
 		animation.frame = 0
 		animation.pause()
 
@@ -409,15 +406,20 @@ func dashActivation():
 
 # Power Ups Uses
 func useDash(delta):
+	if (get_local_mouse_position() - to_local(position)).x > 0 and dashDirection == 0:
+		dashDirection = 1
+	elif  dashDirection == 0:
+		dashDirection = -1
 	
 	if dashTime > 0:
 		dashTime -= delta
-		target_velocity = get_local_mouse_position().normalized() * 1000
+		target_velocity = Vector2(300*dashDirection, 0)
 		canMantle = false
-	elif dashTime < 0:
+	elif dashTime <= 0:
+		dashDirection = 0
 		dashTime = 0
 		canMantle = true
-		target_velocity.y = move_toward(0, 0, 0)
+		dashActive = false
 
 
 func decreaseDifficulty():

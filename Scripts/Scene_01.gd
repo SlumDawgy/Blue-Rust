@@ -6,8 +6,8 @@ func _ready():
 		get_tree().paused = false
 	if FileAccess.file_exists("user://savegame.save"):
 		load_game()
+	
 	pass # Replace with function body.
-
 
 	
 func load_game():
