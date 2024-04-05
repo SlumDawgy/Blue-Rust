@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpkhb5oipe871"]
+
+[ext_resource type="Texture2D" uid="uid://nmklh8neg836" path="res://Assets/Sprites/UI/Boxes/DialougeBox.png" id="1_5nkwu"]
+[ext_resource type="Texture2D" uid="uid://cmkvb542ok677" path="res://Assets/Sprites/UI/Boxes/DialougeBoxTag.png" id="2_gep3s"]
+
+[node name="DialogueBox" type="NinePatchRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_5nkwu")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 130.0
+offset_bottom = 24.0
+texture = ExtResource("2_gep3s")
+patch_margin_left = 64
+patch_margin_right = 64
+patch_margin_bottom = 48
