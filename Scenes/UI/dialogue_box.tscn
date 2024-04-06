@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpkhb5oipe871"]
 
-[ext_resource type="Texture2D" uid="uid://nmklh8neg836" path="res://Assets/Sprites/UI/Frames/DialougeBox.png" id="1_5nkwu"]
-[ext_resource type="Texture2D" uid="uid://cmkvb542ok677" path="res://Assets/Sprites/UI/Frames/DialougeBoxTag.png" id="2_gep3s"]
+[ext_resource type="Texture2D" uid="uid://nmklh8neg836" path="res://Assets/Sprites/UI/Frames/DialogueBox.png" id="1_5nkwu"]
+[ext_resource type="Texture2D" uid="uid://cmkvb542ok677" path="res://Assets/Sprites/UI/Frames/DialogueBoxTag.png" id="2_gep3s"]
 
 [node name="DialogueBox" type="NinePatchRect"]
 offset_right = 40.0
