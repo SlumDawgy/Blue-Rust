@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var jumpBufferingCast = $jumpBufferingCast
 
 @onready var animation = $AnimatedSprite2D
+@onready var afterImageParticles = $AfterimageParticles
+@onready var dashStartParticles = $DashStartParticles
+@onready var dashParticles = $DashParticles
 
 # Mouse Follower
 @onready var mouseFollower = $Aim_Assist
@@ -50,7 +53,7 @@ var littleDash : bool = false
 
 # Dash
 @export var dashVelocity : float = 1000
-@export var dashDuration : float = 0.0
+@export var dashDuration : float = 0.3
 var dashTime : float = 0.0
 var dashUses : int = 1
 var dashDirection := 0
@@ -416,18 +419,22 @@ func useDash(delta):
 		dashDirection = -1
 	
 	if dashTime > 0:
-		
 		dashTime -= delta
-
-		target_velocity = get_local_mouse_position().normalized() * dashVelocity
+		target_velocity = Vector2(dashVelocity*dashDirection, 0)
 		canMantle = false
-
-	elif dashTime <= 0:
+		jumping = false	
+		dashActive = true
+		addAfterimageAndDashParticles()
+		
+	elif dashTime < 0:
 		dashDirection = 0
 		dashTime = 0
 		canMantle = true
 		dashActive = false
-
+		
+		afterImageParticles.emitting = false
+		dashStartParticles.emitting = false
+		dashParticles.emitting = false
 
 func decreaseDifficulty():
 	difficulty += 1
@@ -444,6 +451,20 @@ func decreaseDifficulty():
 		difficulty = 0
 		hookPathActive = true
 		aimAssistActive = true
+
+func addAfterimageAndDashParticles():
+	afterImageParticles.texture = animation.sprite_frames.get_frame_texture(animation.animation, animation.frame)
+	if afterImageParticles.emitting == false :
+			afterImageParticles.gravity.x = dashDirection * 200
+			afterImageParticles.emitting = true
+	
+	if dashStartParticles.emitting == false :
+		dashStartParticles.direction.x = dashDirection
+		dashStartParticles.gravity.x = dashStartParticles.direction.x * 200
+		dashStartParticles.emitting = true
+	
+	dashParticles.emitting = true
+
 
 func save():
 	var save_dict = {

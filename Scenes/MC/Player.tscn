@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://bkam2bdf3y0ig"]
+[gd_scene load_steps=98 format=3 uid="uid://damu3nwpp3qop"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_cjoav"]
 [ext_resource type="Script" path="res://Scripts/MC/MaxGrapplingRange.gd" id="2_2taa3"]
@@ -27,6 +27,10 @@
 [ext_resource type="Script" path="res://Scripts/PlayerAudios.gd" id="23_u8754"]
 [ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Hurt.WAV" id="24_jh371"]
 [ext_resource type="AudioStream" uid="uid://wbffryedxy1u" path="res://Assets/Sounds/GrappleShoot.WAV" id="24_py4v2"]
+[ext_resource type="Texture2D" uid="uid://bcvjkn2ipvh8u" path="res://Assets/Sprites/SmokeParticles1.png" id="28_etqpr"]
+[ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="29_0gm3v"]
+[ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="30_1pjdu"]
+[ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="31_fyqfm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylu6d"]
 atlas = ExtResource("5_i5y1c")
@@ -517,13 +521,40 @@ data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 format = 1
 stereo = true
 
+[sub_resource type="Gradient" id="Gradient_uhbjg"]
+offsets = PackedFloat32Array(0, 0.513889, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.677584, 0.869188, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_wja5h"]
+max_value = 0.5
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.484906), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.747392, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_y0nnk"]
+offsets = PackedFloat32Array(0, 0.192308, 0.782051, 1)
+colors = PackedColorArray(0, 0.729412, 0.968627, 0, 0.192315, 0.782102, 0.973489, 1, 0.049105, 0.306854, 0.374097, 1, 1, 1, 1, 0)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_nybww"]
+frames = 4
+frame_0/texture = ExtResource("28_etqpr")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("29_0gm3v")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("30_1pjdu")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("31_fyqfm")
+frame_3/duration = 0.1
+
+[sub_resource type="Curve" id="Curve_ossho"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.974227, 0), -2.82848, 0.0, 0, 0]
+point_count = 2
+
 [node name="Player" type="CharacterBody2D" groups=["Persist", "Player"]]
 position = Vector2(16, -16)
 collision_mask = 41
 slide_on_ceiling = false
 script = ExtResource("1_cjoav")
-dashVelocity = 500.0
-dashDuration = 0.2
+dashVelocity = 300.0
 
 [node name="Rope" type="Line2D" parent="."]
 width = 32.0
@@ -640,6 +671,45 @@ bus = &"SFX"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="DashParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(13.17, 8.415)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_uhbjg")
+
+[node name="AfterimageParticles" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.2
+one_shot = true
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(100, 0)
+orbit_velocity_curve = SubResource("Curve_wja5h")
+color_ramp = SubResource("Gradient_y0nnk")
+
+[node name="DashStartParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+draw_order = 1
+texture = SubResource("AnimatedTexture_nybww")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 20.0
+orbit_velocity_max = 0.5
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_ossho")
 
 [connection signal="area_exited" from="MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
 [connection signal="body_entered" from="Head" to="Head" method="_on_body_entered"]
