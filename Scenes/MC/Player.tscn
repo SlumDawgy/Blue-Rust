@@ -444,6 +444,8 @@ position = Vector2(16, -16)
 collision_mask = 41
 slide_on_ceiling = false
 script = ExtResource("1_cjoav")
+dashVelocity = 500.0
+dashDuration = 0.2
 
 [node name="Rope" type="Line2D" parent="."]
 width = 32.0

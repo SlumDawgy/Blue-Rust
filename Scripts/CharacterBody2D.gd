@@ -45,6 +45,8 @@ var balancing : bool = false
 var littleDash : bool = false
 
 # Dash
+@export var dashVelocity : float = 1000
+@export var dashDuration : float = 0.0
 var dashTime : float = 0.0
 var dashUses : int = 1
 
@@ -150,7 +152,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Dash") and dashUpgrade == true and dashUses > 0 and hangingActive == false and grapplingActive == false and mantlingActive == false:
 		target_velocity = Vector2(0,0)
 		littleDash = false
-		dashTime = 0.1
+		dashTime = dashDuration
 		dashUses -= 1
 	
 	# Use Item
@@ -411,14 +413,15 @@ func dashActivation():
 func useDash(delta):
 	
 	if dashTime > 0:
+		
 		dashTime -= delta
-		target_velocity = get_local_mouse_position().normalized() * 1000
+		target_velocity = get_local_mouse_position().normalized() * dashVelocity
 		canMantle = false
+		
 	elif dashTime < 0:
 		dashTime = 0
 		canMantle = true
-		target_velocity.y = move_toward(0, 0, 0)
-
+		target_velocity.y = move_toward(0, 0, 0)		
 
 func decreaseDifficulty():
 	difficulty += 1
