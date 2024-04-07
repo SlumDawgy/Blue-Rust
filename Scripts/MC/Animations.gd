@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 @onready var armPivo = $Node2D
+@onready var HookPathPivo = $Node2D/Sprite2D/GrappleInit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,17 +11,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	if animation.begins_with("left"):
-		armPivo.get_node("Sprite2D").flip_v = true
-		armPivo.get_node("Sprite2D").position.x = -4.5
-		armPivo.get_node("Sprite2D").z_index = -1
-		armPivo.look_at(get_global_mouse_position())
-		armPivo.rotation_degrees += 180
-	if animation.begins_with("right"):
-		armPivo.get_node("Sprite2D").flip_v = false
-		armPivo.get_node("Sprite2D").position.x = 4.5
-		armPivo.get_node("Sprite2D").z_index = 0
-		armPivo.look_at(get_global_mouse_position())
+	if get_parent().get_parent().get_node_or_null("Grappling") != null:
+		pass
+	else:
+		if animation.begins_with("left"):
+			armPivo.get_node("Sprite2D").flip_v = true
+			armPivo.get_node("Sprite2D").position.x = -4.5
+			armPivo.get_node("Sprite2D").z_index = -1
+			armPivo.look_at(get_global_mouse_position())
+			armPivo.rotation_degrees += 180
+			HookPathPivo.rotation_degrees += 180
+			HookPathPivo.look_at(get_global_mouse_position())
+		if animation.begins_with("right"):
+			armPivo.get_node("Sprite2D").flip_v = false
+			armPivo.get_node("Sprite2D").position.x = 4.5
+			armPivo.get_node("Sprite2D").z_index = 0
+			armPivo.look_at(get_global_mouse_position())
+			HookPathPivo.look_at(get_global_mouse_position())
 	
 	movingPivot()
 	

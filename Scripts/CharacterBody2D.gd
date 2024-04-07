@@ -272,8 +272,9 @@ func grappling(delta):
 		if get_parent().get_node_or_null("aimAssist") != null:
 			grapplingHookChild.positionToReach = to_local(get_parent().get_node("aimAssist").position)
 		else:
-			grapplingHookChild.positionToReach = get_local_mouse_position()
-		grapplingHookChild.position = get_global_transform().origin
+			grapplingHookChild.positionToReach = get_local_mouse_position()+ Vector2(0, 8)
+			print(1)
+		grapplingHookChild.position = get_node("AnimatedSprite2D/Node2D/Sprite2D/GrappleInit").get_global_transform().origin
 		
 		get_parent().add_child(grapplingHookChild)
 	
@@ -380,7 +381,7 @@ func animations(type, directionX):
 		direction = "right_"
 	else:
 		direction = "left_"
-		
+
 	if directionX == "right":
 		direction = "right_"
 	elif directionX == "left":
@@ -393,6 +394,9 @@ func animations(type, directionX):
 			animation.play("right_dash")
 		else:
 			animation.play("left_dash")
+	
+	elif get_parent().get_node_or_null("Grappling") != null:
+		pass
 	else:
 		animation.play(direction + type)
 	

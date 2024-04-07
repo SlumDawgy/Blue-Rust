@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://damu3nwpp3qop"]
+[gd_scene load_steps=100 format=3 uid="uid://damu3nwpp3qop"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_cjoav"]
 [ext_resource type="Script" path="res://Scripts/MC/MaxGrapplingRange.gd" id="2_2taa3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dohv4pyfygdfc" path="res://Assets/Sprites/MC Animations/RunningAim_Left.png" id="6_h0476"]
 [ext_resource type="Texture2D" uid="uid://t3tor8imiu8c" path="res://Assets/Sprites/MC Animations/Dash_Left-Sheet.png" id="6_pot12"]
 [ext_resource type="Texture2D" uid="uid://bbigywekddgan" path="res://Assets/Sprites/MC Animations/JumpAim.png" id="7_4hi78"]
+[ext_resource type="Texture2D" uid="uid://b0sy7j24dsve8" path="res://Assets/Sprites/MC Animations/Dash_Left_Stop-Sheet.png" id="7_krbif"]
 [ext_resource type="Texture2D" uid="uid://d04y37r7rjqye" path="res://Assets/Sprites/MC Animations/RunningAim.png" id="9_h2gw4"]
 [ext_resource type="Texture2D" uid="uid://cja1wnyiquxnh" path="res://Assets/Sprites/MC Animations/Arm.png" id="9_vrk3f"]
 [ext_resource type="Texture2D" uid="uid://b7boeksttn1ig" path="res://Assets/Sprites/MC Animations/Damage_Right-Sheet.png" id="10_obr2m"]
@@ -59,6 +60,10 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfc27"]
 atlas = ExtResource("6_pot12")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcy0d"]
+atlas = ExtResource("7_krbif")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgi3h"]
 atlas = ExtResource("4_pno48")
@@ -276,14 +281,12 @@ animations = [{
 }, {
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_gfc27")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_lcy0d")
 }],
 "loop": true,
 "name": &"left_dash",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"left_dashEnd",
 "speed": 5.0
 }, {
 "frames": [{
@@ -396,11 +399,6 @@ animations = [{
 "name": &"right_dash",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"right_dashEnd",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_r8awh")
@@ -498,12 +496,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnib2"]
+radius = 120.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tplrn"]
 radius = 12.0
 height = 31.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wnib2"]
-radius = 120.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_oyj74"]
 a = Vector2(-7, -16)
@@ -562,15 +560,10 @@ texture = ExtResource("4_ekxcq")
 texture_mode = 1
 joint_mode = 2
 
-[node name="HookPath" type="Line2D" parent="."]
-texture = ExtResource("3_7wh65")
-texture_mode = 1
-script = ExtResource("12_kslgm")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 1.032)
 sprite_frames = SubResource("SpriteFrames_g51n2")
-animation = &"right_dash"
+animation = &"left_dash"
 speed_scale = 2.0
 script = ExtResource("10_xc0nu")
 
@@ -582,6 +575,32 @@ position = Vector2(4.5, 0)
 rotation = -1.5708
 texture = ExtResource("9_vrk3f")
 
+[node name="GrappleInit" type="Node2D" parent="AnimatedSprite2D/Node2D/Sprite2D"]
+position = Vector2(0.344939, 6.5)
+
+[node name="MaxGrapplingRange" type="Area2D" parent="AnimatedSprite2D/Node2D/Sprite2D/GrappleInit"]
+rotation = 1.5708
+scale = Vector2(1, 0.968992)
+script = ExtResource("2_2taa3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Node2D/Sprite2D/GrappleInit/MaxGrapplingRange"]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_wnib2")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Polygon2D" type="Polygon2D" parent="AnimatedSprite2D/Node2D/Sprite2D/GrappleInit/MaxGrapplingRange"]
+visible = false
+z_index = -1
+color = Color(1, 1, 0, 0.258824)
+polygon = PackedVector2Array(0, -128, 35, -123, 66, -110, 91, -90, 110, -67, 123, -35, 127, -2, 123, 30, 112, 64, 92, 90, 63, 109, 34, 123, 1, 129, -32, 123, -63, 110, -90, 91, -111, 65, -124, 31, -128, -1, -122, -38, -112, -67, -90, -93, -65, -111, -29, -126)
+
+[node name="HookPath" type="Line2D" parent="AnimatedSprite2D/Node2D/Sprite2D/GrappleInit"]
+rotation = 1.5708
+scale = Vector2(1, 0.968992)
+texture = ExtResource("3_7wh65")
+texture_mode = 1
+script = ExtResource("12_kslgm")
+
 [node name="jumpBufferingCast" type="RayCast2D" parent="."]
 target_position = Vector2(0, 32)
 collision_mask = 8
@@ -589,20 +608,6 @@ collision_mask = 8
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_tplrn")
-
-[node name="MaxGrapplingRange" type="Area2D" parent="."]
-script = ExtResource("2_2taa3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MaxGrapplingRange"]
-position = Vector2(0, -0.5)
-shape = SubResource("CircleShape2D_wnib2")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[node name="Polygon2D" type="Polygon2D" parent="MaxGrapplingRange"]
-visible = false
-z_index = -1
-color = Color(1, 1, 0, 0.258824)
-polygon = PackedVector2Array(0, -128, 35, -123, 66, -110, 91, -90, 110, -67, 123, -35, 127, -2, 123, 30, 112, 64, 92, 90, 63, 109, 34, 123, 1, 129, -32, 123, -63, 110, -90, 91, -111, 65, -124, 31, -128, -1, -122, -38, -112, -67, -90, -93, -65, -111, -29, -126)
 
 [node name="Head" type="Area2D" parent="."]
 position = Vector2(1, -1)
@@ -711,7 +716,7 @@ scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_ossho")
 
-[connection signal="area_exited" from="MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
+[connection signal="area_exited" from="AnimatedSprite2D/Node2D/Sprite2D/GrappleInit/MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
 [connection signal="body_entered" from="Head" to="Head" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="DamageCollision" to="DamageCollision" method="_on_damage_collision_body_shape_entered"]
 [connection signal="body_shape_exited" from="DamageCollision" to="DamageCollision" method="_on_damage_collision_body_shape_exited"]

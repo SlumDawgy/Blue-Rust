@@ -8,7 +8,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_mouse_follower_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
-	var player = get_parent()
+	var player = get_tree().get_first_node_in_group("Player")
 	
 	if player.aimAssistActive == true:
 		if body.is_in_group("Tile"):
