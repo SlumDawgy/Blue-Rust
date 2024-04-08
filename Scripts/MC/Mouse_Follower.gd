@@ -12,19 +12,14 @@ func _on_mouse_follower_body_shape_entered(body_rid, body, _body_shape_index, _l
 	
 	if player.aimAssistActive == true:
 		if body.is_in_group("Tile"):
-			
 			var coords = body.get_coords_for_body_rid(body_rid)
-		# Find Grapplable Object and move Player
+			# Find Grapplable Object and move Player
 			if body.get_cell_tile_data(1, coords) != null:
 				if body.get_cell_tile_data(1, coords).get_custom_data("CollisionType") == "Grapple":
-					if player.get_parent().get_node_or_null("aimAssist") != null:
+					if player.get_parent().get_node_or_null("aimAssist") and player.get_parent().get_node_or_null("aimAssistArea"):
 						player.get_parent().get_node("aimAssist").position = body.map_to_local(coords)
-					if player.get_parent().get_node_or_null("aimAssistArea") != null:
 						player.get_parent().get_node("aimAssistArea").position = body.map_to_local(coords)
-					
-					
 					else:
-					
 						var aimAssist = Sprite2D.new()
 						
 						aimAssist.texture = aiming

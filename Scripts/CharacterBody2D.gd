@@ -262,33 +262,30 @@ func grappling(delta):
 	if get_parent().get_node_or_null("Grappling") == null:
 		littleDash = false
 		target_velocity.x = move_toward(target_velocity.x, 0, SPEED)
-		
-		
-		
+				
 		var directionToPosition = (to_local(position) - get_local_mouse_position()).normalized()
 		grapplingHookChild.rotation =  PI + atan2(directionToPosition.y, directionToPosition.x) 
 
-
 		if get_parent().get_node_or_null("aimAssist") != null:
-			grapplingHookChild.positionToReach = to_local(get_parent().get_node("aimAssist").position)
+			grapplingHookChild.positionToReach = to_local(get_parent().get_node("aimAssist").position) + Vector2(0, 8)
 		else:
 			grapplingHookChild.positionToReach = get_local_mouse_position()+ Vector2(0, 8)
-			print(1)
-		grapplingHookChild.position = get_node("AnimatedSprite2D/Node2D/Sprite2D/GrappleInit").get_global_transform().origin
+			
+		grapplingHookChild.position = get_node("AnimatedSprite2D/Node2D").get_global_transform().origin
 		
 		get_parent().add_child(grapplingHookChild)
 	
 	elif returnGrappling == true and  get_parent().get_node_or_null("Grappling") != null:
-		get_parent().get_node("Grappling").endGrapple(position, delta)
+		get_parent().get_node("Grappling").endGrapple(delta)
 
 	if get_local_mouse_position().x - to_local(position).x > 0:
 		if rope.get_point_count() > 1:
 			rope.remove_point(1)
-		rope.add_point(to_local(get_parent().get_node("Grappling").position) + Vector2(0, -4))
+		rope.add_point(to_local(get_parent().get_node("Grappling").position))# + Vector2(0, -4))
 	else:
 		if rope.get_point_count() > 1:
 			rope.remove_point(1)
-		rope.add_point(to_local(get_parent().get_node("Grappling").position) + Vector2(0, 4))
+		rope.add_point(to_local(get_parent().get_node("Grappling").position))# + Vector2(0, 4))
 
 # Grappling Max Range Return
 func _on_max_grappling_range_area_exited(area):

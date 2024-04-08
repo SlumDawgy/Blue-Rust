@@ -27,7 +27,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	audios = player.get_node("Audios")
 	audios.grappleShoot.play()
-	startingPointNode = player.get_node("AnimatedSprite2D/Node2D/Sprite2D/GrappleInit")
+	startingPointNode = player.get_node("AnimatedSprite2D/Node2D")
 	
 	pass # Replace with function body.
 
@@ -61,7 +61,7 @@ func _physics_process(delta):
 		queue_free()
 	
 	if endGrappleBool == true:
-		endGrapple(startingPointNode.get_global_transform().origin, delta)
+		endGrapple(delta)
 	
 	pass
 
@@ -90,7 +90,7 @@ func movePlayer(playerFirstPosition, delta):
 	player.position += (position - playerFirstPosition).normalized() * characterSpeed * delta
 
 # Return grapplingHook
-func endGrapple(playerFirstPosition, delta):
+func endGrapple(delta):
 	if audios.grappleRetrieve.is_playing() == false and canPlayRetrieve:
 		canPlayRetrieve = false
 		audios.grappleRetrieve.play()
