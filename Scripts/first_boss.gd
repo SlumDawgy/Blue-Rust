@@ -20,6 +20,7 @@ var isCharging := false
 var isShooting := false
 var isDying := false
 var isStunned := false
+var isSteam := false
 
 var canDoDamage := false
 var canReceiveDamage := false
@@ -28,6 +29,7 @@ var attackCD := 1.0
 var chargeAttackCD := 5.0
 
 var chargeCD := 1.0
+var steamCD := 1.0
 
 var health := 3
 var healthState := ["FullHealth", "HalfHealth", "LowHealth"]
@@ -40,7 +42,6 @@ var stunCD := 3.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_parent().get_node("Player")
 	$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
 	set_physics_process(false)
 	pass # Replace with function body.
@@ -75,6 +76,8 @@ func _physics_process(delta):
 			attack()
 		elif isCharging:
 			charge(delta)
+		elif isSteam:
+			steam(delta)
 		
 		move_and_slide()
 
@@ -116,16 +119,20 @@ func attack():
 				player.damage()
 
 func move():
-	if position.x > player.position.x and player.hangingActive == false:
+	
+	if ((position.x < player.position.x + 21 and position.x > player.position.x + 17 and animation.flip_h == true) or (position.x > player.position.x - 23 and position.x < player.position.x - 19 and animation.flip_h == false)) and player.hangingActive == true:
+		isSteam = true
+		isMoving = false
+	elif position.x > player.position.x and player.hangingActive == false:
 		velocity.x = -speed
 		animation.flip_h = false
+		$SteamParticles.position.x = 19
 		animation.play(healthState[healthStateCounter] + "_Walk")
-	elif position.x < player.position.x and player.hangingActive == false:
+	elif position.x <= player.position.x and player.hangingActive == false:
 		velocity.x = speed
 		animation.flip_h = true
+		$SteamParticles.position.x = -21
 		animation.play(healthState[healthStateCounter] + "_Walk")
-	else:
-		velocity.x = 0
 
 func charge(delta):
 	if animation.animation != (healthState[healthStateCounter] + "_Charge"):
@@ -225,6 +232,28 @@ func damage():
 	
 	pass
 
+func steam(delta):
+	if animation.animation != (healthState[healthStateCounter] + "_Steam"):
+		isMoving = false
+		animation.play(healthState[healthStateCounter] + "_Steam")
+		velocity.x = 0
+		$SteamParticles/CPUParticles2D.emitting = true
+		
+	steamCD -= delta
+	
+	if steamCD < 0.0:
+		$SteamParticles.emitting = true
+		if $SteamParticles/Area2D/CollisionShape2D.shape.b.y > -100:
+			$SteamParticles/Area2D/CollisionShape2D.shape.b.y -= 100 * delta
+
+	if player.hangingActive == false:
+		$SteamParticles/CPUParticles2D.emitting = false
+		$SteamParticles.emitting = false
+		isSteam = false
+		isMoving = true
+		steamCD = 1.0
+		$SteamParticles/Area2D/CollisionShape2D.shape.b.y = 0
+	
 func die():
 	animation.play("Death")
 	velocity.x = 0
@@ -257,8 +286,12 @@ func _on_area_2d_body_exited(body : CharacterBody2D):
 
 
 func _on_area_2d_2_body_entered(body : CharacterBody2D):
-	if body.is_in_group("Player"):
-		player.damage()
+	if is_instance_valid(player):
+		if body.is_in_group("Player"):
+			player.damage()
+		if player.hangingActive == true:
+			player.hangingActive = false
+			player.moveActive = true
 	pass # Replace with function body.
 
 

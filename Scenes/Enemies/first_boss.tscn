@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=134 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cb257r475g2c0" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Stunned-Sheet.png" id="6_bbnl3"]
 [ext_resource type="Texture2D" uid="uid://d2wx6en7smqpt" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Charge-Sheet.png" id="6_tqe2c"]
 [ext_resource type="Texture2D" uid="uid://xuwxu5weuvlk" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Damaged-Sheet.png" id="7_8t5j0"]
+[ext_resource type="Texture2D" uid="uid://cdj07mkxqdsie" path="res://Assets/Sprites/Boss/SteamCharge.png" id="7_txm7y"]
 [ext_resource type="Texture2D" uid="uid://cyjaqhlpffaev" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Slash-Sheet.png" id="8_137sf"]
 [ext_resource type="Texture2D" uid="uid://13krs442fdag" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_BackUp.png" id="9_ip2vc"]
 [ext_resource type="Texture2D" uid="uid://cvhdynd17tstg" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Walk-Sheet.png" id="9_r7m8y"]
@@ -18,10 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://j0q0854upsni" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Damaged-Sheet.png" id="11_51ump"]
 [ext_resource type="Texture2D" uid="uid://b4vaapwatprom" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Slash-Sheet.png" id="12_6bx2k"]
 [ext_resource type="Texture2D" uid="uid://dco74uwbd38hf" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="13_plf7l"]
+[ext_resource type="Texture2D" uid="uid://bl8am87wu4361" path="res://Assets/Sprites/Boss/SteamChargeHalfHelath.png" id="14_cwa0y"]
 [ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Boss/SlashEffect.png" id="15_bhv6r"]
 [ext_resource type="Texture2D" uid="uid://b7i8em8vp0cl6" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="15_gnlw0"]
 [ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="16_s2gkb"]
 [ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Player/Aiming.png" id="21_etkqa"]
+[ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Boss/SteamChargeLowHelath.png" id="21_s3rtd"]
 [ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Boss/BrokenPiece1.png" id="22_4vuif"]
 [ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
 [ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
@@ -29,6 +32,8 @@
 [ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/02. Wall hit.WAV" id="26_idy6h"]
 [ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/03. Charge.WAV" id="27_h1uwv"]
 [ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/02. Retrieve.WAV" id="28_5x8d2"]
+[ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="31_4d6cc"]
+[ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="31_l3uw7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
 atlas = ExtResource("2_eyfvr")
@@ -101,6 +106,18 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccyrg"]
 atlas = ExtResource("2_ccuwb")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nmex"]
+atlas = ExtResource("7_txm7y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amgav"]
+atlas = ExtResource("7_txm7y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wbwv"]
+atlas = ExtResource("7_txm7y")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbg8j"]
 atlas = ExtResource("6_a154n")
@@ -198,6 +215,18 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("8_137sf")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cn6c"]
+atlas = ExtResource("14_cwa0y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c777"]
+atlas = ExtResource("14_cwa0y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7er3a"]
+atlas = ExtResource("14_cwa0y")
+region = Rect2(64, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfygq"]
 atlas = ExtResource("6_bbnl3")
 region = Rect2(0, 0, 32, 32)
@@ -293,6 +322,18 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ran8"]
 atlas = ExtResource("12_6bx2k")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2xxk"]
+atlas = ExtResource("21_s3rtd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkuws"]
+atlas = ExtResource("21_s3rtd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fcsv"]
+atlas = ExtResource("21_s3rtd")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08ye0"]
 atlas = ExtResource("16_s2gkb")
@@ -412,6 +453,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0nmex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amgav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wbwv")
+}],
+"loop": true,
+"name": &"FullHealth_Steam",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mbg8j")
 }, {
 "duration": 1.0,
@@ -510,6 +565,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"HalfHealth_Slash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cn6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c777")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7er3a")
+}],
+"loop": true,
+"name": &"HalfHealth_Steam",
 "speed": 5.0
 }, {
 "frames": [{
@@ -616,6 +685,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_y2xxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkuws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fcsv")
+}],
+"loop": true,
+"name": &"LowHealth_Steam",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_08ye0")
 }, {
 "duration": 1.0,
@@ -717,6 +800,21 @@ size = Vector2(24, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpoy"]
 size = Vector2(48, 42)
 
+[sub_resource type="Curve" id="Curve_t01ax"]
+_data = [Vector2(0.00700935, 1), 0.0, 0.0, 0, 0, Vector2(0.852804, 1), 0.146826, 0.146826, 0, 0, Vector2(1, 0.0490566), -6.25198, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ad410"]
+offsets = PackedFloat32Array(0, 0.497436, 0.861538, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.4375)
+
+[sub_resource type="Gradient" id="Gradient_yjpeg"]
+offsets = PackedFloat32Array(0, 0.0871795, 0.153846, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_58pow"]
+b = Vector2(0, 0)
+
 [node name="First_Boss" type="CharacterBody2D"]
 collision_layer = 32784
 collision_mask = 24
@@ -726,7 +824,7 @@ script = ExtResource("1_7v45d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Charge"
+animation = &"LowHealth_Steam"
 
 [node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
@@ -813,7 +911,50 @@ stream = ExtResource("27_h1uwv")
 [node name="Retrieve" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource("28_5x8d2")
 
+[node name="SteamParticles" type="CPUParticles2D" parent="."]
+position = Vector2(19, -26)
+emitting = false
+amount = 100
+lifetime = 0.6
+texture = ExtResource("31_4d6cc")
+emission_shape = 3
+emission_rect_extents = Vector2(3, 1)
+direction = Vector2(0, -1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 208.7
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+angle_min = -90.0
+angle_max = -90.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_t01ax")
+color_ramp = SubResource("Gradient_ad410")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SteamParticles"]
+emitting = false
+amount = 20
+lifetime = 0.1
+speed_scale = 0.2
+texture = ExtResource("31_l3uw7")
+emission_shape = 3
+emission_rect_extents = Vector2(8, 1)
+direction = Vector2(0, -1)
+spread = 90.0
+initial_velocity_min = 34.77
+initial_velocity_max = 113.03
+angle_min = -90.0
+angle_max = -90.0
+color_ramp = SubResource("Gradient_yjpeg")
+
+[node name="Area2D" type="Area2D" parent="SteamParticles"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SteamParticles/Area2D"]
+shape = SubResource("SegmentShape2D_58pow")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
+[connection signal="body_entered" from="SteamParticles/Area2D" to="." method="_on_area_2d_2_body_entered"]
