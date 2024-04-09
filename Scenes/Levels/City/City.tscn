@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/city_tiles.tscn" id="1_6yj72"]
 [ext_resource type="PackedScene" uid="uid://damu3nwpp3qop" path="res://Scenes/MC/Player.tscn" id="1_bxn5f"]
-[ext_resource type="Texture2D" uid="uid://bpu8bxbl72oxi" path="res://Assets/Sprites/TileSets/City/CityBG_Parallax5.png" id="3_3v0x5"]
-[ext_resource type="Texture2D" uid="uid://dgxke3eewu0sv" path="res://Assets/Sprites/TileSets/City/CityBG_Parallax_3.png" id="4_bijtf"]
-[ext_resource type="Texture2D" uid="uid://cjnwqo6g2x2y0" path="res://Assets/Sprites/TileSets/City/CityBG_Parallax_2.png" id="5_6th8x"]
-[ext_resource type="Texture2D" uid="uid://c5xsvejfoah6p" path="res://Assets/Sprites/TileSets/City/CityBG_Parallax_1.png" id="6_8psss"]
+[ext_resource type="Texture2D" uid="uid://exu7uutwmihf" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxFarBG.png" id="3_lrub5"]
+[ext_resource type="Texture2D" uid="uid://cwvlxb1dnnmhs" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBG.png" id="4_gi7ol"]
+[ext_resource type="Texture2D" uid="uid://cncldaa7gq5u3" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclose.png" id="5_k5vda"]
+[ext_resource type="Texture2D" uid="uid://ceiqfib4ikgq4" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclosest.png" id="6_e4ts7"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="7_ii171"]
 
 [node name="City(hub)" type="Node2D"]
@@ -23,93 +23,93 @@ layer_3/tile_data = PackedInt32Array(983081, 1507328, 11, 1048617, 1507328, 12, 
 
 [node name="Parallax_Layer_Farthest" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -13
-position = Vector2(306, 91)
+position = Vector2(306, 63.345)
 motion_scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Farthest"]
 z_index = -10
 position = Vector2(3, 0)
-texture = ExtResource("3_3v0x5")
+texture = ExtResource("3_lrub5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Farthest"]
 z_index = -10
 position = Vector2(643, 0)
-texture = ExtResource("3_3v0x5")
+texture = ExtResource("3_lrub5")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Farthest"]
 z_index = -10
 position = Vector2(1283, 0)
-texture = ExtResource("3_3v0x5")
+texture = ExtResource("3_lrub5")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Farthest"]
 z_index = -10
 position = Vector2(-637, 0)
-texture = ExtResource("3_3v0x5")
+texture = ExtResource("3_lrub5")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Farthest"]
 z_index = -10
 position = Vector2(-1277, 0)
-texture = ExtResource("3_3v0x5")
+texture = ExtResource("3_lrub5")
 
 [node name="Parallax_Layer_Far" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -12
-position = Vector2(306, 91)
+position = Vector2(306, 35.645)
 motion_scale = Vector2(0.3, 0.3)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Far"]
 z_index = -10
 position = Vector2(3, 0)
-texture = ExtResource("4_bijtf")
+texture = ExtResource("4_gi7ol")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Far"]
 z_index = -10
 position = Vector2(643, 0)
-texture = ExtResource("4_bijtf")
+texture = ExtResource("4_gi7ol")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Far"]
 z_index = -10
 position = Vector2(1283, 0)
-texture = ExtResource("4_bijtf")
+texture = ExtResource("4_gi7ol")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Far"]
 z_index = -10
 position = Vector2(-637, 0)
-texture = ExtResource("4_bijtf")
+texture = ExtResource("4_gi7ol")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Far"]
 z_index = -10
 position = Vector2(-1277, 0)
-texture = ExtResource("4_bijtf")
+texture = ExtResource("4_gi7ol")
 
 [node name="Parallax_Layer_Near" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -11
-position = Vector2(306, 91)
+position = Vector2(306, 42.19)
 motion_scale = Vector2(0.6, 0.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Near"]
 z_index = -10
 position = Vector2(3, 0)
-texture = ExtResource("5_6th8x")
+texture = ExtResource("5_k5vda")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Near"]
 z_index = -10
 position = Vector2(643, 0)
-texture = ExtResource("5_6th8x")
+texture = ExtResource("5_k5vda")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Near"]
 z_index = -10
 position = Vector2(1283, 0)
-texture = ExtResource("5_6th8x")
+texture = ExtResource("5_k5vda")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Near"]
 z_index = -10
 position = Vector2(-637, 0)
-texture = ExtResource("5_6th8x")
+texture = ExtResource("5_k5vda")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Near"]
 z_index = -10
 position = Vector2(-1277, 0)
-texture = ExtResource("5_6th8x")
+texture = ExtResource("5_k5vda")
 
 [node name="Parallax_Layer_Nearest" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -10
@@ -119,30 +119,31 @@ motion_scale = Vector2(0.75, 0.75)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Nearest"]
 z_index = -10
 position = Vector2(3, 0)
-texture = ExtResource("6_8psss")
+texture = ExtResource("6_e4ts7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Nearest"]
 z_index = -10
 position = Vector2(643, 0)
-texture = ExtResource("6_8psss")
+texture = ExtResource("6_e4ts7")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Nearest"]
 z_index = -10
 position = Vector2(1283, 0)
-texture = ExtResource("6_8psss")
+texture = ExtResource("6_e4ts7")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Nearest"]
 z_index = -10
 position = Vector2(-637, 0)
-texture = ExtResource("6_8psss")
+texture = ExtResource("6_e4ts7")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Parallax_Layer_Nearest"]
 z_index = -10
 position = Vector2(-1280, 0)
-texture = ExtResource("6_8psss")
+texture = ExtResource("6_e4ts7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 5
 zoom = Vector2(2, 2)
+process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("7_ii171")

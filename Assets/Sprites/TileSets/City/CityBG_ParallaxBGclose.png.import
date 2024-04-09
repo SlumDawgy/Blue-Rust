@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpu8bxbl72oxi"
-path="res://.godot/imported/CityBG_Parallax5.png-dff09b23d2bb32f9103b131f6ba45164.ctex"
+uid="uid://cncldaa7gq5u3"
+path="res://.godot/imported/CityBG_ParallaxBGclose.png-694a350bb82d419e14ed5859071b3840.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/City/CityBG_Parallax5.png"
-dest_files=["res://.godot/imported/CityBG_Parallax5.png-dff09b23d2bb32f9103b131f6ba45164.ctex"]
+source_file="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclose.png"
+dest_files=["res://.godot/imported/CityBG_ParallaxBGclose.png-694a350bb82d419e14ed5859071b3840.ctex"]
 
 [params]
 
