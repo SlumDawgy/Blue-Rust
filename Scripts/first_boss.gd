@@ -42,7 +42,6 @@ var stunCD := 3.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_parent().get_node("Player")
 	$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
 	set_physics_process(false)
 	pass # Replace with function body.
@@ -129,7 +128,7 @@ func move():
 		animation.flip_h = false
 		$SteamParticles.position.x = 19
 		animation.play(healthState[healthStateCounter] + "_Walk")
-	elif position.x < player.position.x and player.hangingActive == false:
+	elif position.x <= player.position.x and player.hangingActive == false:
 		velocity.x = speed
 		animation.flip_h = true
 		$SteamParticles.position.x = -21
@@ -287,11 +286,12 @@ func _on_area_2d_body_exited(body : CharacterBody2D):
 
 
 func _on_area_2d_2_body_entered(body : CharacterBody2D):
-	if body.is_in_group("Player"):
-		player.damage()
-	if player.hangingActive == true:
-		player.hangingActive = false
-		player.moveActive = true
+	if is_instance_valid(player):
+		if body.is_in_group("Player"):
+			player.damage()
+		if player.hangingActive == true:
+			player.hangingActive = false
+			player.moveActive = true
 	pass # Replace with function body.
 
 
