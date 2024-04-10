@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
-uniform float colorModifier = 0.333;
+uniform float brightnessModifier = 0.333;
+uniform float colorModifier = 1;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -9,8 +10,8 @@ void vertex() {
 void fragment() {
 	
 	vec4 color = texture(TEXTURE, UV);
-	float grey = (color.r + color.g + color.b) * colorModifier;
-	COLOR = vec4(grey,grey,grey, color.a);
+	float grey = (color.r + color.g + color.b) * brightnessModifier;
+	COLOR = vec4(grey* colorModifier,grey * colorModifier,grey *colorModifier, color.a);
 }
 
 //void light() {
