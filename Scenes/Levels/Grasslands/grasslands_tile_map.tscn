@@ -2329,7 +2329,7 @@ texture = ExtResource("1_0co7u")
 13:6/0/custom_data_0 = "Wall"
 
 [sub_resource type="TileSet" id="TileSet_uvow1"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 31
 physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 31
