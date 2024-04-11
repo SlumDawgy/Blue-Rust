@@ -92,6 +92,9 @@ func _physics_process(delta):
 			isCharging = true
 			isMoving = false
 			isAttacking = false
+		
+		if Input.is_action_just_pressed("Crouch"):
+			isDying = true
 
 
 func attack():
@@ -263,11 +266,32 @@ func die():
 			$"../AudioStreamPlayer".playing = true
 			$"../BossFight".playing = false
 	elif animation.frame == 2:
-		player.dashActivation()
 		$"../Label3".visible = true
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -66), -1)
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -67), -1)
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -68), -1)
+		var powerUp = Area2D.new()
+		var powerUpCollision = CollisionShape2D.new()
+		var powerUpCollisionShape = RectangleShape2D.new()
+		var powerUpSprite = AnimatedSprite2D.new()
+		powerUpSprite.sprite_frames = load("res://PowerUpSpriteSheet.tres")
+		powerUpSprite.speed_scale = 2
+		powerUpSprite.play("default")
+		
+		powerUpCollision.shape = powerUpCollisionShape
+		powerUpCollision.shape.size = Vector2(16, 16)
+		
+		powerUp.add_child(powerUpCollision)
+		powerUp.add_child(powerUpSprite)
+
+		powerUp.connect("body_entered", Callable(get_tree().root.get_node("Node2D"), "PowerUp"), 4)
+		
+		powerUp.position = position
+		powerUp.name = "powerUp"
+		
+		get_tree().root.get_node("Node2D").add_child(powerUp)
+		print(powerUp.body_entered.get_connections())
+		
 		queue_free()
 		
 	pass

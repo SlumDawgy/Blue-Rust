@@ -59,7 +59,8 @@ overrides = {}
 script = ExtResource("9_v30xd")
 name = "Style"
 base_overrides = {
+"canvas_layer": "15.0",
 "global_bg_color": "Color(0.298039, 0.2, 0.113725, 0.901961)"
 }
 layers = Array[ExtResource("2_ds4cu")]([SubResource("Resource_o1dnc"), SubResource("Resource_g5qtf"), SubResource("Resource_6ofq0"), SubResource("Resource_btl6t"), SubResource("Resource_olego"), SubResource("Resource_aa3jk"), SubResource("Resource_jf0h6")])
-metadata/_latest_layer = 6
+metadata/_latest_layer = 1

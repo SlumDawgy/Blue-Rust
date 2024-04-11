@@ -34,14 +34,20 @@ directories/dch_directory={
 directories/dtl_directory={
 "Prison": "res://Dialogic/Timelines/Prison.dtl",
 "Prison1-1": "res://Dialogic/Timelines/Prison1-1.dtl",
-"Prison1-2": "res://Dialogic/Timelines/Prison1-2.dtl"
+"Prison1-2": "res://Dialogic/Timelines/Prison1-2.dtl",
+"Prison1-3": "res://Dialogic/Timelines/Prison1-3.dtl",
+"Prison1-4": "res://Dialogic/Timelines/Prison1-4.dtl",
+"Prison1-5": "res://Dialogic/Timelines/Prison1-5.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://Dialogic/Styles/Style.tres"]
 layout/default_style="res://Dialogic/Styles/Style.tres"
 variables={
-"NextText": false,
-"NextTextD": false
+"Dialogue1": false,
+"Dialogue2": false,
+"Dialogue3": false,
+"Dialogue4": false,
+"Dialogue5": false
 }
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

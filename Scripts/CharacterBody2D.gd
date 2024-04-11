@@ -79,7 +79,7 @@ var maxHealth := 3
 
 # Power Ups Activation
 var doubleJumpUpgrade : bool = false
-var dashUpgrade : bool = true
+var dashUpgrade : bool = false
 
 # Sounds
 var audios
@@ -103,11 +103,16 @@ func _physics_process(delta):
 		mantlingActive = false
 		deadActive = false
 		dashActive = false
+		target_velocity.x = move_toward(0,0,0)
+		animations("idle", " ")
+		if not is_on_floor():
+			target_velocity.y += gravity * delta * gravityVar
 	if moveActive:
 		walk(delta)
 	if grapplingActive:
 		grappling(delta)
 		canMantle = false
+		moveActive = false
 	if mantlingActive:
 		mantling()
 	if deadActive:
