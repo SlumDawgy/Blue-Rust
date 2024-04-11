@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqx7b1eusufbw"
-path="res://.godot/imported/GrassLand.png-57e9327dcf3af30637c0954f9a6f1190.ctex"
+uid="uid://bdogaahu6hr8p"
+path="res://.godot/imported/CrystalCaveInterior_Far.png-299c31b0a6ba51cbd54929f83d214e75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/Grasslands/GrassLand.png"
-dest_files=["res://.godot/imported/GrassLand.png-57e9327dcf3af30637c0954f9a6f1190.ctex"]
+source_file="res://Assets/Sprites/TileSets/Grasslands/CrystalCaveInterior_Far.png"
+dest_files=["res://.godot/imported/CrystalCaveInterior_Far.png-299c31b0a6ba51cbd54929f83d214e75.ctex"]
 
 [params]
 

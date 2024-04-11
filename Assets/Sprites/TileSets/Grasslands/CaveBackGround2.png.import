@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqx7b1eusufbw"
-path="res://.godot/imported/GrassLand.png-57e9327dcf3af30637c0954f9a6f1190.ctex"
+uid="uid://chiqbameeqy1w"
+path="res://.godot/imported/CaveBackGround2.png-bb2412500ae1286f983bdaa875685a49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/Grasslands/GrassLand.png"
-dest_files=["res://.godot/imported/GrassLand.png-57e9327dcf3af30637c0954f9a6f1190.ctex"]
+source_file="res://Assets/Sprites/TileSets/Grasslands/CaveBackGround2.png"
+dest_files=["res://.godot/imported/CaveBackGround2.png-bb2412500ae1286f983bdaa875685a49.ctex"]
 
 [params]
 
