@@ -11,11 +11,9 @@ collision_mask = 27
 script = ExtResource("1_c7ubf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.14684, -0.0540276)
 shape = SubResource("RectangleShape2D_3b2db")
 
 [node name="OrianaEvansHook" type="Sprite2D" parent="."]
-position = Vector2(19.6284, -5.52028)
 texture = ExtResource("2_cvms0")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
