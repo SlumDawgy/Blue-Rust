@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5c2bk6clm5g0"
-path="res://.godot/imported/LyingDOwn-Sheet.png-c61df3c39dbd3e70cf86c06456fe00fd.ctex"
+path="res://.godot/imported/LyingDown-Sheet.png-bd21d1fbb884c21f2b05ae152ae8b891.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/LyingDOwn-Sheet.png"
-dest_files=["res://.godot/imported/LyingDOwn-Sheet.png-c61df3c39dbd3e70cf86c06456fe00fd.ctex"]
+source_file="res://Assets/Sprites/MC Animations/LyingDown-Sheet.png"
+dest_files=["res://.godot/imported/LyingDown-Sheet.png-bd21d1fbb884c21f2b05ae152ae8b891.ctex"]
 
 [params]
 
