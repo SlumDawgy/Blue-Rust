@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b721bjet4gj2x"
-path="res://.godot/imported/SpaceSprite.png-67d6048828609c59763fc86fc77d6017.ctex"
+uid="uid://b5c2bk6clm5g0"
+path="res://.godot/imported/LyingDown-Sheet.png-bd21d1fbb884c21f2b05ae152ae8b891.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/Icons/SpaceSprite.png"
-dest_files=["res://.godot/imported/SpaceSprite.png-67d6048828609c59763fc86fc77d6017.ctex"]
+source_file="res://Assets/Sprites/MC Animations/LyingDown-Sheet.png"
+dest_files=["res://.godot/imported/LyingDown-Sheet.png-bd21d1fbb884c21f2b05ae152ae8b891.ctex"]
 
 [params]
 
