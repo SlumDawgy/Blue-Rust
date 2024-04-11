@@ -1,0 +1,8 @@
+join MC 0
+MC: Why is my head ringing and throbbing?
+MC: I don’t remember drinking last night. Wait..
+MC: Now that I think about it, where am I? I’m pretty sure I don’t live here.
+MC: Talk about a morbid scene. Not to mention the stench…
+MC: I don’t see any way out.
+MC: Sitting around and complaining isn’t going to solve anything.
+set {NextTextD} = true

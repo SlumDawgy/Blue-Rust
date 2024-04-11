@@ -1,0 +1,4 @@
+join Soothing_Voice 1
+Soothing_Voice: ...ke…up..
+Soothing_Voice: Wake Up...
+set {NextText} = true

@@ -2,8 +2,24 @@ extends CanvasLayer
 
 signal transitioned
 
+var faded := false
+
 func _ready():
-	fadetonormal()
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
+	$"../Player".staticActive = true
+
+func _process(delta):
+	if Dialogic.VAR.NextText == true and faded == false:
+		fadetonormal()
+		faded = true
+		Dialogic.VAR.NextText = false
+		Dialogic.start("res://Dialogic/Timelines/Prison1-2.dtl")
+		$"../AudioStreamPlayer".play()
+	elif Dialogic.VAR.NextTextD == true:
+		$"../Player".staticActive = false
+		$"../Player".moveActive = true
+		Dialogic.VAR.NextTextD = false
 
 func fadetonormal():
 	$AnimationPlayer.play("Fade_To_Normal")

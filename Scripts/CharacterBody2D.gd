@@ -22,6 +22,8 @@ var mantlingActive : bool = false
 var deadActive : bool = false
 var dashActive : bool = false
 
+var staticActive := false
+
 # Speed
 const SPEED : float = 115.0
 var target_velocity : Vector2
@@ -95,6 +97,12 @@ func _physics_process(delta):
 	velocity = target_velocity
 	
 	# Movements
+	if staticActive:
+		moveActive = false
+		grapplingActive = false
+		mantlingActive = false
+		deadActive = false
+		dashActive = false
 	if moveActive:
 		walk(delta)
 	if grapplingActive:
@@ -150,7 +158,7 @@ func _physics_process(delta):
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node_or_null("Grappling") == null and mantlingActive == false and hangingActive == false and deadActive == false and dashTime == 0:
+	if Input.is_action_just_pressed("GrapplingHook") and get_parent().get_node_or_null("Grappling") == null and mantlingActive == false and hangingActive == false and deadActive == false and dashTime == 0 and staticActive == false:
 		grapplingActive = true
 		moveActive = false
 		jumping = false
