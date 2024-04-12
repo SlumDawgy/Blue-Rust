@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://damu3nwpp3qop"]
+[gd_scene load_steps=101 format=3 uid="uid://damu3nwpp3qop"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_cjoav"]
 [ext_resource type="Script" path="res://Scripts/MC/MaxGrapplingRange.gd" id="2_2taa3"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="29_0gm3v"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="30_1pjdu"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="31_fyqfm"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="33_po8fq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylu6d"]
 atlas = ExtResource("5_i5y1c")
@@ -707,6 +708,16 @@ orbit_velocity_max = 0.05
 scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_ossho")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.815686, 0.803922, 0.694118, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 4.3
+shadow_item_cull_mask = 31
+texture = ExtResource("33_po8fq")
+texture_scale = 0.5
 
 [connection signal="area_exited" from="AnimatedSprite2D/Node2D/GrappleInit/MaxGrapplingRange" to="." method="_on_max_grappling_range_area_exited"]
 [connection signal="body_entered" from="Head" to="Head" method="_on_body_entered"]
