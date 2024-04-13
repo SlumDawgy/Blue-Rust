@@ -176,7 +176,6 @@ glow_intensity = 1.0
 glow_strength = 0.8
 glow_bloom = 0.07
 volumetric_fog_density = 1.0
-adjustment_enabled = true
 
 [node name="DashDreamSequence" type="Node2D"]
 
