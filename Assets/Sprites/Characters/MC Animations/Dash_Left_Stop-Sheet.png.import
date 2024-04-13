@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7boeksttn1ig"
-path="res://.godot/imported/Damage_Right-Sheet.png-a5ea3817d13483b5474c785bd86c1674.ctex"
+uid="uid://b0sy7j24dsve8"
+path="res://.godot/imported/Dash_Left_Stop-Sheet.png-40fab86ccd625522d399fa7bf90d9cef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/Damage_Right-Sheet.png"
-dest_files=["res://.godot/imported/Damage_Right-Sheet.png-a5ea3817d13483b5474c785bd86c1674.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/Dash_Left_Stop-Sheet.png"
+dest_files=["res://.godot/imported/Dash_Left_Stop-Sheet.png-40fab86ccd625522d399fa7bf90d9cef.ctex"]
 
 [params]
 

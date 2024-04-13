@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t3tor8imiu8c"
-path="res://.godot/imported/Dash_Left-Sheet.png-d87d208f5d4ee46ccb7ef6dab1e9d5c0.ctex"
+uid="uid://b63kwnwpmjvfc"
+path="res://.godot/imported/Running.png-f339868629fac2652beba4d3af43ad95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/Dash_Left-Sheet.png"
-dest_files=["res://.godot/imported/Dash_Left-Sheet.png-d87d208f5d4ee46ccb7ef6dab1e9d5c0.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/Running.png"
+dest_files=["res://.godot/imported/Running.png-f339868629fac2652beba4d3af43ad95.ctex"]
 
 [params]
 

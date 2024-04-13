@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b63kwnwpmjvfc"
-path="res://.godot/imported/Running.png-30e3838d7500deb0bfb24d089c043728.ctex"
+uid="uid://b7boeksttn1ig"
+path="res://.godot/imported/Damage_Right-Sheet.png-03e94c3d799e2093fa9086a5d6d239b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/Running.png"
-dest_files=["res://.godot/imported/Running.png-30e3838d7500deb0bfb24d089c043728.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/Damage_Right-Sheet.png"
+dest_files=["res://.godot/imported/Damage_Right-Sheet.png-03e94c3d799e2093fa9086a5d6d239b4.ctex"]
 
 [params]
 

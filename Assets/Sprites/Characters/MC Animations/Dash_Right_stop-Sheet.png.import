@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv2kx865vsqtt"
-path="res://.godot/imported/Aim.png-03739e0d9a62f6223a5325c2f364eb07.ctex"
+uid="uid://nh6nob1yi436"
+path="res://.godot/imported/Dash_Right_stop-Sheet.png-b4f6144d9fe971ae6076fde29e107f55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/Aim.png"
-dest_files=["res://.godot/imported/Aim.png-03739e0d9a62f6223a5325c2f364eb07.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/Dash_Right_stop-Sheet.png"
+dest_files=["res://.godot/imported/Dash_Right_stop-Sheet.png-b4f6144d9fe971ae6076fde29e107f55.ctex"]
 
 [params]
 

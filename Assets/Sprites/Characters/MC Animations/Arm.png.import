@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byqn5vjmkowyh"
-path="res://.godot/imported/IdleAim.png-9c8bf00d5f9f0131a72efc91c7085d0c.ctex"
+uid="uid://cja1wnyiquxnh"
+path="res://.godot/imported/Arm.png-1cf2c860cc841f96967cea71668571b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/IdleAim.png"
-dest_files=["res://.godot/imported/IdleAim.png-9c8bf00d5f9f0131a72efc91c7085d0c.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/Arm.png"
+dest_files=["res://.godot/imported/Arm.png-1cf2c860cc841f96967cea71668571b0.ctex"]
 
 [params]
 

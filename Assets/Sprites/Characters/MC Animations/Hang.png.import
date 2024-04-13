@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw8bcnnfv84tj"
-path="res://.godot/imported/Damage_Left-Sheet.png-a53f06145ef19daf06016178b4ed72a7.ctex"
+uid="uid://cjb7pcrhvhy3"
+path="res://.godot/imported/Hang.png-a44d29eb50e87ba05450be99fc3f53af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/Damage_Left-Sheet.png"
-dest_files=["res://.godot/imported/Damage_Left-Sheet.png-a53f06145ef19daf06016178b4ed72a7.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/Hang.png"
+dest_files=["res://.godot/imported/Hang.png-a44d29eb50e87ba05450be99fc3f53af.ctex"]
 
 [params]
 

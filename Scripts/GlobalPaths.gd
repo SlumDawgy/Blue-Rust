@@ -21,5 +21,5 @@ const LANTURN_FULL_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_full.png
 const LANTURN_ANIMATION_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_animation.png"
 
 # ASSETS/SPRITES/MC
-const PLAYER_AIM_PATH: String = "res://Assets/Sprites/Player/Aim.png"
-const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Player/Aiming.png"
+const PLAYER_AIM_PATH: String = "res://Assets/Sprites/Characters/Player/Aim.png"
+const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Characters/Player/Aiming.png"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwir0opibhbg6"
-path="res://.godot/imported/Mantling.png-777a6df63c6a7464cb3accd01fc80c8e.ctex"
+uid="uid://biarxsbtlrjrt"
+path="res://.godot/imported/JumpAim_Left.png-9f54097f368d1e2879309787f68383aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/Mantling.png"
-dest_files=["res://.godot/imported/Mantling.png-777a6df63c6a7464cb3accd01fc80c8e.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/JumpAim_Left.png"
+dest_files=["res://.godot/imported/JumpAim_Left.png-9f54097f368d1e2879309787f68383aa.ctex"]
 
 [params]
 

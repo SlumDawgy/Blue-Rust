@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biarxsbtlrjrt"
-path="res://.godot/imported/JumpAim_Left.png-0acca308fda688923dc424ca102c9fb1.ctex"
+uid="uid://dpff0lfvkuvuc"
+path="res://.godot/imported/Oriana_Evans_Rope.png-c28e984ae140dd2c5174d9f29aea0f1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/JumpAim_Left.png"
-dest_files=["res://.godot/imported/JumpAim_Left.png-0acca308fda688923dc424ca102c9fb1.ctex"]
+source_file="res://Assets/Sprites/Characters/Player/Oriana_Evans_Rope.png"
+dest_files=["res://.godot/imported/Oriana_Evans_Rope.png-c28e984ae140dd2c5174d9f29aea0f1f.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqqmqsa25nhxm"]
+[gd_scene load_steps=25 format=3 uid="uid://bqqmqsa25nhxm"]
 
 [ext_resource type="PackedScene" uid="uid://ddcwy5gvmfeyc" path="res://Scenes/Levels/Grasslands/grasslands_tile_map.tscn" id="1_af8jq"]
 [ext_resource type="Shader" path="res://Materials/Shaders/GreyScaleShader.gdshader" id="2_t43vh"]
@@ -163,6 +163,20 @@ shader_parameter/colorModifier = 0.01
 shader = ExtResource("2_t43vh")
 shader_parameter/brightnessModifier = 0.333
 shader_parameter/colorModifier = 0.73
+
+[sub_resource type="Environment" id="Environment_gg7s0"]
+background_mode = 3
+ambient_light_source = 1
+ambient_light_color = Color(0.294118, 0.564706, 0.654902, 1)
+ambient_light_energy = 0.0
+reflected_light_source = 1
+tonemap_white = 7.82
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 0.8
+glow_bloom = 0.07
+volumetric_fog_density = 1.0
+adjustment_enabled = true
 
 [node name="DashDreamSequence" type="Node2D"]
 
@@ -561,3 +575,6 @@ range_item_cull_mask = 31
 shadow_item_cull_mask = 8
 texture = ExtResource("14_vrbxi")
 texture_scale = 1.65
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gg7s0")

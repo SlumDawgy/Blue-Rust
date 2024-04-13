@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lknikypg370e"
-path="res://.godot/imported/AimIndicatorLine.png-83d0523f9c2597e54ae96fa093203f6e.ctex"
+uid="uid://c1lea37n36wg6"
+path="res://.godot/imported/Dash_Right-Sheet.png-75f534aed715e804803890e3d950ef4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/AimIndicatorLine.png"
-dest_files=["res://.godot/imported/AimIndicatorLine.png-83d0523f9c2597e54ae96fa093203f6e.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/Dash_Right-Sheet.png"
+dest_files=["res://.godot/imported/Dash_Right-Sheet.png-75f534aed715e804803890e3d950ef4d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3mpekiiq4hww"
-path="res://.godot/imported/Hang_Left.png-82473913b8c86f7673fc18acdc6be7bd.ctex"
+uid="uid://cycixmgp3yim7"
+path="res://.godot/imported/JumpnadFall.png-1ab2410889d152482c2555d489abad9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/Hang_Left.png"
-dest_files=["res://.godot/imported/Hang_Left.png-82473913b8c86f7673fc18acdc6be7bd.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/JumpnadFall.png"
+dest_files=["res://.godot/imported/JumpnadFall.png-1ab2410889d152482c2555d489abad9c.ctex"]
 
 [params]
 

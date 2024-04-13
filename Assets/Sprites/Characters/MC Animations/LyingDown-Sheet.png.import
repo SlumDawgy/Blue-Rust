@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cycixmgp3yim7"
-path="res://.godot/imported/JumpnadFall.png-4c5857fdc412d1f564d3695c7162cc7f.ctex"
+uid="uid://b5c2bk6clm5g0"
+path="res://.godot/imported/LyingDown-Sheet.png-c6a782f183fd9c1a335c24f5750b8fea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/MC Animations/JumpnadFall.png"
-dest_files=["res://.godot/imported/JumpnadFall.png-4c5857fdc412d1f564d3695c7162cc7f.ctex"]
+source_file="res://Assets/Sprites/Characters/MC Animations/LyingDown-Sheet.png"
+dest_files=["res://.godot/imported/LyingDown-Sheet.png-c6a782f183fd9c1a335c24f5750b8fea.ctex"]
 
 [params]
 
