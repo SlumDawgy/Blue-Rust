@@ -23,12 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Boss/SlashEffect.png" id="15_bhv6r"]
 [ext_resource type="Texture2D" uid="uid://b7i8em8vp0cl6" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="15_gnlw0"]
 [ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="16_s2gkb"]
-[ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Player/Aiming.png" id="21_etkqa"]
 [ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Boss/SteamChargeLowHelath.png" id="21_s3rtd"]
 [ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Boss/BrokenPiece1.png" id="22_4vuif"]
 [ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
 [ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
 [ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
+[ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Characters/Player/Aiming.png" id="24_rt3vl"]
 [ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/02. Wall hit.WAV" id="26_idy6h"]
 [ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/03. Charge.WAV" id="27_h1uwv"]
 [ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/02. Retrieve.WAV" id="28_5x8d2"]
@@ -833,7 +833,7 @@ scale = Vector2(0.5, 0.5)
 visible = false
 modulate = Color(1, 0.12549, 0.0862745, 0.521569)
 scale = Vector2(2, 2)
-texture = ExtResource("21_etkqa")
+texture = ExtResource("24_rt3vl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D/Node2D"]
 position = Vector2(-24, 0)
