@@ -543,7 +543,32 @@ script = ExtResource("1_0ljdo")
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_chxby")]
 visible = true
 
-[node name="MantleCheckerComponent" parent="." instance=ExtResource("23_q6t21")]
+[node name="MantleCheckerComponent" parent="." node_paths=PackedStringArray("checkWallRight", "checkWallUpRight", "checkWallLeft", "checkWallUpLeft") instance=ExtResource("23_q6t21")]
+process_mode = 4
+checkWallRight = NodePath("checkWallRight")
+checkWallUpRight = NodePath("checkWallUpRight")
+checkWallLeft = NodePath("checkWallLeft")
+checkWallUpLeft = NodePath("checkWallUpLeft")
+
+[node name="checkWallLeft" type="RayCast2D" parent="MantleCheckerComponent"]
+position = Vector2(-5, -5)
+target_position = Vector2(-6, 0)
+collision_mask = 8
+
+[node name="checkWallUpRight" type="RayCast2D" parent="MantleCheckerComponent"]
+position = Vector2(1, -10)
+target_position = Vector2(10.5, 0)
+collision_mask = 8
+
+[node name="checkWallRight" type="RayCast2D" parent="MantleCheckerComponent"]
+position = Vector2(5, -5)
+target_position = Vector2(6.5, 0)
+collision_mask = 8
+
+[node name="checkWallUpLeft" type="RayCast2D" parent="MantleCheckerComponent"]
+position = Vector2(-1, -10)
+target_position = Vector2(-10, 0)
+collision_mask = 8
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
@@ -637,5 +662,7 @@ orbit_velocity_max = 0.05
 scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_7ms4p")
+
+[node name="GrapplingHook" type="Node2D" parent="."]
 
 [editable path="HitBoxComponent"]

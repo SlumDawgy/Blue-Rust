@@ -24,11 +24,16 @@ var startingPointNode
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_tree().get_first_node_in_group("Player")
+	player = get_tree().root.get_node("Node2D/Player")
 	audios = player.get_node("Audios")
 	audios.grappleShoot.play()
-	startingPointNode = player.get_node("AnimatedSprite2D/Node2D")
+	startingPointNode = player.get_node("PlayerSprite/ArmPivo")
 	
+	var directionToPosition = (to_local(player.position) - get_global_mouse_position()).normalized()
+	rotation =  PI + atan2(directionToPosition.y, directionToPosition.x) 
+	position = player.get_node("PlayerSprite/ArmPivo").get_global_transform().origin
+	positionToReach = get_global_mouse_position() + Vector2(0, 8)
+
 	pass # Replace with function body.
 
 
