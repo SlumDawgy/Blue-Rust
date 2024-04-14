@@ -9,6 +9,7 @@ var start := false
 
 var fall := false
 var savePoint := false
+var dream1 := false
 
 func _ready():
 	var currentSceneName = get_tree().get_current_scene().name
@@ -47,6 +48,11 @@ func _process(_delta):
 			Dialogic.VAR.Dialogue4 = false
 		elif Dialogic.VAR.Dialogue5 == true:
 			Dialogic.VAR.Dialogue5 = false
+			get_tree().root.get_node("Node2D").process_mode = Node.PROCESS_MODE_DISABLED
+			get_tree().root.get_node("Node2D").visible = false
+			var newScene = load("res://Scenes/Levels/DreamSequences/DashDreamSequence.tscn")
+			var instanceNewScene = newScene.instantiate()
+			get_tree().root.add_child(instanceNewScene)
 			
 
 func fadetonormal():

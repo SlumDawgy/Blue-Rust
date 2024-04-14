@@ -53,6 +53,7 @@ func PowerUp(body):
 	print(10)
 	if body.is_in_group("Player"):
 		body.dashActivation()
+		body.staticActive = true
 		get_tree().root.get_node("Node2D").get_node("powerUp").queue_free()
 		Dialogic.start("res://Dialogic/Timelines/Prison1-5.dtl")
 	pass

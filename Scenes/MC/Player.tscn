@@ -602,7 +602,6 @@ collision_mask = 8
 script = ExtResource("3_ab1od")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
-visible = false
 shape = SubResource("SegmentShape2D_oyj74")
 
 [node name="DamageCollision" type="Area2D" parent="."]

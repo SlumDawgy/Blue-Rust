@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var speed = 50
 var chargeSpeed = 300
 
-var isAttacking = false
+var isAttacking := false
 var isMoving := true
 var isTakingDamage := false
 var isCharging := false
@@ -266,7 +266,6 @@ func die():
 			$"../AudioStreamPlayer".playing = true
 			$"../BossFight".playing = false
 	elif animation.frame == 2:
-		$"../Label3".visible = true
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -66), -1)
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -67), -1)
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -68), -1)
@@ -291,7 +290,6 @@ func die():
 		
 		get_tree().root.get_node("Node2D").add_child(powerUp)
 		print(powerUp.body_entered.get_connections())
-		
 		queue_free()
 		
 	pass

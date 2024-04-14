@@ -62,8 +62,13 @@ var dashDirection := 0
 
 # Damage
 var takingDamage = false
+
+
+
 var hookPathActive : bool = true
 var aimAssistActive : bool = true
+
+
 # Get gravity
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 

@@ -32,7 +32,6 @@ directories/dch_directory={
 "Soothing_Voice": "res://Dialogic/Characters/Soothing_Voice.dch"
 }
 directories/dtl_directory={
-"Prison": "res://Dialogic/Timelines/Prison.dtl",
 "Prison1-1": "res://Dialogic/Timelines/Prison1-1.dtl",
 "Prison1-2": "res://Dialogic/Timelines/Prison1-2.dtl",
 "Prison1-3": "res://Dialogic/Timelines/Prison1-3.dtl",
@@ -144,7 +143,7 @@ dialogic_default_action={
 
 [layer_names]
 
-2d_physics/layer_1="Character"
+2d_physics/layer_1="Player"
 2d_physics/layer_2="Grapple"
 2d_physics/layer_3="Water"
 2d_physics/layer_4="Walls"
