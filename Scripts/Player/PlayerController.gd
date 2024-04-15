@@ -1,13 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
+# Physics "Constants"
+var GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 # Movements
 var currentMovement : int
 @export var speed : float = 115.0
 
 # Jump Variables
 @export var jumpSpeed : float = -250.0
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumped : bool = false
 
 var gravityVarUpwards : float = 0.45
@@ -16,14 +18,15 @@ var gravityVarDownwards : float = 0.65
 var coyoteTime : float = 0.01
 
 # Mantle
-@onready var mantleChecker : Node2D = $MantleCheckerComponent
+@onready var mantleChecker : MantleCheckerComponent = $MantleCheckerComponent
 var canMantle : bool = true
 
 # Grappling
-var grapplingHookProjectile : PackedScene
+var grapplingHookScene : PackedScene = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
+
 
 # Inputs
-var inputDirection : int = 0
+var inputDirection : float = 0.0
 var inputJump : bool = false
 
 enum movement
@@ -37,18 +40,14 @@ enum movement
 	dashing,
 	dying
 }
-	
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	currentMovement = movement.enabled
-	grapplingHookProjectile = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
-	pass # Replace with function body.
 
 func getInput():
 	inputDirection = Input.get_axis("MoveLeft", "MoveRight")
 
-func enabled(delta):
+func enabled():
 	velocity.x = speed * inputDirection
 	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
@@ -58,14 +57,13 @@ func enabled(delta):
 	if Input.is_action_just_pressed("GrapplingHook"):
 		currentMovement = movement.grappling
 	
-	#Gravity
 	if not is_on_floor() and velocity.y >= 0:
 		currentMovement = movement.jumping
 
 func jumping(delta):
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
 		velocity.y = 0
-		pass
+
 	velocity.x = speed * inputDirection
 	if jumped == true:
 		velocity.y = jumpSpeed
@@ -73,9 +71,9 @@ func jumping(delta):
 
 	#Gravity
 	if not is_on_floor() and velocity.y < 0:
-		velocity.y += delta * gravity * gravityVarUpwards
+		velocity.y += delta * GRAVITY * gravityVarUpwards
 	elif not is_on_floor() and velocity.y >= 0:
-		velocity.y += delta * gravity * gravityVarDownwards
+		velocity.y += delta * GRAVITY * gravityVarDownwards
 		if canMantle == true:
 			mantleChecker.process_mode = Node.PROCESS_MODE_INHERIT
 		
@@ -96,28 +94,33 @@ func mantling():
 		canMantle = true
 		pass
 
-func grappling(delta):
-	velocity.y = gravity * delta * 1.5
-	var grapplingHookChild = grapplingHookProjectile.instantiate()
+func grappling():
+	#velocity.y = GRAVITY * delta * 1.5
+	var grapplingHook = grapplingHookScene.instantiate()
+	owner.add_child(grapplingHook)
+	grapplingHook.transform = $PlayerSprite/ArmPivo/Arm/GrappleOrigin.get_global_transform()
+	# Position where the bullet is fired
+	grapplingHook.rotation = $PlayerSprite/ArmPivo/Arm.rotation
+	
+	currentMovement = movement.enabled
+	#grapplingHook.start(fire_direction)  # Set the direction if needed
+	#parent_node.add_child(grapplingHook)  # Add bullet to the scene
 
-	if get_tree().root.get_node_or_null("Node2D/Grappling") == null:
-		get_parent().add_child(grapplingHookChild)
 
 func _physics_process(delta):
 	getInput()
-	print(velocity.y)
-
+	$PlayerSprite/ArmPivo/Arm.look_at(get_global_mouse_position())
 	match currentMovement:
 		movement.disabled:
 			pass
 		movement.enabled:
-			enabled(delta)
+			enabled()
 		movement.jumping:
 			jumping(delta)
 		movement.mantling:
 			mantling()
 		movement.grappling:
-			grappling(delta)
+			grappling()
 		movement.hanging:
 			pass
 		movement.dashing:

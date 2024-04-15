@@ -1,4 +1,5 @@
 extends Node2D
+class_name MantleCheckerComponent
 
 @export var checkWallRight : RayCast2D
 @export var checkWallUpRight : RayCast2D
