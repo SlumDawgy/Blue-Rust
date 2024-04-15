@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=103 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -574,9 +574,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sj1xt"]
-radius = 120.0
-
 [sub_resource type="Gradient" id="Gradient_hd8fm"]
 offsets = PackedFloat32Array(0, 0.513889, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.677584, 0.869188, 0, 1, 1, 1, 1, 0)
@@ -675,13 +672,6 @@ texture = ExtResource("20_a1ajo")
 texture_mode = 1
 script = ExtResource("21_x7ebn")
 player = NodePath("../../../..")
-
-[node name="GrappleRange" type="Area2D" parent="PlayerSprite"]
-visible = false
-
-[node name="RangeCollision" type="CollisionShape2D" parent="PlayerSprite/GrappleRange"]
-shape = SubResource("CircleShape2D_sj1xt")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="JumpBuffering" type="RayCast2D" parent="."]
 visible = false

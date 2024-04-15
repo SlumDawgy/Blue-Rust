@@ -15,5 +15,3 @@ func _physics_process(_delta):
 					set_point_position(1, get_local_mouse_position())
 		else:
 			remove_point(1)
-
-

@@ -3,6 +3,7 @@ class_name Grapple
 
 const speed : float = 250.0
 const characterSpeed : float = 350.0
+const maxGrappleDistance : int = 150
 
 var startingPointNode : Node2D
 var startPosition : Vector2
@@ -19,6 +20,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	if position.distance_to(player.get_global_transform().origin) >= maxGrappleDistance:
+		returning = true
+		movingPlayer = false
+		
 	if movingPlayer:
 		player.position += (transform.origin - player.transform.origin).normalized() * speed * delta
 		if position.distance_to(player.get_global_transform().origin) < 16:
@@ -47,7 +52,7 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 		
 		elif body.get_layer_for_body_rid(body_rid) == 0:
 			returning = true
-		
+				
 func startHanging():
 	player.currentMovement = player.movement.hanging
 	player.position = position + Vector2(0, 24)

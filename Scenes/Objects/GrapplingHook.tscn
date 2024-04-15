@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://mmcj2yssjc6a"]
+[gd_scene load_steps=5 format=3 uid="uid://mmcj2yssjc6a"]
 
 [ext_resource type="Texture2D" uid="uid://cvhv7n800d42o" path="res://Assets/Sprites/Player/Oriana_Evans_Hook.png" id="1_gurcb"]
-[ext_resource type="Script" path="res://Scripts/Objects/GrapplingHookController.gd" id="1_n3yul"]
 [ext_resource type="AudioStream" uid="uid://wbffryedxy1u" path="res://Assets/Sounds/GrappleShoot.WAV" id="2_qlnmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b2db"]
@@ -14,7 +13,6 @@ stereo = true
 
 [node name="GrapplingHook" type="Area2D" groups=["Grappling"]]
 collision_mask = 27
-script = ExtResource("1_n3yul")
 
 [node name="GrapplingHookCollisionArea" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3b2db")
