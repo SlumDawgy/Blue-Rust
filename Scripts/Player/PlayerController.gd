@@ -57,9 +57,8 @@ func enabled():
 		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
 		return
-		
+	
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		print("jump")
 		currentMovement = movement.jumping
 		gravityModifier = gravityVarUpwards
 		jumped = true
@@ -109,11 +108,16 @@ func grappling():
 		velocity.y = 0.0
 		velocity.x = 0.0
 
-
 func disabled():
 	if not grapplingHook:
 		gravityModifier = gravityVarDownwards
 		currentMovement = movement.enabled
+		
+	#if Input.is_action_just_released("GrapplingHook") and not movement.grappling:
+		#grapplingHook.grappleDirection = -1
+		#currentMovement = movement.enabled
+		#gravityModifier = gravityVarDownwards
+		#velocity.y = 0
 		
 func _physics_process(delta):
 	getInput()

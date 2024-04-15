@@ -13,6 +13,7 @@ format = 1
 stereo = true
 
 [node name="GrapplingHook" type="Area2D" groups=["Grappling"]]
+collision_mask = 27
 script = ExtResource("1_n3yul")
 
 [node name="GrapplingHookCollisionArea" type="CollisionShape2D" parent="."]
