@@ -12,8 +12,10 @@ var currentMovement : int
 @export var jumpSpeed : float = -250.0
 var jumped : bool = false
 
+var gravityModifier : float = 0.65
 var gravityVarUpwards : float = 0.45
 var gravityVarDownwards : float = 0.65
+var gravityVarGrapple : float = 0.01
 
 var coyoteTime : float = 0.01
 
@@ -23,7 +25,7 @@ var canMantle : bool = true
 
 # Grappling
 var grapplingHookScene : PackedScene = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
-
+var grapplingHook : Area2D
 
 # Inputs
 var inputDirection : float = 0.0
@@ -48,38 +50,42 @@ func getInput():
 	inputDirection = Input.get_axis("MoveLeft", "MoveRight")
 
 func enabled():
+	$PlayerSprite/ArmPivo/Arm.look_at(get_global_mouse_position())
 	velocity.x = speed * inputDirection
 	
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		currentMovement = movement.jumping
-		jumped = true
-		
 	if Input.is_action_just_pressed("GrapplingHook"):
+		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
-	
-	if not is_on_floor() and velocity.y >= 0:
+		return
+		
+	if Input.is_action_just_pressed("Jump") and is_on_floor():
+		print("jump")
 		currentMovement = movement.jumping
-
-func jumping(delta):
+		gravityModifier = gravityVarUpwards
+		jumped = true
+		return
+		
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
+		currentMovement = movement.enabled
+		gravityModifier = gravityVarDownwards
 		velocity.y = 0
+		return
+		
+	if not is_on_floor() and velocity.y >= 0:
+		gravityModifier = gravityVarDownwards
+		if canMantle == true:
+			mantleChecker.process_mode = Node.PROCESS_MODE_INHERIT
+		return
 
+func jumping():
 	velocity.x = speed * inputDirection
 	if jumped == true:
 		velocity.y = jumpSpeed
 		jumped = false
 
-	#Gravity
-	if not is_on_floor() and velocity.y < 0:
-		velocity.y += delta * GRAVITY * gravityVarUpwards
-	elif not is_on_floor() and velocity.y >= 0:
-		velocity.y += delta * GRAVITY * gravityVarDownwards
-		if canMantle == true:
-			mantleChecker.process_mode = Node.PROCESS_MODE_INHERIT
-		
-	if is_on_floor() and velocity.y >= 0:
-			currentMovement = movement.enabled
-			canMantle = true
+	canMantle = true		
+	currentMovement = movement.enabled
+
 	
 func mantling():
 	if velocity.y != 0:
@@ -92,31 +98,34 @@ func mantling():
 		jumped = true
 		currentMovement = movement.jumping
 		canMantle = true
-		pass
 
 func grappling():
-	#velocity.y = GRAVITY * delta * 1.5
-	var grapplingHook = grapplingHookScene.instantiate()
-	owner.add_child(grapplingHook)
-	grapplingHook.transform = $PlayerSprite/ArmPivo/Arm/GrappleOrigin.get_global_transform()
-	# Position where the bullet is fired
-	grapplingHook.rotation = $PlayerSprite/ArmPivo/Arm.rotation
-	
-	currentMovement = movement.enabled
-	#grapplingHook.start(fire_direction)  # Set the direction if needed
-	#parent_node.add_child(grapplingHook)  # Add bullet to the scene
+	if not grapplingHook:
+		grapplingHook = grapplingHookScene.instantiate()
+		owner.add_child(grapplingHook)
+		grapplingHook.transform = $PlayerSprite/ArmPivo/Arm/GrappleOrigin.get_global_transform()
+		grapplingHook.rotation = $PlayerSprite/ArmPivo/Arm.rotation
+		currentMovement = movement.disabled
+		velocity.y = 0.0
+		velocity.x = 0.0
 
 
+func disabled():
+	if not grapplingHook:
+		gravityModifier = gravityVarDownwards
+		currentMovement = movement.enabled
+		
 func _physics_process(delta):
 	getInput()
-	$PlayerSprite/ArmPivo/Arm.look_at(get_global_mouse_position())
+	velocity.y += GRAVITY * delta * gravityModifier
+
 	match currentMovement:
 		movement.disabled:
-			pass
+			disabled()
 		movement.enabled:
 			enabled()
 		movement.jumping:
-			jumping(delta)
+			jumping()
 		movement.mantling:
 			mantling()
 		movement.grappling:

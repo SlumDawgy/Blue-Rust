@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=91 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -524,9 +524,6 @@ frame_3/duration = 0.1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.974227, 0), -2.82848, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tbiq0"]
-radius = 50.0
-
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 9
 script = ExtResource("1_0ljdo")
@@ -642,10 +639,5 @@ orbit_velocity_max = 0.05
 scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_7ms4p")
-
-[node name="MaxGrappleRange" type="Area2D" parent="."]
-
-[node name="GrappleCollider" type="CollisionShape2D" parent="MaxGrappleRange"]
-shape = SubResource("CircleShape2D_tbiq0")
 
 [editable path="HitBoxComponent"]

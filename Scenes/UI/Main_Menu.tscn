@@ -76,6 +76,7 @@ texture_pressed = ExtResource("10_6oq8k")
 texture_hover = ExtResource("11_7snne")
 
 [node name="Scenetransition" parent="." instance=ExtResource("14_0kjxk")]
+visible = false
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Start_Button" to="." method="_on_start_pressed"]
