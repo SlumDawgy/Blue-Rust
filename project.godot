@@ -64,6 +64,12 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
+translation/enabled=true
+translation/original_locale="pt_BR"
+translation/file_mode=1
+translation/translation_folder="res://Dialogic/Translation"
+translation/save_mode=0
+translation/add_separator=false
 
 [display]
 
@@ -140,6 +146,11 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Dialogic/Translation/dialogic_Prison1-4_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-4_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_Prison1-5_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-5_translation.pt_BR.translation")
+locale/test="pt_BR"
 
 [layer_names]
 

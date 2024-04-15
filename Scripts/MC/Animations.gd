@@ -36,9 +36,8 @@ func chooseAnimation():
 				playAnimation("jump")
 			else:
 				playAnimation("fall")
-		player.movement.mantling:
-			if animation != "right_mantling":
-				play("right_mantling")
+		#player.movement.mantling: #Already in the mantling script
+			#pass
 		player.movement.grappling:
 			pass
 		player.movement.hanging:
