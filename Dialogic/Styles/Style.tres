@@ -19,12 +19,8 @@ overrides = {}
 script = ExtResource("2_ds4cu")
 scene = ExtResource("9_q0msc")
 overrides = {
-"box_color_custom": "Color(1, 1, 1, 1)",
 "box_color_use_global": "false",
-"box_panel": "\"res://Dialogic/Styles/StyleBox/MCStyleBox.tres\"",
-"name_label_box_modulate": "Color(1, 1, 1, 1)",
 "name_label_box_offset": "Vector2(-32, -16)",
-"name_label_box_panel": "\"res://Dialogic/Styles/StyleBox/MCStyleBoxTag.tres\"",
 "name_label_box_use_global_color": "false"
 }
 

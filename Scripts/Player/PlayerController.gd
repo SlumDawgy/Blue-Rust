@@ -63,27 +63,27 @@ func enabled():
 		gravityModifier = gravityVarUpwards
 		jumped = true
 		return
-		
+
+func jumping():
+	velocity.x = speed * inputDirection
+	if jumped == true:
+			velocity.y = jumpSpeed
+			jumped = false
+	
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
-		currentMovement = movement.enabled
 		gravityModifier = gravityVarDownwards
 		velocity.y = 0
 		return
-		
+	
+	canMantle = true
 	if not is_on_floor() and velocity.y >= 0:
 		gravityModifier = gravityVarDownwards
 		if canMantle == true:
 			mantleChecker.process_mode = Node.PROCESS_MODE_INHERIT
 		return
-
-func jumping():
-	velocity.x = speed * inputDirection
-	if jumped == true:
-		velocity.y = jumpSpeed
-		jumped = false
-
-	canMantle = true		
-	currentMovement = movement.enabled
+	
+	if is_on_floor() and velocity.y >= 0:
+		currentMovement = movement.enabled
 
 	
 func mantling():
