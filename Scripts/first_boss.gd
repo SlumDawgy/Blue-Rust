@@ -264,7 +264,7 @@ func die():
 			$"../BossFight".playing = false
 	elif animation.frame == 2:
 		player.dashActivation()
-		$"../Label3".visible = true
+		$"../PlayerControlImages/Label3".visible = true
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -66), -1)
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -67), -1)
 		$"../PrisonTiles".set_cell(0, Vector2i(90, -68), -1)
