@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=138 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -29,11 +29,18 @@
 [ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
 [ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
 [ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
+[ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossSprites.gd" id="24_vbx28"]
 [ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/02. Wall hit.WAV" id="26_idy6h"]
 [ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/03. Charge.WAV" id="27_h1uwv"]
 [ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/02. Retrieve.WAV" id="28_5x8d2"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="31_4d6cc"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="31_l3uw7"]
+[ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="35_qc33f"]
+[ext_resource type="PackedScene" uid="uid://d0fwaxi3ok6nx" path="res://Scenes/Components/hitBoxComponent.tscn" id="36_dp3sm"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wf4o1"]
+a = Vector2(-20, 30)
+b = Vector2(26, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
 atlas = ExtResource("2_eyfvr")
@@ -379,7 +386,7 @@ animations = [{
 "duration": 5.0,
 "texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -402,7 +409,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_36vlp")
 }],
-"loop": true,
+"loop": false,
 "name": &"FullHealth_BackUp",
 "speed": 5.0
 }, {
@@ -432,7 +439,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"FullHealth_Damage",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -518,7 +525,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5vj0p")
 }],
-"loop": true,
+"loop": false,
 "name": &"HalfHealth_BackUp",
 "speed": 5.0
 }, {
@@ -634,7 +641,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2scgi")
 }],
-"loop": true,
+"loop": false,
 "name": &"LowHealth_BackUp",
 "speed": 5.0
 }, {
@@ -788,8 +795,7 @@ turbulence_noise_strength = 6.4
 turbulence_influence_min = 0.131
 turbulence_influence_max = 0.489
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_wi6mj"]
-points = PackedVector2Array(-32, 32, -32, -32, 16, -32, 16, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skb83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwyoi"]
 size = Vector2(24, 64)
@@ -798,7 +804,7 @@ size = Vector2(24, 64)
 size = Vector2(24, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpoy"]
-size = Vector2(48, 42)
+size = Vector2(46, 64)
 
 [sub_resource type="Curve" id="Curve_t01ax"]
 _data = [Vector2(0.00700935, 1), 0.0, 0.0, 0, 0, Vector2(0.852804, 1), 0.146826, 0.146826, 0, 0, Vector2(1, 0.0490566), -6.25198, 0.0, 0, 0]
@@ -815,32 +821,37 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_58pow"]
 b = Vector2(0, 0)
 
-[node name="First_Boss" type="CharacterBody2D"]
+[node name="FirstBoss" type="CharacterBody2D"]
 collision_layer = 32784
 collision_mask = 24
 platform_floor_layers = 4294901760
 script = ExtResource("1_7v45d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="FloorCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_wf4o1")
+
+[node name="FirstBossSprites" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("FirstBoss")]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Steam"
+animation = &"FullHealth_Damage"
+script = ExtResource("24_vbx28")
+FirstBoss = NodePath("..")
 
-[node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
+[node name="Node2D" type="Node2D" parent="FirstBossSprites"]
 scale = Vector2(0.5, 0.5)
 
-[node name="Aiming" type="Sprite2D" parent="AnimatedSprite2D/Node2D"]
+[node name="Aiming" type="Sprite2D" parent="FirstBossSprites/Node2D"]
 visible = false
 modulate = Color(1, 0.12549, 0.0862745, 0.521569)
 scale = Vector2(2, 2)
 texture = ExtResource("21_etkqa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FirstBossSprites/Node2D"]
 position = Vector2(-24, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hua0c")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D/Node2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FirstBossSprites/Node2D"]
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_rnwv2")
@@ -850,10 +861,12 @@ one_shot = true
 speed_scale = 4.0
 explosiveness = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 0)
-shape = SubResource("ConvexPolygonShape2D_wi6mj")
-one_way_collision_margin = 0.0
+[node name="HealthComponent" parent="." instance=ExtResource("35_qc33f")]
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("36_dp3sm")]
+
+[node name="CollisionShape2D" parent="HitBoxComponent" index="0"]
+shape = SubResource("RectangleShape2D_skb83")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -867,30 +880,20 @@ shape = SubResource("RectangleShape2D_fyu8d")
 
 [node name="WallCollision" type="Node2D" parent="."]
 
-[node name="RayCast2D" type="RayCast2D" parent="WallCollision"]
+[node name="Right" type="RayCast2D" parent="WallCollision"]
 target_position = Vector2(40, 0)
 collision_mask = 8
 
-[node name="RayCast2D2" type="RayCast2D" parent="WallCollision"]
-target_position = Vector2(-48, 0)
+[node name="Left" type="RayCast2D" parent="WallCollision"]
+target_position = Vector2(-40, 0)
 collision_mask = 8
-
-[node name="Area2D2" type="Area2D" parent="."]
-collision_layer = 48
-collision_mask = 48
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(8, 0)
-scale = Vector2(1.05, 1.05)
-shape = SubResource("ConvexPolygonShape2D_wi6mj")
-one_way_collision_margin = 0.0
 
 [node name="Damagable" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
-position = Vector2(0, -5)
+position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_ccpoy")
 
 [node name="Audios" type="Node2D" parent="."]
@@ -932,7 +935,7 @@ scale_amount_max = 2.5
 scale_amount_curve = SubResource("Curve_t01ax")
 color_ramp = SubResource("Gradient_ad410")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="SteamParticles"]
+[node name="Charging" type="CPUParticles2D" parent="SteamParticles"]
 emitting = false
 amount = 20
 lifetime = 0.1
@@ -948,14 +951,14 @@ angle_min = -90.0
 angle_max = -90.0
 color_ramp = SubResource("Gradient_yjpeg")
 
-[node name="Area2D" type="Area2D" parent="SteamParticles"]
+[node name="Damage" type="Area2D" parent="SteamParticles"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SteamParticles/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SteamParticles/Damage"]
 shape = SubResource("SegmentShape2D_58pow")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
-[connection signal="body_entered" from="SteamParticles/Area2D" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="SteamParticles/Damage" to="." method="_on_area_2d_2_body_entered"]
+
+[editable path="HitBoxComponent"]

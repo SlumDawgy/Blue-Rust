@@ -28,7 +28,7 @@ func checkingWall():
 			if collider.is_class("TileMap"):
 				if checkWallUpRight.is_colliding() == false:
 					character.position = collider.map_to_local(collider.local_to_map(character.position)) - Vector2(4, 0)
-					character.currentMovement = character.movement.mantling
+					character.currentMovement = character.FirstBoss.movement.mantling
 					animation.play("right_mantling")
 
 	if checkWallLeft.is_colliding() and character.is_on_floor() == false:
@@ -37,5 +37,5 @@ func checkingWall():
 			if collider.is_class("TileMap"):
 				if checkWallUpLeft.is_colliding() == false:
 					character.position = collider.map_to_local(collider.local_to_map(character.position)) + Vector2(4, 0)
-					character.currentMovement = character.movement.mantling
+					character.currentMovement = character.FirstBoss.movement.mantling
 					animation.play("left_mantling")

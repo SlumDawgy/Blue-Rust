@@ -24,7 +24,7 @@ func _ready():
 
 func _process(_delta):
 	if is_instance_valid(player) and start == false:
-		player.currentMovement = player.movement.disabled
+		player.currentMovement = player.FirstBoss.movement.disabled
 		start = true
 	elif start == true:
 		if Dialogic.VAR.Dialogue1 == true and faded == false:
@@ -33,13 +33,13 @@ func _process(_delta):
 			faded = true
 			Dialogic.VAR.Dialogue1 = false
 		elif Dialogic.VAR.Dialogue2 == true:
-			player.currentMovement = player.movement.enabled
+			player.currentMovement = player.FirstBoss.movement.enabled
 			Dialogic.VAR.Dialogue2 = false
 		elif Dialogic.VAR.Dialogue3 == true:
-			player.currentMovement = player.movement.enabled
+			player.currentMovement = player.FirstBoss.movement.enabled
 			Dialogic.VAR.Dialogue3 = false
 		elif Dialogic.VAR.Dialogue4 == true:
-			player.currentMovement = player.movement.enabled
+			player.currentMovement = player.FirstBoss.movement.enabled
 			Dialogic.VAR.Dialogue4 = false
 		elif Dialogic.VAR.Dialogue5 == true:
 			Dialogic.VAR.Dialogue5 = false
@@ -65,14 +65,14 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _Dialogue3(body : Player):
 	if fall == false:
-		body.currentMovement = body.movement.disabled
+		body.currentMovement = body.FirstBoss.movement.disabled
 		fall = true
 		Dialogic.start("res://Dialogic/Timelines/Prison1-3.dtl")
 	pass # Replace with function body.
 
 func _Dialogue4(body : Player):
 	if savePoint == false:
-		body.currentMovement = body.movement.disabled
+		body.currentMovement = body.FirstBoss.movement.disabled
 		savePoint = true
 		Dialogic.start("res://Dialogic/Timelines/Prison1-4.dtl")
 	pass # Replace with function body.
