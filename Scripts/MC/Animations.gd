@@ -41,7 +41,7 @@ func chooseAnimation():
 		player.movement.grappling:
 			pass
 		player.movement.hanging:
-			pass
+			playAnimation("hanging")
 		player.movement.dashing:
 			pass
 		player.movement.dying:

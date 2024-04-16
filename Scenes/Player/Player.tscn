@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=85 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/MC/Animations.gd" id="18_ns8m1"]
 [ext_resource type="Texture2D" uid="uid://cja1wnyiquxnh" path="res://Assets/Sprites/MC Animations/Arm.png" id="19_568wi"]
 [ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/Player/AimIndicatorLine.png" id="20_a1ajo"]
+[ext_resource type="Script" path="res://Scenes/Player/GrappleRange.gd" id="21_2v464"]
 [ext_resource type="Script" path="res://Scripts/MC/HookPath.gd" id="21_x7ebn"]
 [ext_resource type="PackedScene" uid="uid://bsoulh05m1dc6" path="res://Scenes/Components/mantleComponent.tscn" id="23_q6t21"]
 [ext_resource type="Script" path="res://Scripts/PlayerAudios.gd" id="24_yncxs"]
@@ -76,22 +77,6 @@ region = Rect2(96, 0, 32, 36)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tf02"]
 atlas = ExtResource("8_1e5fq")
 region = Rect2(0, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8f7yr"]
-atlas = ExtResource("8_1e5fq")
-region = Rect2(32, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5d1e"]
-atlas = ExtResource("8_1e5fq")
-region = Rect2(64, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_illke"]
-atlas = ExtResource("8_1e5fq")
-region = Rect2(96, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_11sq2"]
-atlas = ExtResource("8_1e5fq")
-region = Rect2(128, 0, 32, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8o80k"]
 atlas = ExtResource("9_f1co1")
@@ -176,22 +161,6 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvcmv"]
 atlas = ExtResource("14_8iaf0")
 region = Rect2(0, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3d37g"]
-atlas = ExtResource("14_8iaf0")
-region = Rect2(32, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ut3w2"]
-atlas = ExtResource("14_8iaf0")
-region = Rect2(64, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4qag"]
-atlas = ExtResource("14_8iaf0")
-region = Rect2(96, 0, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wsns0"]
-atlas = ExtResource("14_8iaf0")
-region = Rect2(128, 0, 32, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nj8qe"]
 atlas = ExtResource("15_thi2n")
@@ -303,20 +272,8 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2tf02")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_8f7yr")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_d5d1e")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_illke")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_11sq2")
 }],
-"loop": true,
+"loop": false,
 "name": &"left_hanging",
 "speed": 5.0
 }, {
@@ -418,18 +375,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yvcmv")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_3d37g")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_ut3w2")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_o4qag")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_wsns0")
 }],
 "loop": false,
 "name": &"right_hanging",
@@ -500,6 +445,9 @@ animations = [{
 "name": &"right_running",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sj1xt"]
+radius = 120.0
 
 [sub_resource type="Gradient" id="Gradient_hd8fm"]
 offsets = PackedFloat32Array(0, 0.513889, 1)
@@ -573,7 +521,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_running"
+animation = &"right_idle"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -586,6 +534,13 @@ offset = Vector2(4.5, 0)
 
 [node name="GrappleOrigin" type="Node2D" parent="PlayerSprite/ArmPivo/Arm"]
 position = Vector2(11, 0)
+
+[node name="GrappleRange" type="Area2D" parent="PlayerSprite/ArmPivo/Arm/GrappleOrigin"]
+script = ExtResource("21_2v464")
+
+[node name="RangeCollision" type="CollisionShape2D" parent="PlayerSprite/ArmPivo/Arm/GrappleOrigin/GrappleRange"]
+shape = SubResource("CircleShape2D_sj1xt")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HookPath" type="Line2D" parent="PlayerSprite/ArmPivo"]
 points = PackedVector2Array(0, 0)
@@ -645,5 +600,7 @@ orbit_velocity_max = 0.05
 scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_7ms4p")
+
+[connection signal="area_exited" from="PlayerSprite/ArmPivo/Arm/GrappleOrigin/GrappleRange" to="PlayerSprite/ArmPivo/Arm/GrappleOrigin/GrappleRange" method="_on_area_exited"]
 
 [editable path="HitBoxComponent"]

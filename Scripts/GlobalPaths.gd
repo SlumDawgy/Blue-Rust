@@ -3,7 +3,7 @@ extends Node
 
 # SCENES
 # SCENES/MC
-const GRAPPLING_HOOK_PATH: String = "res://Scenes/Objects/GrapplingHook.tscn"
+const GRAPPLING_HOOK_PATH: String = "res://Scenes/Player/GrapplingHook.tscn"
 
 # SCENES/UI
 const DEATH_SCREEN_PATH: String = "res://Scenes/UI/death_ui.tscn"

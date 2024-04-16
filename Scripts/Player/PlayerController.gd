@@ -70,6 +70,11 @@ func jumping():
 			velocity.y = jumpSpeed
 			jumped = false
 	
+	if Input.is_action_just_pressed("GrapplingHook"):
+		gravityModifier = gravityVarGrapple
+		currentMovement = movement.grappling
+		return
+	
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
 		gravityModifier = gravityVarDownwards
 		velocity.y = 0
@@ -85,7 +90,6 @@ func jumping():
 	if is_on_floor() and velocity.y >= 0:
 		currentMovement = movement.enabled
 
-	
 func mantling():
 	if velocity.y != 0:
 		velocity.y = 0
@@ -101,10 +105,13 @@ func mantling():
 func grappling():
 	if not grapplingHook:
 		grapplingHook = grapplingHookScene.instantiate()
-		owner.add_child(grapplingHook)
+		grapplingHook.startingPointNode = $PlayerSprite/ArmPivo/Arm/GrappleOrigin
 		grapplingHook.transform = $PlayerSprite/ArmPivo/Arm/GrappleOrigin.get_global_transform()
-		grapplingHook.rotation = $PlayerSprite/ArmPivo/Arm.rotation
-		currentMovement = movement.disabled
+		grapplingHook.positionToReach = get_global_mouse_position()
+		grapplingHook.player = self
+		
+		owner.add_child(grapplingHook)
+		
 		velocity.y = 0.0
 		velocity.x = 0.0
 
@@ -112,16 +119,22 @@ func disabled():
 	if not grapplingHook:
 		gravityModifier = gravityVarDownwards
 		currentMovement = movement.enabled
-		
-	#if Input.is_action_just_released("GrapplingHook") and not movement.grappling:
-		#grapplingHook.grappleDirection = -1
-		#currentMovement = movement.enabled
-		#gravityModifier = gravityVarDownwards
-		#velocity.y = 0
-		
+
+func hanging():
+	velocity.y = move_toward(0,0,0)
+	
+	if Input.is_action_just_pressed("Jump"):
+		currentMovement = movement.jumping
+	
+	if Input.is_action_just_released("GrapplingHook"):
+		currentMovement = movement.jumping
+		gravityModifier = gravityVarDownwards
+
 func _physics_process(delta):
 	getInput()
-	velocity.y += GRAVITY * delta * gravityModifier
+	
+	if not is_on_floor():
+		velocity.y += GRAVITY * delta * gravityModifier
 
 	match currentMovement:
 		movement.disabled:
@@ -135,7 +148,7 @@ func _physics_process(delta):
 		movement.grappling:
 			grappling()
 		movement.hanging:
-			pass
+			hanging()
 		movement.dashing:
 			pass
 		movement.dying:
