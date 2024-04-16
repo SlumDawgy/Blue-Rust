@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cjtfh567jyugy" path="res://Assets/Sprites/Lanturn/lanturn_full.png" id="2_ham3w"]
 
 [node name="GameUI" type="Control"]
-z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

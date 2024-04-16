@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://o6ucr1l65mpj"]
+[gd_scene load_steps=5 format=3 uid="uid://o6ucr1l65mpj"]
 
 [ext_resource type="PackedScene" uid="uid://cp43vyf7fw63k" path="res://Scenes/Levels/sbx_level.tscn" id="3_n2m1n"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_45ru1"]
+[ext_resource type="PackedScene" uid="uid://dlfvlfcjgtiv" path="res://Scenes/UI/game_ui.tscn" id="4_xh0xt"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="11_4d8wk"]
 
 [node name="sbx" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("11_4d8wk")]
-position = Vector2(23, -42)
+position = Vector2(341, -130)
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(114, -37)
@@ -18,3 +19,6 @@ script = ExtResource("4_45ru1")
 player = NodePath("../Player")
 
 [node name="sbx_level" parent="." instance=ExtResource("3_n2m1n")]
+
+[node name="GameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_xh0xt")]
+player = NodePath("../Player")

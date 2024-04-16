@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var player
+@export var player : Player
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -49,52 +49,48 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if !is_instance_valid(player):
-		player = get_tree().get_first_node_in_group("Player")
+	if canReceiveDamage:
+		$AnimatedSprite2D/Node2D/Aiming.visible = true
 	else:
+		$AnimatedSprite2D/Node2D/Aiming.visible = false
 	
-		if canReceiveDamage:
-			$AnimatedSprite2D/Node2D/Aiming.visible = true
-		else:
-			$AnimatedSprite2D/Node2D/Aiming.visible = false
-		
-		attackCD -= delta
-		chargeAttackCD -= delta
-		
-		if isStunned == false:
-			stunCD = 3.0
-		
-		if isDying:
-			die()
-		elif isTakingDamage:
-			damage()
-		elif isStunned:
-			stunned(delta)
-		elif isMoving:
-			move()
-		elif isAttacking:
-			attack()
-		elif isCharging:
-			charge(delta)
-		elif isSteam:
-			steam(delta)
-		
-		move_and_slide()
+	attackCD -= delta
+	chargeAttackCD -= delta
+	
+	if isStunned == false:
+		stunCD = 3.0
+	
+	if isDying:
+		die()
+	elif isTakingDamage:
+		damage()
+	elif isStunned:
+		stunned(delta)
+	elif isMoving:
+		move()
+	elif isAttacking:
+		attack()
+	elif isCharging:
+		charge(delta)
+	elif isSteam:
+		steam(delta)
+	
+	move_and_slide()
 
-		if not is_on_floor():
-			velocity.y += gravity * delta
-		
-		if canDoDamage == true and attackCD <= 0 and isCharging == false:
-			isAttacking = true
-			isMoving = false
-		
-		if abs(player.position.x - position.x) > 128 and chargeAttackCD < 0:
-			isCharging = true
-			isMoving = false
-			isAttacking = false
-		
-		if Input.is_action_just_pressed("Crouch"):
-			isDying = true
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+	if canDoDamage == true and attackCD <= 0 and isCharging == false:
+		isAttacking = true
+		isMoving = false
+	
+	if abs(player.position.x - position.x) > 128 and chargeAttackCD < 0:
+		isCharging = true
+		isMoving = false
+		isAttacking = false
+	
+	if Input.is_action_just_pressed("Crouch"):
+		isDying = true
 
 
 func attack():
@@ -119,19 +115,20 @@ func attack():
 			attackCD = 1
 			$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
 			if canDoDamage == true:
-				player.damage()
+				player.currentMovement = player.movement.takingDamage
+				canDoDamage = false
 
 func move():
 	
-	if ((position.x < player.position.x + 21 and position.x > player.position.x + 17 and animation.flip_h == true) or (position.x > player.position.x - 23 and position.x < player.position.x - 19 and animation.flip_h == false)) and player.hangingActive == true:
+	if ((position.x < player.position.x + 21 and position.x > player.position.x + 17 and animation.flip_h == true) or (position.x > player.position.x - 23 and position.x < player.position.x - 19 and animation.flip_h == false)) and player.currentMovement == player.movement.hanging:
 		isSteam = true
 		isMoving = false
-	elif position.x > player.position.x and player.hangingActive == false:
+	elif position.x > player.position.x and player.currentMovement != player.movement.hanging:
 		velocity.x = -speed
 		animation.flip_h = false
 		$SteamParticles.position.x = 19
 		animation.play(healthState[healthStateCounter] + "_Walk")
-	elif position.x <= player.position.x and player.hangingActive == false:
+	elif position.x <= player.position.x and player.currentMovement != player.movement.hanging:
 		velocity.x = speed
 		animation.flip_h = true
 		$SteamParticles.position.x = -21
@@ -170,7 +167,7 @@ func charge(delta):
 			chargeCD = 1
 			audios.wallHit.play()
 		elif colliderLeft.is_in_group("Player") and velocity.x < 0:
-			player.damage()
+			player.currentMovement = player.movement.takingDamage
 			isCharging = false
 			isMoving = true
 			chargeAttackCD = 5
@@ -184,7 +181,7 @@ func charge(delta):
 			chargeCD = 1
 			audios.wallHit.play()
 		elif colliderRight.is_in_group("Player") and velocity.x > 0:
-			player.damage()
+			player.currentMovement = player.movement.takingDamage
 			isCharging = false
 			isMoving = true
 			chargeAttackCD = 5
@@ -249,7 +246,7 @@ func steam(delta):
 		if $SteamParticles/Area2D/CollisionShape2D.shape.b.y > -100:
 			$SteamParticles/Area2D/CollisionShape2D.shape.b.y -= 100 * delta
 
-	if player.hangingActive == false:
+	if player.currentMovement == player.movement.hanging == false:
 		$SteamParticles/CPUParticles2D.emitting = false
 		$SteamParticles.emitting = false
 		isSteam = false
@@ -294,30 +291,6 @@ func die():
 		
 	pass
 
-
-func _on_area_2d_body_entered(body : CharacterBody2D):
-	if body.is_in_group("Player"):
-		canDoDamage = true
-	pass # Replace with function body.
-
-
-func _on_area_2d_body_exited(body : CharacterBody2D):
-	if body.is_in_group("Player"):
-		canDoDamage = false
-	pass # Replace with function body.
-
-
-func _on_area_2d_2_body_entered(body : CharacterBody2D):
-	if is_instance_valid(player):
-		if body.is_in_group("Player"):
-			player.damage()
-		if player.hangingActive == true:
-			player.hangingActive = false
-			player.moveActive = true
-	pass # Replace with function body.
-
-
-
 func _on_damagable_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
 	if area.is_in_group("Grappling") and canReceiveDamage:
 		isTakingDamage = true
@@ -326,4 +299,18 @@ func _on_damagable_area_shape_entered(_area_rid, area, _area_shape_index, _local
 		isStunned = false
 		isMoving = true
 		
+	pass # Replace with function body.
+
+
+func _on_area_2d_2_area_entered(area : HitBoxComponent):
+	player.currentMovement = player.movement.takingDamage
+
+
+func _on_area_2d_area_entered(area : HitBoxComponent):
+	canDoDamage = true
+	pass # Replace with function body.
+
+
+func _on_area_2d_area_exited(area: HitBoxComponent):
+	canDoDamage = false
 	pass # Replace with function body.

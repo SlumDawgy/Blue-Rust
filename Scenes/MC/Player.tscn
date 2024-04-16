@@ -595,7 +595,7 @@ joint_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g51n2")
-animation = &"left_mantling"
+animation = &"left_dash"
 speed_scale = 2.0
 script = ExtResource("10_xc0nu")
 

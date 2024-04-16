@@ -25,10 +25,12 @@ func playAnimation(type):
 func chooseAnimation():
 	match player.currentMovement:
 		player.movement.disabled:
-			playAnimation("idle")
+			pass
 		player.movement.enabled:
-			if player.velocity.x != 0:
-				playAnimation("running")
+			if player.velocity.x < 0:
+				play("left_running")
+			elif player.velocity.x > 0:
+				play("right_running")
 			else:
 				playAnimation("idle")
 		player.movement.jumping:
@@ -38,14 +40,23 @@ func chooseAnimation():
 				playAnimation("fall")
 		#player.movement.mantling: #Already in the mantling script
 			#pass
-		player.movement.grappling:
-			pass
+		#player.movement.grappling:
+			#pass
 		player.movement.hanging:
 			playAnimation("hanging")
+		player.movement.hangingJump:
+			if player.velocity.y < 0:
+				playAnimation("jump")
+			else:
+				playAnimation("fall")
 		player.movement.dashing:
-			pass
+			if animation != "left_dash" and animation != "right_dash":
+				playAnimation("dash")
+		player.movement.takingDamage:
+			playAnimation("damage")
 		player.movement.dying:
-			pass
+			if player.is_on_floor() and animation != "death":
+				play("death")
 
 func _process(delta):
 	chooseAnimation()
@@ -115,8 +126,10 @@ func movingPivot():
 		match frame:
 				0: armPivo.position = Vector2(1.5, -5.5)
 				1: armPivo.position = Vector2(1.5, -5.5)
+	elif animation == "right_dash":
+		armPivo.position = Vector2(0.5, -4.5)
 
-	if animation == "right_mantling" or animation == "right_hanging" or animation == "left_hanging" or animation == "left_damage" or animation == "right_damage":
+	if player.currentMovement == player.movement.hanging or player.currentMovement == player.movement.mantling or animation == "death" or animation == "getting_up":
 		armPivo.visible = false
 	else:
 		armPivo.visible = true

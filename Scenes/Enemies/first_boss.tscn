@@ -953,8 +953,9 @@ color_ramp = SubResource("Gradient_yjpeg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SteamParticles/Area2D"]
 shape = SubResource("SegmentShape2D_58pow")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
 [connection signal="body_entered" from="SteamParticles/Area2D" to="." method="_on_area_2d_2_body_entered"]

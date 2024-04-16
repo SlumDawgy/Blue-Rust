@@ -26,6 +26,16 @@ var canMantle : bool = true
 # Grappling
 var grapplingHookScene : PackedScene = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
 var grapplingHook : Area2D
+@onready var grappleOrigin : Node2D = $PlayerSprite/ArmPivo/Arm/GrappleOrigin
+
+# HangingJump
+var hangJumped : bool = false
+var cursorXcoord : float
+
+# Dash
+var dashed : bool = false
+@export var dashSpeed : float = 250.0
+@onready var dashUpgrade : Node2D = $DashUpgrade
 
 # Inputs
 var inputDirection : float = 0.0
@@ -39,7 +49,9 @@ enum movement
 	mantling,
 	grappling,
 	hanging,
+	hangingJump,
 	dashing,
+	takingDamage,
 	dying
 }
 
@@ -48,6 +60,9 @@ func _ready():
 
 func getInput():
 	inputDirection = Input.get_axis("MoveLeft", "MoveRight")
+
+func disabled():
+	velocity.x = move_toward(0,0,0)
 
 func enabled():
 	$PlayerSprite/ArmPivo/Arm.look_at(get_global_mouse_position())
@@ -67,8 +82,8 @@ func enabled():
 func jumping():
 	velocity.x = speed * inputDirection
 	if jumped == true:
-			velocity.y = jumpSpeed
-			jumped = false
+		velocity.y = jumpSpeed
+		jumped = false
 	
 	if Input.is_action_just_pressed("GrapplingHook"):
 		gravityModifier = gravityVarGrapple
@@ -105,8 +120,8 @@ func mantling():
 func grappling():
 	if not grapplingHook:
 		grapplingHook = grapplingHookScene.instantiate()
-		grapplingHook.startingPointNode = $PlayerSprite/ArmPivo/Arm/GrappleOrigin
-		grapplingHook.transform = $PlayerSprite/ArmPivo/Arm/GrappleOrigin.get_global_transform()
+		grapplingHook.startingPointNode = grappleOrigin
+		grapplingHook.transform = grappleOrigin.get_global_transform()
 		grapplingHook.positionToReach = get_global_mouse_position()
 		grapplingHook.player = self
 		
@@ -115,22 +130,56 @@ func grappling():
 		velocity.y = 0.0
 		velocity.x = 0.0
 
-func disabled():
-	if not grapplingHook:
-		gravityModifier = gravityVarDownwards
-		currentMovement = movement.enabled
-
 func hanging():
 	velocity.y = move_toward(0,0,0)
-	
 	if Input.is_action_just_pressed("Jump"):
-		currentMovement = movement.jumping
+		currentMovement = movement.hangingJump
+		hangJumped = true
 	
 	if Input.is_action_just_released("GrapplingHook"):
 		currentMovement = movement.jumping
 		gravityModifier = gravityVarDownwards
 
+func hangingJump():
+	if Input.is_action_just_pressed("GrapplingHook"):
+		gravityModifier = gravityVarGrapple
+		currentMovement = movement.grappling
+		return
+	
+	if hangJumped:
+		velocity.y = -200
+		hangJumped = false
+		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
+	gravityModifier = gravityVarDownwards
+	if cursorXcoord <= 0:
+		velocity.x = 200
+	else:
+		velocity.x = -200
+	if is_on_floor():
+		currentMovement = movement.enabled
+
+func dashing():
+	if velocity.y != 0:
+		velocity.y = 0
+	if dashed:
+		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
+		print(cursorXcoord)
+		dashed = false
+		if cursorXcoord <= 0:
+			velocity.x = dashSpeed
+		else:
+			velocity.x = -dashSpeed
+		await get_tree().create_timer(0.5).timeout
+		currentMovement = movement.enabled
+		dashUpgrade.dashParticles.emitting = false
+
+func dying():
+	velocity.x = move_toward(0,0,0)
+
 func _physics_process(delta):
+	if Input.is_action_just_pressed("changeDifficulty"):
+		currentMovement = movement.dying
+	
 	getInput()
 	
 	if not is_on_floor():
@@ -149,9 +198,13 @@ func _physics_process(delta):
 			grappling()
 		movement.hanging:
 			hanging()
+		movement.hangingJump:
+			hangingJump()
 		movement.dashing:
+			dashing()
+		movement.takingDamage:
 			pass
 		movement.dying:
-			pass
+			dying()
 	
 	move_and_slide()

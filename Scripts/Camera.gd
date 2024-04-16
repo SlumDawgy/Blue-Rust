@@ -6,7 +6,6 @@ var speedX = 300
 var speedY = 200
 
 func _process(delta):
-
 	if player.velocity.x > 0:
 		position.x += speedX * delta
 	elif player.velocity.x < 0:

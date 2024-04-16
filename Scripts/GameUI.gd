@@ -1,67 +1,50 @@
 extends Control
+class_name GameUI
 
-#@export var maxHealth : int = 3
-#@export var currentHealth : int = 3
-#
-#var deathScreen
-#
-#var player
-#
+@export var player : Player
+
+var health : HealthComponent
+
+var lanturnFull = load(GlobalPaths.LANTURN_FULL_PATH)
+var lanturnEmpty = load(GlobalPaths.LANTURN_EMPTY_PATH)
+
+@onready var healthContainer : HBoxContainer = $HBoxContainer
+
 ## Called when the node enters the scene tree for the first time.
-#func _ready():
-	#deathScreen = preload(GlobalPaths.DEATH_SCREEN_PATH)
-	#pass # Replace with function body.
+func _ready():
+	health = player.get_node("HealthComponent")
+	health.connect("player_damage", Callable(self, "changeHealth"))
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(_delta):
-	#if !is_instance_valid(player):
-		#
-		#player = get_tree().get_first_node_in_group("Player")
-		#
-		#var loadMaxHealth : int = player.maxHealth
-		#var loadCurrentHealth : int = player.currentHealth
-		#
-		#if loadCurrentHealth < 0:
-			#loadCurrentHealth = 1
-		#
-		#while(maxHealth != loadMaxHealth):
-			#if maxHealth < loadMaxHealth:
-				#increaseMaxHealth()
-			#elif maxHealth > loadMaxHealth:
-				#decreaseMaxHealth()
-		#while(currentHealth != loadCurrentHealth):
-			#if currentHealth < loadCurrentHealth:
-				#increaseHealth()
-			#elif currentHealth > loadCurrentHealth:
-				#decreaseHealth()
-	#else:
-		#if Input.is_action_just_pressed("ui_right"):
-			#increaseHealth()
-		#elif Input.is_action_just_pressed("ui_left"):
-			#decreaseHealth()
-		#elif Input.is_action_just_pressed("ui_up"):
-			#increaseMaxHealth()
-		#elif Input.is_action_just_pressed("ui_down"):
-			#decreaseMaxHealth()
-		#
-		#if currentHealth == 0:
-			#endGame()
-#
-#
+func _physics_process(_delta):
+	#if Input.is_action_just_pressed("ui_right"):
+		#increaseHealth()
+	#elif Input.is_action_just_pressed("ui_left"):
+		#decreaseHealth()
+	#elif Input.is_action_just_pressed("ui_up"):
+		#increaseMaxHealth()
+	#elif Input.is_action_just_pressed("ui_down"):
+		#decreaseMaxHealth()
+	pass
+
+func changeHealth():
+	for lanturns in range(healthContainer.get_child_count()):
+		if healthContainer.get_child_count() - lanturns > (health.maxHealth - health.health):
+			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnFull
+		else:
+			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnEmpty
+
 #func decreaseHealth():
 	#if currentHealth > 0:
 		#currentHealth -= 1
 		#player.currentHealth -= 1
-#
 	#if get_node("HBoxContainer/Heart" + str(currentHealth + 1)) != null:
 		#get_node("HBoxContainer/Heart" + str(currentHealth + 1)).texture = load(GlobalPaths.LANTURN_EMPTY_PATH)
-	#
 #
 #func increaseHealth():
 	#if currentHealth < maxHealth:
 		#currentHealth += 1
 		#player.currentHealth += 1
-	#
 	#if get_node("HBoxContainer/Heart" + str(currentHealth)) != null:
 		#get_node("HBoxContainer/Heart" + str(currentHealth)).texture = load(GlobalPaths.LANTURN_FULL_PATH)
 #
@@ -71,13 +54,9 @@ extends Control
 	#if currentHealth < maxHealth:
 		#currentHealth = maxHealth
 		#player.currentHealth = maxHealth
-	#
 	#var newHeart = get_node("HBoxContainer/Heart1").duplicate(1)
-	#
 	#newHeart.name = "Heart" + str(maxHealth)
-	#
 	#get_node("HBoxContainer").add_child(newHeart)
-	#
 	#for restore in range(1, maxHealth + 1):
 		#get_node("HBoxContainer/Heart" + str(restore)).texture = load(GlobalPaths.LANTURN_FULL_PATH)
 		#
@@ -89,20 +68,4 @@ extends Control
 		#if currentHealth > maxHealth:
 			#currentHealth -= 1
 			#player.currentHealth -= 1
-		#
 		#get_node("HBoxContainer/Heart" + str(maxHealth + 1)).queue_free()
-#
-#func endGame():
-	#if player != null:
-		#player.deadActive = true
-		#var deathScreenChild = deathScreen.instantiate()
-		#
-		#if player.get_parent().get_node_or_null("Grappling") != null:
-			#player.get_parent().get_node_or_null("Grappling").queue_free()
-		#
-		#if get_parent().get_node_or_null("Death_UI") == null:
-			#get_parent().add_child(deathScreenChild)
-#
-#func respawn():
-	#get_tree().reload_current_scene()
-	#pass
