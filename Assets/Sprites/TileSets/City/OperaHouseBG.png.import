@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq4xlxg4l1630"
-path="res://.godot/imported/CityTiles.png-bf4f5f3e21c4dfd7f68e55eb042bed7c.ctex"
+uid="uid://dvnuik28mgvh0"
+path="res://.godot/imported/OperaHouseBG.png-6fb54533ed651b76ed2722b9bdca620f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/City/CityTiles.png"
-dest_files=["res://.godot/imported/CityTiles.png-bf4f5f3e21c4dfd7f68e55eb042bed7c.ctex"]
+source_file="res://Assets/Sprites/TileSets/City/OperaHouseBG.png"
+dest_files=["res://.godot/imported/OperaHouseBG.png-6fb54533ed651b76ed2722b9bdca620f.ctex"]
 
 [params]
 
