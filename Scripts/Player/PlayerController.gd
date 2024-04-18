@@ -41,6 +41,9 @@ var dashed : bool = false
 var inputDirection : float = 0.0
 var inputJump : bool = false
 
+# Health
+@onready var health : HealthComponent = $HealthComponent
+
 enum movement
 {
 	disabled,
@@ -173,6 +176,9 @@ func dashing():
 		currentMovement = movement.enabled
 		dashUpgrade.dashParticles.emitting = false
 
+func takingDamage():
+	pass
+
 func dying():
 	velocity.x = move_toward(0,0,0)
 
@@ -203,7 +209,7 @@ func _physics_process(delta):
 		movement.dashing:
 			dashing()
 		movement.takingDamage:
-			pass
+			takingDamage()
 		movement.dying:
 			dying()
 	

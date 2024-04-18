@@ -845,11 +845,12 @@ scale = Vector2(2, 2)
 texture = ExtResource("21_etkqa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FirstBossSprites/Node2D"]
+visible = false
 position = Vector2(-24, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hua0c")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="FirstBossSprites/Node2D"]
+[node name="DamageParticle" type="GPUParticles2D" parent="FirstBossSprites/Node2D"]
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_rnwv2")

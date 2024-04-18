@@ -8,6 +8,7 @@ var changeScale : bool = false
 
 @onready var bossSize : Vector2 = $HitBoxComponent/CollisionShape2D.shape.size
 @onready var animation : AnimatedSprite2D = $FirstBossSprites
+@onready var damageParticles : GPUParticles2D = $FirstBossSprites/Node2D/DamageParticle
 
 var speed : float = 50.0
 
@@ -53,30 +54,20 @@ func starting():
 	pass
 
 func enabled():
-	if position.x - bossSize.x >= player.position.x and player.currentMovement != player.movement.hanging:
+	if attackCollision.is_colliding():
+		currentMovement = movement.attacking
+	elif position.x - bossSize.x >= player.position.x:
 		velocity.x = -speed
 		if changeScale == true:
 			scale.x *= -1
 			changeScale = false
-	elif position.x + bossSize.x < player.position.x and player.currentMovement != player.movement.hanging:
+		steamChecking(movement.chargingSteam)
+	elif position.x + bossSize.x < player.position.x:
 		velocity.x = speed
 		if changeScale == false:
 			scale.x *= -1
 			changeScale = true
-
-	if attackCollision.is_colliding():
-		currentMovement = movement.attacking
-	
-	if changeScale == false:
-		if steamChargingParticles.to_local(position).x >= player.to_local(position).x - 4:
-			if steamChargingParticles.to_local(position).x <= player.to_local(position).x + 4:
-				if player.currentMovement == player.movement.hanging:
-					currentMovement = movement.chargingSteam
-	else:
-		if -steamChargingParticles.to_local(position).x >= player.to_local(position).x - 4:
-			if -steamChargingParticles.to_local(position).x <= player.to_local(position).x + 4:
-				if player.currentMovement == player.movement.hanging:
-					currentMovement = movement.chargingSteam
+		steamChecking(movement.chargingSteam)
 
 func attack():
 	velocity.x = 0
@@ -115,7 +106,8 @@ func chargingSteam():
 	velocity.x = move_toward(0,0,0)
 	steamChargingParticles.emitting = true
 	await get_tree().create_timer(2.5).timeout
-	currentMovement = movement.steamAttacking
+	
+	steamChecking(movement.steamAttacking)
 
 func steamAttacking():
 	steamAttackParticles.emitting = true
@@ -126,10 +118,25 @@ func steamAttacking():
 		currentMovement = movement.enabled
 	pass
 
+func steamChecking(action):
+	var checkPosition
+	if changeScale == false:
+		checkPosition = steamChargingParticles.to_local(position).x
+	else:
+		checkPosition = -steamChargingParticles.to_local(position).x
+	
+	if checkPosition >= player.to_local(position).x - 4 and checkPosition <= player.to_local(position).x + 4 and player.currentMovement == player.movement.hanging:
+		currentMovement = action
+	else:
+		steamChargingParticles.emitting = false
+		steamAttackParticles.emitting = false
+		currentMovement = movement.enabled
+
 func takingDamage():
 	velocity.x = move_toward(0,0,0)
 	steamAttackParticles.emitting = false
 	steamChargingParticles.emitting = false
+	damageParticles.emitting = true
 	if animation.is_playing() == false:
 		healthStateCounter += 1
 		if healthStateCounter == 3:
