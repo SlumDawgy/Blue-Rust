@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=137 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -40,7 +40,7 @@
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wf4o1"]
 a = Vector2(-20, 30)
-b = Vector2(26, 30)
+b = Vector2(21, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
 atlas = ExtResource("2_eyfvr")
@@ -686,7 +686,7 @@ animations = [{
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_1ran8")
 }],
-"loop": true,
+"loop": false,
 "name": &"LowHealth_Slash",
 "speed": 5.0
 }, {
@@ -797,14 +797,8 @@ turbulence_influence_max = 0.489
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skb83"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwyoi"]
-size = Vector2(24, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyu8d"]
-size = Vector2(24, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpoy"]
-size = Vector2(46, 64)
+size = Vector2(56.5, 64)
 
 [sub_resource type="Curve" id="Curve_t01ax"]
 _data = [Vector2(0.00700935, 1), 0.0, 0.0, 0, 0, Vector2(0.852804, 1), 0.146826, 0.146826, 0, 0, Vector2(1, 0.0490566), -6.25198, 0.0, 0, 0]
@@ -821,6 +815,9 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_58pow"]
 b = Vector2(0, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yy3b"]
+size = Vector2(30, 20)
+
 [node name="FirstBoss" type="CharacterBody2D"]
 collision_layer = 32784
 collision_mask = 24
@@ -831,9 +828,10 @@ script = ExtResource("1_7v45d")
 shape = SubResource("SegmentShape2D_wf4o1")
 
 [node name="FirstBossSprites" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("FirstBoss")]
+position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"FullHealth_Damage"
+animation = &"LowHealth_Slash"
 script = ExtResource("24_vbx28")
 FirstBoss = NodePath("..")
 
@@ -862,38 +860,27 @@ speed_scale = 4.0
 explosiveness = 1.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("35_qc33f")]
+position = Vector2(-7, 0)
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("36_dp3sm")]
 
 [node name="CollisionShape2D" parent="HitBoxComponent" index="0"]
 shape = SubResource("RectangleShape2D_skb83")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-28, 0)
-shape = SubResource("RectangleShape2D_fwyoi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(32, 0)
-shape = SubResource("RectangleShape2D_fyu8d")
-
 [node name="WallCollision" type="Node2D" parent="."]
-
-[node name="Right" type="RayCast2D" parent="WallCollision"]
-target_position = Vector2(40, 0)
-collision_mask = 8
+position = Vector2(-2, 0)
 
 [node name="Left" type="RayCast2D" parent="WallCollision"]
 target_position = Vector2(-40, 0)
 collision_mask = 8
 
 [node name="Damagable" type="Area2D" parent="."]
+position = Vector2(5, 0)
 collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
-position = Vector2(3, 0)
+position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_ccpoy")
 
 [node name="Audios" type="Node2D" parent="."]
@@ -915,7 +902,7 @@ stream = ExtResource("27_h1uwv")
 stream = ExtResource("28_5x8d2")
 
 [node name="SteamParticles" type="CPUParticles2D" parent="."]
-position = Vector2(19, -26)
+position = Vector2(20, -26)
 emitting = false
 amount = 100
 lifetime = 0.6
@@ -956,8 +943,12 @@ color_ramp = SubResource("Gradient_yjpeg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SteamParticles/Damage"]
 shape = SubResource("SegmentShape2D_58pow")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[node name="Attack" type="ShapeCast2D" parent="."]
+position = Vector2(-29, -22)
+shape = SubResource("RectangleShape2D_0yy3b")
+target_position = Vector2(0, 44)
+max_results = 4
+
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
 [connection signal="body_entered" from="SteamParticles/Damage" to="." method="_on_area_2d_2_body_entered"]
 

@@ -4,6 +4,7 @@ class_name Enemy
 var currentMovement : int
 var healthState : Array = ["FullHealth", "HalfHealth", "LowHealth"]
 var healthStateCounter : int = 0
+var changeScale : bool = false
 
 @onready var bossSize : Vector2 = $HitBoxComponent/CollisionShape2D.shape.size
 @onready var animation : AnimatedSprite2D = $FirstBossSprites
@@ -13,11 +14,13 @@ var speed : float = 50.0
 # Charge Attack
 var chargeSpeed : float = 300.0
 @onready var wallCollisionLeft = $WallCollision/Left
-@onready var wallCollisionRight = $WallCollision/Right
 
 # Steam Attack
 @onready var steamChargingParticles = $SteamParticles/Charging
 @onready var steamAttackParticles = $SteamParticles
+
+# Normal Attack
+@onready var attackCollision = $Attack
 
 # Player
 @export var player : Player
@@ -43,7 +46,7 @@ enum movement
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
-	currentMovement = movement.chargingSteam
+	currentMovement = movement.enabled
 	pass # Replace with function body.
 
 func starting():
@@ -52,25 +55,49 @@ func starting():
 func enabled():
 	if position.x - bossSize.x >= player.position.x and player.currentMovement != player.movement.hanging:
 		velocity.x = -speed
-		animation.flip_h = false
-		$SteamParticles.position.x = 19
+		if changeScale == true:
+			scale.x *= -1
+			changeScale = false
 	elif position.x + bossSize.x < player.position.x and player.currentMovement != player.movement.hanging:
 		velocity.x = speed
-		animation.flip_h = true
-		$SteamParticles.position.x = -21
+		if changeScale == false:
+			scale.x *= -1
+			changeScale = true
+
+	if attackCollision.is_colliding():
+		currentMovement = movement.attacking
+	
+	if changeScale == false:
+		if steamChargingParticles.to_local(position).x >= player.to_local(position).x - 4:
+			if steamChargingParticles.to_local(position).x <= player.to_local(position).x + 4:
+				if player.currentMovement == player.movement.hanging:
+					currentMovement = movement.chargingSteam
+	else:
+		if -steamChargingParticles.to_local(position).x >= player.to_local(position).x - 4:
+			if -steamChargingParticles.to_local(position).x <= player.to_local(position).x + 4:
+				if player.currentMovement == player.movement.hanging:
+					currentMovement = movement.chargingSteam
 
 func attack():
-	pass
-	
+	velocity.x = 0
+	if animation.frame == 2:
+		if attackCollision.is_colliding():
+			var collision = attackCollision.get_collider(0)
+			collision.currentMovement = collision.movement.takingDamage
+		
+	await get_tree().create_timer(0.5).timeout
+	currentMovement = movement.enabled
+
+
 func charging():
 	velocity.x = move_toward(0,0,0)
 	await get_tree().create_timer(2).timeout
 	currentMovement = movement.chargeAttacking
 
 func chargeAttacking():
-	if animation.flip_h:
+	if scale.x == -1:
 		velocity.x = chargeSpeed
-		if wallCollisionRight.is_colliding():
+		if wallCollisionLeft.is_colliding():
 			currentMovement = movement.stunned
 			position.x = wallCollisionLeft.get_collision_point().x - 38
 	else:
@@ -146,6 +173,7 @@ func dying():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	
 	if Input.is_action_just_pressed("Crouch"):
 		currentMovement = movement.takingDamage
 	match currentMovement:
@@ -154,7 +182,7 @@ func _physics_process(delta):
 		movement.enabled:
 			enabled()
 		movement.attacking:
-			pass
+			attack()
 		movement.charging:
 			charging()
 		movement.chargeAttacking:

@@ -13,7 +13,7 @@ func chooseAnimations():
 		FirstBoss.movement.enabled:
 			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Walk")
 		FirstBoss.movement.attacking:
-			pass
+			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Slash")
 		FirstBoss.movement.charging:
 			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Charge")
 		FirstBoss.movement.chargeAttacking:

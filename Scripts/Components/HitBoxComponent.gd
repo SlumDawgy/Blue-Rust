@@ -11,5 +11,5 @@ func _physics_process(delta):
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func damage(attack):
+func damage():
 	healthComponentInstance.damage()
