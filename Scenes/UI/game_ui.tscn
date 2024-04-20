@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlfvlfcjgtiv"]
 
-[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="1_eu326"]
+[ext_resource type="Script" path="res://Scripts/UI/GameUI.gd" id="1_eu326"]
 [ext_resource type="Texture2D" uid="uid://cjtfh567jyugy" path="res://Assets/Sprites/Lanturn/lanturn_full.png" id="2_ham3w"]
 
 [node name="GameUI" type="Control"]

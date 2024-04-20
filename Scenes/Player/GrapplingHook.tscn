@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://bebb75lmf4ffi"]
 
-[ext_resource type="Script" path="res://Scripts/Grappling.gd" id="1_cg6rp"]
+[ext_resource type="Script" path="res://Scripts/Player/Grappling.gd" id="1_s1l0w"]
 [ext_resource type="Texture2D" uid="uid://cvhv7n800d42o" path="res://Assets/Sprites/Player/Oriana_Evans_Hook.png" id="2_qmob8"]
 [ext_resource type="Texture2D" uid="uid://dpff0lfvkuvuc" path="res://Assets/Sprites/Player/Oriana_Evans_Rope.png" id="3_33ehx"]
-[ext_resource type="Script" path="res://Scenes/Player/GrappleRope.gd" id="4_2ww0i"]
+[ext_resource type="Script" path="res://Scripts/Player/GrappleRope.gd" id="4_e2bx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b2db"]
 size = Vector2(8, 8)
 
 [node name="Grappling" type="Area2D" groups=["Grappling"]]
 collision_mask = 26
-script = ExtResource("1_cg6rp")
+script = ExtResource("1_s1l0w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3b2db")
@@ -25,6 +25,6 @@ width = 1.0
 texture = ExtResource("3_33ehx")
 texture_mode = 1
 joint_mode = 2
-script = ExtResource("4_2ww0i")
+script = ExtResource("4_e2bx3")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

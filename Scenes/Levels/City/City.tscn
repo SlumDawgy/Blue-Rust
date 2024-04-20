@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cwvlxb1dnnmhs" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBG.png" id="4_gi7ol"]
 [ext_resource type="Texture2D" uid="uid://cncldaa7gq5u3" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclose.png" id="5_k5vda"]
 [ext_resource type="Texture2D" uid="uid://ceiqfib4ikgq4" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclosest.png" id="6_e4ts7"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="7_ii171"]
+[ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="7_ii171"]
 
 [node name="City(hub)" type="Node2D"]
 

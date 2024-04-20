@@ -1,6 +1,6 @@
 [gd_scene load_steps=137 format=3 uid="uid://dup4g553pqjue"]
 
-[ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
+[ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
 [ext_resource type="Texture2D" uid="uid://cyl4fqt3bhreb" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Slash-Sheet.png" id="2_ccuwb"]
 [ext_resource type="Texture2D" uid="uid://c4f4tou7xbq2l" path="res://Assets/Sprites/Boss/EnemyAtomiton_Death-Sheet.png" id="2_eyfvr"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Player/Aiming.png" id="21_etkqa"]
 [ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Boss/SteamChargeLowHelath.png" id="21_s3rtd"]
 [ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Boss/BrokenPiece1.png" id="22_4vuif"]
-[ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
+[ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossAudios.gd" id="23_8bsgf"]
 [ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
 [ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossSprites.gd" id="24_vbx28"]

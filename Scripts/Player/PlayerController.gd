@@ -26,7 +26,7 @@ var canMantle : bool = true
 # Grappling
 var grapplingHookScene : PackedScene = preload(GlobalPaths.GRAPPLING_HOOK_PATH)
 var grapplingHook : Area2D
-@onready var grappleOrigin : Node2D = $PlayerSprite/ArmPivo/Arm/GrappleOrigin
+@onready var grappleOrigin : Node2D = $PlayerSprite/Arm/GrappleOrigin
 
 # HangingJump
 var hangJumped : bool = false
@@ -68,7 +68,7 @@ func disabled():
 	velocity.x = move_toward(0,0,0)
 
 func enabled():
-	$PlayerSprite/ArmPivo/Arm.look_at(get_global_mouse_position())
+	$PlayerSprite/Arm/ArmPivo.look_at(get_global_mouse_position())
 	velocity.x = speed * inputDirection
 	
 	if Input.is_action_just_pressed("GrapplingHook"):

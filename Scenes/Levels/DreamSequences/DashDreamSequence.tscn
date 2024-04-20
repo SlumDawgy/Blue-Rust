@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ddcwy5gvmfeyc" path="res://Scenes/Levels/Grasslands/grasslands_tile_map.tscn" id="1_af8jq"]
 [ext_resource type="Shader" path="res://Materials/Shaders/GreyScaleShader.gdshader" id="2_t43vh"]
 [ext_resource type="PackedScene" uid="uid://damu3nwpp3qop" path="res://Scenes/MC/Player.tscn" id="3_jblln"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_tnc3o"]
+[ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="4_tnc3o"]
 [ext_resource type="PackedScene" uid="uid://dlfvlfcjgtiv" path="res://Scenes/UI/game_ui.tscn" id="5_76rwp"]
 [ext_resource type="Texture2D" uid="uid://dqx7b1eusufbw" path="res://Assets/Sprites/TileSets/Grasslands/GrassLand.png" id="6_rtpy5"]
 [ext_resource type="Shader" path="res://Materials/Shaders/RefractionMaterial.gdshader" id="6_tr05y"]

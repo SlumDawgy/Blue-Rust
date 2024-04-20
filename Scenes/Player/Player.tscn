@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=104 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -19,16 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://byqn5vjmkowyh" path="res://Assets/Sprites/MC Animations/IdleAim.png" id="15_thi2n"]
 [ext_resource type="Texture2D" uid="uid://cwir0opibhbg6" path="res://Assets/Sprites/MC Animations/Mantling.png" id="16_jw3ki"]
 [ext_resource type="Texture2D" uid="uid://d04y37r7rjqye" path="res://Assets/Sprites/MC Animations/RunningAim.png" id="17_gqew8"]
-[ext_resource type="Script" path="res://Scripts/MC/Animations.gd" id="18_ns8m1"]
+[ext_resource type="Script" path="res://Scripts/Player/Animations.gd" id="18_ns8m1"]
 [ext_resource type="Texture2D" uid="uid://cja1wnyiquxnh" path="res://Assets/Sprites/MC Animations/Arm.png" id="19_568wi"]
 [ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/Player/AimIndicatorLine.png" id="20_a1ajo"]
-[ext_resource type="Script" path="res://Scenes/Player/GrappleRange.gd" id="21_2v464"]
-[ext_resource type="Script" path="res://Scripts/MC/HookPath.gd" id="21_x7ebn"]
+[ext_resource type="Script" path="res://Scripts/Player/HookPath.gd" id="21_x7ebn"]
 [ext_resource type="PackedScene" uid="uid://bsoulh05m1dc6" path="res://Scenes/Components/mantleComponent.tscn" id="23_q6t21"]
-[ext_resource type="Script" path="res://Scripts/PlayerAudios.gd" id="24_yncxs"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAudios.gd" id="24_yncxs"]
 [ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Hurt.WAV" id="26_xdr5d"]
 [ext_resource type="Texture2D" uid="uid://bcvjkn2ipvh8u" path="res://Assets/Sprites/SmokeParticles1.png" id="27_0hu42"]
-[ext_resource type="Script" path="res://Scenes/Player/DashUpgrade.gd" id="27_m0g13"]
+[ext_resource type="Script" path="res://Scripts/Player/DashUpgrade.gd" id="27_tgcc7"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="28_6n5nn"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="29_sbppg"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="30_igr4l"]
@@ -660,30 +659,29 @@ animation = &"right_damage"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
-[node name="ArmPivo" type="Node2D" parent="PlayerSprite"]
+[node name="Arm" type="Sprite2D" parent="PlayerSprite"]
 position = Vector2(-1.5, -7.5)
-
-[node name="Arm" type="Sprite2D" parent="PlayerSprite/ArmPivo"]
 texture = ExtResource("19_568wi")
 offset = Vector2(4.5, 0)
 
-[node name="GrappleOrigin" type="Node2D" parent="PlayerSprite/ArmPivo/Arm"]
+[node name="GrappleOrigin" type="Node2D" parent="PlayerSprite/Arm"]
 position = Vector2(11, 0)
 
-[node name="GrappleRange" type="Area2D" parent="PlayerSprite/ArmPivo/Arm/GrappleOrigin"]
-script = ExtResource("21_2v464")
-
-[node name="RangeCollision" type="CollisionShape2D" parent="PlayerSprite/ArmPivo/Arm/GrappleOrigin/GrappleRange"]
-shape = SubResource("CircleShape2D_sj1xt")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[node name="HookPath" type="Line2D" parent="PlayerSprite/ArmPivo/Arm/GrappleOrigin" node_paths=PackedStringArray("player")]
+[node name="HookPath" type="Line2D" parent="PlayerSprite/Arm/GrappleOrigin" node_paths=PackedStringArray("player")]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 3.0
 texture = ExtResource("20_a1ajo")
 texture_mode = 1
 script = ExtResource("21_x7ebn")
-player = NodePath("../../../../..")
+player = NodePath("../../../..")
+
+[node name="ArmPivo" type="Node2D" parent="PlayerSprite/Arm"]
+
+[node name="GrappleRange" type="Area2D" parent="PlayerSprite"]
+
+[node name="RangeCollision" type="CollisionShape2D" parent="PlayerSprite/GrappleRange"]
+shape = SubResource("CircleShape2D_sj1xt")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="JumpBuffering" type="RayCast2D" parent="."]
 target_position = Vector2(0, 32)
@@ -697,7 +695,7 @@ stream = ExtResource("26_xdr5d")
 bus = &"SFX"
 
 [node name="DashUpgrade" type="Node2D" parent="."]
-script = ExtResource("27_m0g13")
+script = ExtResource("27_tgcc7")
 
 [node name="DashParticles" type="CPUParticles2D" parent="DashUpgrade"]
 emitting = false
@@ -741,7 +739,6 @@ scale_amount_curve = SubResource("Curve_7ms4p")
 [node name="DashTimer" type="Timer" parent="DashUpgrade"]
 process_callback = 0
 
-[connection signal="area_exited" from="PlayerSprite/ArmPivo/Arm/GrappleOrigin/GrappleRange" to="PlayerSprite/ArmPivo/Arm/GrappleOrigin/GrappleRange" method="_on_area_exited"]
 [connection signal="timeout" from="DashUpgrade/DashTimer" to="DashUpgrade" method="_on_dash_timer_timeout"]
 
 [editable path="HitBoxComponent"]

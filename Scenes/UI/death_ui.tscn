@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://drr6s5skpb062"]
 
-[ext_resource type="Script" path="res://Scripts/death_ui.gd" id="1_jfwu8"]
+[ext_resource type="Script" path="res://Scripts/UI/death_ui.gd" id="1_jfwu8"]
 
 [sub_resource type="Curve" id="Curve_hlrmg"]
 _data = [Vector2(0.0604396, 0.153846), 0.0, 0.0, 0, 0]
