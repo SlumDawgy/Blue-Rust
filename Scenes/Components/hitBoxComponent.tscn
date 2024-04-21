@@ -3,7 +3,4 @@
 [ext_resource type="Script" path="res://Scripts/Components/HitBoxComponent.gd" id="1_nmhpl"]
 
 [node name="HitBoxComponent" type="Area2D"]
-visible = false
 script = ExtResource("1_nmhpl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -6,7 +6,7 @@ var healthState : Array = ["FullHealth", "HalfHealth", "LowHealth"]
 var healthStateCounter : int = 0
 var changeScale : bool = false
 
-@onready var bossSize : Vector2 = $HitBoxComponent/CollisionShape2D.shape.size
+@onready var bossSize : Vector2 = $HitBoxComponent/HitBoxCollider.shape.size
 @onready var animation : AnimatedSprite2D = $FirstBossSprites
 @onready var damageParticles : GPUParticles2D = $FirstBossSprites/Node2D/DamageParticle
 
@@ -44,6 +44,12 @@ enum movement
 	dying
 }
 
+class BasicAttack:
+	var damage : int = 1
+	var knockback : int = 15
+	var direction : int = 1
+	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
@@ -52,7 +58,7 @@ func _ready():
 
 func starting():
 	pass
-
+		
 func enabled():
 	if attackCollision.is_colliding():
 		currentMovement = movement.attacking
@@ -74,11 +80,17 @@ func attack():
 	if animation.frame == 2:
 		if attackCollision.is_colliding():
 			var collision = attackCollision.get_collider(0)
-			collision.currentMovement = collision.movement.takingDamage
-		
-	await get_tree().create_timer(0.5).timeout
-	currentMovement = movement.enabled
 
+			if collision is Player:
+				var hitbox : HitBoxComponent = collision.get_node("HitBoxComponent")		
+				var basicAttack = BasicAttack.new()
+				var collision_direction = (collision.global_position - global_position).normalized()
+				if collision_direction.x < 0:
+					basicAttack.direction = -1
+				hitbox.damage(basicAttack)
+		
+	await get_tree().create_timer(2.0).timeout
+	currentMovement = movement.enabled
 
 func charging():
 	velocity.x = move_toward(0,0,0)

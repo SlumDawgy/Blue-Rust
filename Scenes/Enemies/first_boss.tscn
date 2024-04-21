@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=136 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -795,8 +795,6 @@ turbulence_noise_strength = 6.4
 turbulence_influence_min = 0.131
 turbulence_influence_max = 0.489
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_skb83"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpoy"]
 size = Vector2(56.5, 64)
 
@@ -825,6 +823,7 @@ platform_floor_layers = 4294901760
 script = ExtResource("1_7v45d")
 
 [node name="FloorCollision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("SegmentShape2D_wf4o1")
 
 [node name="FirstBossSprites" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("FirstBoss")]
@@ -861,14 +860,18 @@ speed_scale = 4.0
 explosiveness = 1.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("35_qc33f")]
+visible = false
 position = Vector2(-7, 0)
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("36_dp3sm")]
+visible = false
 
-[node name="CollisionShape2D" parent="HitBoxComponent" index="0"]
-shape = SubResource("RectangleShape2D_skb83")
+[node name="HitBoxCollider" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_ccpoy")
 
 [node name="WallCollision" type="Node2D" parent="."]
+visible = false
 position = Vector2(-2, 0)
 
 [node name="Left" type="RayCast2D" parent="WallCollision"]
@@ -876,6 +879,7 @@ target_position = Vector2(-40, 0)
 collision_mask = 8
 
 [node name="Damagable" type="Area2D" parent="."]
+visible = false
 position = Vector2(5, 0)
 collision_layer = 16
 collision_mask = 17
@@ -885,6 +889,7 @@ position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_ccpoy")
 
 [node name="Audios" type="Node2D" parent="."]
+visible = false
 script = ExtResource("23_8bsgf")
 
 [node name="BossHurt" type="AudioStreamPlayer2D" parent="Audios"]

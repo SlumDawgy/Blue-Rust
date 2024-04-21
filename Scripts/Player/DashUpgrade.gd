@@ -18,7 +18,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("Dash") and canDash:
 		addAfterimageAndDashParticles()
-		player.currentMovement = player.FirstBoss.movement.dashing
+		player.currentMovement = player.movement.dashing
 		player.dashed = true
 		canDash = false
 		dashTimer.start(1.5)

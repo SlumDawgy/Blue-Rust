@@ -68,7 +68,7 @@ func disabled():
 	velocity.x = move_toward(0,0,0)
 
 func enabled():
-	$PlayerSprite/Arm/ArmPivo.look_at(get_global_mouse_position())
+	$PlayerSprite/Arm.look_at(get_global_mouse_position())
 	velocity.x = speed * inputDirection
 	
 	if Input.is_action_just_pressed("GrapplingHook"):
@@ -166,7 +166,7 @@ func dashing():
 		velocity.y = 0
 	if dashed:
 		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
-		print(cursorXcoord)
+
 		dashed = false
 		if cursorXcoord <= 0:
 			velocity.x = dashSpeed
@@ -175,9 +175,10 @@ func dashing():
 		await get_tree().create_timer(0.5).timeout
 		currentMovement = movement.enabled
 		dashUpgrade.dashParticles.emitting = false
-
+	
 func takingDamage():
-	pass
+	await get_tree().create_timer(1.0).timeout
+	currentMovement = movement.enabled
 
 func dying():
 	velocity.x = move_toward(0,0,0)

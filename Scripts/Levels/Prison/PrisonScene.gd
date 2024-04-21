@@ -53,4 +53,4 @@ func PowerUp(body : Player):
 	body.currentMovement = body.movement.disabled
 	get_tree().root.get_node("Node2D").get_node("powerUp").queue_free()
 	Dialogic.start("res://Dialogic/Timelines/Prison1-5.dtl")
-	pass
+

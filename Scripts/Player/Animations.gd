@@ -2,10 +2,8 @@ extends AnimatedSprite2D
 class_name Animations
 
 @onready var player = $".."
-@onready var armPivo = $Arm/ArmPivo
 @onready var armSprite = $Arm
 @onready var HookPathPivo = $Arm/GrappleOrigin
-@onready var armYOffset = $Arm.offset.y
 
 func playAnimation(type):
 	var cursorXcoord = (to_global(position) - get_global_mouse_position()).normalized().x
@@ -67,20 +65,16 @@ func _physics_process(_delta):
 		pass
 	else:
 		if animation.begins_with("left"):
-			#armSprite.flip_h = true
 			armSprite.flip_v = true
-			#armSprite.offset.y = armYOffset
 			armSprite.z_index = -1
 			armSprite.look_at(get_global_mouse_position())
 
 		if animation.begins_with("right"):
 			armSprite.flip_v = false
-			#armSprite.flip_h = false			
-			#armSprite.offset.y = armYOffset
 			armSprite.z_index = 0
 			armSprite.look_at(get_global_mouse_position())
 
-		armPivo.rotation_degrees = fmod(armPivo.rotation_degrees, 360.0)
+		armSprite.rotation_degrees = fmod(armSprite.rotation_degrees, 360.0)
 
 	movingPivot()
 	
@@ -88,48 +82,48 @@ func _physics_process(_delta):
 func movingPivot():
 	if animation == "right_running":
 		match frame:
-				0: armPivo.position = Vector2(2, -4.5)
-				1: armPivo.position = Vector2(3, -6.5)
-				2: armPivo.position = Vector2(2, -6.5)
-				3: armPivo.position = Vector2(4, -5.5)
-				4: armPivo.position = Vector2(3, -4.5)
-				5: armPivo.position = Vector2(3, -6.5)
-				6: armPivo.position = Vector2(3, -5.5)
-				7: armPivo.position = Vector2(5, -5.5)
+				0: armSprite.position = Vector2(2, -4.5)
+				1: armSprite.position = Vector2(3, -6.5)
+				2: armSprite.position = Vector2(2, -6.5)
+				3: armSprite.position = Vector2(4, -5.5)
+				4: armSprite.position = Vector2(3, -4.5)
+				5: armSprite.position = Vector2(3, -6.5)
+				6: armSprite.position = Vector2(3, -5.5)
+				7: armSprite.position = Vector2(5, -5.5)
 	elif animation == "right_jump":
 		match frame:
-				0: armPivo.position = Vector2(-1.5, -7.5)
-				1: armPivo.position = Vector2(-1.5, -7.5)
+				0: armSprite.position = Vector2(-1.5, -7.5)
+				1: armSprite.position = Vector2(-1.5, -7.5)
 	elif animation == "right_fall":
 		match frame:
-				0: armPivo.position = Vector2(-1.5, -8.5)
-				1: armPivo.position = Vector2(-1.5, -8.5)
+				0: armSprite.position = Vector2(-1.5, -8.5)
+				1: armSprite.position = Vector2(-1.5, -8.5)
 	elif animation == "right_idle":
-		armPivo.position = Vector2(-1.5, -7.5)
+		armSprite.position = Vector2(-1.5, -7.5)
 	elif animation == "left_running":
 		match frame:
-				0: armPivo.position = Vector2(-7, -4.5)
-				1: armPivo.position = Vector2(-6, -6.5)
-				2: armPivo.position = Vector2(-4, -6.5)
-				3: armPivo.position = Vector2(-5, -5.5)
-				4: armPivo.position = Vector2(-6, -4.5)
-				5: armPivo.position = Vector2(-7, -6.5)
-				6: armPivo.position = Vector2(-3, -5.5)
-				7: armPivo.position = Vector2(-3, -5.5)
+				0: armSprite.position = Vector2(-7, -4.5)
+				1: armSprite.position = Vector2(-6, -6.5)
+				2: armSprite.position = Vector2(-4, -6.5)
+				3: armSprite.position = Vector2(-5, -5.5)
+				4: armSprite.position = Vector2(-6, -4.5)
+				5: armSprite.position = Vector2(-7, -6.5)
+				6: armSprite.position = Vector2(-3, -5.5)
+				7: armSprite.position = Vector2(-3, -5.5)
 	elif animation == "left_idle":
-		armPivo.position = Vector2(1.5, -7.5)
+		armSprite.position = Vector2(1.5, -7.5)
 	elif animation == "left_jump":
 		match frame:
-			0: armPivo.position = Vector2(1.5, -7.5)
-			1: armPivo.position = Vector2(1.5, -7.5)
+			0: armSprite.position = Vector2(1.5, -7.5)
+			1: armSprite.position = Vector2(1.5, -7.5)
 	elif animation == "left_fall":
 		match frame:
-				0: armPivo.position = Vector2(1.5, -5.5)
-				1: armPivo.position = Vector2(1.5, -5.5)
+				0: armSprite.position = Vector2(1.5, -5.5)
+				1: armSprite.position = Vector2(1.5, -5.5)
 	elif animation == "right_dash":
-		armPivo.position = Vector2(0.5, -4.5)
+		armSprite.position = Vector2(0.5, -4.5)
 
 	if player.currentMovement == player.movement.hanging or player.currentMovement == player.movement.mantling or animation == "death" or animation == "getting_up":
-		armPivo.visible = false
+		armSprite.visible = false
 	else:
-		armPivo.visible = true
+		armSprite.visible = true

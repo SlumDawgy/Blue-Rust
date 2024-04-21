@@ -10,6 +10,7 @@ func _ready():
 func _physics_process(_delta):
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func damage():
-	healthComponentInstance.damage()
+
+func damage(attack):
+	healthComponentInstance.damage(attack)
+

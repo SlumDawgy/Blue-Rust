@@ -32,8 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="29_sbppg"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="30_igr4l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0cux"]
-size = Vector2(21, 34)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
+radius = 10.5
+height = 34.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyc5k"]
 radius = 10.5
@@ -343,46 +344,46 @@ animations = [{
 "speed": 2.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ylu6d")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nxwps")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uom5t")
 }],
 "loop": true,
 "name": &"left_damage",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b4wnv")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2mv8v")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l1mmd")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gfc27")
 }],
 "loop": true,
 "name": &"left_dash",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hgi3h")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_d4sjb")
 }],
 "loop": true,
 "name": &"left_fall",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -401,32 +402,32 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y1loj")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fx43t")
 }],
 "loop": true,
 "name": &"left_jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r0qu5")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e3uic")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dh45x")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5ybyf")
 }],
 "loop": false,
 "name": &"left_mantling",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -469,35 +470,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"right_damage",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2xwdo")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o0syx")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cj313")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pva6b")
 }],
 "loop": true,
 "name": &"right_dash",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r8awh")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_54jxd")
 }],
 "loop": true,
 "name": &"right_fall",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -516,32 +517,32 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wg8su")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nr0ge")
 }],
 "loop": true,
 "name": &"right_jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wsgcc")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_71j8m")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7fmfa")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8c0cx")
 }],
 "loop": false,
 "name": &"right_mantling",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -605,24 +606,23 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.974227, 0), -2.82848, 0.0, 0, 
 point_count = 2
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 9
+collision_mask = 57
 script = ExtResource("1_0ljdo")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_6rn2i")]
 maxHealth = 3
-health = 3
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("healthComponentInstance") instance=ExtResource("3_chxby")]
-visible = true
-collision_mask = 48
+collision_mask = 52
 healthComponentInstance = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" parent="HitBoxComponent" index="0"]
+[node name="HitBoxCollider" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_o0cux")
+shape = SubResource("CapsuleShape2D_jts5u")
 
 [node name="MantleCheckerComponent" parent="." node_paths=PackedStringArray("checkWallRight", "checkWallUpRight", "checkWallLeft", "checkWallUpLeft", "animation") instance=ExtResource("23_q6t21")]
 process_mode = 4
+visible = false
 checkWallRight = NodePath("checkWallRight")
 checkWallUpRight = NodePath("checkWallUpRight")
 checkWallLeft = NodePath("checkWallLeft")
@@ -649,7 +649,8 @@ position = Vector2(-1, -10)
 target_position = Vector2(-10, 0)
 collision_mask = 8
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+[node name="PlayerCollider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("CapsuleShape2D_gyc5k")
 
@@ -675,15 +676,15 @@ texture_mode = 1
 script = ExtResource("21_x7ebn")
 player = NodePath("../../../..")
 
-[node name="ArmPivo" type="Node2D" parent="PlayerSprite/Arm"]
-
 [node name="GrappleRange" type="Area2D" parent="PlayerSprite"]
+visible = false
 
 [node name="RangeCollision" type="CollisionShape2D" parent="PlayerSprite/GrappleRange"]
 shape = SubResource("CircleShape2D_sj1xt")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="JumpBuffering" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(0, 32)
 collision_mask = 8
 

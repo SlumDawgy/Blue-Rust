@@ -13,7 +13,6 @@ var lanturnEmpty = load(GlobalPaths.LANTURN_EMPTY_PATH)
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	health = player.get_node("HealthComponent")
-	health.connect("player_damage", Callable(self, "changeHealth"))
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
