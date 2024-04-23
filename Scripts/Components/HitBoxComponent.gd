@@ -13,4 +13,3 @@ func _physics_process(_delta):
 
 func damage(attack):
 	healthComponentInstance.damage(attack)
-

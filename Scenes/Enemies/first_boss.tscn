@@ -411,7 +411,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"FullHealth_BackUp",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 0.6,
@@ -527,7 +527,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"HalfHealth_BackUp",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 0.4,
@@ -570,7 +570,7 @@ animations = [{
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_ny0b8")
 }],
-"loop": true,
+"loop": false,
 "name": &"HalfHealth_Slash",
 "speed": 5.0
 }, {
@@ -643,7 +643,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"LowHealth_BackUp",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 0.3,
@@ -830,7 +830,7 @@ shape = SubResource("SegmentShape2D_wf4o1")
 position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Slash"
+animation = &"FullHealth_Slash"
 script = ExtResource("24_vbx28")
 FirstBoss = NodePath("..")
 
@@ -955,7 +955,13 @@ shape = SubResource("RectangleShape2D_0yy3b")
 target_position = Vector2(0, 44)
 max_results = 4
 
+[node name="ChargeAttackTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
-[connection signal="body_entered" from="SteamParticles/Damage" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="SteamParticles/Damage" to="." method="_on_damage_body_entered"]
 
 [editable path="HitBoxComponent"]

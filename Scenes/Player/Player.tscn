@@ -608,6 +608,7 @@ script = ExtResource("1_0ljdo")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_6rn2i")]
 maxHealth = 3
+damageImmunity = 1.0
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("healthComponentInstance") instance=ExtResource("3_chxby")]
 collision_mask = 52

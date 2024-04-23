@@ -13,7 +13,8 @@ func chooseAnimations():
 		FirstBoss.movement.enabled:
 			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Walk")
 		FirstBoss.movement.attacking:
-			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Slash")
+			if animation != FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Slash":
+				play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Slash")
 		FirstBoss.movement.charging:
 			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Charge")
 		FirstBoss.movement.chargeAttacking:
@@ -27,7 +28,7 @@ func chooseAnimations():
 		FirstBoss.movement.leavingStun:
 			if animation != FirstBoss.healthState[FirstBoss.healthStateCounter] + "_BackUp":
 				play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_BackUp")
-			if frame == 5:
+			if animation_finished:
 				FirstBoss.currentMovement = FirstBoss.movement.enabled
 		FirstBoss.movement.takingDamage:
 			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Damage")
