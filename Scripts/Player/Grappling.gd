@@ -18,6 +18,11 @@ var canPlayRetrieve = true
 func _ready():
 	startPosition = position
 
+class BasicAttack:
+	var damage : int = 1
+	var knockback : int = 0
+	var direction : int = 1
+	var knockupwards : int = 0
 
 func _physics_process(delta):
 	if position.distance_to(player.get_global_transform().origin) >= maxGrappleDistance:

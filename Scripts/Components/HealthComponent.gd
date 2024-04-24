@@ -22,6 +22,6 @@ func damage(attack):
 	if health > 0:
 		parent.currentMovement = parent.movement.takingDamage
 		parent.velocity.x = attack.knockback * 2 * attack.direction
-		parent.velocity.y = -250
+		parent.velocity.y = attack.knockupwards
 	else:
 		parent.currentMovement = parent.movement.dying

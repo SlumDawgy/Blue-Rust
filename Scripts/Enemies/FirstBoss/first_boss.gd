@@ -28,6 +28,8 @@ var chargeSpeed : float = 300.0
 # Player
 @export var player : Player
 
+# Stunned
+var canBeDamaged : bool = false
 
 @onready var audios = $Audios
 
@@ -50,12 +52,13 @@ class BasicAttack:
 	var damage : int = 1
 	var knockback : int = 15
 	var direction : int = 1
+	var knockupwards : int = -250
 	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
-	currentMovement = movement.enabled
+	currentMovement = movement.starting
 	pass # Replace with function body.
 
 func starting():
@@ -114,7 +117,9 @@ func chargeAttacking():
 
 func stunned():
 	velocity.x = move_toward(0,0,0)
+	canBeDamaged = true
 	await get_tree().create_timer(2.5).timeout
+	canBeDamaged = false
 	currentMovement = movement.leavingStun
 	chargeAttackTimer.start(5)
 
@@ -134,7 +139,6 @@ func steamAttacking():
 		steamCollision.shape.a.y = 0
 		await get_tree().create_timer(1).timeout
 		currentMovement = movement.enabled
-	pass
 
 func steamChecking(action):
 	var checkPosition
@@ -163,10 +167,10 @@ func dying():
 		animation.play("Death")
 	velocity.x = 0
 	if animation.frame == 1:
-			if audios.bossDie.playing == false:
-				audios.bossDie.play()
-			$"../AudioStreamPlayer".playing = true
-			$"../BossFight".playing = false
+		if audios.bossDie.playing == false:
+			audios.bossDie.play()
+		$"../Audio/MainLevelTheme".playing = true
+		$"../Audio/BossFight".playing = false
 
 	if audios.bossDie.playing == false:
 		await get_tree().create_timer(2).timeout
@@ -184,12 +188,12 @@ func dying():
 		powerUp.add_child(powerUpCollision)
 		powerUp.add_child(powerUpSprite)
 
-		powerUp.connect("body_entered", Callable(get_tree().root.get_node("Node2D"), "PowerUp"), 4)
+		powerUp.connect("body_entered", Callable(get_tree().root.get_node("Prison"), "PowerUp"), 4)
 		
 		powerUp.position = position
 		powerUp.name = "powerUp"
 		
-		get_tree().root.get_node("Node2D").add_child(powerUp)
+		get_tree().root.get_node("Prison").add_child(powerUp)
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -197,7 +201,12 @@ func _physics_process(_delta):
 	
 	## PLAYTEST DEBUG 
 	if Input.is_action_just_pressed("Crouch"):
-		currentMovement = movement.takingDamage
+		var basicAttack = BasicAttack.new()
+		basicAttack.damage = 1
+		basicAttack.knockback = 0
+		basicAttack.knockupwards = 0
+		$HitBoxComponent.damage(basicAttack)
+	
 	## PLAYTEST DEBUG
 	match currentMovement:
 		movement.starting:
@@ -233,3 +242,10 @@ func _on_damage_body_entered(body : Player):
 	if collision_direction.x < 0:
 		basicAttack.direction = -1
 	hitbox.damage(basicAttack)
+
+
+func _on_hit_box_component_area_entered(area):
+	if area.name == "Grappling" and canBeDamaged:
+		var basicAttack = area.BasicAttack.new()
+		$HitBoxComponent.damage(basicAttack)
+		canBeDamaged = false

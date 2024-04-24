@@ -58,12 +58,6 @@ enum movement
 	dying
 }
 
-class BasicAttack:
-	var damage : int = 1
-	var knockback : int = 0
-	var direction : int = 1
-
-
 func _ready():
 	currentMovement = movement.enabled
 

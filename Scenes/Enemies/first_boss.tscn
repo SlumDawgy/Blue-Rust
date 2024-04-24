@@ -862,9 +862,11 @@ explosiveness = 1.0
 [node name="HealthComponent" parent="." instance=ExtResource("35_qc33f")]
 visible = false
 position = Vector2(-7, 0)
+maxHealth = 3
 
-[node name="HitBoxComponent" parent="." instance=ExtResource("36_dp3sm")]
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("healthComponentInstance") instance=ExtResource("36_dp3sm")]
 visible = false
+healthComponentInstance = NodePath("../HealthComponent")
 
 [node name="HitBoxCollider" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(-7, 0)
@@ -961,6 +963,7 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[connection signal="area_entered" from="HitBoxComponent" to="." method="_on_hit_box_component_area_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
 [connection signal="body_entered" from="SteamParticles/Damage" to="." method="_on_damage_body_entered"]
 

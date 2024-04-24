@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bebb75lmf4ffi"]
+[gd_scene load_steps=6 format=3 uid="uid://bne8etfqf5xth"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Grappling.gd" id="1_s1l0w"]
 [ext_resource type="Texture2D" uid="uid://cvhv7n800d42o" path="res://Assets/Sprites/Player/Oriana_Evans_Hook.png" id="2_qmob8"]
