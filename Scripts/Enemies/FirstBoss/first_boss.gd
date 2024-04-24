@@ -155,13 +155,9 @@ func takingDamage():
 	steamAttackParticles.emitting = false
 	steamChargingParticles.emitting = false
 	damageParticles.emitting = true
-	if animation.is_playing() == false:
-		healthStateCounter += 1
-		if healthStateCounter == 3:
-			currentMovement = movement.dying
-		else:
-			currentMovement = movement.enabled
-
+	await get_tree().create_timer(2.0).timeout
+	currentMovement = movement.enabled
+	
 func dying():
 	if animation.animation != "Death":
 		animation.play("Death")
@@ -199,8 +195,10 @@ func dying():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	
+	## PLAYTEST DEBUG 
 	if Input.is_action_just_pressed("Crouch"):
 		currentMovement = movement.takingDamage
+	## PLAYTEST DEBUG
 	match currentMovement:
 		movement.starting:
 			pass
