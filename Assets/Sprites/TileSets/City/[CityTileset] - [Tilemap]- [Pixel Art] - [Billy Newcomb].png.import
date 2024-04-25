@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d04ux1p7hh4ny"
-path="res://.godot/imported/CityTiles.png-bf4f5f3e21c4dfd7f68e55eb042bed7c.ctex"
+uid="uid://c2edonot54nvk"
+path="res://.godot/imported/[CityTileset] - [Tilemap]- [Pixel Art] - [Billy Newcomb].png-ba8f5d22c06199d34257cd0c12aa681c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/City/CityTiles.png"
-dest_files=["res://.godot/imported/CityTiles.png-bf4f5f3e21c4dfd7f68e55eb042bed7c.ctex"]
+source_file="res://Assets/Sprites/TileSets/City/[CityTileset] - [Tilemap]- [Pixel Art] - [Billy Newcomb].png"
+dest_files=["res://.godot/imported/[CityTileset] - [Tilemap]- [Pixel Art] - [Billy Newcomb].png-ba8f5d22c06199d34257cd0c12aa681c.ctex"]
 
 [params]
 
