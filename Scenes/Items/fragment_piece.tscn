@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctykk25ncq3x8"]
+
+[ext_resource type="Texture2D" uid="uid://gyjfg2jreuxl" path="res://Assets/Sprites/Items/FragmentPiece.png" id="1_slsql"]
+[ext_resource type="Texture2D" uid="uid://bjg81encn0kau" path="res://Assets/Sprites/UI/SparkleParticle.png" id="2_kcrn0"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="3_01knn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k8hsu"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_vij1o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.50576), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_50l6q"]
+offsets = PackedFloat32Array(0, 0.0791667, 0.733333, 0.929167)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_eyc0m"]
+resource_name = "FragmentPieceFloating"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1214, -914), Vector2(1214, -912), Vector2(1214, -914)]
+}
+
+[sub_resource type="Animation" id="Animation_0qgu5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1214, -920)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qyn6h"]
+_data = {
+"FragmentPieceFloating": SubResource("Animation_eyc0m"),
+"RESET": SubResource("Animation_0qgu5")
+}
+
+[node name="FragmentPiece" type="Node"]
+
+[node name="FragmentPieceSprite" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1214, -920)
+texture = ExtResource("1_slsql")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="FragmentPieceSprite"]
+material = SubResource("CanvasItemMaterial_k8hsu")
+lifetime = 1.5
+texture = ExtResource("2_kcrn0")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 20)
+radial_accel_max = 1.0
+angle_max = 10.0
+scale_amount_min = 0.5
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_vij1o")
+color_ramp = SubResource("Gradient_50l6q")
+anim_speed_min = 3.0
+anim_speed_max = 4.0
+
+[node name="PointLight2D" type="PointLight2D" parent="FragmentPieceSprite"]
+color = Color(0.501961, 0.694118, 0.796078, 1)
+energy = 0.5
+texture = ExtResource("3_01knn")
+texture_scale = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FragmentPieceSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_qyn6h")
+}
+autoplay = "FragmentPieceFloating"
