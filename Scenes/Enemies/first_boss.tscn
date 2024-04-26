@@ -1,67 +1,35 @@
 [gd_scene load_steps=136 format=3 uid="uid://dup4g553pqjue"]
 
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
-[ext_resource type="Texture2D" uid="uid://c4f4tou7xbq2l" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_Death-Sheet.png" id="2_3v4pr"]
-[ext_resource type="Texture2D" uid="uid://b6j884mgcmgj4" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_BackUp-Sheet.png" id="3_6fuf7"]
-[ext_resource type="Texture2D" uid="uid://pi5usms5lp6y" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Charge-Sheet.png" id="4_ykyqj"]
-[ext_resource type="Texture2D" uid="uid://dh108mw5lgkby" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Damaged-Sheet.png" id="5_pr0f5"]
-[ext_resource type="Texture2D" uid="uid://cyl4fqt3bhreb" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Slash-Sheet.png" id="6_45bmt"]
-[ext_resource type="Texture2D" uid="uid://cdj07mkxqdsie" path="res://Assets/Sprites/Enemies/FirstBoss/SteamCharge.png" id="7_fyb2o"]
-[ext_resource type="Texture2D" uid="uid://cxfaew5d6iqvn" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Stunned-Sheet.png" id="8_aeaed"]
-[ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="9_xrja3"]
-[ext_resource type="Texture2D" uid="uid://13krs442fdag" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_BackUp.png" id="10_wknpd"]
-[ext_resource type="Texture2D" uid="uid://d2wx6en7smqpt" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Charge-Sheet.png" id="11_ntww6"]
-[ext_resource type="Texture2D" uid="uid://xuwxu5weuvlk" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Damaged-Sheet.png" id="12_qvkpi"]
-[ext_resource type="Texture2D" uid="uid://cyjaqhlpffaev" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Slash-Sheet.png" id="13_phn3t"]
-[ext_resource type="Texture2D" uid="uid://bl8am87wu4361" path="res://Assets/Sprites/Enemies/FirstBoss/SteamChargeHalfHelath.png" id="14_xmpvw"]
-[ext_resource type="Texture2D" uid="uid://cb257r475g2c0" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Stunned-Sheet.png" id="15_3i72p"]
-[ext_resource type="Texture2D" uid="uid://cvhdynd17tstg" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Walk-Sheet.png" id="16_vk85d"]
-[ext_resource type="Texture2D" uid="uid://b7i8em8vp0cl6" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="17_p1sxd"]
-[ext_resource type="Texture2D" uid="uid://dsfskvyicsjx8" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Charge-Sheet.png" id="18_wj1ss"]
-[ext_resource type="Texture2D" uid="uid://j0q0854upsni" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Damaged-Sheet.png" id="19_ef70e"]
-[ext_resource type="Texture2D" uid="uid://b4vaapwatprom" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Slash-Sheet.png" id="20_se1ol"]
-[ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Enemies/FirstBoss/SteamChargeLowHelath.png" id="21_a2o38"]
-[ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="22_fwdsn"]
-[ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
-[ext_resource type="Texture2D" uid="uid://dco74uwbd38hf" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="23_guhiv"]
-[ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
-[ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
-[ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Characters/Player/Aiming.png" id="24_rt3vl"]
-[ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Enemies/FirstBoss/SlashEffect.png" id="25_f5idq"]
-[ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Enemies/FirstBoss/BrokenPiece1.png" id="26_5jh3m"]
-=======
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/first_boss.gd" id="1_7v45d"]
-[ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
-[ext_resource type="Texture2D" uid="uid://cyl4fqt3bhreb" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Slash-Sheet.png" id="2_ccuwb"]
-[ext_resource type="Texture2D" uid="uid://c4f4tou7xbq2l" path="res://Assets/Sprites/Boss/EnemyAtomiton_Death-Sheet.png" id="2_eyfvr"]
-[ext_resource type="Texture2D" uid="uid://pi5usms5lp6y" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Charge-Sheet.png" id="2_g8tcs"]
-[ext_resource type="Texture2D" uid="uid://b6j884mgcmgj4" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_BackUp-Sheet.png" id="3_cy3sk"]
-[ext_resource type="Texture2D" uid="uid://dh108mw5lgkby" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Damaged-Sheet.png" id="3_rrh61"]
-[ext_resource type="Texture2D" uid="uid://cxfaew5d6iqvn" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Stunned-Sheet.png" id="6_a154n"]
-[ext_resource type="Texture2D" uid="uid://cb257r475g2c0" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Stunned-Sheet.png" id="6_bbnl3"]
-[ext_resource type="Texture2D" uid="uid://d2wx6en7smqpt" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Charge-Sheet.png" id="6_tqe2c"]
-[ext_resource type="Texture2D" uid="uid://xuwxu5weuvlk" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Damaged-Sheet.png" id="7_8t5j0"]
-[ext_resource type="Texture2D" uid="uid://cdj07mkxqdsie" path="res://Assets/Sprites/Boss/SteamCharge.png" id="7_txm7y"]
-[ext_resource type="Texture2D" uid="uid://cyjaqhlpffaev" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Slash-Sheet.png" id="8_137sf"]
-[ext_resource type="Texture2D" uid="uid://13krs442fdag" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_BackUp.png" id="9_ip2vc"]
-[ext_resource type="Texture2D" uid="uid://cvhdynd17tstg" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Walk-Sheet.png" id="9_r7m8y"]
-[ext_resource type="Texture2D" uid="uid://dsfskvyicsjx8" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Charge-Sheet.png" id="10_v78ft"]
-[ext_resource type="Texture2D" uid="uid://j0q0854upsni" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Damaged-Sheet.png" id="11_51ump"]
-[ext_resource type="Texture2D" uid="uid://b4vaapwatprom" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Slash-Sheet.png" id="12_6bx2k"]
-[ext_resource type="Texture2D" uid="uid://dco74uwbd38hf" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="13_plf7l"]
-[ext_resource type="Texture2D" uid="uid://bl8am87wu4361" path="res://Assets/Sprites/Boss/SteamChargeHalfHelath.png" id="14_cwa0y"]
-[ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Boss/SlashEffect.png" id="15_bhv6r"]
-[ext_resource type="Texture2D" uid="uid://b7i8em8vp0cl6" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="15_gnlw0"]
-[ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="16_s2gkb"]
+[ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
+[ext_resource type="Texture2D" uid="uid://cyl4fqt3bhreb" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Slash-Sheet.png" id="2_ccuwb"]
+[ext_resource type="Texture2D" uid="uid://c4f4tou7xbq2l" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_Death-Sheet.png" id="2_eyfvr"]
+[ext_resource type="Texture2D" uid="uid://pi5usms5lp6y" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Charge-Sheet.png" id="2_g8tcs"]
+[ext_resource type="Texture2D" uid="uid://b6j884mgcmgj4" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_BackUp-Sheet.png" id="3_cy3sk"]
+[ext_resource type="Texture2D" uid="uid://dh108mw5lgkby" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Damaged-Sheet.png" id="3_rrh61"]
+[ext_resource type="Texture2D" uid="uid://cxfaew5d6iqvn" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Stunned-Sheet.png" id="6_a154n"]
+[ext_resource type="Texture2D" uid="uid://cb257r475g2c0" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Stunned-Sheet.png" id="6_bbnl3"]
+[ext_resource type="Texture2D" uid="uid://d2wx6en7smqpt" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Charge-Sheet.png" id="6_tqe2c"]
+[ext_resource type="Texture2D" uid="uid://xuwxu5weuvlk" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Damaged-Sheet.png" id="7_8t5j0"]
+[ext_resource type="Texture2D" uid="uid://cdj07mkxqdsie" path="res://Assets/Sprites/Enemies/FirstBoss/SteamCharge.png" id="7_txm7y"]
+[ext_resource type="Texture2D" uid="uid://cyjaqhlpffaev" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Slash-Sheet.png" id="8_137sf"]
+[ext_resource type="Texture2D" uid="uid://13krs442fdag" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_BackUp.png" id="9_ip2vc"]
+[ext_resource type="Texture2D" uid="uid://cvhdynd17tstg" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_HalfHealth_Walk-Sheet.png" id="9_r7m8y"]
+[ext_resource type="Texture2D" uid="uid://dsfskvyicsjx8" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Charge-Sheet.png" id="10_v78ft"]
+[ext_resource type="Texture2D" uid="uid://j0q0854upsni" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Damaged-Sheet.png" id="11_51ump"]
+[ext_resource type="Texture2D" uid="uid://b4vaapwatprom" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Slash-Sheet.png" id="12_6bx2k"]
+[ext_resource type="Texture2D" uid="uid://dco74uwbd38hf" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="13_plf7l"]
+[ext_resource type="Texture2D" uid="uid://bl8am87wu4361" path="res://Assets/Sprites/Enemies/FirstBoss/SteamChargeHalfHelath.png" id="14_cwa0y"]
+[ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Enemies/FirstBoss/SlashEffect.png" id="15_bhv6r"]
+[ext_resource type="Texture2D" uid="uid://b7i8em8vp0cl6" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="15_gnlw0"]
+[ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="16_s2gkb"]
 [ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Player/Aiming.png" id="21_etkqa"]
-[ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Boss/SteamChargeLowHelath.png" id="21_s3rtd"]
-[ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Boss/BrokenPiece1.png" id="22_4vuif"]
+[ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Enemies/FirstBoss/SteamChargeLowHelath.png" id="21_s3rtd"]
+[ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Enemies/FirstBoss/BrokenPiece1.png" id="22_4vuif"]
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossAudios.gd" id="23_8bsgf"]
 [ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
 [ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossSprites.gd" id="24_vbx28"]
->>>>>>> Refactor_Boss
 [ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/02. Wall hit.WAV" id="26_idy6h"]
 [ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/03. Charge.WAV" id="27_h1uwv"]
 [ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/02. Retrieve.WAV" id="28_5x8d2"]
@@ -75,335 +43,335 @@ a = Vector2(-20, 30)
 b = Vector2(21, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
-atlas = ExtResource("2_3v4pr")
+atlas = ExtResource("2_eyfvr")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcm2m"]
-atlas = ExtResource("2_3v4pr")
+atlas = ExtResource("2_eyfvr")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dt3ct"]
-atlas = ExtResource("3_6fuf7")
+atlas = ExtResource("3_cy3sk")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22ofg"]
-atlas = ExtResource("3_6fuf7")
+atlas = ExtResource("3_cy3sk")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgro6"]
-atlas = ExtResource("3_6fuf7")
+atlas = ExtResource("3_cy3sk")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vh8p2"]
-atlas = ExtResource("3_6fuf7")
+atlas = ExtResource("3_cy3sk")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gpx7"]
-atlas = ExtResource("3_6fuf7")
+atlas = ExtResource("3_cy3sk")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36vlp"]
-atlas = ExtResource("3_6fuf7")
+atlas = ExtResource("3_cy3sk")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41trn"]
-atlas = ExtResource("4_ykyqj")
+atlas = ExtResource("2_g8tcs")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6p6s"]
-atlas = ExtResource("4_ykyqj")
+atlas = ExtResource("2_g8tcs")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dngc4"]
-atlas = ExtResource("4_ykyqj")
+atlas = ExtResource("2_g8tcs")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qww4n"]
-atlas = ExtResource("5_pr0f5")
+atlas = ExtResource("3_rrh61")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgxka"]
-atlas = ExtResource("5_pr0f5")
+atlas = ExtResource("3_rrh61")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrkjm"]
-atlas = ExtResource("5_pr0f5")
+atlas = ExtResource("3_rrh61")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sf7lw"]
-atlas = ExtResource("6_45bmt")
+atlas = ExtResource("2_ccuwb")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36bsa"]
-atlas = ExtResource("6_45bmt")
+atlas = ExtResource("2_ccuwb")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egn1f"]
-atlas = ExtResource("6_45bmt")
+atlas = ExtResource("2_ccuwb")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccyrg"]
-atlas = ExtResource("6_45bmt")
+atlas = ExtResource("2_ccuwb")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0nmex"]
-atlas = ExtResource("7_fyb2o")
+atlas = ExtResource("7_txm7y")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amgav"]
-atlas = ExtResource("7_fyb2o")
+atlas = ExtResource("7_txm7y")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wbwv"]
-atlas = ExtResource("7_fyb2o")
+atlas = ExtResource("7_txm7y")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbg8j"]
-atlas = ExtResource("8_aeaed")
+atlas = ExtResource("6_a154n")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24i0w"]
-atlas = ExtResource("8_aeaed")
+atlas = ExtResource("6_a154n")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dl04s"]
-atlas = ExtResource("9_xrja3")
+atlas = ExtResource("1_lckmo")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxdpl"]
-atlas = ExtResource("9_xrja3")
+atlas = ExtResource("1_lckmo")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1fid"]
-atlas = ExtResource("9_xrja3")
+atlas = ExtResource("1_lckmo")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a282c"]
-atlas = ExtResource("9_xrja3")
+atlas = ExtResource("1_lckmo")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p0s6"]
-atlas = ExtResource("9_xrja3")
+atlas = ExtResource("1_lckmo")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83clv"]
-atlas = ExtResource("9_xrja3")
+atlas = ExtResource("1_lckmo")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpehj"]
-atlas = ExtResource("10_wknpd")
+atlas = ExtResource("9_ip2vc")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ijs7"]
-atlas = ExtResource("10_wknpd")
+atlas = ExtResource("9_ip2vc")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rxsd"]
-atlas = ExtResource("10_wknpd")
+atlas = ExtResource("9_ip2vc")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nn4m"]
-atlas = ExtResource("10_wknpd")
+atlas = ExtResource("9_ip2vc")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qg512"]
-atlas = ExtResource("10_wknpd")
+atlas = ExtResource("9_ip2vc")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vj0p"]
-atlas = ExtResource("10_wknpd")
+atlas = ExtResource("9_ip2vc")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykfdf"]
-atlas = ExtResource("11_ntww6")
+atlas = ExtResource("6_tqe2c")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqcht"]
-atlas = ExtResource("11_ntww6")
+atlas = ExtResource("6_tqe2c")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhrn1"]
-atlas = ExtResource("11_ntww6")
+atlas = ExtResource("6_tqe2c")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bv24m"]
-atlas = ExtResource("12_qvkpi")
+atlas = ExtResource("7_8t5j0")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsdxm"]
-atlas = ExtResource("12_qvkpi")
+atlas = ExtResource("7_8t5j0")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cewb"]
-atlas = ExtResource("12_qvkpi")
+atlas = ExtResource("7_8t5j0")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fya3"]
-atlas = ExtResource("13_phn3t")
+atlas = ExtResource("8_137sf")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbe0p"]
-atlas = ExtResource("13_phn3t")
+atlas = ExtResource("8_137sf")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fxbf"]
-atlas = ExtResource("13_phn3t")
+atlas = ExtResource("8_137sf")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ny0b8"]
-atlas = ExtResource("13_phn3t")
+atlas = ExtResource("8_137sf")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cn6c"]
-atlas = ExtResource("14_xmpvw")
+atlas = ExtResource("14_cwa0y")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c777"]
-atlas = ExtResource("14_xmpvw")
+atlas = ExtResource("14_cwa0y")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7er3a"]
-atlas = ExtResource("14_xmpvw")
+atlas = ExtResource("14_cwa0y")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfygq"]
-atlas = ExtResource("15_3i72p")
+atlas = ExtResource("6_bbnl3")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l8jv1"]
-atlas = ExtResource("15_3i72p")
+atlas = ExtResource("6_bbnl3")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hlv0g"]
-atlas = ExtResource("16_vk85d")
+atlas = ExtResource("9_r7m8y")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15umy"]
-atlas = ExtResource("16_vk85d")
+atlas = ExtResource("9_r7m8y")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t06bg"]
-atlas = ExtResource("16_vk85d")
+atlas = ExtResource("9_r7m8y")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3f43"]
-atlas = ExtResource("16_vk85d")
+atlas = ExtResource("9_r7m8y")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocjpv"]
-atlas = ExtResource("16_vk85d")
+atlas = ExtResource("9_r7m8y")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tu37o"]
-atlas = ExtResource("16_vk85d")
+atlas = ExtResource("9_r7m8y")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3w8m6"]
-atlas = ExtResource("17_p1sxd")
+atlas = ExtResource("15_gnlw0")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgjby"]
-atlas = ExtResource("17_p1sxd")
+atlas = ExtResource("15_gnlw0")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5orho"]
-atlas = ExtResource("17_p1sxd")
+atlas = ExtResource("15_gnlw0")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pytkv"]
-atlas = ExtResource("17_p1sxd")
+atlas = ExtResource("15_gnlw0")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hn3o"]
-atlas = ExtResource("17_p1sxd")
+atlas = ExtResource("15_gnlw0")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2scgi"]
-atlas = ExtResource("17_p1sxd")
+atlas = ExtResource("15_gnlw0")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ls88t"]
-atlas = ExtResource("18_wj1ss")
+atlas = ExtResource("10_v78ft")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lft61"]
-atlas = ExtResource("18_wj1ss")
+atlas = ExtResource("10_v78ft")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlhmv"]
-atlas = ExtResource("18_wj1ss")
+atlas = ExtResource("10_v78ft")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujq4b"]
-atlas = ExtResource("19_ef70e")
+atlas = ExtResource("11_51ump")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6we2"]
-atlas = ExtResource("19_ef70e")
+atlas = ExtResource("11_51ump")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkji0"]
-atlas = ExtResource("19_ef70e")
+atlas = ExtResource("11_51ump")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptxls"]
-atlas = ExtResource("20_se1ol")
+atlas = ExtResource("12_6bx2k")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ussx"]
-atlas = ExtResource("20_se1ol")
+atlas = ExtResource("12_6bx2k")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wiwf"]
-atlas = ExtResource("20_se1ol")
+atlas = ExtResource("12_6bx2k")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ran8"]
-atlas = ExtResource("20_se1ol")
+atlas = ExtResource("12_6bx2k")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2xxk"]
-atlas = ExtResource("21_a2o38")
+atlas = ExtResource("21_s3rtd")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkuws"]
-atlas = ExtResource("21_a2o38")
+atlas = ExtResource("21_s3rtd")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fcsv"]
-atlas = ExtResource("21_a2o38")
+atlas = ExtResource("21_s3rtd")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08ye0"]
-atlas = ExtResource("22_fwdsn")
+atlas = ExtResource("16_s2gkb")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35si7"]
-atlas = ExtResource("22_fwdsn")
+atlas = ExtResource("16_s2gkb")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsqni"]
-atlas = ExtResource("23_guhiv")
+atlas = ExtResource("13_plf7l")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3blp3"]
-atlas = ExtResource("23_guhiv")
+atlas = ExtResource("13_plf7l")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1ckf"]
-atlas = ExtResource("23_guhiv")
+atlas = ExtResource("13_plf7l")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kf4fm"]
-atlas = ExtResource("23_guhiv")
+atlas = ExtResource("13_plf7l")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyqas"]
-atlas = ExtResource("23_guhiv")
+atlas = ExtResource("13_plf7l")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kumpi"]
-atlas = ExtResource("23_guhiv")
+atlas = ExtResource("13_plf7l")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_huc5v"]
@@ -772,15 +740,15 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap4r4"]
-atlas = ExtResource("25_f5idq")
+atlas = ExtResource("15_bhv6r")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lg4vq"]
-atlas = ExtResource("25_f5idq")
+atlas = ExtResource("15_bhv6r")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeifr"]
-atlas = ExtResource("25_f5idq")
+atlas = ExtResource("15_bhv6r")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hua0c"]
@@ -885,7 +853,7 @@ sprite_frames = SubResource("SpriteFrames_hua0c")
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_rnwv2")
-texture = ExtResource("26_5jh3m")
+texture = ExtResource("22_4vuif")
 lifetime = 6.0
 one_shot = true
 speed_scale = 4.0
