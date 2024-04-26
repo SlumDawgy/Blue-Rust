@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bt10na8n3ty6g"
+path="res://.godot/imported/Mechanical (2).WAV-caea734bbc82f34fa5a1fca5c29ad858.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Music/Mechanical (2).WAV"
+dest_files=["res://.godot/imported/Mechanical (2).WAV-caea734bbc82f34fa5a1fca5c29ad858.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -24,16 +24,16 @@
 [ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="22_fwdsn"]
 [ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="23_8bsgf"]
 [ext_resource type="Texture2D" uid="uid://dco74uwbd38hf" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="23_guhiv"]
-[ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
-[ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
 [ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Characters/Player/Aiming.png" id="24_rt3vl"]
 [ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Enemies/FirstBoss/SlashEffect.png" id="25_f5idq"]
 [ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Enemies/FirstBoss/BrokenPiece1.png" id="26_5jh3m"]
-[ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/02. Wall hit.WAV" id="26_idy6h"]
-[ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/03. Charge.WAV" id="27_h1uwv"]
-[ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/02. Retrieve.WAV" id="28_5x8d2"]
+[ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/Music/Boss/01. BossHurt.WAV" id="28_5owxy"]
+[ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/Music/Boss/04. BossDie.WAV" id="29_0ddan"]
+[ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/Music/Boss/02. Wall hit.WAV" id="30_41oir"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="31_4d6cc"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="31_l3uw7"]
+[ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/Music/Boss/03. Charge.WAV" id="31_unemp"]
+[ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/Player_Sounds/02. Retrieve.WAV" id="32_60c8u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
 atlas = ExtResource("2_3v4pr")
@@ -897,19 +897,19 @@ shape = SubResource("RectangleShape2D_ccpoy")
 script = ExtResource("23_8bsgf")
 
 [node name="BossHurt" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("23_xu5fh")
+stream = ExtResource("28_5owxy")
 
 [node name="BossDie" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("24_rk238")
+stream = ExtResource("29_0ddan")
 
 [node name="WallHit" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("26_idy6h")
+stream = ExtResource("30_41oir")
 
 [node name="Charge" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("27_h1uwv")
+stream = ExtResource("31_unemp")
 
 [node name="Retrieve" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("28_5x8d2")
+stream = ExtResource("32_60c8u")
 
 [node name="SteamParticles" type="CPUParticles2D" parent="."]
 position = Vector2(19, -26)

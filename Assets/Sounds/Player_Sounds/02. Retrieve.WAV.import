@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1jupmold6ha4"
+path="res://.godot/imported/02. Retrieve.WAV-6052f94efca95ef39e3468f4722cccec.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Player_Sounds/02. Retrieve.WAV"
+dest_files=["res://.godot/imported/02. Retrieve.WAV-6052f94efca95ef39e3468f4722cccec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
