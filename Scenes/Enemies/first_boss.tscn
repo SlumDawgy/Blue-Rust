@@ -1,5 +1,6 @@
-[gd_scene load_steps=134 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=136 format=3 uid="uid://dup4g553pqjue"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://c4f4tou7xbq2l" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_Death-Sheet.png" id="2_3v4pr"]
 [ext_resource type="Texture2D" uid="uid://b6j884mgcmgj4" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_BackUp-Sheet.png" id="3_6fuf7"]
@@ -29,11 +30,49 @@
 [ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Characters/Player/Aiming.png" id="24_rt3vl"]
 [ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Enemies/FirstBoss/SlashEffect.png" id="25_f5idq"]
 [ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Enemies/FirstBoss/BrokenPiece1.png" id="26_5jh3m"]
+=======
+[ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/first_boss.gd" id="1_7v45d"]
+[ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
+[ext_resource type="Texture2D" uid="uid://cyl4fqt3bhreb" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Slash-Sheet.png" id="2_ccuwb"]
+[ext_resource type="Texture2D" uid="uid://c4f4tou7xbq2l" path="res://Assets/Sprites/Boss/EnemyAtomiton_Death-Sheet.png" id="2_eyfvr"]
+[ext_resource type="Texture2D" uid="uid://pi5usms5lp6y" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Charge-Sheet.png" id="2_g8tcs"]
+[ext_resource type="Texture2D" uid="uid://b6j884mgcmgj4" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_BackUp-Sheet.png" id="3_cy3sk"]
+[ext_resource type="Texture2D" uid="uid://dh108mw5lgkby" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Damaged-Sheet.png" id="3_rrh61"]
+[ext_resource type="Texture2D" uid="uid://cxfaew5d6iqvn" path="res://Assets/Sprites/Boss/EnemyAtomiton_FullHealth_Stunned-Sheet.png" id="6_a154n"]
+[ext_resource type="Texture2D" uid="uid://cb257r475g2c0" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Stunned-Sheet.png" id="6_bbnl3"]
+[ext_resource type="Texture2D" uid="uid://d2wx6en7smqpt" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Charge-Sheet.png" id="6_tqe2c"]
+[ext_resource type="Texture2D" uid="uid://xuwxu5weuvlk" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Damaged-Sheet.png" id="7_8t5j0"]
+[ext_resource type="Texture2D" uid="uid://cdj07mkxqdsie" path="res://Assets/Sprites/Boss/SteamCharge.png" id="7_txm7y"]
+[ext_resource type="Texture2D" uid="uid://cyjaqhlpffaev" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Slash-Sheet.png" id="8_137sf"]
+[ext_resource type="Texture2D" uid="uid://13krs442fdag" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_BackUp.png" id="9_ip2vc"]
+[ext_resource type="Texture2D" uid="uid://cvhdynd17tstg" path="res://Assets/Sprites/Boss/EnemyAtomiton_HalfHealth_Walk-Sheet.png" id="9_r7m8y"]
+[ext_resource type="Texture2D" uid="uid://dsfskvyicsjx8" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Charge-Sheet.png" id="10_v78ft"]
+[ext_resource type="Texture2D" uid="uid://j0q0854upsni" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Damaged-Sheet.png" id="11_51ump"]
+[ext_resource type="Texture2D" uid="uid://b4vaapwatprom" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Slash-Sheet.png" id="12_6bx2k"]
+[ext_resource type="Texture2D" uid="uid://dco74uwbd38hf" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="13_plf7l"]
+[ext_resource type="Texture2D" uid="uid://bl8am87wu4361" path="res://Assets/Sprites/Boss/SteamChargeHalfHelath.png" id="14_cwa0y"]
+[ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Boss/SlashEffect.png" id="15_bhv6r"]
+[ext_resource type="Texture2D" uid="uid://b7i8em8vp0cl6" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_BackUp-Sheet.png" id="15_gnlw0"]
+[ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Boss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="16_s2gkb"]
+[ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Player/Aiming.png" id="21_etkqa"]
+[ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Boss/SteamChargeLowHelath.png" id="21_s3rtd"]
+[ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Boss/BrokenPiece1.png" id="22_4vuif"]
+[ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossAudios.gd" id="23_8bsgf"]
+[ext_resource type="AudioStream" uid="uid://bk35h5j801hvf" path="res://Assets/Sounds/01. BossHurt.WAV" id="23_xu5fh"]
+[ext_resource type="AudioStream" uid="uid://modtydekxyjh" path="res://Assets/Sounds/04. BossDie.WAV" id="24_rk238"]
+[ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossSprites.gd" id="24_vbx28"]
+>>>>>>> Refactor_Boss
 [ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/02. Wall hit.WAV" id="26_idy6h"]
 [ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/03. Charge.WAV" id="27_h1uwv"]
 [ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/02. Retrieve.WAV" id="28_5x8d2"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="31_4d6cc"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="31_l3uw7"]
+[ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="35_qc33f"]
+[ext_resource type="PackedScene" uid="uid://d0fwaxi3ok6nx" path="res://Scenes/Components/hitBoxComponent.tscn" id="36_dp3sm"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wf4o1"]
+a = Vector2(-20, 30)
+b = Vector2(21, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4802"]
 atlas = ExtResource("2_3v4pr")
@@ -379,7 +418,7 @@ animations = [{
 "duration": 5.0,
 "texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -402,9 +441,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_36vlp")
 }],
-"loop": true,
+"loop": false,
 "name": &"FullHealth_BackUp",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 0.6,
@@ -432,7 +471,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"FullHealth_Damage",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -518,9 +557,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5vj0p")
 }],
-"loop": true,
+"loop": false,
 "name": &"HalfHealth_BackUp",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 0.4,
@@ -563,7 +602,7 @@ animations = [{
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_ny0b8")
 }],
-"loop": true,
+"loop": false,
 "name": &"HalfHealth_Slash",
 "speed": 5.0
 }, {
@@ -634,9 +673,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2scgi")
 }],
-"loop": true,
+"loop": false,
 "name": &"LowHealth_BackUp",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 0.3,
@@ -679,7 +718,7 @@ animations = [{
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_1ran8")
 }],
-"loop": true,
+"loop": false,
 "name": &"LowHealth_Slash",
 "speed": 5.0
 }, {
@@ -788,17 +827,8 @@ turbulence_noise_strength = 6.4
 turbulence_influence_min = 0.131
 turbulence_influence_max = 0.489
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_wi6mj"]
-points = PackedVector2Array(-32, 32, -32, -32, 16, -32, 16, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwyoi"]
-size = Vector2(24, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyu8d"]
-size = Vector2(24, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpoy"]
-size = Vector2(48, 42)
+size = Vector2(56.5, 64)
 
 [sub_resource type="Curve" id="Curve_t01ax"]
 _data = [Vector2(0.00700935, 1), 0.0, 0.0, 0, 0, Vector2(0.852804, 1), 0.146826, 0.146826, 0, 0, Vector2(1, 0.0490566), -6.25198, 0.0, 0, 0]
@@ -815,32 +845,43 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_58pow"]
 b = Vector2(0, 0)
 
-[node name="First_Boss" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yy3b"]
+size = Vector2(30, 20)
+
+[node name="FirstBoss" type="CharacterBody2D"]
 collision_layer = 32784
 collision_mask = 24
 platform_floor_layers = 4294901760
 script = ExtResource("1_7v45d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="FloorCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("SegmentShape2D_wf4o1")
+
+[node name="FirstBossSprites" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("FirstBoss")]
+position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Steam"
+animation = &"FullHealth_Slash"
+script = ExtResource("24_vbx28")
+FirstBoss = NodePath("..")
 
-[node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
+[node name="Node2D" type="Node2D" parent="FirstBossSprites"]
 scale = Vector2(0.5, 0.5)
 
-[node name="Aiming" type="Sprite2D" parent="AnimatedSprite2D/Node2D"]
+[node name="Aiming" type="Sprite2D" parent="FirstBossSprites/Node2D"]
 visible = false
 modulate = Color(1, 0.12549, 0.0862745, 0.521569)
 scale = Vector2(2, 2)
-texture = ExtResource("24_rt3vl")
+texture = ExtResource("21_etkqa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FirstBossSprites/Node2D"]
+visible = false
 position = Vector2(-24, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hua0c")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D/Node2D"]
+[node name="DamageParticle" type="GPUParticles2D" parent="FirstBossSprites/Node2D"]
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_rnwv2")
@@ -850,50 +891,39 @@ one_shot = true
 speed_scale = 4.0
 explosiveness = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 0)
-shape = SubResource("ConvexPolygonShape2D_wi6mj")
-one_way_collision_margin = 0.0
+[node name="HealthComponent" parent="." instance=ExtResource("35_qc33f")]
+visible = false
+position = Vector2(-7, 0)
+maxHealth = 3
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("healthComponentInstance") instance=ExtResource("36_dp3sm")]
+visible = false
+healthComponentInstance = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-28, 0)
-shape = SubResource("RectangleShape2D_fwyoi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(32, 0)
-shape = SubResource("RectangleShape2D_fyu8d")
+[node name="HitBoxCollider" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_ccpoy")
 
 [node name="WallCollision" type="Node2D" parent="."]
+visible = false
+position = Vector2(-2, 0)
 
-[node name="RayCast2D" type="RayCast2D" parent="WallCollision"]
-target_position = Vector2(40, 0)
+[node name="Left" type="RayCast2D" parent="WallCollision"]
+target_position = Vector2(-40, 0)
 collision_mask = 8
-
-[node name="RayCast2D2" type="RayCast2D" parent="WallCollision"]
-target_position = Vector2(-48, 0)
-collision_mask = 8
-
-[node name="Area2D2" type="Area2D" parent="."]
-collision_layer = 48
-collision_mask = 48
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(8, 0)
-scale = Vector2(1.05, 1.05)
-shape = SubResource("ConvexPolygonShape2D_wi6mj")
-one_way_collision_margin = 0.0
 
 [node name="Damagable" type="Area2D" parent="."]
+visible = false
+position = Vector2(5, 0)
 collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damagable"]
-position = Vector2(0, -5)
+position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_ccpoy")
 
 [node name="Audios" type="Node2D" parent="."]
+visible = false
 script = ExtResource("23_8bsgf")
 
 [node name="BossHurt" type="AudioStreamPlayer2D" parent="Audios"]
@@ -912,7 +942,7 @@ stream = ExtResource("27_h1uwv")
 stream = ExtResource("28_5x8d2")
 
 [node name="SteamParticles" type="CPUParticles2D" parent="."]
-position = Vector2(19, -26)
+position = Vector2(20, -26)
 emitting = false
 amount = 100
 lifetime = 0.6
@@ -932,7 +962,7 @@ scale_amount_max = 2.5
 scale_amount_curve = SubResource("Curve_t01ax")
 color_ramp = SubResource("Gradient_ad410")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="SteamParticles"]
+[node name="Charging" type="CPUParticles2D" parent="SteamParticles"]
 emitting = false
 amount = 20
 lifetime = 0.1
@@ -948,13 +978,25 @@ angle_min = -90.0
 angle_max = -90.0
 color_ramp = SubResource("Gradient_yjpeg")
 
-[node name="Area2D" type="Area2D" parent="SteamParticles"]
+[node name="Damage" type="Area2D" parent="SteamParticles"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SteamParticles/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SteamParticles/Damage"]
 shape = SubResource("SegmentShape2D_58pow")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[node name="Attack" type="ShapeCast2D" parent="."]
+position = Vector2(-29, -22)
+shape = SubResource("RectangleShape2D_0yy3b")
+target_position = Vector2(0, 44)
+max_results = 4
+
+[node name="ChargeAttackTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="HitBoxComponent" to="." method="_on_hit_box_component_area_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
-[connection signal="body_entered" from="SteamParticles/Area2D" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="SteamParticles/Damage" to="." method="_on_damage_body_entered"]
+
+[editable path="HitBoxComponent"]

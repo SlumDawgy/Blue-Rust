@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0fwaxi3ok6nx"]
+
+[ext_resource type="Script" path="res://Scripts/Components/HitBoxComponent.gd" id="1_nmhpl"]
+
+[node name="HitBoxComponent" type="Area2D"]
+script = ExtResource("1_nmhpl")

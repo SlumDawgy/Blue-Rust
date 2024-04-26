@@ -3,7 +3,7 @@ extends Node
 
 # SCENES
 # SCENES/MC
-const GRAPPLING_HOOK_PATH: String = "res://Scenes/MC/Grappling.tscn"
+const GRAPPLING_HOOK_PATH: String = "res://Scenes/Player/GrapplingHook.tscn"
 
 # SCENES/UI
 const DEATH_SCREEN_PATH: String = "res://Scenes/UI/death_ui.tscn"
@@ -21,5 +21,5 @@ const LANTURN_FULL_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_full.png
 const LANTURN_ANIMATION_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_animation.png"
 
 # ASSETS/SPRITES/MC
-const PLAYER_AIM_PATH: String = "res://Assets/Sprites/Characters/Player/Aim.png"
-const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Characters/Player/Aiming.png"
+const PLAYER_AIM_PATH: String = "res://Assets/Sprites/Player/Aim.png"
+const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Player/Aiming.png"

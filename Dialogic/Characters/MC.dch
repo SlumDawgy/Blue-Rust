@@ -8,16 +8,16 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "Idle",
+"default_portrait": "New portrait",
 "description": "",
-"display_name": "ABCDE",
+"display_name": "???",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"Idle": {
+"New portrait": {
 "export_overrides": {
-"image": "\"res://Assets/Sprites/MC Animations/Idle.png\""
+"image": ""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

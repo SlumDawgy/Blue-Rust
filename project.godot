@@ -28,15 +28,26 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"MC": "res://Dialogic/Characters/MC.dch"
+"MC": "res://Dialogic/Characters/MC.dch",
+"Soothing_Voice": "res://Dialogic/Characters/Soothing_Voice.dch"
 }
 directories/dtl_directory={
-"Prison": "res://Dialogic/Timelines/Prison.dtl"
+"Prison1-1": "res://Dialogic/Timelines/Prison1-1.dtl",
+"Prison1-2": "res://Dialogic/Timelines/Prison1-2.dtl",
+"Prison1-3": "res://Dialogic/Timelines/Prison1-3.dtl",
+"Prison1-4": "res://Dialogic/Timelines/Prison1-4.dtl",
+"Prison1-5": "res://Dialogic/Timelines/Prison1-5.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://Dialogic/Styles/Style.tres"]
 layout/default_style="res://Dialogic/Styles/Style.tres"
-variables={}
+variables={
+"Dialogue1": false,
+"Dialogue2": false,
+"Dialogue3": false,
+"Dialogue4": false,
+"Dialogue5": false
+}
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
@@ -53,11 +64,17 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
+translation/enabled=true
+translation/original_locale="pt_BR"
+translation/file_mode=1
+translation/translation_folder="res://Dialogic/Translation"
+translation/save_mode=0
+translation/add_separator=false
 
 [display]
 
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://Assets/Sprites/Characters/Player/Aim.png"
+mouse_cursor/custom_image="res://Assets/Sprites/Player/Aim.png"
 mouse_cursor/custom_image_hotspot=Vector2(14.5, 15.5)
 mouse_cursor/tooltip_position_offset=Vector2(10, -10)
 
@@ -130,9 +147,14 @@ dialogic_default_action={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Dialogic/Translation/dialogic_Prison1-4_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-4_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_Prison1-5_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-5_translation.pt_BR.translation")
+locale/test="pt_BR"
+
 [layer_names]
 
-2d_physics/layer_1="Character"
+2d_physics/layer_1="Player"
 2d_physics/layer_2="Grapple"
 2d_physics/layer_3="Water"
 2d_physics/layer_4="Walls"

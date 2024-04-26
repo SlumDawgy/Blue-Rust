@@ -1,0 +1,6 @@
+MC: Ow. That probably would've hurt more if it weren’t for this mechanical arm.
+MC: Whoever designed this must’ve been brilliant.
+MC: I scarcely believed this wasn’t naturally a part of my body when I woke up.
+MC: Maybe I can modify the pressurized release to get out of this pit.
+[wait time="1.0"]
+set {Dialogue3} = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bis8puyxq2i8f"]
 
-[ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_pu854"]
+[ext_resource type="Script" path="res://Scripts/UI/Main_Menu.gd" id="1_pu854"]
 [ext_resource type="Texture2D" uid="uid://swaog5kf3gdl" path="res://Assets/Sprites/UI/Title.png" id="2_mor0q"]
 [ext_resource type="Texture2D" uid="uid://cvetjamuu0lhd" path="res://Assets/Sprites/UI/Buttons/Start_Button.png" id="3_onirk"]
 [ext_resource type="Texture2D" uid="uid://5lfbylbmwklr" path="res://Assets/Sprites/UI/UIBackGroundSprite.png" id="3_qq4la"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbloualbgks2x" path="res://Assets/Sprites/UI/Buttons/Start_Button_Pressed.png" id="4_tx6gk"]
 [ext_resource type="Texture2D" uid="uid://x8c1yomx3cnc" path="res://Assets/Sprites/UI/Buttons/QuitButton.png" id="5_3a7xd"]
 [ext_resource type="Texture2D" uid="uid://22slbll8473u" path="res://Assets/Sprites/UI/Buttons/Start_Button_Selected.png" id="5_mauky"]
-[ext_resource type="Script" path="res://Scripts/Start_Button.gd" id="6_55xu1"]
+[ext_resource type="Script" path="res://Scripts/UI/Start_Button.gd" id="6_55xu1"]
 [ext_resource type="Texture2D" uid="uid://dl8lt1f0qyhho" path="res://Assets/Sprites/UI/Buttons/OptionsButton_Pressed.png" id="7_640ed"]
 [ext_resource type="Texture2D" uid="uid://btfkx6xgpx7h0" path="res://Assets/Sprites/UI/Buttons/OptionsButton_Selected.png" id="8_ovpdc"]
 [ext_resource type="Texture2D" uid="uid://c4hvyaxv5llrp" path="res://Assets/Sprites/UI/Buttons/QuitButton_Pressed.png" id="10_6oq8k"]
@@ -77,6 +77,7 @@ texture_pressed = ExtResource("10_6oq8k")
 texture_hover = ExtResource("11_7snne")
 
 [node name="Scenetransition" parent="." instance=ExtResource("14_0kjxk")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ywlu5")

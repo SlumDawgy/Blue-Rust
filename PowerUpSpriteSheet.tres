@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bbmj2hkaerlmq"]
+
+[ext_resource type="Texture2D" uid="uid://bacriuxpoog4t" path="res://Assets/Sprites/Items/PowerUpDrop-Sheet.png" id="1_7hiuo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5tke"]
+atlas = ExtResource("1_7hiuo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnhqj"]
+atlas = ExtResource("1_7hiuo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54irq"]
+atlas = ExtResource("1_7hiuo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp466"]
+atlas = ExtResource("1_7hiuo")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5tke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnhqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54irq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp466")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
