@@ -169,8 +169,9 @@ func dying():
 	if animation.frame == 1:
 		if audios.bossDie.playing == false:
 			audios.bossDie.play()
-		$"../Audio/MainLevelTheme".playing = true
-		$"../Audio/BossFight".playing = false
+		get_tree().root.get_node("Prison/Audio/BossFight").playing = false
+		get_tree().root.get_node("Prison/Audio/MainLevelTheme").playing = true
+
 
 	if audios.bossDie.playing == false:
 		await get_tree().create_timer(2).timeout

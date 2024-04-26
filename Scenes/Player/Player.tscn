@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/HookPath.gd" id="21_x7ebn"]
 [ext_resource type="PackedScene" uid="uid://bsoulh05m1dc6" path="res://Scenes/Components/mantleComponent.tscn" id="23_q6t21"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAudios.gd" id="24_yncxs"]
-[ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Hurt.WAV" id="26_xdr5d"]
+[ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Player_Sounds/Hurt.WAV" id="26_xdr5d"]
 [ext_resource type="Texture2D" uid="uid://bcvjkn2ipvh8u" path="res://Assets/Sprites/SmokeParticles1.png" id="27_0hu42"]
 [ext_resource type="Script" path="res://Scripts/Player/DashUpgrade.gd" id="27_tgcc7"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="28_6n5nn"]

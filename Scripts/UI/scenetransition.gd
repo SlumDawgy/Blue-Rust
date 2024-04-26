@@ -20,7 +20,7 @@ func _ready():
 			Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
 		else:
 			fadetonormal()
-			$"../Audio/MainLevelTheme".play()
+			get_tree().get_current_scene().get_node("Audio/MainLevelTheme").play()
 
 func _process(_delta):
 	if is_instance_valid(player) and start == false:
@@ -30,7 +30,7 @@ func _process(_delta):
 		if Dialogic.VAR.Dialogue1 == true and faded == false:
 			fadetonormal()
 			player.get_node("PlayerSprite").play("getting_up")
-			$"../Audio/MainLevelTheme".play()
+			get_tree().get_current_scene().get_node("Audio/MainLevelTheme").play()
 			faded = true
 			Dialogic.VAR.Dialogue1 = false
 		elif Dialogic.VAR.Dialogue2 == true:
