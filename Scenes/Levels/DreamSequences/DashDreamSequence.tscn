@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqqmqsa25nhxm"]
+[gd_scene load_steps=26 format=3 uid="uid://bqqmqsa25nhxm"]
 
 [ext_resource type="PackedScene" uid="uid://ddcwy5gvmfeyc" path="res://Scenes/Levels/Grasslands/grasslands_tile_map.tscn" id="1_af8jq"]
 [ext_resource type="Shader" path="res://Materials/Shaders/GreyScaleShader.gdshader" id="2_t43vh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://chiqbameeqy1w" path="res://Assets/Sprites/TileSets/Grasslands/CaveBackGround2.png" id="13_gb5ks"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="14_vrbxi"]
 [ext_resource type="Texture2D" uid="uid://v3m8jfcwewkj" path="res://Assets/Sprites/Lighting/SunLightTexture.png" id="15_7wdrn"]
+[ext_resource type="AudioStream" uid="uid://d2ulpu26pblck" path="res://Assets/Sounds/Music/Dream.WAV" id="16_o2nvm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xatia"]
 shader = ExtResource("2_t43vh")
@@ -577,3 +578,8 @@ texture_scale = 1.65
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gg7s0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_o2nvm")
+autoplay = true
+bus = &"BGM(Music)"

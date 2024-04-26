@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcjoqtm0m13tk"]
+
+[ext_resource type="Texture2D" uid="uid://btsdr2yivtkaa" path="res://Assets/Sprites/Lighting/DroneLight.png" id="1_sv4gk"]
+
+[node name="DroneLight" type="PointLight2D"]
+position = Vector2(184, -1225)
+color = Color(0.921569, 0, 0.133333, 1)
+energy = 10.13
+blend_mode = 2
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("1_sv4gk")
+texture_scale = 0.3
