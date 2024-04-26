@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://0cek8qdi5cr7"
-path="res://.godot/imported/02. Wall hit.WAV-1745ab0a2dffe5c62ec71c159d1319ec.sample"
+path="res://.godot/imported/02. Wall hit.WAV-f0c62cdb40691fc1942de5fd18c945df.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/02. Wall hit.WAV"
-dest_files=["res://.godot/imported/02. Wall hit.WAV-1745ab0a2dffe5c62ec71c159d1319ec.sample"]
+source_file="res://Assets/Sounds/Music/Boss/02. Wall hit.WAV"
+dest_files=["res://.godot/imported/02. Wall hit.WAV-f0c62cdb40691fc1942de5fd18c945df.sample"]
 
 [params]
 

@@ -26,9 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://cja1wnyiquxnh" path="res://Assets/Sprites/Characters/MC Animations/Arm.png" id="18_iuu47"]
 [ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/Characters/Player/AimIndicatorLine.png" id="19_n01yd"]
 [ext_resource type="Script" path="res://Scripts/PlayerAudios.gd" id="23_u8754"]
-[ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Hurt.WAV" id="24_jh371"]
-[ext_resource type="AudioStream" uid="uid://wbffryedxy1u" path="res://Assets/Sounds/GrappleShoot.WAV" id="24_py4v2"]
+[ext_resource type="AudioStream" uid="uid://wbffryedxy1u" path="res://Assets/Sounds/Player_Sounds/GrappleShoot.WAV" id="27_vja4w"]
 [ext_resource type="Texture2D" uid="uid://bcvjkn2ipvh8u" path="res://Assets/Sprites/SmokeParticles1.png" id="28_etqpr"]
+[ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Player_Sounds/Hurt.WAV" id="28_vxojj"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="29_0gm3v"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="30_1pjdu"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="31_fyqfm"]
@@ -656,7 +656,7 @@ collision_mask = 8
 script = ExtResource("23_u8754")
 
 [node name="GrappleShoot" type="AudioStreamPlayer" parent="Audios"]
-stream = ExtResource("24_py4v2")
+stream = ExtResource("27_vja4w")
 bus = &"SFX"
 
 [node name="GrappleRetrieve" type="AudioStreamPlayer" parent="Audios"]
@@ -664,7 +664,7 @@ stream = SubResource("AudioStreamWAV_3ut5u")
 bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Audios"]
-stream = ExtResource("24_jh371")
+stream = ExtResource("28_vxojj")
 bus = &"SFX"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]

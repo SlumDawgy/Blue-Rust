@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://4w6rytb27jt2"
-path="res://.godot/imported/Symbol.WAV-28f16fa5feb069185ceb99309eed494a.sample"
+path="res://.godot/imported/Symbol.WAV-cb18a456cf322d76ed23937d984c0b62.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/Symbol.WAV"
-dest_files=["res://.godot/imported/Symbol.WAV-28f16fa5feb069185ceb99309eed494a.sample"]
+source_file="res://Assets/Sounds/Music/Symbol.WAV"
+dest_files=["res://.godot/imported/Symbol.WAV-cb18a456cf322d76ed23937d984c0b62.sample"]
 
 [params]
 

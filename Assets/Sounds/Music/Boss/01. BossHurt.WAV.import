@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bk35h5j801hvf"
-path="res://.godot/imported/01. BossHurt.WAV-3a9a1d85db22e4e4e1f5ca04aaf6573e.sample"
+path="res://.godot/imported/01. BossHurt.WAV-d34ba30e758b07f87b0fa8e32118e635.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/01. BossHurt.WAV"
-dest_files=["res://.godot/imported/01. BossHurt.WAV-3a9a1d85db22e4e4e1f5ca04aaf6573e.sample"]
+source_file="res://Assets/Sounds/Music/Boss/01. BossHurt.WAV"
+dest_files=["res://.godot/imported/01. BossHurt.WAV-d34ba30e758b07f87b0fa8e32118e635.sample"]
 
 [params]
 

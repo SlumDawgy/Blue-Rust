@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dhd8equuwemtc"
-path="res://.godot/imported/GrappleRetrieve.WAV-b34ff46d9b7ac60f880ed0b1704dfec5.sample"
+path="res://.godot/imported/GrappleRetrieve.WAV-775357e65f60ea7cf7cbe4700ad711af.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/GrappleRetrieve.WAV"
-dest_files=["res://.godot/imported/GrappleRetrieve.WAV-b34ff46d9b7ac60f880ed0b1704dfec5.sample"]
+source_file="res://Assets/Sounds/Player_Sounds/GrappleRetrieve.WAV"
+dest_files=["res://.godot/imported/GrappleRetrieve.WAV-775357e65f60ea7cf7cbe4700ad711af.sample"]
 
 [params]
 

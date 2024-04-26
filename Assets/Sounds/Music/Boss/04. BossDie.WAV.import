@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://modtydekxyjh"
-path="res://.godot/imported/04. BossDie.WAV-2ba53db95459be8fc71be9ae7a10e4f7.sample"
+path="res://.godot/imported/04. BossDie.WAV-b7cba995e0242f34974c3fb1b2013778.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/04. BossDie.WAV"
-dest_files=["res://.godot/imported/04. BossDie.WAV-2ba53db95459be8fc71be9ae7a10e4f7.sample"]
+source_file="res://Assets/Sounds/Music/Boss/04. BossDie.WAV"
+dest_files=["res://.godot/imported/04. BossDie.WAV-b7cba995e0242f34974c3fb1b2013778.sample"]
 
 [params]
 
