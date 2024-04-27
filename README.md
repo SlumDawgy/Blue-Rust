@@ -36,12 +36,12 @@ Programmer
 
 Sound Design
 
-	 Billy Newcomb
+	 Billy Newcomb, Justin Bender
 
 Art
 
 	 Mookie_Fan (Oriana Evans), Billy Newcomb, Eric Siddiqui
 
-Music & Sound
+Music
 
-	Billy Newcomb
+	Billy Newcomb, Lemon
