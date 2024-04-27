@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck3i4oprmwncn"]
 
-[ext_resource type="Texture2D" uid="uid://ld41cfwbjnpq" path="res://Assets/Sprites/TileSets/Grasslands/GrassLand.png" id="1_4uiat"]
-[ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/city_tiles.tscn" id="2_px84l"]
-[ext_resource type="PackedScene" uid="uid://bkam2bdf3y0ig" path="res://Scenes/MC/Player.tscn" id="3_65g02"]
+[ext_resource type="Texture2D" uid="uid://dqx7b1eusufbw" path="res://Assets/Sprites/TileSets/Grasslands/GrassLand.png" id="1_4uiat"]
+[ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/CityTiles.tscn" id="2_px84l"]
+[ext_resource type="PackedScene" path="res://Scenes/MC/Player.tscn" id="3_65g02"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csy3m"]
 texture = ExtResource("1_4uiat")

@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dogmjiw61dyxb" path="res://Assets/Sprites/TileSets/Grasslands/CrystalCaveInterior_close.png" id="10_ofda8"]
 [ext_resource type="Texture2D" uid="uid://cmedas1fwysp3" path="res://Assets/Sprites/TileSets/Grasslands/CrystalCaveInterior_closest.png" id="11_27o43"]
 [ext_resource type="Texture2D" uid="uid://chiqbameeqy1w" path="res://Assets/Sprites/TileSets/Grasslands/CaveBackGround2.png" id="13_gb5ks"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Lighting/LightTexture.png" id="14_vrbxi"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Lighting/SunLightTexture.png" id="15_7wdrn"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="14_vrbxi"]
+[ext_resource type="Texture2D" uid="uid://v3m8jfcwewkj" path="res://Assets/Sprites/Lighting/SunLightTexture.png" id="15_7wdrn"]
 [ext_resource type="AudioStream" uid="uid://d2ulpu26pblck" path="res://Assets/Sounds/Music/Dream.WAV" id="16_o2nvm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xatia"]

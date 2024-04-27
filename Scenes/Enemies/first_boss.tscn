@@ -830,7 +830,8 @@ shape = SubResource("SegmentShape2D_wf4o1")
 position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"FullHealth_Slash"
+animation = &"HalfHealth_Steam"
+frame_progress = 0.0589869
 script = ExtResource("24_vbx28")
 FirstBoss = NodePath("..")
 
@@ -914,6 +915,7 @@ position = Vector2(20, -26)
 emitting = false
 amount = 100
 lifetime = 0.6
+one_shot = true
 texture = ExtResource("31_4d6cc")
 emission_shape = 3
 emission_rect_extents = Vector2(3, 1)

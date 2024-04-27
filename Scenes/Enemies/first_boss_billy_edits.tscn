@@ -1,6 +1,6 @@
 [gd_scene load_steps=134 format=3 uid="uid://ctjduo6cxaeiu"]
 
-[ext_resource type="Script" path="res://Scripts/first_boss.gd" id="1_rllto"]
+[ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/first_boss.gd" id="1_rllto"]
 [ext_resource type="Texture2D" uid="uid://c4f4tou7xbq2l" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_Death-Sheet.png" id="2_7tvw8"]
 [ext_resource type="Texture2D" uid="uid://b6j884mgcmgj4" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_BackUp-Sheet.png" id="3_tfto0"]
 [ext_resource type="Texture2D" uid="uid://pi5usms5lp6y" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Charge-Sheet.png" id="4_ppab3"]
@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://de0d1owbs5k42" path="res://Assets/Sprites/Enemies/FirstBoss/SteamChargeLowHelath.png" id="21_fljep"]
 [ext_resource type="Texture2D" uid="uid://dy2shat6buf23" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Stunned-Sheet.png" id="22_m8i77"]
 [ext_resource type="Texture2D" uid="uid://dco74uwbd38hf" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_LowHealth_Walk-Sheet.png" id="23_h2sbj"]
-[ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Characters/Player/Aiming.png" id="24_a3qlq"]
+[ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Player/Aiming.png" id="24_a3qlq"]
 [ext_resource type="Texture2D" uid="uid://djq1pwxspvjpi" path="res://Assets/Sprites/Enemies/FirstBoss/SlashEffect.png" id="25_p37v1"]
 [ext_resource type="Texture2D" uid="uid://c27ip725q6w2g" path="res://Assets/Sprites/Enemies/FirstBoss/BrokenPiece1.png" id="26_3ytfk"]
 [ext_resource type="Script" path="res://Scripts/FirstBossAudios.gd" id="27_0q8oi"]

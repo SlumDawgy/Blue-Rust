@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://clj1vymbke5yo"]
+[gd_scene load_steps=9 format=3 uid="uid://mgq8m1i40iei"]
 
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="1_qp46f"]
 
@@ -2672,6 +2672,18 @@ texture = ExtResource("1_qp46f")
 14:0/0/physics_layer_1/angular_velocity = 0.0
 14:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 14:0/0/physics_layer_2/angular_velocity = 0.0
+20:5/animation_columns = 4
+20:5/animation_frame_0/duration = 0.2
+20:5/animation_frame_1/duration = 0.2
+20:5/animation_frame_2/duration = 0.2
+20:5/animation_frame_3/duration = 0.2
+20:5/0 = 0
+20:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+20:5/0/physics_layer_0/angular_velocity = 0.0
+20:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+20:5/0/physics_layer_1/angular_velocity = 0.0
+20:5/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+20:5/0/physics_layer_2/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_b03c0"]
 physics_layer_0/collision_layer = 8

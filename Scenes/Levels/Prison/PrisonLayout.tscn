@@ -674,6 +674,9 @@ texture = ExtResource("2_nkkgx")
 position = Vector2(1680, 0)
 texture = ExtResource("2_nkkgx")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+color = Color(0.0117647, 0.0705882, 0.0862745, 1)
+
 [node name="ParallaxFoeGround" type="ParallaxBackground" parent="."]
 layer = 99
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=185 format=3 uid="uid://cr5g5ugrskfq"]
+[gd_scene load_steps=186 format=3 uid="uid://cr5g5ugrskfq"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Save Point.gd" id="1_7b6r8"]
 [ext_resource type="Texture2D" uid="uid://w5u2urh01bjs" path="res://Assets/Sprites/SavePoint.png" id="2_11v0b"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="3_wurql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_itk3n"]
 radius = 32.0
@@ -1295,6 +1296,12 @@ offset_top = -64.0
 offset_right = 212.0
 offset_bottom = -8.0
 text = "PRESS E TO SAVE THE GAME"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -15)
+color = Color(0.780392, 0.823529, 0.85098, 1)
+texture = ExtResource("3_wurql")
+texture_scale = 0.2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

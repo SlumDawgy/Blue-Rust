@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=104 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="28_6n5nn"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="29_sbppg"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="30_igr4l"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="32_0ex78"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
 radius = 10.5
@@ -730,6 +731,13 @@ scale_amount_curve = SubResource("Curve_7ms4p")
 
 [node name="DashTimer" type="Timer" parent="DashUpgrade"]
 process_callback = 0
+
+[node name="PlayerLight" type="PointLight2D" parent="."]
+energy = 0.25
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("32_0ex78")
+texture_scale = 0.2
 
 [connection signal="timeout" from="DashUpgrade/DashTimer" to="DashUpgrade" method="_on_dash_timer_timeout"]
 
