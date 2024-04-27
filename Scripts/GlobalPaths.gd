@@ -23,3 +23,12 @@ const LANTURN_ANIMATION_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_ani
 # ASSETS/SPRITES/MC
 const PLAYER_AIM_PATH: String = "res://Assets/Sprites/Player/Aim.png"
 const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Player/Aiming.png"
+
+#AUDIO BUSES
+const AUDIO_BUS_LAYOUT = "res://default_bus_layout.tres"
+const MASTER_BUS :String = &"Master"
+const BGM_BUS : String = &"BGM"
+const SFX_BUS : String = &"SFX"
+const MASTER_BUS_INDEX : int = 0
+const SFX_BUS_INDEX : int = 1
+const BGM_BUS_INDEX : int = 2

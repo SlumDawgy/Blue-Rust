@@ -583,4 +583,3 @@ environment = SubResource("Environment_gg7s0")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_o2nvm")
 autoplay = true
-bus = &"BGM(Music)"

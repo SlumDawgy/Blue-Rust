@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://c72lhr20esxb0"]
+[gd_scene load_steps=2 format=3 uid="uid://c72lhr20esxb0"]
+
+[ext_resource type="PackedScene" uid="uid://b2crsapx8mhj4" path="res://Scenes/Levels/City/CityLayout.tscn" id="1_crasc"]
 
 [node name="CityLevel" type="Node2D"]
+
+[node name="CityLAyout" parent="." instance=ExtResource("1_crasc")]

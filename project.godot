@@ -24,6 +24,7 @@ driver/mix_rate=48000
 
 GlobalPaths="*res://Scripts/GlobalPaths.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
 
 [dialogic]
 
