@@ -2,6 +2,8 @@
 
 In this 2D side scrolling platformer where you play as an amnesiac wanderer in a steampunk world using your mechanical arm to traverse this strange and wonderful landscape, you will discover new abilities, your long forgotten memories and the secrets of this land. 
 
+## [Get Blue Rust on itch.io!](https://deeznoodles.itch.io/blue-rust)
+
 Controls:
 
 WASD to move
@@ -30,9 +32,9 @@ Game Designer
 
 	Eric Siddiqui
 
-Programmer
+Programming
 
-	 Kuroma (Leonardo Oliveira)
+	 Kuroma (Leonardo Oliveira), Wesley Brueland
 
 Sound Design
 
