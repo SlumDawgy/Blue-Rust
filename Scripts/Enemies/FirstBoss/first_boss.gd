@@ -128,8 +128,11 @@ func stunned():
 func chargingSteam():
 	velocity.x = move_toward(0,0,0)
 	steamChargingParticles.emitting = true
+	canBeDamaged = true
+	$StunnedIndicator.visible = true
 	await get_tree().create_timer(2.5).timeout
-	
+	canBeDamaged = false
+	$StunnedIndicator.visible = false
 	steamChecking(movement.steamAttacking)
 
 func steamAttacking():
@@ -140,6 +143,7 @@ func steamAttacking():
 		steamChargingParticles.emitting = false
 		steamCollision.shape.a.y = 0
 		await get_tree().create_timer(1).timeout
+		
 		currentMovement = movement.enabled
 
 func steamChecking(action):

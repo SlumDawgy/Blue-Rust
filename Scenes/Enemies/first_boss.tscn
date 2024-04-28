@@ -828,7 +828,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"stunned",
-"speed": 3.25
+"speed": 3.0
 }]
 
 [node name="FirstBoss" type="CharacterBody2D"]
@@ -888,6 +888,7 @@ position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_ccpoy")
 
 [node name="WallCollision" type="Node2D" parent="."]
+visible = false
 position = Vector2(-2, 0)
 
 [node name="Left" type="RayCast2D" parent="WallCollision"]
@@ -895,6 +896,7 @@ target_position = Vector2(-40, 0)
 collision_mask = 8
 
 [node name="Damagable" type="Area2D" parent="."]
+visible = false
 position = Vector2(5, 0)
 collision_layer = 16
 collision_mask = 17
@@ -966,6 +968,7 @@ color_ramp = SubResource("Gradient_yjpeg")
 shape = SubResource("SegmentShape2D_58pow")
 
 [node name="Attack" type="ShapeCast2D" parent="."]
+visible = false
 position = Vector2(-29, -22)
 shape = SubResource("RectangleShape2D_0yy3b")
 target_position = Vector2(0, 44)
@@ -979,12 +982,13 @@ autostart = true
 
 [node name="StunnedIndicator" type="AnimatedSprite2D" parent="."]
 visible = false
+self_modulate = Color(1, 1, 1, 0.545098)
 position = Vector2(-13, -8.9407e-07)
 scale = Vector2(2.01724, 2.01724)
 sprite_frames = SubResource("SpriteFrames_5uefe")
 animation = &"stunned"
 autoplay = "stunned"
-frame_progress = 0.00561338
+frame_progress = 0.689769
 
 [connection signal="area_entered" from="HitBoxComponent" to="." method="_on_hit_box_component_area_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]
