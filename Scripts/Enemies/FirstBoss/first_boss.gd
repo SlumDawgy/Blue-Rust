@@ -118,8 +118,10 @@ func chargeAttacking():
 func stunned():
 	velocity.x = move_toward(0,0,0)
 	canBeDamaged = true
+	$StunnedIndicator.visible = true
 	await get_tree().create_timer(2.5).timeout
 	canBeDamaged = false
+	$StunnedIndicator.visible = false
 	currentMovement = movement.leavingStun
 	chargeAttackTimer.start(5)
 
