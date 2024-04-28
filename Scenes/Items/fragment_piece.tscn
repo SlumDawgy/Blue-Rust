@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctykk25ncq3x8"]
+[gd_scene load_steps=11 format=3 uid="uid://ctykk25ncq3x8"]
 
 [ext_resource type="Texture2D" uid="uid://gyjfg2jreuxl" path="res://Assets/Sprites/Items/FragmentPiece.png" id="1_slsql"]
 [ext_resource type="Texture2D" uid="uid://bjg81encn0kau" path="res://Assets/Sprites/UI/SparkleParticle.png" id="2_kcrn0"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="3_01knn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxad6"]
+size = Vector2(15, 43)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k8hsu"]
 particles_animation = true
@@ -26,29 +29,17 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.6, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 0.901251, 0.90125),
 "update": 0,
-"values": [Vector2(1214, -914), Vector2(1214, -912), Vector2(1214, -914)]
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0qgu5"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1214, -920)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qyn6h"]
 _data = {
@@ -58,12 +49,19 @@ _data = {
 
 [node name="FragmentPiece" type="Node"]
 
-[node name="FragmentPieceSprite" type="Sprite2D" parent="."]
+[node name="FragmentArea2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="FragmentCollisionShape2D" type="CollisionShape2D" parent="FragmentArea2D"]
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_oxad6")
+
+[node name="FragmentPieceSprite" type="Sprite2D" parent="FragmentArea2D"]
 z_index = 1
-position = Vector2(1214, -920)
+position = Vector2(0, -2.32742)
 texture = ExtResource("1_slsql")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="FragmentPieceSprite"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="FragmentArea2D/FragmentPieceSprite"]
 material = SubResource("CanvasItemMaterial_k8hsu")
 lifetime = 1.5
 texture = ExtResource("2_kcrn0")
@@ -80,13 +78,13 @@ color_ramp = SubResource("Gradient_50l6q")
 anim_speed_min = 3.0
 anim_speed_max = 4.0
 
-[node name="PointLight2D" type="PointLight2D" parent="FragmentPieceSprite"]
+[node name="PointLight2D" type="PointLight2D" parent="FragmentArea2D/FragmentPieceSprite"]
 color = Color(0.501961, 0.694118, 0.796078, 1)
 energy = 0.5
 texture = ExtResource("3_01knn")
 texture_scale = 0.1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FragmentPieceSprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FragmentArea2D/FragmentPieceSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_qyn6h")
 }

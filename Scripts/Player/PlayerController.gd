@@ -34,6 +34,7 @@ var cursorXcoord : float
 
 # Dash
 var dashed : bool = false
+var dashEnabled : bool = false
 @export var dashSpeed : float = 250.0
 @onready var dashUpgrade : Node2D = $DashUpgrade
 
@@ -164,7 +165,7 @@ func hangingJump():
 func dashing():
 	if velocity.y != 0:
 		velocity.y = 0
-	if dashed:
+	if dashed and dashEnabled:
 		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
 
 		dashed = false

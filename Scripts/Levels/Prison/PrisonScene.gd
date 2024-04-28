@@ -1,4 +1,5 @@
 extends Node2D
+@export var player : Player
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -49,8 +50,10 @@ extends Node2D
 				#continue
 			#new_object.set(i, node_data[i])
 #
-func PowerUp(body : Player):
-	body.currentMovement = body.movement.disabled
+func PowerUp(body):
+	print('here', body)
+	player.currentMovement = player.movement.disabled
+	player.dashEnabled = true
 	get_tree().root.get_node("Prison").get_node("powerUp").queue_free()
 	Dialogic.start("res://Dialogic/Timelines/Prison1-5.dtl")
 

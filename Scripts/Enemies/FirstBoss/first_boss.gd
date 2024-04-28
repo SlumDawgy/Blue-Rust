@@ -31,6 +31,9 @@ var chargeSpeed : float = 300.0
 # Stunned
 var canBeDamaged : bool = false
 
+# Power Up dropped on death 
+var powerUpScene : PackedScene = preload(GlobalPaths.DASH_UPGRADE)
+
 @onready var audios = $Audios
 
 enum movement
@@ -181,26 +184,15 @@ func dying():
 
 	if audios.bossDie.playing == false:
 		await get_tree().create_timer(2).timeout
-		var powerUp = Area2D.new()
-		var powerUpCollision = CollisionShape2D.new()
-		var powerUpCollisionShape = RectangleShape2D.new()
-		var powerUpSprite = AnimatedSprite2D.new()
-		powerUpSprite.sprite_frames = load("res://PowerUpSpriteSheet.tres")
-		powerUpSprite.speed_scale = 2
-		powerUpSprite.play("default")
-		
-		powerUpCollision.shape = powerUpCollisionShape
-		powerUpCollision.shape.size = Vector2(16, 16)
-		
-		powerUp.add_child(powerUpCollision)
-		powerUp.add_child(powerUpSprite)
+		var powerUp = powerUpScene.instantiate()
+		get_tree().root.get_node("Prison").add_child(powerUp)
+		powerUp.get_node("FragmentArea2D").position = global_position
 
-		powerUp.connect("body_entered", Callable(get_tree().root.get_node("Prison"), "PowerUp"), 4)
+		powerUp.get_node("FragmentArea2D").connect("area_entered", Callable(get_tree().root.get_node("Prison"), "PowerUp"))
 		
-		powerUp.position = position
 		powerUp.name = "powerUp"
 		
-		get_tree().root.get_node("Prison").add_child(powerUp)
+		#get_tree().root.get_node("Prison").add_child(powerUp)
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -24,6 +24,8 @@ const LANTURN_ANIMATION_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_ani
 const PLAYER_AIM_PATH: String = "res://Assets/Sprites/Player/Aim.png"
 const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Player/Aiming.png"
 
+const DASH_UPGRADE: String = "res://Scenes/Items/fragment_piece.tscn"
+
 #AUDIO BUSES
 const AUDIO_BUS_LAYOUT = "res://default_bus_layout.tres"
 const MASTER_BUS :String = &"Master"
