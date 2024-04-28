@@ -6,6 +6,7 @@ extends Control
 var optionsScene = preload(GlobalPaths.OPTIONS_SCREEN_PATH)
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	$Scenetransition.fadetonormal()
 
 func _on_start_pressed():
@@ -21,7 +22,6 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_Scenetransition_Finished():
-	
 	pass
 
 
