@@ -148,7 +148,8 @@ func stunned(delta):
 		currentMovement = movement.leavingStun
 		chargeAttackTimer.start(5)
 
-func chargingSteam():
+func chargingSteam(delta):
+	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	steamChargingParticles.emitting = true
 	canBeDamaged = true
@@ -159,15 +160,16 @@ func chargingSteam():
 		$StunnedIndicator.visible = false
 		steamChecking(movement.steamAttacking)
 
-func steamAttacking():
+func steamAttacking(delta):
+	awaitTimer -= delta
 	steamAttackParticles.emitting = true
 	steamCollision.shape.a.y = -120
 	if player.currentMovement != player.movement.hanging:
-		steamAttackParticles.emitting = false
-		steamChargingParticles.emitting = false
 		steamCollision.shape.a.y = 0
 		if awaitTimer < -1:
 			awaitTimer = 0
+			steamAttackParticles.emitting = false
+			steamChargingParticles.emitting = false
 			currentMovement = movement.enabled
 
 func steamChecking(action):
@@ -230,9 +232,9 @@ func _physics_process(delta):
 		movement.chargeAttacking:
 			chargeAttacking()
 		movement.chargingSteam:
-			chargingSteam()
+			chargingSteam(delta)
 		movement.steamAttacking:
-			steamAttacking()
+			steamAttacking(delta)
 		movement.stunned:
 			stunned(delta)
 		#movement.leavingStun: Already in the Animation Script
