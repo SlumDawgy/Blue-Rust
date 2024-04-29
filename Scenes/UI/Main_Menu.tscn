@@ -1,22 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://bis8puyxq2i8f"]
+[gd_scene load_steps=15 format=3 uid="uid://bis8puyxq2i8f"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Main_Menu.gd" id="1_pu854"]
 [ext_resource type="AudioStream" uid="uid://73klxfni2msm" path="res://Assets/Sounds/MenuAndUI/Game_Start.WAV" id="2_lg28v"]
 [ext_resource type="Texture2D" uid="uid://swaog5kf3gdl" path="res://Assets/Sprites/UI/Title.png" id="2_mor0q"]
-[ext_resource type="Texture2D" uid="uid://cvetjamuu0lhd" path="res://Assets/Sprites/UI/Buttons/Start_Button.png" id="3_onirk"]
 [ext_resource type="Texture2D" uid="uid://5lfbylbmwklr" path="res://Assets/Sprites/UI/UIBackGroundSprite.png" id="3_qq4la"]
 [ext_resource type="AudioStream" uid="uid://bd8usmux71oig" path="res://Assets/Sounds/MenuAndUI/Menu_Click.WAV" id="3_s886s"]
 [ext_resource type="AudioStream" uid="uid://xd7freyfwwrb" path="res://Assets/Sounds/MenuAndUI/Menu_Select.WAV" id="4_jp4gn"]
-[ext_resource type="Texture2D" uid="uid://bjqvtn08kqhv2" path="res://Assets/Sprites/UI/Buttons/OptionsButton.png" id="4_lpv1d"]
-[ext_resource type="Texture2D" uid="uid://dbloualbgks2x" path="res://Assets/Sprites/UI/Buttons/Start_Button_Pressed.png" id="4_tx6gk"]
-[ext_resource type="Texture2D" uid="uid://x8c1yomx3cnc" path="res://Assets/Sprites/UI/Buttons/QuitButton.png" id="5_3a7xd"]
-[ext_resource type="Texture2D" uid="uid://22slbll8473u" path="res://Assets/Sprites/UI/Buttons/Start_Button_Selected.png" id="5_mauky"]
 [ext_resource type="Script" path="res://Scripts/UI/Start_Button.gd" id="6_55xu1"]
-[ext_resource type="Texture2D" uid="uid://dl8lt1f0qyhho" path="res://Assets/Sprites/UI/Buttons/OptionsButton_Pressed.png" id="7_640ed"]
-[ext_resource type="Texture2D" uid="uid://btfkx6xgpx7h0" path="res://Assets/Sprites/UI/Buttons/OptionsButton_Selected.png" id="8_ovpdc"]
-[ext_resource type="Texture2D" uid="uid://c4hvyaxv5llrp" path="res://Assets/Sprites/UI/Buttons/QuitButton_Pressed.png" id="10_6oq8k"]
-[ext_resource type="Texture2D" uid="uid://srlk44d5528t" path="res://Assets/Sprites/UI/Buttons/QuitButton_Selected.png" id="11_7snne"]
+[ext_resource type="Theme" uid="uid://brifowc47sc1u" path="res://Slider_Theme.tres" id="7_ofpi3"]
 [ext_resource type="PackedScene" uid="uid://xbddjqb3wxm2" path="res://Scenes/UI/scenetransition.tscn" id="14_0kjxk"]
+[ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="14_xj555"]
 [ext_resource type="AudioStream" uid="uid://b3p8dpj7xgjsv" path="res://Assets/Sounds/Music/BlueRustTheme.wav" id="15_ywlu5"]
 [ext_resource type="Texture2D" uid="uid://dyte8fqt7m5c6" path="res://Assets/Sprites/UI/OptionsPanel.png" id="19_wa4pp"]
 [ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="20_123r4"]
@@ -38,6 +31,7 @@ menu = NodePath("Menu")
 
 [node name="Menu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Menu"]
 position = Vector2(580, 326)
@@ -46,46 +40,73 @@ texture = ExtResource("2_mor0q")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Menu"]
 modulate = Color(0.0784314, 0.117647, 0.133333, 0.345098)
-position = Vector2(342.5, 464.5)
-scale = Vector2(0.591146, 0.652778)
+position = Vector2(336.5, 462.5)
+scale = Vector2(0.559896, 0.634259)
 texture = ExtResource("3_qq4la")
 
-[node name="Start_Button" type="TextureButton" parent="Menu"]
-offset_left = 233.0
-offset_top = 401.0
-offset_right = 325.0
-offset_bottom = 418.0
-scale = Vector2(2.25, 2.25)
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Options")
-texture_normal = ExtResource("3_onirk")
-texture_pressed = ExtResource("4_tx6gk")
-texture_hover = ExtResource("5_mauky")
+[node name="Start_Button" type="Button" parent="Menu"]
+offset_left = 237.0
+offset_top = 385.0
+offset_right = 594.0
+offset_bottom = 444.0
+theme = ExtResource("7_ofpi3")
+theme_override_colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 48
+text = "Start
+"
+flat = true
+alignment = 0
 script = ExtResource("6_55xu1")
 
-[node name="Options" type="TextureButton" parent="Menu"]
-offset_left = 233.0
-offset_top = 449.0
-offset_right = 332.0
-offset_bottom = 463.0
-scale = Vector2(2.25, 2.25)
-focus_neighbor_top = NodePath("../Start_Button")
-focus_neighbor_bottom = NodePath("../Quit")
-texture_normal = ExtResource("4_lpv1d")
-texture_pressed = ExtResource("7_640ed")
-texture_hover = ExtResource("8_ovpdc")
+[node name="Options" type="Button" parent="Menu"]
+offset_left = 237.0
+offset_top = 429.0
+offset_right = 594.0
+offset_bottom = 488.0
+theme = ExtResource("7_ofpi3")
+theme_override_colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 48
+text = "Options
+"
+flat = true
+alignment = 0
 
-[node name="Quit" type="TextureButton" parent="Menu"]
-offset_left = 233.0
-offset_top = 497.0
-offset_right = 288.0
-offset_bottom = 512.0
-scale = Vector2(2.25, 2.25)
-focus_neighbor_top = NodePath("../Options")
-focus_neighbor_bottom = NodePath("../Start_Button")
-texture_normal = ExtResource("5_3a7xd")
-texture_pressed = ExtResource("10_6oq8k")
-texture_hover = ExtResource("11_7snne")
+[node name="Quit" type="Button" parent="Menu"]
+offset_left = 237.0
+offset_top = 474.0
+offset_right = 594.0
+offset_bottom = 533.0
+theme = ExtResource("7_ofpi3")
+theme_override_colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 48
+text = "Quit
+"
+flat = true
+alignment = 0
 
 [node name="Scenetransition" parent="." instance=ExtResource("14_0kjxk")]
 visible = false
@@ -96,7 +117,6 @@ autoplay = true
 bus = &"BGM"
 
 [node name="OptionsPanel" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(580.722, 326)
 scale = Vector2(3.04832, 3.06019)
 texture = ExtResource("19_wa4pp")
@@ -150,16 +170,21 @@ alignment = 1
 
 [node name="Master" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
+theme = ExtResource("7_ofpi3")
+theme_override_icons/grabber = ExtResource("14_xj555")
 min_value = -80.0
 max_value = 0.0
 
 [node name="MusicSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
+theme = ExtResource("7_ofpi3")
+theme_override_icons/grabber = ExtResource("14_xj555")
 min_value = -80.0
 max_value = 0.0
 
 [node name="SFXSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
+theme = ExtResource("7_ofpi3")
 min_value = -80.0
 max_value = 0.0
 
@@ -174,6 +199,7 @@ text = "FullScreen"
 
 [node name="FullscreenButton" type="CheckButton" parent="OptionsPanel/Configs/Fullscreen"]
 layout_mode = 2
+theme = ExtResource("7_ofpi3")
 
 [node name="Language" type="HBoxContainer" parent="OptionsPanel/Configs"]
 layout_mode = 2
@@ -186,6 +212,8 @@ text = "LANGUAGE"
 
 [node name="OptionButton" type="OptionButton" parent="OptionsPanel/Configs/Language"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 10
 item_count = 2
 selected = 0
 popup/item_0/text = "English"
@@ -197,7 +225,7 @@ popup/item_1/id = 1
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="mouse_entered" from="Menu/Start_Button" to="." method="_on_start_button_mouse_entered"]
-[connection signal="pressed" from="Menu/Start_Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="mouse_entered" from="Menu/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="Menu/Quit" to="." method="_on_quit_mouse_entered"]
@@ -207,5 +235,7 @@ popup/item_1/id = 1
 [connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/Master" to="OptionsPanel" method="_on_master_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="OptionsPanel" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="OptionsPanel" method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
 [connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="OptionsPanel" method="_on_fullscreen_button_toggled"]
 [connection signal="item_selected" from="OptionsPanel/Configs/Language/OptionButton" to="OptionsPanel" method="_on_option_button_item_selected"]

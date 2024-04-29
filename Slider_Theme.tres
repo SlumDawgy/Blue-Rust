@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://brifowc47sc1u"]
+
+[ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="1_kxdd2"]
+[ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="1_y1bh7"]
+[ext_resource type="Texture2D" uid="uid://dnqo4k2j5m7es" path="res://Assets/Sprites/UI/Sliders/Check_Button_Checked.png" id="2_kheti"]
+[ext_resource type="Texture2D" uid="uid://tklpgxkoqc8n" path="res://Assets/Sprites/UI/Sliders/Grabber_Area_Texture.png" id="2_sn7u3"]
+[ext_resource type="Texture2D" uid="uid://bbyyiawndn623" path="res://Assets/Sprites/UI/Sliders/Check_Button_Unchecked.png" id="3_6rmpj"]
+[ext_resource type="Texture2D" uid="uid://crygprts7lcuk" path="res://Assets/Sprites/UI/Sliders/Slider_Area_Texture.png" id="4_bysxn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cleji"]
+texture = ExtResource("2_sn7u3")
+texture_margin_left = 8.0
+axis_stretch_horizontal = 1
+modulate_color = Color(0.858824, 0.858824, 0.858824, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cr8fi"]
+texture = ExtResource("2_sn7u3")
+texture_margin_left = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dx65x"]
+texture = ExtResource("4_bysxn")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 2
+
+[resource]
+Button/colors/font_color = Color(0.188235, 0.376471, 0.509804, 1)
+Button/colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+Button/colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+Button/colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
+Button/fonts/font = ExtResource("1_kxdd2")
+CheckButton/icons/checked = ExtResource("2_kheti")
+CheckButton/icons/checked_mirrored = ExtResource("3_6rmpj")
+CheckButton/icons/unchecked = ExtResource("3_6rmpj")
+Fonts/fonts/normal = ExtResource("1_kxdd2")
+HSlider/icons/grabber = ExtResource("1_y1bh7")
+HSlider/icons/grabber_highlight = ExtResource("1_y1bh7")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_cleji")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_cr8fi")
+HSlider/styles/slider = SubResource("StyleBoxTexture_dx65x")
