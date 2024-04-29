@@ -28,7 +28,6 @@ var chargeSpeed : float = 300.0
 
 # Player
 @export var player : Player
-
 # Stunned
 var canBeDamaged : bool = false
 var stunnedTimer : float
@@ -38,6 +37,7 @@ var powerUpScene : PackedScene = preload(GlobalPaths.DASH_UPGRADE)
 
 var awaitTimer : float = 0
 
+var playedSound : bool = false
 @onready var audios = $Audios
 
 enum movement
@@ -107,22 +107,27 @@ func attack(delta):
 		awaitTimer = 0
 
 func charging(delta):
+	playSound(audios.charge)
 	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	if awaitTimer < -2:
 		awaitTimer = 0
+		playedSound = false
 		currentMovement = movement.chargeAttacking
 
 func chargeAttacking():
 	if changeScale == true:
 		velocity.x = chargeSpeed
 		if wallCollisionLeft.is_colliding():
+			
+			AudioManager.play_sound(audios.wallHit)
 			currentMovement = movement.stunned
 			stunnedTimer = 2.5
 			position.x = wallCollisionLeft.get_collision_point().x - 38
 	else:
 		velocity.x = -chargeSpeed
 		if wallCollisionLeft.is_colliding():
+			AudioManager.play_sound(audios.wallHit)
 			currentMovement = movement.stunned
 			stunnedTimer = 2.5
 			position.x = wallCollisionLeft.get_collision_point().x + 38
@@ -149,24 +154,28 @@ func stunned(delta):
 		chargeAttackTimer.start(5)
 
 func chargingSteam(delta):
+	playSound(audios.charge)
 	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	steamChargingParticles.emitting = true
 	canBeDamaged = true
 	$StunnedIndicator.visible = true
 	if awaitTimer < -2.5:
+		playedSound = false
 		awaitTimer = 0
 		canBeDamaged = false
 		$StunnedIndicator.visible = false
 		steamChecking(movement.steamAttacking)
 
 func steamAttacking(delta):
+	playSound(audios.steam)
 	awaitTimer -= delta
 	steamAttackParticles.emitting = true
 	steamCollision.shape.a.y = -120
 	if player.currentMovement != player.movement.hanging:
 		steamCollision.shape.a.y = 0
 		if awaitTimer < -1:
+			playedSound = false
 			awaitTimer = 0
 			steamAttackParticles.emitting = false
 			steamChargingParticles.emitting = false
@@ -187,6 +196,7 @@ func steamChecking(action):
 		currentMovement = movement.enabled
 
 func takingDamage(delta):
+	playSound(audios.bossHurt)
 	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	steamAttackParticles.emitting = false
@@ -194,6 +204,7 @@ func takingDamage(delta):
 	damageParticles.emitting = true
 	$StunnedIndicator.visible = false
 	if awaitTimer < -1:
+		playedSound = false
 		awaitTimer = 0
 		currentMovement = movement.enabled
 	
@@ -203,10 +214,8 @@ func dying(_delta):
 	velocity.x = 0
 	if animation.frame == 1:
 		if audios.bossDie.playing == false:
-			audios.bossDie.play()
-		get_tree().root.get_node("Prison/Audio/BossFight").playing = false
-		get_tree().root.get_node("Prison/Audio/MainLevelTheme").playing = true
-
+			get_tree().root.get_node("Prison/Audio/BossFight").playing = false
+			get_tree().root.get_node("Prison/Audio/MainLevelTheme").playing = true
 
 	if audios.bossDie.playing == false:
 		var powerUp = powerUpScene.instantiate()
@@ -263,3 +272,8 @@ func _on_hit_box_component_area_entered(area):
 		if healthStateCounter < 2:
 			healthStateCounter += 1
 		canBeDamaged = false
+
+func playSound(sound:AudioStream):
+	if !playedSound :
+		AudioManager.play_sound(sound)
+		playedSound = true
