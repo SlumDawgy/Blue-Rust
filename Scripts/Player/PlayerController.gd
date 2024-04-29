@@ -36,6 +36,7 @@ var cursorXcoord : float
 var dashed : bool = false
 var dashEnabled : bool = false
 @export var dashSpeed : float = 250.0
+@export var dashTime : float = 0.5
 @onready var dashUpgrade : Node2D = $DashUpgrade
 
 # Inputs
@@ -70,6 +71,7 @@ func disabled():
 
 func enabled():
 	$PlayerSprite/Arm.look_at(get_global_mouse_position())
+	
 	velocity.x = speed * inputDirection
 	
 	if Input.is_action_just_pressed("GrapplingHook"):
@@ -162,20 +164,17 @@ func hangingJump():
 	if is_on_floor():
 		currentMovement = movement.enabled
 
-func dashing():
-	if velocity.y != 0:
-		velocity.y = 0
+func dashing():	
+	dashEnabled = true
 	if dashed and dashEnabled:
+		
 		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
-
-		dashed = false
+		velocity.y = 0
 		if cursorXcoord <= 0:
 			velocity.x = dashSpeed
 		else:
 			velocity.x = -dashSpeed
-		await get_tree().create_timer(0.5).timeout
-		currentMovement = movement.enabled
-		dashUpgrade.dashParticles.emitting = false
+	
 	
 func takingDamage():
 	await get_tree().create_timer(1.0).timeout

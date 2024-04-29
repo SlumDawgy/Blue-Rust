@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var dashSound : AudioStream
+
 @onready var player : Player = owner
 @onready var dashTimer : Timer = $DashTimer
 @onready var afterImageParticles : CPUParticles2D = $AfterimageParticles
@@ -17,15 +19,19 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("Dash") and canDash:
+		AudioManager.play_sound(dashSound)
 		addAfterimageAndDashParticles()
 		player.currentMovement = player.movement.dashing
 		player.dashed = true
 		canDash = false
-		dashTimer.start(1.5)
+		dashTimer.start(player.dashTime)
 		
 
 func _on_dash_timer_timeout():
 	canDash = true
+	player.currentMovement = player.movement.enabled
+	player.dashed = false
+	dashParticles.emitting = false
 	pass # Replace with function body.
 
 

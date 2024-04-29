@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=105 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Player_Sounds/Hurt.WAV" id="26_xdr5d"]
 [ext_resource type="Texture2D" uid="uid://bcvjkn2ipvh8u" path="res://Assets/Sprites/SmokeParticles1.png" id="27_0hu42"]
 [ext_resource type="Script" path="res://Scripts/Player/DashUpgrade.gd" id="27_tgcc7"]
+[ext_resource type="AudioStream" uid="uid://c4hnxl3x4tc3g" path="res://Assets/Sounds/Player_Sounds/Player_Dash.WAV" id="28_1unv3"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="28_6n5nn"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="29_sbppg"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="30_igr4l"]
@@ -655,7 +656,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_damage"
+animation = &"right_mantling"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -689,6 +690,7 @@ bus = &"SFX"
 
 [node name="DashUpgrade" type="Node2D" parent="."]
 script = ExtResource("27_tgcc7")
+dashSound = ExtResource("28_1unv3")
 
 [node name="DashParticles" type="CPUParticles2D" parent="DashUpgrade"]
 emitting = false

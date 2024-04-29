@@ -120,6 +120,7 @@ theme_override_font_sizes/font_size = 20
 text = "Master"
 
 [node name="HSlider" type="HSlider" parent="OptionsPanel/Master"]
+layout_mode = 0
 offset_left = 110.225
 offset_top = 3.92134
 offset_right = 226.225
@@ -138,6 +139,7 @@ theme_override_font_sizes/font_size = 20
 text = "SFX"
 
 [node name="HSlider2" type="HSlider" parent="OptionsPanel/SFX"]
+layout_mode = 0
 offset_left = 110.225
 offset_top = 2.6142
 offset_right = 226.225
@@ -156,6 +158,7 @@ theme_override_font_sizes/font_size = 20
 text = "BGM"
 
 [node name="HSlider3" type="HSlider" parent="OptionsPanel/BGM"]
+layout_mode = 0
 offset_left = 110.225
 offset_top = 1.96063
 offset_right = 226.225
