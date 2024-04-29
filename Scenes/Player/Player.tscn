@@ -671,6 +671,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
 animation = &"right_running"
+frame_progress = 0.342067
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -695,8 +696,9 @@ visible = false
 target_position = Vector2(0, 32)
 collision_mask = 8
 
-[node name="Audios" type="Node2D" parent="."]
+[node name="Audios" type="Node2D" parent="." node_paths=PackedStringArray("playerSprite")]
 script = ExtResource("24_yncxs")
+playerSprite = NodePath("../PlayerSprite")
 concreteStepOne = ExtResource("26_d1dow")
 concreteStepTwo = ExtResource("27_u4de7")
 woodStepOne = ExtResource("28_1efhy")
@@ -767,6 +769,7 @@ shadow_item_cull_mask = 31
 texture = ExtResource("32_0ex78")
 texture_scale = 0.2
 
+[connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]
 [connection signal="timeout" from="DashUpgrade/DashTimer" to="DashUpgrade" method="_on_dash_timer_timeout"]
 
 [editable path="HitBoxComponent"]
