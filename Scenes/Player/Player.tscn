@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=119 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -25,14 +25,28 @@
 [ext_resource type="Script" path="res://Scripts/Player/HookPath.gd" id="21_x7ebn"]
 [ext_resource type="PackedScene" uid="uid://bsoulh05m1dc6" path="res://Scenes/Components/mantleComponent.tscn" id="23_q6t21"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAudios.gd" id="24_yncxs"]
+[ext_resource type="AudioStream" uid="uid://dt1yrwlwaqi08" path="res://Assets/Sounds/Player_Sounds/Concrete_Step_1.WAV" id="26_d1dow"]
 [ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Player_Sounds/Hurt.WAV" id="26_xdr5d"]
 [ext_resource type="Texture2D" uid="uid://bcvjkn2ipvh8u" path="res://Assets/Sprites/SmokeParticles1.png" id="27_0hu42"]
 [ext_resource type="Script" path="res://Scripts/Player/DashUpgrade.gd" id="27_tgcc7"]
+[ext_resource type="AudioStream" uid="uid://bao42aeupvp70" path="res://Assets/Sounds/Player_Sounds/Concrete_Step_2.WAV" id="27_u4de7"]
+[ext_resource type="AudioStream" uid="uid://cqpqdhxkybftr" path="res://Assets/Sounds/Player_Sounds/Wood_Step_1.WAV" id="28_1efhy"]
 [ext_resource type="AudioStream" uid="uid://c4hnxl3x4tc3g" path="res://Assets/Sounds/Player_Sounds/Player_Dash.WAV" id="28_1unv3"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="28_6n5nn"]
+[ext_resource type="AudioStream" uid="uid://bxs1w07l2li6e" path="res://Assets/Sounds/Player_Sounds/Wood_Step_2.WAV" id="29_ih2mp"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="29_sbppg"]
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="30_igr4l"]
+[ext_resource type="AudioStream" uid="uid://dhd8equuwemtc" path="res://Assets/Sounds/Player_Sounds/GrappleRetrieve.WAV" id="31_lpb3x"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="32_0ex78"]
+[ext_resource type="AudioStream" uid="uid://wbffryedxy1u" path="res://Assets/Sounds/Player_Sounds/GrappleShoot.WAV" id="32_ge0bb"]
+[ext_resource type="AudioStream" uid="uid://ur6mqt2cxmf" path="res://Assets/Sounds/Player_Sounds/Hook_Attach.WAV" id="33_x5fry"]
+[ext_resource type="AudioStream" uid="uid://bthwxorrodtsh" path="res://Assets/Sounds/Player_Sounds/HookMiss.wav" id="34_jxk2o"]
+[ext_resource type="AudioStream" uid="uid://clbjusvojuljx" path="res://Assets/Sounds/Player_Sounds/Mantel.WAV" id="34_lm7em"]
+[ext_resource type="AudioStream" uid="uid://bxhuvsd75wfb0" path="res://Assets/Sounds/Player_Sounds/Mantel_w_Grunt.WAV" id="35_ni3g5"]
+[ext_resource type="AudioStream" uid="uid://xbmv731fk27d" path="res://Assets/Sounds/Player_Sounds/Player_Jump.WAV" id="37_r8b8c"]
+[ext_resource type="AudioStream" uid="uid://cko2lma5ytfgj" path="res://Assets/Sounds/Player_Sounds/Player_Jump_W_Grunt.WAV" id="38_a18de"]
+[ext_resource type="AudioStream" uid="uid://bheyw07i30xno" path="res://Assets/Sounds/Player_Sounds/Player_Landing.WAV" id="39_dnjvn"]
+[ext_resource type="AudioStream" uid="uid://d1nfc5gbp5own" path="res://Assets/Sounds/Player_Sounds/Player_Landing_w_Grunt.WAV" id="40_75ce3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
 radius = 10.5
@@ -656,7 +670,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_mantling"
+animation = &"right_running"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -683,10 +697,22 @@ collision_mask = 8
 
 [node name="Audios" type="Node2D" parent="."]
 script = ExtResource("24_yncxs")
-
-[node name="Hurt" type="AudioStreamPlayer" parent="Audios"]
-stream = ExtResource("26_xdr5d")
-bus = &"SFX"
+concreteStepOne = ExtResource("26_d1dow")
+concreteStepTwo = ExtResource("27_u4de7")
+woodStepOne = ExtResource("28_1efhy")
+woodStepTwo = ExtResource("29_ih2mp")
+hurt = ExtResource("26_xdr5d")
+grappleRetrieve = ExtResource("31_lpb3x")
+grappleShoot = ExtResource("32_ge0bb")
+hookAttach = ExtResource("33_x5fry")
+hookHitWall = ExtResource("34_jxk2o")
+mantle = ExtResource("34_lm7em")
+mantle_w_Grunt = ExtResource("35_ni3g5")
+dash = ExtResource("28_1unv3")
+playerJump = ExtResource("37_r8b8c")
+playerJump_w_Grunt = ExtResource("38_a18de")
+playerLanding = ExtResource("39_dnjvn")
+playerLanding_w_Grunt = ExtResource("40_75ce3")
 
 [node name="DashUpgrade" type="Node2D" parent="."]
 script = ExtResource("27_tgcc7")

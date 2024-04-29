@@ -6,6 +6,7 @@ func play_sound(stream: AudioStream):
 	instance.bus = GlobalPaths.SFX_BUS
 	instance.finished.connect(remove_node.bind(instance))
 	add_child(instance)
+	instance.pitch_scale = randf_range(0.95,1.05)
 	instance.play()
 	
 

@@ -5,6 +5,8 @@ class_name Animations
 @onready var armSprite = $Arm
 @onready var HookPathPivo = $Arm/GrappleOrigin
 
+var canPlayRunSound:bool = true
+
 func playAnimation(type):
 	var cursorXcoord = (to_global(position) - get_global_mouse_position()).normalized().x
 	var direction
@@ -27,8 +29,10 @@ func chooseAnimation():
 		player.movement.enabled:
 			if player.velocity.x < 0:
 				play("left_running")
+				#playRunSound()
 			elif player.velocity.x > 0:
 				play("right_running")
+				#playRunSound()
 			else:
 				playAnimation("idle")
 		player.movement.jumping:
@@ -127,3 +131,10 @@ func movingPivot():
 		armSprite.visible = false
 	else:
 		armSprite.visible = true
+
+func playRunSound():
+	if self.frame == 3 or self.frame == 7 and !canPlayRunSound:
+		player.audio.playrandom(player.audio.concreteStepOne,player.audio.concreteStepTwo)
+		canPlayRunSound = false
+	elif self.frame != 3 and self.frame != 7 :
+		canPlayRunSound = true

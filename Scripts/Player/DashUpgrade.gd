@@ -19,7 +19,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("Dash") and canDash:
-		AudioManager.play_sound(dashSound)
+		AudioManager.play_sound(player.audio.dash)
 		addAfterimageAndDashParticles()
 		player.currentMovement = player.movement.dashing
 		player.dashed = true
