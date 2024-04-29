@@ -31,7 +31,6 @@ menu = NodePath("Menu")
 
 [node name="Menu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Menu"]
 position = Vector2(580, 326)
@@ -117,6 +116,7 @@ autoplay = true
 bus = &"BGM"
 
 [node name="OptionsPanel" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(580.722, 326)
 scale = Vector2(3.04832, 3.06019)
 texture = ExtResource("19_wa4pp")
