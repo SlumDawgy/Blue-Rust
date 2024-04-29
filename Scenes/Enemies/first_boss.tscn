@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=139 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -831,6 +831,8 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqsx1"]
+
 [node name="FirstBoss" type="CharacterBody2D"]
 collision_layer = 32784
 collision_mask = 24
@@ -968,7 +970,6 @@ color_ramp = SubResource("Gradient_yjpeg")
 shape = SubResource("SegmentShape2D_58pow")
 
 [node name="Attack" type="ShapeCast2D" parent="."]
-visible = false
 position = Vector2(-29, -22)
 shape = SubResource("RectangleShape2D_0yy3b")
 target_position = Vector2(0, 44)
@@ -989,6 +990,11 @@ sprite_frames = SubResource("SpriteFrames_5uefe")
 animation = &"stunned"
 autoplay = "stunned"
 frame_progress = 0.689769
+
+[node name="ChargeHitBox" type="ShapeCast2D" parent="."]
+position = Vector2(-26, -18)
+shape = SubResource("RectangleShape2D_hqsx1")
+target_position = Vector2(0, 40)
 
 [connection signal="area_entered" from="HitBoxComponent" to="." method="_on_hit_box_component_area_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]

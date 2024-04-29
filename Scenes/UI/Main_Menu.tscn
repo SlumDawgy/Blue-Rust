@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://b3p8dpj7xgjsv" path="res://Assets/Sounds/Music/BlueRustTheme.wav" id="15_ywlu5"]
 [ext_resource type="Texture2D" uid="uid://dyte8fqt7m5c6" path="res://Assets/Sprites/UI/OptionsPanel.png" id="19_wa4pp"]
 [ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="20_123r4"]
-[ext_resource type="Script" path="res://Scenes/UI/VolumeSilder.gd" id="21_3nnts"]
+[ext_resource type="Script" path="res://Scenes/UI/Main_Menu_Options.gd" id="20_vd3jo"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("options", "menu")]
 layout_mode = 3
@@ -88,6 +88,7 @@ texture_pressed = ExtResource("10_6oq8k")
 texture_hover = ExtResource("11_7snne")
 
 [node name="Scenetransition" parent="." instance=ExtResource("14_0kjxk")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ywlu5")
@@ -99,6 +100,7 @@ visible = false
 position = Vector2(580.722, 326)
 scale = Vector2(3.04832, 3.06019)
 texture = ExtResource("19_wa4pp")
+script = ExtResource("20_vd3jo")
 
 [node name="BackButton" type="Button" parent="OptionsPanel"]
 offset_left = 120.157
@@ -109,62 +111,87 @@ theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 20
 text = "Back"
 
-[node name="Master" type="Label" parent="OptionsPanel"]
-offset_left = 32.568
-offset_top = -37.5794
-offset_right = 72.568
-offset_bottom = -27.5794
-scale = Vector2(0.5, 0.5)
+[node name="Configs" type="VBoxContainer" parent="OptionsPanel"]
+offset_left = -183.0
+offset_top = -97.0
+offset_right = 69.0
+offset_bottom = 29.0
+
+[node name="Sounds" type="HBoxContainer" parent="OptionsPanel/Configs"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="OptionsPanel/Configs/Sounds"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 20
 text = "Master"
 
-[node name="HSlider" type="HSlider" parent="OptionsPanel/Master"]
-layout_mode = 0
-offset_left = 110.225
-offset_top = 3.92134
-offset_right = 226.225
-offset_bottom = 19.9213
-step = 0.0
-script = ExtResource("21_3nnts")
-
-[node name="SFX" type="Label" parent="OptionsPanel"]
-offset_left = 32.568
-offset_top = -16.6656
-offset_right = 105.568
-offset_bottom = 1.33435
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("20_123r4")
-theme_override_font_sizes/font_size = 20
-text = "SFX"
-
-[node name="HSlider2" type="HSlider" parent="OptionsPanel/SFX"]
-layout_mode = 0
-offset_left = 110.225
-offset_top = 2.6142
-offset_right = 226.225
-offset_bottom = 18.6142
-step = 0.0
-script = ExtResource("21_3nnts")
-
-[node name="BGM" type="Label" parent="OptionsPanel"]
-offset_left = 32.568
-offset_top = 4.90166
-offset_right = 105.568
-offset_bottom = 22.9017
-scale = Vector2(0.5, 0.5)
+[node name="BGM" type="Label" parent="OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 20
 text = "BGM"
 
-[node name="HSlider3" type="HSlider" parent="OptionsPanel/BGM"]
-layout_mode = 0
-offset_left = 110.225
-offset_top = 1.96063
-offset_right = 226.225
-offset_bottom = 17.9606
-step = 0.0
-script = ExtResource("21_3nnts")
+[node name="SFX" type="Label" parent="OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+
+[node name="Sliders" type="VBoxContainer" parent="OptionsPanel/Configs/Sounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Master" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="MusicSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="SFXSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Fullscreen" type="HBoxContainer" parent="OptionsPanel/Configs"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="OptionsPanel/Configs/Fullscreen"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 20
+text = "FullScreen"
+
+[node name="FullscreenButton" type="CheckButton" parent="OptionsPanel/Configs/Fullscreen"]
+layout_mode = 2
+
+[node name="Language" type="HBoxContainer" parent="OptionsPanel/Configs"]
+layout_mode = 2
+
+[node name="Language" type="Label" parent="OptionsPanel/Configs/Language"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 20
+text = "LANGUAGE"
+
+[node name="OptionButton" type="OptionButton" parent="OptionsPanel/Configs/Language"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Portuguese"
+popup/item_1/id = 1
 
 [node name="Node" type="Node" parent="."]
 
@@ -177,3 +204,8 @@ script = ExtResource("21_3nnts")
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="OptionsPanel/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="OptionsPanel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/Master" to="OptionsPanel" method="_on_master_value_changed"]
+[connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="OptionsPanel" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="OptionsPanel" method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="OptionsPanel" method="_on_fullscreen_button_toggled"]
+[connection signal="item_selected" from="OptionsPanel/Configs/Language/OptionButton" to="OptionsPanel" method="_on_option_button_item_selected"]

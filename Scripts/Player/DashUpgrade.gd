@@ -23,15 +23,19 @@ func _input(event):
 		addAfterimageAndDashParticles()
 		player.currentMovement = player.movement.dashing
 		player.dashed = true
+		player.cursorXcoord = (player.to_global(position) - get_global_mouse_position()).x
 		canDash = false
 		dashTimer.start(player.dashTime)
 		
 
 func _on_dash_timer_timeout():
-	canDash = true
-	player.currentMovement = player.movement.enabled
-	player.dashed = false
-	dashParticles.emitting = false
+	if player.dashed:
+		player.dashed = false
+		dashParticles.emitting = false
+		player.currentMovement = player.movement.jumping
+	
+	if canDash == false and (player.currentMovement == player.movement.enabled or player.currentMovement == player.movement.mantling):
+		canDash = true
 	pass # Replace with function body.
 
 

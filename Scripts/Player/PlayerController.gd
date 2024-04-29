@@ -164,11 +164,9 @@ func hangingJump():
 	if is_on_floor():
 		currentMovement = movement.enabled
 
-func dashing():	
+func dashing():
 	dashEnabled = true
 	if dashed and dashEnabled:
-		
-		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
 		velocity.y = 0
 		if cursorXcoord <= 0:
 			velocity.x = dashSpeed
@@ -179,6 +177,7 @@ func dashing():
 func takingDamage():
 	await get_tree().create_timer(1.0).timeout
 	currentMovement = movement.enabled
+	gravityModifier = gravityVarDownwards
 
 func dying():
 	velocity.x = move_toward(0,0,0)
