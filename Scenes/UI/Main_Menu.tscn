@@ -88,7 +88,6 @@ texture_pressed = ExtResource("10_6oq8k")
 texture_hover = ExtResource("11_7snne")
 
 [node name="Scenetransition" parent="." instance=ExtResource("14_0kjxk")]
-visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ywlu5")
@@ -96,6 +95,7 @@ autoplay = true
 bus = &"BGM"
 
 [node name="OptionsPanel" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(580.722, 326)
 scale = Vector2(3.04832, 3.06019)
 texture = ExtResource("19_wa4pp")
