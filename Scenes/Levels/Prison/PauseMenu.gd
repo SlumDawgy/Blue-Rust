@@ -8,10 +8,13 @@ func toggle_pause():
 	if get_tree().paused:
 		visible = false
 		get_tree().paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		
 	else:
 		visible = true
 		get_tree().paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 	
 func _on_resume_button_pressed():
 	print(get_parent())

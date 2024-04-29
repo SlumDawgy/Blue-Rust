@@ -195,7 +195,7 @@ func takingDamage(delta):
 		awaitTimer = 0
 		currentMovement = movement.enabled
 	
-func dying(delta):
+func dying(_delta):
 	if animation.animation != "Death":
 		animation.play("Death")
 	velocity.x = 0
