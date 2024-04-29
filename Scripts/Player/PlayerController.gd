@@ -47,6 +47,7 @@ var inputJump : bool = false
 
 # Health
 @onready var health : HealthComponent = $HealthComponent
+var _takingDamage: bool = false
 
 enum movement
 {
@@ -182,8 +183,12 @@ func dashing():
 	
 	
 func takingDamage():
+	if !_takingDamage:
+		AudioManager.play_sound(audio.hurt)
+		_takingDamage = true
 	await get_tree().create_timer(1.0).timeout
 	currentMovement = movement.enabled
+	_takingDamage = false
 	gravityModifier = gravityVarDownwards
 
 func dying():
