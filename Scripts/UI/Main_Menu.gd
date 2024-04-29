@@ -15,10 +15,12 @@ func _on_start_pressed():
 
 
 func _on_options_pressed():
+	AudioManager.play_sound(buttonClickSFX)
 	pass
 
 
 func _on_quit_pressed():
+	AudioManager.play_sound(buttonClickSFX)
 	get_tree().quit()
 
 func _on_Scenetransition_Finished():
