@@ -20,7 +20,6 @@ func toggle_pause():
 		visible = true
 		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
 	
 func _on_resume_button_pressed():
 	print(get_parent())
@@ -31,7 +30,8 @@ func _on_resume_button_pressed():
 
 func _on_options_button_pressed():
 	AudioManager.play_sound(buttonClickSound)
-	pass # Replace with function body.
+	$PauseMenuButtons.visible = false
+	$OptionsPanel.visible = true
 
 func _on_quit_button_pressed():
 	AudioManager.play_sound(buttonClickSound)
@@ -49,3 +49,8 @@ func _on_options_button_mouse_entered():
 
 func _on_quit_button_mouse_entered():
 	AudioManager.play_sound(buttonSelectSound)
+
+func _on_back_button_pressed():
+	AudioManager.play_sound(buttonSelectSound)
+	$OptionsPanel.visible = false
+	$PauseMenuButtons.visible = true

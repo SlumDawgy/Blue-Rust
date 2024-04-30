@@ -36,7 +36,7 @@ var cursorXcoord : float
 
 # Dash
 var dashed : bool = false
-var dashEnabled : bool = false
+@export var dashEnabled : bool = false
 @export var dashSpeed : float = 250.0
 @export var dashTime : float = 0.5
 @onready var dashUpgrade : Node2D = $DashUpgrade
@@ -173,7 +173,7 @@ func hangingJump():
 		currentMovement = movement.enabled
 
 func dashing():
-	dashEnabled = true
+	#dashEnabled = true
 	if dashed and dashEnabled:
 		velocity.y = 0
 		if cursorXcoord <= 0:
@@ -193,6 +193,7 @@ func takingDamage():
 
 func dying():
 	velocity.x = move_toward(0,0,0)
+	audio.play(audio.hurt)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("changeDifficulty"):

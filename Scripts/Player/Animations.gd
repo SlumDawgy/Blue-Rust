@@ -5,8 +5,6 @@ class_name Animations
 @onready var armSprite = $Arm
 @onready var HookPathPivo = $Arm/GrappleOrigin
 
-var canPlayRunSound:bool = true
-
 func playAnimation(type):
 	var cursorXcoord = (to_global(position) - get_global_mouse_position()).normalized().x
 	var direction
@@ -52,13 +50,14 @@ func chooseAnimation():
 			else:
 				playAnimation("fall")
 		player.movement.dashing:
-			if animation != "left_dash" and animation != "right_dash":
+			if animation != "left_dash" and animation != "right_dash" and player.dashEnabled:
 				playAnimation("dash")
 		player.movement.takingDamage:
 			playAnimation("damage")
 		player.movement.dying:
 			if player.is_on_floor() and animation != "death":
 				play("death")
+				$"../PlayerLight".enabled = false
 
 func _process(_delta):
 	chooseAnimation()
@@ -132,9 +131,8 @@ func movingPivot():
 	else:
 		armSprite.visible = true
 
-func playRunSound():
-	if self.frame == 3 or self.frame == 7 and !canPlayRunSound:
-		player.audio.playrandom(player.audio.concreteStepOne,player.audio.concreteStepTwo)
-		canPlayRunSound = false
-	elif self.frame != 3 and self.frame != 7 :
-		canPlayRunSound = true
+
+func _on_animation_finished():
+	if animation == "death":
+		get_tree().root.get_node("Prison").get_node("Scenetransition/AnimationPlayer").play("Fade_To_Black")
+		

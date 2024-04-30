@@ -11,11 +11,6 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	$Scenetransition.fadetonormal()
 
-
-
-
-
-
 func _on_back_button_pressed():
 	AudioManager.play_sound(buttonClickSFX)
 	options.hide()

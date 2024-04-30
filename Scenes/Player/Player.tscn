@@ -769,6 +769,7 @@ shadow_item_cull_mask = 31
 texture = ExtResource("32_0ex78")
 texture_scale = 0.2
 
+[connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]
 [connection signal="timeout" from="DashUpgrade/DashTimer" to="DashUpgrade" method="_on_dash_timer_timeout"]
 

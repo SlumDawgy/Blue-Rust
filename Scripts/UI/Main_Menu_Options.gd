@@ -24,3 +24,4 @@ func _on_option_button_item_selected(index):
 	elif index == 1:
 		TranslationServer.set_locale("pt_BR")
 
+
