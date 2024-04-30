@@ -64,9 +64,8 @@ class BasicAttack:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
 	currentMovement = movement.starting
-	pass # Replace with function body.
+
 
 func starting():
 	pass

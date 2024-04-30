@@ -193,7 +193,7 @@ func takingDamage():
 
 func dying():
 	velocity.x = move_toward(0,0,0)
-	audio.play(audio.hurt)
+	AudioManager.play_sound(audio.hurt)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("changeDifficulty"):
@@ -227,3 +227,6 @@ func _physics_process(delta):
 			dying()
 	
 	move_and_slide()
+
+
+	

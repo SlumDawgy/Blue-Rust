@@ -46,6 +46,7 @@ func _process(_delta):
 			Dialogic.VAR.Dialogue5 = false
 			get_tree().root.get_node("Prison").process_mode = Node.PROCESS_MODE_DISABLED
 			get_tree().root.get_node("Prison").visible = false
+			get_tree().root.get_node("Prison").queue_free()
 			var newScene = load("res://Scenes/Levels/DreamSequences/DashDreamSequence.tscn")
 			var instanceNewScene = newScene.instantiate()
 			get_tree().root.add_child(instanceNewScene)

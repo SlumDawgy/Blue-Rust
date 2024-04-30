@@ -22,7 +22,6 @@ func toggle_pause():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func _on_resume_button_pressed():
-	print(get_parent())
 	AudioManager.play_sound(buttonClickSound)
 	AudioManager.play_sound(menuCloseSound)
 	visible = false
