@@ -133,6 +133,8 @@ func movingPivot():
 
 
 func _on_animation_finished():
-	if animation == "death":
+	var currentSceneName = get_tree().get_current_scene().name
+	if animation == "death" and currentSceneName == "Prison":
 		get_tree().root.get_node("Prison").get_node("Scenetransition/AnimationPlayer").play("Fade_To_Black")
-		
+	elif animation == "death" and currentSceneName == "DashDreamSequence":		
+		pass

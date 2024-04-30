@@ -1,0 +1,5 @@
+MC: Where... where am I? This isn’t the prison? Where did that shard go? I feel it's presence, not on me, but within.
+MC: Is this real? These formations... they're unlike any mineral I've ever seen. Could this be a lucid dream, or am I somewhere else entirely?
+MC: If it is a dream, I should be able to easily channel that shard's energy like I intended...
+MC: Okay, focus. Observe, learn, understand. There's a reason I'm here, there has to be. Let's find out what this place is trying to show me.
+set {Dialogue6} = true

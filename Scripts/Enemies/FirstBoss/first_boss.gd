@@ -10,10 +10,10 @@ var changeScale : bool = false
 @onready var animation : AnimatedSprite2D = $FirstBossSprites
 @onready var damageParticles : GPUParticles2D = $FirstBossSprites/Node2D/DamageParticle
 
-var speed : float = 50.0
+var speed : float = 35.0
 
 # Charge Attack
-var chargeSpeed : float = 300.0
+var chargeSpeed : float = 200.0
 @onready var wallCollisionLeft = $WallCollision/Left
 @onready var chargeAttackTimer = $ChargeAttackTimer
 @onready var chargeHitBox = $ChargeHitBox

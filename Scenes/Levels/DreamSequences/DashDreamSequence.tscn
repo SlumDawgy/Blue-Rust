@@ -1,5 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://bqqmqsa25nhxm"]
+[gd_scene load_steps=48 format=3 uid="uid://bqqmqsa25nhxm"]
 
+[ext_resource type="Script" path="res://Scripts/Levels/DreamScene/DashDreamSequence.gd" id="1_4ss1x"]
 [ext_resource type="PackedScene" uid="uid://ddcwy5gvmfeyc" path="res://Scenes/Levels/Grasslands/grasslands_tile_map.tscn" id="1_af8jq"]
 [ext_resource type="Shader" path="res://Materials/Shaders/GreyScaleShader.gdshader" id="2_t43vh"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="3_jblln"]
@@ -197,11 +198,19 @@ glow_strength = 0.8
 glow_bloom = 0.07
 volumetric_fog_density = 1.0
 
-[node name="DashDreamSequence" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkiir"]
+size = Vector2(36, 111.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkc7l"]
+size = Vector2(115, 64)
+
+[node name="DashDreamSequence" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_4ss1x")
+player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("3_jblln")]
 z_index = -1
-position = Vector2(736, -392)
+position = Vector2(778, -384)
 dashEnabled = true
 
 [node name="Grasslands_TileMap" parent="." instance=ExtResource("1_af8jq")]
@@ -623,7 +632,7 @@ texture = ExtResource("14_vrbxi")
 texture_scale = 2.1
 
 [node name="PointLight2D9" type="PointLight2D" parent="Lighting"]
-position = Vector2(1016, -512)
+position = Vector2(1051, -511)
 range_layer_min = -100
 range_layer_max = 100
 range_item_cull_mask = 31
@@ -757,6 +766,32 @@ environment = SubResource("Environment_gg7s0")
 stream = ExtResource("16_o2nvm")
 autoplay = true
 
+[node name="EndOfDream" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndOfDream"]
+position = Vector2(1045, 605.5)
+shape = SubResource("RectangleShape2D_tkiir")
+
+[node name="CrystalWarning" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrystalWarning"]
+position = Vector2(1442, 32)
+shape = SubResource("RectangleShape2D_tkiir")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 1288.0
+offset_top = 52.0
+offset_right = 1432.0
+offset_bottom = 75.0
+text = "Right Click to Dash"
+
+[node name="DashTutorialLabel" type="Area2D" parent="Label"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/DashTutorialLabel"]
+position = Vector2(77, 98)
+shape = SubResource("RectangleShape2D_fkc7l")
+
 [connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/BackButton" to="Camera/CanvasLayer/PauseMenu" method="_on_back_button_pressed"]
 [connection signal="value_changed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders/Master" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_master_value_changed"]
 [connection signal="value_changed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_music_slider_value_changed"]
@@ -769,3 +804,8 @@ autoplay = true
 [connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/OptionsButton" to="Camera/CanvasLayer/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/QuitButton" to="Camera/CanvasLayer/PauseMenu" method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/QuitButton" to="Camera/CanvasLayer/PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="body_entered" from="EndOfDream" to="." method="_on_end_of_dream_body_entered"]
+[connection signal="body_entered" from="CrystalWarning" to="." method="_on_crystal_warning_body_entered"]
+[connection signal="body_exited" from="CrystalWarning" to="." method="_on_crystal_warning_body_exited"]
+[connection signal="body_entered" from="Label/DashTutorialLabel" to="." method="_on_dash_tutorial_label_body_entered"]
+[connection signal="body_exited" from="Label/DashTutorialLabel" to="." method="_on_dash_tutorial_label_body_exited"]

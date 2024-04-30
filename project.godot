@@ -33,6 +33,9 @@ directories/dch_directory={
 "Soothing_Voice": "res://Dialogic/Characters/Soothing_Voice.dch"
 }
 directories/dtl_directory={
+"Dream1-1": "res://Dialogic/Timelines/Dream1-1.dtl",
+"Dream1-2": "res://Dialogic/Timelines/Dream1-2.dtl",
+"Dream1-3": "res://Dialogic/Timelines/Dream1-3.dtl",
 "Prison1-1": "res://Dialogic/Timelines/Prison1-1.dtl",
 "Prison1-2": "res://Dialogic/Timelines/Prison1-2.dtl",
 "Prison1-3": "res://Dialogic/Timelines/Prison1-3.dtl",
@@ -47,7 +50,10 @@ variables={
 "Dialogue2": false,
 "Dialogue3": false,
 "Dialogue4": false,
-"Dialogue5": false
+"Dialogue5": false,
+"Dialogue6": false,
+"Dialogue7": false,
+"Dialogue8": false
 }
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
