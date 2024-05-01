@@ -936,6 +936,7 @@ bus = &"SFX"
 
 [node name="SteamParticles" type="CPUParticles2D" parent="."]
 position = Vector2(20, -26)
+emitting = false
 amount = 100
 lifetime = 0.6
 texture = ExtResource("31_4d6cc")

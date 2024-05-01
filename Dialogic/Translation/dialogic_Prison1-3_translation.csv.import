@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b6k7oecjovlsp"
+
+[deps]
+
+files=["res://Dialogic/Translation/dialogic_Prison1-3_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-3_translation.pt_BR.translation"]
+
+source_file="res://Dialogic/Translation/dialogic_Prison1-3_translation.csv"
+dest_files=["res://Dialogic/Translation/dialogic_Prison1-3_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-3_translation.pt_BR.translation"]
+
+[params]
+
+compress=true
+delimiter=0

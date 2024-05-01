@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf3aaouphecwn"]
+
+[ext_resource type="Script" path="res://Scripts/Player/MouseAimAssist.gd" id="1_so71v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hjt0a"]
+radius = 32.0
+
+[node name="MouseAimAssist" type="ShapeCast2D"]
+shape = SubResource("CircleShape2D_hjt0a")
+target_position = Vector2(0, 0)
+collision_mask = 2
+script = ExtResource("1_so71v")

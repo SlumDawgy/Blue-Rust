@@ -1,7 +1,7 @@
-MC: Oh great, more water… My arm appears to be disagreeable with liquids, so best to avoid it for now.
-MC: No, that color and feeling…
-MC: Is that a tearvein rupture? I do seem to be underground, so the possibility of an excess pocket of Aliaum isn’t unlikely.
-MC: Though this is a developed area, so why wasn’t it discovered earlier?
-MC: Wait, why can I remember all of that but not my own name!
-MC: Regardless, it might be worth it to investigate.
+MC: Oh great, more water… My arm appears to be disagreeable with liquids, so best to avoid it for now. #id:28
+MC: No, that color and feeling… #id:29
+MC: Is that a tearvein rupture? I do seem to be underground, so the possibility of an excess pocket of Aliaum isn’t unlikely. #id:2a
+MC: Though this is a developed area, so why wasn’t it discovered earlier? #id:2b
+MC: Wait, why can I remember all of that but not my own name! #id:2c
+MC: Regardless, it might be worth it to investigate. #id:2d
 set {Dialogue3} = true
