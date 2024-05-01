@@ -62,10 +62,8 @@ class BasicAttack:
 	var knockupwards : int = -250
 	
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	currentMovement = movement.starting
-
 
 func starting():
 	pass
@@ -212,11 +210,11 @@ func dying(_delta):
 		animation.play("Death")
 	velocity.x = 0
 	if animation.frame == 1:
-		if audios.bossDie.playing == false:
-			get_tree().root.get_node("Prison/Audio/BossFight").playing = false
-			get_tree().root.get_node("Prison/Audio/MainLevelTheme").playing = true
+		get_tree().root.get_node("Prison/Audio/BossFight").playing = false
+		get_tree().root.get_node("Prison/Audio/MainLevelTheme").playing = true
+		$Audios/Die.play()
 
-	if audios.bossDie.playing == false:
+	if animation.is_playing() == false:
 		var powerUp = powerUpScene.instantiate()
 		get_tree().root.get_node("Prison").add_child(powerUp)
 		powerUp.get_node("FragmentArea2D").position = global_position

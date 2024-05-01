@@ -37,14 +37,11 @@ func _on_quit_button_pressed():
 	AudioManager.play_sound(menuCloseSound)
 	get_tree().quit()
 
-
 func _on_resume_button_mouse_entered():
 	AudioManager.play_sound(buttonSelectSound)
 
-
 func _on_options_button_mouse_entered():
 	AudioManager.play_sound(buttonSelectSound)
-
 
 func _on_quit_button_mouse_entered():
 	AudioManager.play_sound(buttonSelectSound)
@@ -53,3 +50,11 @@ func _on_back_button_pressed():
 	AudioManager.play_sound(buttonSelectSound)
 	$OptionsPanel.visible = false
 	$PauseMenuButtons.visible = true
+
+func _on_load_last_save_button_mouse_entered():
+	AudioManager.play_sound(buttonSelectSound)
+
+func _on_load_last_save_button_pressed():
+	AudioManager.play_sound(buttonSelectSound)
+	$"../../..".load_game()
+	toggle_pause()

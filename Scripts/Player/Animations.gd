@@ -27,10 +27,8 @@ func chooseAnimation():
 		player.movement.enabled:
 			if player.velocity.x < 0:
 				play("left_running")
-				#playRunSound()
 			elif player.velocity.x > 0:
 				play("right_running")
-				#playRunSound()
 			else:
 				playAnimation("idle")
 		player.movement.jumping:
@@ -38,10 +36,14 @@ func chooseAnimation():
 				playAnimation("jump")
 			else:
 				playAnimation("fall")
-		#player.movement.mantling: #Already in the mantling script
-			#pass
-		#player.movement.grappling:
-			#pass
+		player.movement.grappling:
+			if player.is_on_floor():
+				playAnimation("idle")
+			else:
+				if player.velocity.y < 0:
+					playAnimation("jump")
+				else:
+					playAnimation("fall")
 		player.movement.hanging:
 			playAnimation("hanging")
 		player.movement.hangingJump:
@@ -131,10 +133,8 @@ func movingPivot():
 	else:
 		armSprite.visible = true
 
-
-func _on_animation_finished():
-	var currentSceneName = get_tree().get_current_scene().name
-	if animation == "death" and currentSceneName == "Prison":
-		get_tree().root.get_node("Prison").get_node("Scenetransition/AnimationPlayer").play("Fade_To_Black")
-	elif animation == "death" and currentSceneName == "DashDreamSequence":		
-		pass
+#func _on_animation_finished():
+	#var currentSceneName = get_tree().get_current_scene().name
+	#if animation == "death" and currentSceneName == "Prison":
+		#get_tree().root.get_node("Prison").get_node("Scenetransition/AnimationPlayer").play("Fade_To_Black")
+	#

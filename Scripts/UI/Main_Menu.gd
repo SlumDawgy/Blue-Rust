@@ -8,6 +8,7 @@ extends Control
 var optionsScene = preload(GlobalPaths.OPTIONS_SCREEN_PATH)
 
 func _ready():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	$Scenetransition.fadetonormal()
 
@@ -52,8 +53,8 @@ func _on_start_button_mouse_entered():
 	AudioManager.play_sound(buttonSelectSFX)
 
 
-func _on_fullscreen_button_toggled(toggled_on):
+func _on_fullscreen_button_toggled(_toggled_on):
 	AudioManager.play_sound(buttonClickSFX)
 	
-func _off_fullscreen_button_toggled(toggled_on):
+func _off_fullscreen_button_toggled(_toggled_on):
 	AudioManager.play_sound(buttonClickSFX)

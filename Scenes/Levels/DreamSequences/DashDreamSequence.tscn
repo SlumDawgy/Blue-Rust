@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bqqmqsa25nhxm"]
+[gd_scene load_steps=39 format=3 uid="uid://bqqmqsa25nhxm"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/DreamScene/DashDreamSequence.gd" id="1_4ss1x"]
 [ext_resource type="PackedScene" uid="uid://ddcwy5gvmfeyc" path="res://Scenes/Levels/Grasslands/grasslands_tile_map.tscn" id="1_af8jq"]
@@ -27,15 +27,6 @@
 [ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="24_ny3hu"]
 [ext_resource type="Theme" uid="uid://d1xkgll5q80wr" path="res://Slider_Theme.tres" id="25_vy82c"]
 [ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="26_kxhhd"]
-[ext_resource type="Texture2D" uid="uid://cvetjamuu0lhd" path="res://Assets/Sprites/UI/Buttons/Start_Button.png" id="27_3t4op"]
-[ext_resource type="Texture2D" uid="uid://dbloualbgks2x" path="res://Assets/Sprites/UI/Buttons/Start_Button_Pressed.png" id="28_fhv3v"]
-[ext_resource type="Texture2D" uid="uid://22slbll8473u" path="res://Assets/Sprites/UI/Buttons/Start_Button_Selected.png" id="29_yksbf"]
-[ext_resource type="Texture2D" uid="uid://bjqvtn08kqhv2" path="res://Assets/Sprites/UI/Buttons/OptionsButton.png" id="30_tn044"]
-[ext_resource type="Texture2D" uid="uid://dl8lt1f0qyhho" path="res://Assets/Sprites/UI/Buttons/OptionsButton_Pressed.png" id="31_yuu5u"]
-[ext_resource type="Texture2D" uid="uid://btfkx6xgpx7h0" path="res://Assets/Sprites/UI/Buttons/OptionsButton_Selected.png" id="32_m6f7a"]
-[ext_resource type="Texture2D" uid="uid://x8c1yomx3cnc" path="res://Assets/Sprites/UI/Buttons/QuitButton.png" id="33_2hcc4"]
-[ext_resource type="Texture2D" uid="uid://c4hvyaxv5llrp" path="res://Assets/Sprites/UI/Buttons/QuitButton_Pressed.png" id="34_ru7y5"]
-[ext_resource type="Texture2D" uid="uid://srlk44d5528t" path="res://Assets/Sprites/UI/Buttons/QuitButton_Selected.png" id="35_qt4hy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xatia"]
 shader = ExtResource("2_t43vh")
@@ -364,38 +355,40 @@ popup/item_1/id = 1
 [node name="PauseMenuButtons" type="Control" parent="Camera/CanvasLayer/PauseMenu"]
 anchors_preset = 0
 
-[node name="ResumeButton" type="TextureButton" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
-process_mode = 2
-layout_mode = 0
-offset_left = 517.0
-offset_top = 290.0
-offset_right = 667.0
-offset_bottom = 358.0
-texture_normal = ExtResource("27_3t4op")
-texture_pressed = ExtResource("28_fhv3v")
-texture_hover = ExtResource("29_yksbf")
+[node name="Area2D" type="Sprite2D" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
+position = Vector2(583.167, 325.5)
+scale = Vector2(3.03038, 3.03241)
+texture = ExtResource("22_dartc")
 
-[node name="OptionsButton" type="TextureButton" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
-process_mode = 2
+[node name="ResumeButton" type="Button" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
 layout_mode = 0
-offset_left = 504.0
-offset_top = 329.0
-offset_right = 641.0
-offset_bottom = 360.0
-texture_normal = ExtResource("30_tn044")
-texture_pressed = ExtResource("31_yuu5u")
-texture_hover = ExtResource("32_m6f7a")
+offset_left = 158.0
+offset_top = 108.0
+offset_right = 255.0
+offset_bottom = 131.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("25_vy82c")
+text = "Resume"
 
-[node name="QuitButton" type="TextureButton" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
-process_mode = 2
+[node name="OptionsButton" type="Button" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
 layout_mode = 0
-offset_left = 523.0
-offset_top = 366.0
-offset_right = 621.0
-offset_bottom = 400.0
-texture_normal = ExtResource("33_2hcc4")
-texture_pressed = ExtResource("34_ru7y5")
-texture_hover = ExtResource("35_qt4hy")
+offset_left = 159.0
+offset_top = 159.0
+offset_right = 255.0
+offset_bottom = 182.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("25_vy82c")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 210.0
+offset_right = 255.0
+offset_bottom = 233.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("25_vy82c")
+text = "Quit"
 
 [node name="Crystal_Color_TileMap_NoCollision" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_rn0on")

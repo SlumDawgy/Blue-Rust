@@ -13,6 +13,8 @@ const END_GAME_SCENE_PATH: String = "res://Scenes/UI/endGame.tscn"
 # SCENES/LEVELS
 # SCENES/LEVELS/PRISON
 const PRISON_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison.tscn"
+# SCENES/LEVELS/DREAMSCENE
+const DREAM_SCENE_PATH: String = "res://Scenes/Levels/DreamSequences/DashDreamSequence.tscn"
 
 # ASSETS
 # ASSETS/SPRITES

@@ -7,7 +7,7 @@ var dialogueFlag3 : bool = true
 func _ready():
 	player.currentMovement = player.movement.disabled
 	player.get_node("PlayerSprite").play("getting_up")
-	await Dialogic.start("res://Dialogic/Timelines/Dream1-1.dtl")
+	Dialogic.start("res://Dialogic/Timelines/Dream1-1.dtl")
 
 func _process(delta):
 	if Dialogic.VAR.Dialogue6 and dialogueFlag1:
@@ -34,16 +34,18 @@ func _on_dash_tutorial_label_body_exited(body):
 
 func _on_crystal_warning_body_entered(body):
 	if body.name == "Player":
-		$CrystalWarning.visible = false
+		$CrystalWarning.queue_free()
 		body.get_node("PlayerSprite").playAnimation("idle")
 		body.currentMovement = body.movement.disabled
-		await Dialogic.start("res://Dialogic/Timelines/Dream1-2.dtl")
+		Dialogic.start("res://Dialogic/Timelines/Dream1-2.dtl")
 
 
 func _on_end_of_dream_body_entered(body):
 	if body.name == "Player":
+		$EndOfDream.queue_free()
 		body.get_node("PlayerSprite").play("right_idle")
 		body.currentMovement = body.movement.disabled
-		await Dialogic.start("res://Dialogic/Timelines/Dream1-3.dtl")
+		body.dashEnabled = false
+		Dialogic.start("res://Dialogic/Timelines/Dream1-3.dtl")
 
 

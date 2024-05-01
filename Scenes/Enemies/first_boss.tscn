@@ -378,13 +378,25 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_huc5v"]
 animations = [{
 "frames": [{
-"duration": 6.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l4802")
 }, {
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pcm2m")
 }, {
-"duration": 5.0,
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4802")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcm2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4802")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcm2m")
+}, {
+"duration": 1.0,
 "texture": null
 }],
 "loop": false,
@@ -847,7 +859,9 @@ shape = SubResource("SegmentShape2D_wf4o1")
 position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Stunned"
+animation = &"Death"
+frame = 4
+frame_progress = 1.0
 script = ExtResource("24_vbx28")
 FirstBoss = NodePath("..")
 
