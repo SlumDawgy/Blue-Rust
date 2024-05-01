@@ -26,6 +26,8 @@ class BasicAttack:
 
 func _physics_process(delta):
 	if position.distance_to(player.get_global_transform().origin) >= maxGrappleDistance:
+		if !returning:
+			AudioManager.play_sound(player.audio.grappleRetrieve)
 		returning = true
 		movingPlayer = false
 		
@@ -51,11 +53,15 @@ func _physics_process(delta):
 func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
 	if body.is_class("TileMap"):
 		if body.get_layer_for_body_rid(body_rid) == 1:
+			AudioManager.play_sound(player.audio.hookAttach)
 			var coords = body.get_coords_for_body_rid(body_rid)
 			position = body.map_to_local(coords)
 			movingPlayer = true
 		
 		elif body.get_layer_for_body_rid(body_rid) == 0:
+			if !returning:
+				AudioManager.play_sound(player.audio.hookHitWall)
+				AudioManager.play_sound(player.audio.grappleRetrieve)
 			returning = true
 				
 func startHanging():

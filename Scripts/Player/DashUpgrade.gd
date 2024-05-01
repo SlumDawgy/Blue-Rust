@@ -13,26 +13,25 @@ extends Node2D
 var canDash : bool = true
 var dashDirection : int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func _input(event):
-	if event.is_action_pressed("Dash") and canDash:
-		AudioManager.play_sound(dashSound)
+	if event.is_action_pressed("Dash") and canDash and player.dashEnabled:
+		AudioManager.play_sound(player.audio.dash)
 		addAfterimageAndDashParticles()
 		player.currentMovement = player.movement.dashing
 		player.dashed = true
+		player.cursorXcoord = (player.to_global(position) - get_global_mouse_position()).x
 		canDash = false
 		dashTimer.start(player.dashTime)
 		
 
 func _on_dash_timer_timeout():
-	canDash = true
-	player.currentMovement = player.movement.enabled
-	player.dashed = false
-	dashParticles.emitting = false
-	pass # Replace with function body.
+	if player.dashed:
+		player.dashed = false
+		dashParticles.emitting = false
+		player.currentMovement = player.movement.jumping
+	
+	if canDash == false and (player.currentMovement == player.movement.enabled or player.currentMovement == player.movement.mantling):
+		canDash = true
 
 
 func addAfterimageAndDashParticles():

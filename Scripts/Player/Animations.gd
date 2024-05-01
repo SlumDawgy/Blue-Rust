@@ -36,10 +36,14 @@ func chooseAnimation():
 				playAnimation("jump")
 			else:
 				playAnimation("fall")
-		#player.movement.mantling: #Already in the mantling script
-			#pass
-		#player.movement.grappling:
-			#pass
+		player.movement.grappling:
+			if player.is_on_floor():
+				playAnimation("idle")
+			else:
+				if player.velocity.y < 0:
+					playAnimation("jump")
+				else:
+					playAnimation("fall")
 		player.movement.hanging:
 			playAnimation("hanging")
 		player.movement.hangingJump:
@@ -48,13 +52,14 @@ func chooseAnimation():
 			else:
 				playAnimation("fall")
 		player.movement.dashing:
-			if animation != "left_dash" and animation != "right_dash":
+			if animation != "left_dash" and animation != "right_dash" and player.dashEnabled:
 				playAnimation("dash")
 		player.movement.takingDamage:
 			playAnimation("damage")
 		player.movement.dying:
 			if player.is_on_floor() and animation != "death":
 				play("death")
+				$"../PlayerLight".enabled = false
 
 func _process(_delta):
 	chooseAnimation()
@@ -127,3 +132,9 @@ func movingPivot():
 		armSprite.visible = false
 	else:
 		armSprite.visible = true
+
+#func _on_animation_finished():
+	#var currentSceneName = get_tree().get_current_scene().name
+	#if animation == "death" and currentSceneName == "Prison":
+		#get_tree().root.get_node("Prison").get_node("Scenetransition/AnimationPlayer").play("Fade_To_Black")
+	#

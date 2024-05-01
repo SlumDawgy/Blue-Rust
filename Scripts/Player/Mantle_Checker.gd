@@ -10,7 +10,7 @@ class_name MantleCheckerComponent
 @export var animation : Animations
 
 var character : CharacterBody2D
-
+var player : Player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	character = get_parent()
@@ -27,7 +27,8 @@ func checkingWall():
 			if collider.is_class("TileMap"):
 				if checkWallUpRight.is_colliding() == false:
 					character.position = collider.map_to_local(collider.local_to_map(character.position)) - Vector2(4, 0)
-					character.currentMovement = character.FirstBoss.movement.mantling
+					character.currentMovement = character.movement.mantling
+					get_parent().audio.playrandom(get_parent().audio.mantle, get_parent().audio.mantle_w_Grunt)
 					animation.play("right_mantling")
 
 	if checkWallLeft.is_colliding() and character.is_on_floor() == false:
@@ -36,5 +37,6 @@ func checkingWall():
 			if collider.is_class("TileMap"):
 				if checkWallUpLeft.is_colliding() == false:
 					character.position = collider.map_to_local(collider.local_to_map(character.position)) + Vector2(4, 0)
-					character.currentMovement = character.FirstBoss.movement.mantling
+					character.currentMovement = character.movement.mantling
+					get_parent().audio.playrandom(get_parent().audio.mantle, get_parent().audio.mantle_w_Grunt)
 					animation.play("left_mantling")

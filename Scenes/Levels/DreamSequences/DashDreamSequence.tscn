@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://bqqmqsa25nhxm"]
+[gd_scene load_steps=39 format=3 uid="uid://bqqmqsa25nhxm"]
 
+[ext_resource type="Script" path="res://Scripts/Levels/DreamScene/DashDreamSequence.gd" id="1_4ss1x"]
 [ext_resource type="PackedScene" uid="uid://ddcwy5gvmfeyc" path="res://Scenes/Levels/Grasslands/grasslands_tile_map.tscn" id="1_af8jq"]
 [ext_resource type="Shader" path="res://Materials/Shaders/GreyScaleShader.gdshader" id="2_t43vh"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="3_jblln"]
@@ -16,6 +17,16 @@
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="14_vrbxi"]
 [ext_resource type="Texture2D" uid="uid://v3m8jfcwewkj" path="res://Assets/Sprites/Lighting/SunLightTexture.png" id="15_7wdrn"]
 [ext_resource type="AudioStream" uid="uid://d2ulpu26pblck" path="res://Assets/Sounds/Music/Dream.WAV" id="16_o2nvm"]
+[ext_resource type="Script" path="res://Scenes/Levels/Prison/PauseMenu.gd" id="17_tjyis"]
+[ext_resource type="AudioStream" uid="uid://xd7freyfwwrb" path="res://Assets/Sounds/MenuAndUI/Menu_Select.WAV" id="18_q46dg"]
+[ext_resource type="AudioStream" uid="uid://bd8usmux71oig" path="res://Assets/Sounds/MenuAndUI/Menu_Click.WAV" id="19_5u083"]
+[ext_resource type="AudioStream" uid="uid://drkfym6amewxa" path="res://Assets/Sounds/MenuAndUI/Menu_Open.WAV" id="20_cmh63"]
+[ext_resource type="AudioStream" uid="uid://cd1uugnaw84q6" path="res://Assets/Sounds/MenuAndUI/Menu_Close.WAV" id="21_aaucw"]
+[ext_resource type="Texture2D" uid="uid://dyte8fqt7m5c6" path="res://Assets/Sprites/UI/OptionsPanel.png" id="22_dartc"]
+[ext_resource type="Script" path="res://Scripts/UI/Main_Menu_Options.gd" id="23_q4ng1"]
+[ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="24_ny3hu"]
+[ext_resource type="Theme" uid="uid://d1xkgll5q80wr" path="res://Slider_Theme.tres" id="25_vy82c"]
+[ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="26_kxhhd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xatia"]
 shader = ExtResource("2_t43vh")
@@ -178,11 +189,20 @@ glow_strength = 0.8
 glow_bloom = 0.07
 volumetric_fog_density = 1.0
 
-[node name="DashDreamSequence" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkiir"]
+size = Vector2(36, 111.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkc7l"]
+size = Vector2(115, 64)
+
+[node name="DashDreamSequence" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_4ss1x")
+player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("3_jblln")]
 z_index = -1
-position = Vector2(736, -392)
+position = Vector2(778, -384)
+dashEnabled = true
 
 [node name="Grasslands_TileMap" parent="." instance=ExtResource("1_af8jq")]
 material = SubResource("ShaderMaterial_xatia")
@@ -196,7 +216,6 @@ layer_5/z_index = 2
 layer_5/tile_data = PackedInt32Array(-1376181, 65536, 12, -1441717, 524288, 8, -1441718, 65536, 12, -1441719, 131072, 12, -1441720, 458752, 8, -1376184, 131072, 12, -1310647, 65536, 8, -1245111, 65536, 9, -1245110, 65536, 9, -1310646, 65536, 8, -1310645, 65536, 11, -1376182, 65536, 8, -1376183, 65536, 8, -1310648, 65536, 8, -1245112, 65536, 9, -1245109, 524288, 9, -1310644, 524288, 9, -1376180, 524288, 8, -1507255, 458752, 8, -1507254, 524288, 8, -1310649, 0, 8, -1376185, 458752, 8, -1245113, 458752, 9, -1769393, 458752, 8, -1703857, 0, 9, -1703856, 524288, 9, -1769392, 524288, 8, -2293691, 327680, 9, -2293690, 131072, 13, -2359226, 0, 7, -2359225, 131072, 7, -2293689, 393216, 12, -2228152, 524288, 9, -2228153, 0, 9, -2293688, 524288, 8, -2228161, 393216, 7, -2293698, 524288, 8, -2293699, 458752, 8, -2228162, 524288, 13, -2228163, 131072, 12, -2162627, 65536, 9, -2162626, 131072, 9, -2228164, 65536, 7, -2228165, 65536, 12, -2228166, 0, 8, -2162630, 458752, 9, -2162629, 65536, 9, -2162628, 589824, 12, -2097092, 262144, 9, -2293702, 458752, 8, -2293701, 524288, 8, -2162643, 327680, 9, -2162642, 131072, 10, -2097105, 65536, 9, -2097104, 65536, 9, -2097103, 131072, 11, -2031567, 458752, 9, -2031566, 65536, 9, -2031565, 65536, 9, -2031564, 524288, 9, -2097100, 524288, 8, -2097101, 65536, 12, -2097102, 65536, 8, -2162640, 65536, 12, -2162639, 65536, 7, -2162637, 196608, 12, -2162638, 65536, 7, -2228173, 262144, 7, -2097106, 458752, 9, -2162641, 131072, 12, -2228177, 458752, 8, -2228176, 524288, 8, -1769430, 458752, 8, -1769429, 65536, 7, -1769428, 524288, 8, -1703891, 65536, 7, -1703890, 131072, 7, -1638354, 131072, 8, -1572818, 65536, 12, -1507282, 65536, 11, -1507283, 65536, 8, -1507284, 65536, 8, -1507285, 65536, 8, -1572822, 65536, 8, -1638358, 131072, 12, -1703894, 0, 8, -1703893, 65536, 8, -1703892, 65536, 12, -1638356, 65536, 8, -1638355, 65536, 8, -1572819, 65536, 8, -1572820, 65536, 8, -1572821, 65536, 8, -1638357, 65536, 8, -1572823, 131072, 12, -1507287, 65536, 8, -1507286, 65536, 8, -1441750, 65536, 8, -1507288, 589824, 13, -1507289, 327680, 9, -1638359, 458752, 8, -1572824, 0, 7, -1441751, 131072, 11, -1441749, 65536, 8, -1441748, 65536, 11, -1441747, 65536, 9, -1441746, 524288, 9, -1376212, 524288, 9, -1376213, 65536, 9, -1376214, 65536, 9, -1441752, 458752, 9, -1376215, 458752, 9, -1572817, 131072, 7, -1507281, 524288, 9)
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(114, -37)
 zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
@@ -209,11 +228,167 @@ player = NodePath("../Player")
 anchors_preset = -1
 anchor_right = 0.673611
 anchor_bottom = 0.432099
-offset_left = -16.0
-offset_right = -16.0
 scale = Vector2(2, 2)
 player = NodePath("../../../Player")
 metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Panel" parent="Camera/CanvasLayer"]
+process_mode = 3
+visible = false
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1158.0
+offset_bottom = 645.0
+script = ExtResource("17_tjyis")
+buttonSelectSound = ExtResource("18_q46dg")
+buttonClickSound = ExtResource("19_5u083")
+menuOpenSound = ExtResource("20_cmh63")
+menuCloseSound = ExtResource("21_aaucw")
+
+[node name="OptionsPanel" type="Sprite2D" parent="Camera/CanvasLayer/PauseMenu"]
+process_mode = 2
+visible = false
+position = Vector2(579.722, 325)
+scale = Vector2(3.04832, 3.06019)
+texture = ExtResource("22_dartc")
+script = ExtResource("23_q4ng1")
+
+[node name="BackButton" type="Button" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel"]
+offset_left = 120.157
+offset_top = 73.525
+offset_right = 173.157
+offset_bottom = 98.525
+theme_override_fonts/font = ExtResource("24_ny3hu")
+theme_override_font_sizes/font_size = 20
+text = "Back"
+
+[node name="Configs" type="VBoxContainer" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel"]
+offset_left = -183.0
+offset_top = -97.0
+offset_right = 69.0
+offset_bottom = 29.0
+
+[node name="Sounds" type="HBoxContainer" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("24_ny3hu")
+theme_override_font_sizes/font_size = 20
+text = "Master"
+
+[node name="BGM" type="Label" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("24_ny3hu")
+theme_override_font_sizes/font_size = 20
+text = "BGM"
+
+[node name="SFX" type="Label" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("24_ny3hu")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+
+[node name="Sliders" type="VBoxContainer" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Master" type="HSlider" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+theme = ExtResource("25_vy82c")
+theme_override_icons/grabber = ExtResource("26_kxhhd")
+min_value = -80.0
+max_value = 0.0
+
+[node name="MusicSlider" type="HSlider" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+theme = ExtResource("25_vy82c")
+theme_override_icons/grabber = ExtResource("26_kxhhd")
+min_value = -80.0
+max_value = 0.0
+
+[node name="SFXSlider" type="HSlider" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+theme = ExtResource("25_vy82c")
+min_value = -80.0
+max_value = 0.0
+
+[node name="Fullscreen" type="HBoxContainer" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Fullscreen"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("24_ny3hu")
+theme_override_font_sizes/font_size = 20
+text = "FullScreen"
+
+[node name="FullscreenButton" type="CheckButton" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Fullscreen"]
+layout_mode = 2
+theme = ExtResource("25_vy82c")
+
+[node name="Language" type="HBoxContainer" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs"]
+layout_mode = 2
+
+[node name="Language" type="Label" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Language"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("24_ny3hu")
+theme_override_font_sizes/font_size = 20
+text = "LANGUAGE"
+
+[node name="OptionButton" type="OptionButton" parent="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Language"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("24_ny3hu")
+theme_override_font_sizes/font_size = 10
+item_count = 2
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Portuguese"
+popup/item_1/id = 1
+
+[node name="PauseMenuButtons" type="Control" parent="Camera/CanvasLayer/PauseMenu"]
+anchors_preset = 0
+
+[node name="Area2D" type="Sprite2D" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
+position = Vector2(583.167, 325.5)
+scale = Vector2(3.03038, 3.03241)
+texture = ExtResource("22_dartc")
+
+[node name="ResumeButton" type="Button" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 108.0
+offset_right = 255.0
+offset_bottom = 131.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("25_vy82c")
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 159.0
+offset_right = 255.0
+offset_bottom = 182.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("25_vy82c")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Camera/CanvasLayer/PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 210.0
+offset_right = 255.0
+offset_bottom = 233.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("25_vy82c")
+text = "Quit"
 
 [node name="Crystal_Color_TileMap_NoCollision" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_rn0on")
@@ -450,7 +625,7 @@ texture = ExtResource("14_vrbxi")
 texture_scale = 2.1
 
 [node name="PointLight2D9" type="PointLight2D" parent="Lighting"]
-position = Vector2(1016, -512)
+position = Vector2(1051, -511)
 range_layer_min = -100
 range_layer_max = 100
 range_item_cull_mask = 31
@@ -583,3 +758,47 @@ environment = SubResource("Environment_gg7s0")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_o2nvm")
 autoplay = true
+
+[node name="EndOfDream" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndOfDream"]
+position = Vector2(1045, 605.5)
+shape = SubResource("RectangleShape2D_tkiir")
+
+[node name="CrystalWarning" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrystalWarning"]
+position = Vector2(1442, 32)
+shape = SubResource("RectangleShape2D_tkiir")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 1288.0
+offset_top = 52.0
+offset_right = 1432.0
+offset_bottom = 75.0
+text = "Right Click to Dash"
+
+[node name="DashTutorialLabel" type="Area2D" parent="Label"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/DashTutorialLabel"]
+position = Vector2(77, 98)
+shape = SubResource("RectangleShape2D_fkc7l")
+
+[connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/BackButton" to="Camera/CanvasLayer/PauseMenu" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders/Master" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_master_value_changed"]
+[connection signal="value_changed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_fullscreen_button_toggled"]
+[connection signal="item_selected" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Language/OptionButton" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_option_button_item_selected"]
+[connection signal="mouse_entered" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/ResumeButton" to="Camera/CanvasLayer/PauseMenu" method="_on_resume_button_mouse_entered"]
+[connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/ResumeButton" to="Camera/CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/OptionsButton" to="Camera/CanvasLayer/PauseMenu" method="_on_options_button_mouse_entered"]
+[connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/OptionsButton" to="Camera/CanvasLayer/PauseMenu" method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/QuitButton" to="Camera/CanvasLayer/PauseMenu" method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/PauseMenuButtons/QuitButton" to="Camera/CanvasLayer/PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="body_entered" from="EndOfDream" to="." method="_on_end_of_dream_body_entered"]
+[connection signal="body_entered" from="CrystalWarning" to="." method="_on_crystal_warning_body_entered"]
+[connection signal="body_exited" from="CrystalWarning" to="." method="_on_crystal_warning_body_exited"]
+[connection signal="body_entered" from="Label/DashTutorialLabel" to="." method="_on_dash_tutorial_label_body_entered"]
+[connection signal="body_exited" from="Label/DashTutorialLabel" to="." method="_on_dash_tutorial_label_body_exited"]

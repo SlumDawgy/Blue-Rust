@@ -1,18 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqcpb4lqt6l2u"]
+[gd_scene load_steps=3 format=3 uid="uid://dqcpb4lqt6l2u"]
 
-[ext_resource type="Texture2D" uid="uid://5lfbylbmwklr" path="res://Assets/Sprites/UI/UIBackGroundSprite.png" id="2_e1vrw"]
-[ext_resource type="Script" path="res://Scripts/UI/GrabFocusForButton.gd" id="3_fn01q"]
-
-[sub_resource type="GDScript" id="GDScript_upp1c"]
-script/source = "extends Control
-
-
-
-func _on_button_pressed():	
-	get_parent().get_parent().get_node(\"Options\").grab_focus()
-	queue_free()
-	
-"
+[ext_resource type="Script" path="res://Scripts/UI/Main_Menu_Options.gd" id="1_7hbt2"]
+[ext_resource type="Script" path="res://Scripts/GlobalPaths.gd" id="3_fn01q"]
 
 [node name="MainMenuOptions" type="Control"]
 layout_mode = 3
@@ -21,28 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_upp1c")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.0666667, 0.192157, 0.278431, 1)
-position = Vector2(502, 242)
-scale = Vector2(5.90625, 6.99074)
-texture = ExtResource("2_e1vrw")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -87.5
-offset_top = -20.0
-offset_right = 87.5
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Options Screen Here"
+script = ExtResource("1_7hbt2")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -61,4 +29,92 @@ text = "Back
 "
 script = ExtResource("3_fn01q")
 
+[node name="Configs" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 26.0
+offset_right = 457.0
+offset_bottom = 231.0
+
+[node name="Sounds" type="HBoxContainer" parent="Configs"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="Configs/Sounds"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Configs/Sounds/Names"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Master"
+
+[node name="Label3" type="Label" parent="Configs/Sounds/Names"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Music"
+
+[node name="Label2" type="Label" parent="Configs/Sounds/Names"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SoundFX
+"
+
+[node name="Sliders" type="VBoxContainer" parent="Configs/Sounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Master" type="HSlider" parent="Configs/Sounds/Sliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="MusicSlider" type="HSlider" parent="Configs/Sounds/Sliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="SFXSlider" type="HSlider" parent="Configs/Sounds/Sliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Fullscreen" type="HBoxContainer" parent="Configs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Configs/Fullscreen"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Fullscreen Mode"
+
+[node name="FullscreenButton" type="CheckButton" parent="Configs/Fullscreen"]
+layout_mode = 2
+
+[node name="Language" type="HBoxContainer" parent="Configs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Configs/Language"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Language"
+
+[node name="OptionButton" type="OptionButton" parent="Configs/Language"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Portuguese"
+popup/item_1/id = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="Configs/Sounds/Sliders/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="Configs/Sounds/Sliders/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Configs/Sounds/Sliders/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="Configs/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="item_selected" from="Configs/Language/OptionButton" to="." method="_on_option_button_item_selected"]

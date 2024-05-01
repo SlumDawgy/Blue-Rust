@@ -1,8 +1,36 @@
 [gd_scene load_steps=186 format=3 uid="uid://cr5g5ugrskfq"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Save Point.gd" id="1_7b6r8"]
 [ext_resource type="Texture2D" uid="uid://w5u2urh01bjs" path="res://Assets/Sprites/SavePoint.png" id="2_11v0b"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="3_wurql"]
+
+[sub_resource type="GDScript" id="GDScript_m5uxp"]
+script/source = "extends Node2D
+
+var canSave = false
+
+func save_game():
+	var save_game1 = FileAccess.open(\"user://savegame.save\", FileAccess.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group(\"Persist\")
+	for node in save_nodes:
+		# Check the node is an instanced scene so it can be instanced again during load.
+		if node.scene_file_path.is_empty():
+			print(\"persistent node '%s' is not an instanced scene, skipped\" % node.name)
+			continue
+
+		# Check the node has a save function.
+		if !node.has_method(\"save\"):
+			print(\"persistent node '%s' is missing a save() function, skipped\" % node.name)
+			continue
+
+		# Call the node's save function.
+		var node_data = node.call(\"save\")
+
+		# JSON provides a static method to serialized JSON string.
+		var json_string = JSON.stringify(node_data)
+
+		# Store the save dictionary as a new line in the save file.
+		save_game1.store_line(json_string)
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_itk3n"]
 radius = 32.0
@@ -1276,7 +1304,7 @@ animations = [{
 }]
 
 [node name="Save Point" type="Area2D"]
-script = ExtResource("1_7b6r8")
+script = SubResource("GDScript_m5uxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1286,22 +1314,21 @@ shape = SubResource("CircleShape2D_itk3n")
 position = Vector2(0, -20)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_1qgui")
+autoplay = "default"
 frame_progress = 0.436237
 speed_scale = 10.0
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -104.0
-offset_top = -64.0
-offset_right = 212.0
-offset_bottom = -8.0
-text = "PRESS E TO SAVE THE GAME"
+offset_left = -157.0
+offset_top = -70.0
+offset_right = 159.0
+offset_bottom = -14.0
+text = "Press E to save the game"
+horizontal_alignment = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -15)
 color = Color(0.780392, 0.823529, 0.85098, 1)
 texture = ExtResource("3_wurql")
 texture_scale = 0.2
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -10,12 +10,13 @@ var changeScale : bool = false
 @onready var animation : AnimatedSprite2D = $FirstBossSprites
 @onready var damageParticles : GPUParticles2D = $FirstBossSprites/Node2D/DamageParticle
 
-var speed : float = 50.0
+var speed : float = 35.0
 
 # Charge Attack
-var chargeSpeed : float = 300.0
+var chargeSpeed : float = 200.0
 @onready var wallCollisionLeft = $WallCollision/Left
 @onready var chargeAttackTimer = $ChargeAttackTimer
+@onready var chargeHitBox = $ChargeHitBox
 
 # Steam Attack
 @onready var steamChargingParticles = $SteamParticles/Charging
@@ -27,13 +28,16 @@ var chargeSpeed : float = 300.0
 
 # Player
 @export var player : Player
-
 # Stunned
 var canBeDamaged : bool = false
+var stunnedTimer : float
 
 # Power Up dropped on death 
 var powerUpScene : PackedScene = preload(GlobalPaths.DASH_UPGRADE)
 
+var awaitTimer : float = 0
+
+var playedSound : bool = false
 @onready var audios = $Audios
 
 enum movement
@@ -58,11 +62,8 @@ class BasicAttack:
 	var knockupwards : int = -250
 	
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#$AnimatedSprite2D/Node2D/AnimatedSprite2D.visible = false
 	currentMovement = movement.starting
-	pass # Replace with function body.
 
 func starting():
 	pass
@@ -84,7 +85,8 @@ func enabled():
 			scale.x *= -1
 			changeScale = true
 
-func attack():
+func attack(delta):
+	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	if animation.frame == 2:
 		if attackCollision.is_colliding():
@@ -97,57 +99,84 @@ func attack():
 				if collision_direction.x < 0:
 					basicAttack.direction = -1
 				hitbox.damage(basicAttack)
-		
-	await get_tree().create_timer(2.0).timeout
-	currentMovement = movement.enabled
+	if awaitTimer < -2:
+		currentMovement = movement.enabled
+		awaitTimer = 0
 
-func charging():
+func charging(delta):
+	playSound(audios.charge)
+	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
-	await get_tree().create_timer(2).timeout
-	currentMovement = movement.chargeAttacking
+	if awaitTimer < -2:
+		awaitTimer = 0
+		playedSound = false
+		currentMovement = movement.chargeAttacking
 
 func chargeAttacking():
 	if changeScale == true:
 		velocity.x = chargeSpeed
 		if wallCollisionLeft.is_colliding():
+			
+			AudioManager.play_sound(audios.wallHit)
 			currentMovement = movement.stunned
+			stunnedTimer = 2.5
 			position.x = wallCollisionLeft.get_collision_point().x - 38
 	else:
 		velocity.x = -chargeSpeed
 		if wallCollisionLeft.is_colliding():
+			AudioManager.play_sound(audios.wallHit)
 			currentMovement = movement.stunned
+			stunnedTimer = 2.5
 			position.x = wallCollisionLeft.get_collision_point().x + 38
+	
+	if chargeHitBox.is_colliding():
+		var collision = attackCollision.get_collider(0)
+		if collision is Player:
+			var hitbox : HitBoxComponent = collision.get_node("HitBoxComponent")		
+			var basicAttack = BasicAttack.new()
+			var collision_direction = (collision.global_position - global_position).normalized()
+			if collision_direction.x < 0:
+				basicAttack.direction = -1
+			hitbox.damage(basicAttack)
 
-func stunned():
+func stunned(delta):
+	stunnedTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	canBeDamaged = true
 	$StunnedIndicator.visible = true
-	await get_tree().create_timer(2.5).timeout
-	canBeDamaged = false
-	$StunnedIndicator.visible = false
-	currentMovement = movement.leavingStun
-	chargeAttackTimer.start(5)
+	if stunnedTimer < 0:
+		canBeDamaged = false
+		$StunnedIndicator.visible = false
+		currentMovement = movement.leavingStun
+		chargeAttackTimer.start(5)
 
-func chargingSteam():
+func chargingSteam(delta):
+	playSound(audios.charge)
+	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	steamChargingParticles.emitting = true
 	canBeDamaged = true
 	$StunnedIndicator.visible = true
-	await get_tree().create_timer(2.5).timeout
-	canBeDamaged = false
-	$StunnedIndicator.visible = false
-	steamChecking(movement.steamAttacking)
+	if awaitTimer < -2.5:
+		playedSound = false
+		awaitTimer = 0
+		canBeDamaged = false
+		$StunnedIndicator.visible = false
+		steamChecking(movement.steamAttacking)
 
-func steamAttacking():
+func steamAttacking(delta):
+	playSound(audios.steam)
+	awaitTimer -= delta
 	steamAttackParticles.emitting = true
 	steamCollision.shape.a.y = -120
 	if player.currentMovement != player.movement.hanging:
-		steamAttackParticles.emitting = false
-		steamChargingParticles.emitting = false
 		steamCollision.shape.a.y = 0
-		await get_tree().create_timer(1).timeout
-		
-		currentMovement = movement.enabled
+		if awaitTimer < -1:
+			playedSound = false
+			awaitTimer = 0
+			steamAttackParticles.emitting = false
+			steamChargingParticles.emitting = false
+			currentMovement = movement.enabled
 
 func steamChecking(action):
 	var checkPosition
@@ -163,27 +192,29 @@ func steamChecking(action):
 		steamAttackParticles.emitting = false
 		currentMovement = movement.enabled
 
-func takingDamage():
+func takingDamage(delta):
+	playSound(audios.bossHurt)
+	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	steamAttackParticles.emitting = false
 	steamChargingParticles.emitting = false
 	damageParticles.emitting = true
-	await get_tree().create_timer(2.0).timeout
-	currentMovement = movement.enabled
+	$StunnedIndicator.visible = false
+	if awaitTimer < -1:
+		playedSound = false
+		awaitTimer = 0
+		currentMovement = movement.enabled
 	
-func dying():
+func dying(_delta):
 	if animation.animation != "Death":
 		animation.play("Death")
 	velocity.x = 0
 	if animation.frame == 1:
-		if audios.bossDie.playing == false:
-			audios.bossDie.play()
 		get_tree().root.get_node("Prison/Audio/BossFight").playing = false
 		get_tree().root.get_node("Prison/Audio/MainLevelTheme").playing = true
+		$Audios/Die.play()
 
-
-	if audios.bossDie.playing == false:
-		await get_tree().create_timer(2).timeout
+	if animation.is_playing() == false:
 		var powerUp = powerUpScene.instantiate()
 		get_tree().root.get_node("Prison").add_child(powerUp)
 		powerUp.get_node("FragmentArea2D").position = global_position
@@ -191,45 +222,33 @@ func dying():
 		powerUp.get_node("FragmentArea2D").connect("area_entered", Callable(get_tree().root.get_node("Prison"), "PowerUp"))
 		
 		powerUp.name = "powerUp"
-		
-		#get_tree().root.get_node("Prison").add_child(powerUp)
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta):
-	
-	## PLAYTEST DEBUG 
-	if Input.is_action_just_pressed("Crouch"):
-		var basicAttack = BasicAttack.new()
-		basicAttack.damage = 1
-		basicAttack.knockback = 0
-		basicAttack.knockupwards = 0
-		$HitBoxComponent.damage(basicAttack)
-	
-	## PLAYTEST DEBUG
+func _physics_process(delta):
 	match currentMovement:
 		movement.starting:
 			pass
 		movement.enabled:
 			enabled()
 		movement.attacking:
-			attack()
+			attack(delta)
 		movement.charging:
-			charging()
+			charging(delta)
 		movement.chargeAttacking:
 			chargeAttacking()
 		movement.chargingSteam:
-			chargingSteam()
+			chargingSteam(delta)
 		movement.steamAttacking:
-			steamAttacking()
+			steamAttacking(delta)
 		movement.stunned:
-			stunned()
+			stunned(delta)
 		#movement.leavingStun: Already in the Animation Script
 			#pass
 		movement.takingDamage:
-			takingDamage()
+			takingDamage(delta)
 		movement.dying:
-			dying()
+			dying(delta)
 	
 	move_and_slide()
 
@@ -247,4 +266,11 @@ func _on_hit_box_component_area_entered(area):
 	if area.name == "Grappling" and canBeDamaged:
 		var basicAttack = area.BasicAttack.new()
 		$HitBoxComponent.damage(basicAttack)
+		if healthStateCounter < 2:
+			healthStateCounter += 1
 		canBeDamaged = false
+
+func playSound(sound:AudioStream):
+	if !playedSound :
+		AudioManager.play_sound(sound)
+		playedSound = true

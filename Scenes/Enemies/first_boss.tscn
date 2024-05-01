@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://dup4g553pqjue"]
+[gd_scene load_steps=139 format=3 uid="uid://dup4g553pqjue"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/first_boss.gd" id="1_7v45d"]
 [ext_resource type="Texture2D" uid="uid://cmd0bw0ybf0x3" path="res://Assets/Sprites/Enemies/FirstBoss/EnemyAtomiton_FullHealth_Walk-Sheet.png" id="1_lckmo"]
@@ -32,9 +32,9 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/FirstBoss/FirstBossSprites.gd" id="24_vbx28"]
 [ext_resource type="AudioStream" uid="uid://0cek8qdi5cr7" path="res://Assets/Sounds/Music/Boss/02. Wall hit.WAV" id="26_idy6h"]
 [ext_resource type="AudioStream" uid="uid://cphsinmqxevqd" path="res://Assets/Sounds/Music/Boss/03. Charge.WAV" id="27_h1uwv"]
-[ext_resource type="AudioStream" uid="uid://1jupmold6ha4" path="res://Assets/Sounds/Player_Sounds/02. Retrieve.WAV" id="28_5x8d2"]
 [ext_resource type="Texture2D" uid="uid://b3ykdl3mutn0s" path="res://Assets/Sprites/SmokeParticles2.png" id="31_4d6cc"]
 [ext_resource type="Texture2D" uid="uid://c3xit4a6mgtpd" path="res://Assets/Sprites/SmokeParticles3.png" id="31_l3uw7"]
+[ext_resource type="AudioStream" uid="uid://73klxfni2msm" path="res://Assets/Sounds/MenuAndUI/Game_Start.WAV" id="35_gbhg1"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="35_qc33f"]
 [ext_resource type="PackedScene" uid="uid://d0fwaxi3ok6nx" path="res://Scenes/Components/hitBoxComponent.tscn" id="36_dp3sm"]
 [ext_resource type="Texture2D" uid="uid://dv2kx865vsqtt" path="res://Assets/Sprites/Player/Aim.png" id="38_4xcbl"]
@@ -378,13 +378,25 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_huc5v"]
 animations = [{
 "frames": [{
-"duration": 6.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l4802")
 }, {
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pcm2m")
 }, {
-"duration": 5.0,
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4802")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcm2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4802")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcm2m")
+}, {
+"duration": 1.0,
 "texture": null
 }],
 "loop": false,
@@ -831,6 +843,8 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqsx1"]
+
 [node name="FirstBoss" type="CharacterBody2D"]
 collision_layer = 32784
 collision_mask = 24
@@ -845,7 +859,9 @@ shape = SubResource("SegmentShape2D_wf4o1")
 position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"LowHealth_Stunned"
+animation = &"Death"
+frame = 4
+frame_progress = 1.0
 script = ExtResource("24_vbx28")
 FirstBoss = NodePath("..")
 
@@ -908,28 +924,20 @@ shape = SubResource("RectangleShape2D_ccpoy")
 [node name="Audios" type="Node2D" parent="."]
 visible = false
 script = ExtResource("23_8bsgf")
+bossHurt = ExtResource("23_xu5fh")
+wallHit = ExtResource("26_idy6h")
+charge = ExtResource("27_h1uwv")
+retrieve = ExtResource("26_idy6h")
+steam = ExtResource("35_gbhg1")
 
-[node name="BossHurt" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("23_xu5fh")
-
-[node name="BossDie" type="AudioStreamPlayer2D" parent="Audios"]
+[node name="Die" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("24_rk238")
-
-[node name="WallHit" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("26_idy6h")
-
-[node name="Charge" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("27_h1uwv")
-
-[node name="Retrieve" type="AudioStreamPlayer2D" parent="Audios"]
-stream = ExtResource("28_5x8d2")
+bus = &"SFX"
 
 [node name="SteamParticles" type="CPUParticles2D" parent="."]
 position = Vector2(20, -26)
-emitting = false
 amount = 100
 lifetime = 0.6
-one_shot = true
 texture = ExtResource("31_4d6cc")
 emission_shape = 3
 emission_rect_extents = Vector2(3, 1)
@@ -968,7 +976,6 @@ color_ramp = SubResource("Gradient_yjpeg")
 shape = SubResource("SegmentShape2D_58pow")
 
 [node name="Attack" type="ShapeCast2D" parent="."]
-visible = false
 position = Vector2(-29, -22)
 shape = SubResource("RectangleShape2D_0yy3b")
 target_position = Vector2(0, 44)
@@ -989,6 +996,11 @@ sprite_frames = SubResource("SpriteFrames_5uefe")
 animation = &"stunned"
 autoplay = "stunned"
 frame_progress = 0.689769
+
+[node name="ChargeHitBox" type="ShapeCast2D" parent="."]
+position = Vector2(-26, -18)
+shape = SubResource("RectangleShape2D_hqsx1")
+target_position = Vector2(0, 40)
 
 [connection signal="area_entered" from="HitBoxComponent" to="." method="_on_hit_box_component_area_entered"]
 [connection signal="area_shape_entered" from="Damagable" to="." method="_on_damagable_area_shape_entered"]

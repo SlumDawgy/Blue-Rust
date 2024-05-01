@@ -6,8 +6,6 @@ var health : int
 var damageImmunityTimer : float
 @export var damageImmunity : float
 
-@onready var parent : CharacterBody2D = get_parent()
-
 func _ready():
 	health = maxHealth
 	damageImmunityTimer = damageImmunity
@@ -20,8 +18,8 @@ func damage(attack):
 		health -= attack.damage
 	damageImmunityTimer = damageImmunity
 	if health > 0:
-		parent.currentMovement = parent.movement.takingDamage
-		parent.velocity.x = attack.knockback * 2 * attack.direction
-		parent.velocity.y = attack.knockupwards
+		get_parent().currentMovement = get_parent().movement.takingDamage
+		get_parent().velocity.x = attack.knockback * 2 * attack.direction
+		get_parent().velocity.y = attack.knockupwards
 	else:
-		parent.currentMovement = parent.movement.dying
+		get_parent().currentMovement = get_parent().movement.dying

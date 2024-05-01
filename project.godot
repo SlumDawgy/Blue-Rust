@@ -33,11 +33,13 @@ directories/dch_directory={
 "Soothing_Voice": "res://Dialogic/Characters/Soothing_Voice.dch"
 }
 directories/dtl_directory={
+"Dream1-1": "res://Dialogic/Timelines/Dream1-1.dtl",
+"Dream1-2": "res://Dialogic/Timelines/Dream1-2.dtl",
+"Dream1-3": "res://Dialogic/Timelines/Dream1-3.dtl",
 "Prison1-1": "res://Dialogic/Timelines/Prison1-1.dtl",
 "Prison1-2": "res://Dialogic/Timelines/Prison1-2.dtl",
 "Prison1-3": "res://Dialogic/Timelines/Prison1-3.dtl",
-"Prison1-4": "res://Dialogic/Timelines/Prison1-4.dtl",
-"Prison1-5": "res://Dialogic/Timelines/Prison1-5.dtl"
+"Prison1-4": "res://Dialogic/Timelines/Prison1-4.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://Dialogic/Styles/Style.tres"]
@@ -47,7 +49,11 @@ variables={
 "Dialogue2": false,
 "Dialogue3": false,
 "Dialogue4": false,
-"Dialogue5": false
+"Dialogue5": false,
+"Dialogue6": false,
+"Dialogue7": false,
+"Dialogue8": false,
+"WakeUp": false
 }
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

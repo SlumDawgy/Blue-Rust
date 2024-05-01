@@ -1,7 +1,8 @@
 extends Node2D
 
-@onready var bossHurt = $BossHurt
-@onready var bossDie = $BossDie
-@onready var wallHit = $WallHit
-@onready var charge = $Charge
-@onready var retrieve = $Retrieve
+@export var bossHurt : AudioStream 
+@onready var bossDie = $Die
+@export var  wallHit : AudioStream 
+@export var charge : AudioStream 
+@export var retrieve : AudioStream 
+@export var steam : AudioStream 

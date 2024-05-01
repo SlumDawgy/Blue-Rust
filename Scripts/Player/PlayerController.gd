@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var audio : Node = $Audios
+
 # Physics "Constants"
 var GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -34,7 +36,7 @@ var cursorXcoord : float
 
 # Dash
 var dashed : bool = false
-var dashEnabled : bool = false
+@export var dashEnabled : bool = false
 @export var dashSpeed : float = 250.0
 @export var dashTime : float = 0.5
 @onready var dashUpgrade : Node2D = $DashUpgrade
@@ -45,6 +47,7 @@ var inputJump : bool = false
 
 # Health
 @onready var health : HealthComponent = $HealthComponent
+var _takingDamage: bool = false
 
 enum movement
 {
@@ -89,6 +92,7 @@ func jumping():
 	velocity.x = speed * inputDirection
 	if jumped == true:
 		velocity.y = jumpSpeed
+		audio.playrandom(audio.playerJump, audio.playerJump_w_Grunt)
 		jumped = false
 	
 	if Input.is_action_just_pressed("GrapplingHook"):
@@ -109,6 +113,7 @@ func jumping():
 		return
 	
 	if is_on_floor() and velocity.y >= 0:
+		audio.playrandom(audio.playerLanding, audio.playerLanding_w_Grunt)
 		currentMovement = movement.enabled
 
 func mantling():
@@ -125,6 +130,7 @@ func mantling():
 
 func grappling():
 	if not grapplingHook:
+		AudioManager.play_sound(audio.grappleShoot)
 		grapplingHook = grapplingHookScene.instantiate()
 		grapplingHook.startingPointNode = grappleOrigin
 		grapplingHook.transform = grappleOrigin.get_global_transform()
@@ -139,6 +145,7 @@ func grappling():
 func hanging():
 	velocity.y = move_toward(0,0,0)
 	if Input.is_action_just_pressed("Jump"):
+		audio.playrandom(audio.playerJump, audio.playerJump_w_Grunt)
 		currentMovement = movement.hangingJump
 		hangJumped = true
 	
@@ -162,13 +169,12 @@ func hangingJump():
 	else:
 		velocity.x = -200
 	if is_on_floor():
+		audio.playrandom(audio.playerLanding, audio.playerLanding_w_Grunt)
 		currentMovement = movement.enabled
 
-func dashing():	
-	dashEnabled = true
+func dashing():
+	#dashEnabled = true
 	if dashed and dashEnabled:
-		
-		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
 		velocity.y = 0
 		if cursorXcoord <= 0:
 			velocity.x = dashSpeed
@@ -177,11 +183,17 @@ func dashing():
 	
 	
 func takingDamage():
+	if !_takingDamage:
+		AudioManager.play_sound(audio.hurt)
+		_takingDamage = true
 	await get_tree().create_timer(1.0).timeout
 	currentMovement = movement.enabled
+	_takingDamage = false
+	gravityModifier = gravityVarDownwards
 
 func dying():
 	velocity.x = move_toward(0,0,0)
+
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("changeDifficulty"):
@@ -215,3 +227,6 @@ func _physics_process(delta):
 			dying()
 	
 	move_and_slide()
+
+
+	

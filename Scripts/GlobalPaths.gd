@@ -6,12 +6,15 @@ extends Node
 const GRAPPLING_HOOK_PATH: String = "res://Scenes/Player/GrapplingHook.tscn"
 
 # SCENES/UI
+const MAIN_MENU_SCREEN_PATH: String = "res://Scenes/UI/Main_Menu.tscn"
 const DEATH_SCREEN_PATH: String = "res://Scenes/UI/death_ui.tscn"
 const OPTIONS_SCREEN_PATH: String = "res://Scenes/UI/Main_Menu_Options.tscn"
 const END_GAME_SCENE_PATH: String = "res://Scenes/UI/endGame.tscn"
 # SCENES/LEVELS
 # SCENES/LEVELS/PRISON
 const PRISON_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison.tscn"
+# SCENES/LEVELS/DREAMSCENE
+const DREAM_SCENE_PATH: String = "res://Scenes/Levels/DreamSequences/DashDreamSequence.tscn"
 
 # ASSETS
 # ASSETS/SPRITES
