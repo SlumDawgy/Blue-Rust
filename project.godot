@@ -72,7 +72,7 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 translation/enabled=true
-translation/original_locale=""
+translation/original_locale="en"
 translation/file_mode=1
 translation/translation_folder="res://Dialogic/Translation"
 translation/save_mode=0
@@ -166,7 +166,6 @@ Pause={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Dialogic/Translation/dialogic_Prison1-5_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-5_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_character_translations.en.translation", "res://Dialogic/Translation/dialogic_Dream1-1_translation.en.translation", "res://Dialogic/Translation/dialogic_Dream1-1_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_Dream1-2_translation. pt_BR.translation", "res://Dialogic/Translation/dialogic_Dream1-2_translation.en.translation", "res://Dialogic/Translation/dialogic_Dream1-3_translation.en.translation", "res://Dialogic/Translation/dialogic_Dream1-3_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_Prison1-1_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-1_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_Prison1-2_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-2_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_Prison1-3_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-3_translation.pt_BR.translation", "res://Dialogic/Translation/dialogic_Prison1-4_translation.en.translation", "res://Dialogic/Translation/dialogic_Prison1-4_translation.pt_BR.translation")
-locale/test="pt_BR"
 
 [layer_names]
 
