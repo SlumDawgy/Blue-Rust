@@ -87,6 +87,10 @@ func enabled():
 		gravityModifier = gravityVarUpwards
 		jumped = true
 		return
+		
+	if not is_on_floor() :
+		currentMovement = movement.jumping
+		return
 
 func jumping():
 	velocity.x = speed * inputDirection
