@@ -121,7 +121,7 @@ func mantling():
 		velocity.y = 0
 	if Input.is_action_just_pressed("Crouch"):
 		canMantle = false
-		currentMovement = movement.enabled
+		currentMovement = movement.jumping
 		mantleChecker.process_mode = Node.PROCESS_MODE_DISABLED
 	if Input.is_action_just_pressed("Jump"):
 		jumped = true
