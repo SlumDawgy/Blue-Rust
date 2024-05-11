@@ -183,6 +183,9 @@ autoplay = "Inactive"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ElevatorBG/CharacterBody2D"]
 polygon = PackedVector2Array(15, 40, 13, 38, -15, 38, -15, 40)
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="ElevatorBG/CharacterBody2D"]
+polygon = PackedVector2Array(16, -6, -16, -6, -16, -9, 16, -9)
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 13)
 texture = ExtResource("7_85kio")
