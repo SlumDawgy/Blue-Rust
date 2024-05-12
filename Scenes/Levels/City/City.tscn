@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c72lhr20esxb0"]
+[gd_scene load_steps=18 format=3 uid="uid://c72lhr20esxb0"]
 
 [ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="1_6l0x3"]
 [ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/CityTiles.tscn" id="1_irim0"]
@@ -9,9 +9,26 @@
 [ext_resource type="Texture2D" uid="uid://wnfah61vpeo" path="res://Assets/Sprites/TileSets/City/ClockTower_BG.png" id="7_xgx0m"]
 [ext_resource type="Texture2D" uid="uid://ceiqfib4ikgq4" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclosest.png" id="8_ct4uo"]
 [ext_resource type="Texture2D" uid="uid://1ls4v6il07t1" path="res://Assets/Sprites/TileSets/City/GriffinStatue.png" id="8_qlw3j"]
+[ext_resource type="Environment" uid="uid://dvo6eyhw6b3n5" path="res://PostProcessing.tres" id="9_41l18"]
 [ext_resource type="Texture2D" uid="uid://cncldaa7gq5u3" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclose.png" id="9_mbunv"]
 [ext_resource type="Texture2D" uid="uid://exu7uutwmihf" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxFarBG.png" id="10_oq0j6"]
 [ext_resource type="Texture2D" uid="uid://cwvlxb1dnnmhs" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBG.png" id="11_hp0h5"]
+[ext_resource type="Shader" path="res://Materials/Shaders/FogSHader.gdshader" id="14_1esiq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ei8ut"]
+shader = ExtResource("14_1esiq")
+shader_parameter/base_color = Color(1, 0.956863, 0.870588, 0.333333)
+shader_parameter/location_fade = 0.02
+shader_parameter/fogSpeed = 0.01
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j1whn"]
+frequency = 0.0363
+domain_warp_fractal_lacunarity = 9.11
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h38cu"]
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_j1whn")
 
 [node name="CityLevel" type="Node2D"]
 
@@ -58,13 +75,9 @@ texture = ExtResource("6_gwq8x")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="---Environment---/ClockTowerEntrance"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="---Environment---/ClockTowerEntrance/CharacterBody2D"]
+visible = false
 position = Vector2(0, 124)
 polygon = PackedVector2Array(-8, 81, -8, 96, 56, 96, 56, 139, 3, 139, -39, 160, 64, 160, 64, -409, 7, -409, 7, -119, 7, 81)
-
-[node name="Sprite2D" type="Sprite2D" parent="---Environment---/ClockTowerEntrance"]
-z_index = -2
-position = Vector2(0, 125)
-texture = ExtResource("7_xgx0m")
 
 [node name="GriffinStatue" type="Sprite2D" parent="---Environment---/ClockTowerEntrance"]
 position = Vector2(30, 261)
@@ -72,9 +85,23 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_qlw3j")
 flip_h = true
 
+[node name="Sprite2D" type="Sprite2D" parent="---Environment---/ClockTowerEntrance"]
+z_index = -1
+position = Vector2(0, 5)
+texture = ExtResource("7_xgx0m")
+
 [node name="Lighting" type="Node" parent="---Environment---"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="---Environment---/Lighting"]
+environment = ExtResource("9_41l18")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="---Environment---/Lighting"]
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
 [node name="Parallaxing" type="ParallaxBackground" parent="---Environment---"]
+
+[node name="CanvasModulate2" type="CanvasModulate" parent="---Environment---/Parallaxing"]
+color = Color(0.72549, 0.72549, 0.72549, 1)
 
 [node name="BG_Close" type="ParallaxLayer" parent="---Environment---/Parallaxing"]
 position = Vector2(221, -159)
@@ -201,3 +228,14 @@ scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 20
 text = "To Forest
 "
+
+[node name="Fog" type="TextureRect" parent="---Environment---"]
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ei8ut")
+offset_left = -1410.0
+offset_top = -1665.0
+offset_right = 2201.0
+offset_bottom = 211.0
+texture = SubResource("NoiseTexture2D_h38cu")
+stretch_mode = 1
