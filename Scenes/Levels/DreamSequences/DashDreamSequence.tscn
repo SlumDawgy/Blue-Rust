@@ -27,6 +27,7 @@
 [ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="24_ny3hu"]
 [ext_resource type="Theme" uid="uid://d1xkgll5q80wr" path="res://Slider_Theme.tres" id="25_vy82c"]
 [ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="26_kxhhd"]
+[ext_resource type="Environment" uid="uid://dvo6eyhw6b3n5" path="res://PostProcessing.tres" id="27_2e2ax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xatia"]
 shader = ExtResource("2_t43vh")
@@ -175,19 +176,6 @@ shader_parameter/colorModifier = 0.01
 shader = ExtResource("2_t43vh")
 shader_parameter/brightnessModifier = 0.333
 shader_parameter/colorModifier = 0.73
-
-[sub_resource type="Environment" id="Environment_gg7s0"]
-background_mode = 3
-ambient_light_source = 1
-ambient_light_color = Color(0.294118, 0.564706, 0.654902, 1)
-ambient_light_energy = 0.0
-reflected_light_source = 1
-tonemap_white = 7.82
-glow_enabled = true
-glow_intensity = 1.0
-glow_strength = 0.8
-glow_bloom = 0.07
-volumetric_fog_density = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkiir"]
 size = Vector2(36, 111.5)
@@ -753,7 +741,7 @@ texture = ExtResource("14_vrbxi")
 texture_scale = 1.65
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gg7s0")
+environment = ExtResource("27_2e2ax")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_o2nvm")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdemljln3ppe8"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/GreyBox/MovingPlaform.gd" id="1_35lj5"]
+[ext_resource type="Texture2D" uid="uid://dr84r5ffisf5y" path="res://Assets/Sprites/TileSets/GreyBoxing/GrayBoxMoveingPlatform_A.png" id="2_uaqhx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gofta"]
+size = Vector2(30, 10)
+
+[node name="MovingPlatform" type="AnimatableBody2D"]
+script = ExtResource("1_35lj5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uaqhx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gofta")
+one_way_collision = true
