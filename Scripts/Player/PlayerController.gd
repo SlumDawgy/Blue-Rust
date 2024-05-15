@@ -41,6 +41,9 @@ var dashed : bool = false
 @export var dashTime : float = 0.5
 @onready var dashUpgrade : Node2D = $DashUpgrade
 
+# Parasol
+@export var gravityVarParasol : float = 0.3
+
 # Inputs
 var inputDirection : float = 0.0
 var inputJump : bool = false
@@ -59,6 +62,7 @@ enum movement
 	hanging,
 	hangingJump,
 	dashing,
+	gliding,
 	takingDamage,
 	dying
 }
@@ -184,7 +188,19 @@ func dashing():
 			velocity.x = dashSpeed
 		else:
 			velocity.x = -dashSpeed
+
+func gliding(delta):
+	velocity.x = move_toward(0,0,0)
+	velocity.y = GRAVITY * gravityVarParasol * delta
 	
+	if Input.is_action_just_pressed("GrapplingHook"):
+		gravityModifier = gravityVarGrapple
+		currentMovement = movement.grappling
+	
+	if Input.is_action_just_released("Parasol") and not is_on_floor():
+		currentMovement = movement.jumping
+	if is_on_floor():
+		currentMovement = movement.enabled
 	
 func takingDamage():
 	if !_takingDamage:
@@ -205,7 +221,7 @@ func _physics_process(delta):
 	
 	getInput()
 	
-	if not is_on_floor():
+	if not is_on_floor() and currentMovement != movement.gliding:
 		velocity.y += GRAVITY * delta * gravityModifier
 
 	match currentMovement:
@@ -225,6 +241,8 @@ func _physics_process(delta):
 			hangingJump()
 		movement.dashing:
 			dashing()
+		movement.gliding:
+			gliding(delta)
 		movement.takingDamage:
 			takingDamage()
 		movement.dying:

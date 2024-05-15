@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=120 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -47,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://cko2lma5ytfgj" path="res://Assets/Sounds/Player_Sounds/Player_Jump_W_Grunt.WAV" id="38_a18de"]
 [ext_resource type="AudioStream" uid="uid://bheyw07i30xno" path="res://Assets/Sounds/Player_Sounds/Player_Landing.WAV" id="39_dnjvn"]
 [ext_resource type="AudioStream" uid="uid://d1nfc5gbp5own" path="res://Assets/Sounds/Player_Sounds/Player_Landing_w_Grunt.WAV" id="40_75ce3"]
+[ext_resource type="Script" path="res://Scripts/Player/ParasolUpgrade.gd" id="48_10k6k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
 radius = 10.5
@@ -767,6 +768,9 @@ shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("32_0ex78")
 texture_scale = 0.2
+
+[node name="ParasolUpgrade" type="Node2D" parent="."]
+script = ExtResource("48_10k6k")
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]

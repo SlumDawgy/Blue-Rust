@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cp43vyf7fw63k"]
 
-[ext_resource type="PackedScene" uid="uid://clj1vymbke5yo" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="3_0240j"]
+[ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="3_0240j"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="4_a6etn"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="5_0nw8q"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="6_3up4r"]
