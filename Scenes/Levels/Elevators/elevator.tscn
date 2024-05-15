@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcdq28o8ecvep"]
+[gd_scene load_steps=29 format=3 uid="uid://bcdq28o8ecvep"]
 
 [ext_resource type="Texture2D" uid="uid://cn5w0jtivvjms" path="res://Assets/Sprites/Elevators/Elevator_Closed-Sheet.png" id="1_wne8d"]
 [ext_resource type="Texture2D" uid="uid://cl5ng4b00vyic" path="res://Assets/Sprites/Elevators/Elevator_Moving-Sheet.png" id="2_wts3i"]
 [ext_resource type="Texture2D" uid="uid://e33fyejb5kb4" path="res://Assets/Sprites/Elevators/Elevator_Open-Sheet.png" id="3_b7ln0"]
+[ext_resource type="Script" path="res://Scripts/Objects/elevator.gd" id="4_7edwb"]
 [ext_resource type="Texture2D" uid="uid://bws0knmqmj5pq" path="res://Assets/Sprites/Elevators/Elevator_BG_Activate.png" id="4_u2o7p"]
 [ext_resource type="Texture2D" uid="uid://bko6m2irr5dul" path="res://Assets/Sprites/Elevators/Elevator_BG_Activated.png" id="5_md6rc"]
 [ext_resource type="Texture2D" uid="uid://cfc28yvng53mr" path="res://Assets/Sprites/Elevators/Elevator_BG_Inactive.png" id="6_do18p"]
@@ -163,22 +164,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysw1u"]
+size = Vector2(1.5, 45)
+
 [node name="ElevatorToCity" type="AnimatedSprite2D"]
 z_index = 1
-position = Vector2(-1472, -552)
 sprite_frames = SubResource("SpriteFrames_iidyy")
-animation = &"ElevatorOpen"
-autoplay = "ElevatorOpen"
-frame = 5
-frame_progress = 1.0
+animation = &"ElevatorClose"
+script = ExtResource("4_7edwb")
 
 [node name="ElevatorBG" type="AnimatedSprite2D" parent="."]
 z_index = -2
 sprite_frames = SubResource("SpriteFrames_uksho")
-animation = &"Activated"
+animation = &"Inactive"
 autoplay = "Inactive"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="ElevatorBG"]
+motion_mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ElevatorBG/CharacterBody2D"]
 polygon = PackedVector2Array(15, 40, 13, 38, -15, 38, -15, 40)
@@ -190,3 +192,16 @@ polygon = PackedVector2Array(16, -6, -16, -6, -16, -9, 16, -9)
 position = Vector2(0, 13)
 texture = ExtResource("7_85kio")
 texture_scale = 0.2
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_ysw1u")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 16)
+target_position = Vector2(96, 0)
+
+[connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="PlayerCheck" to="." method="_on_player_check_body_exited"]
