@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://chiqbameeqy1w" path="res://Assets/Sprites/TileSets/Grasslands/CaveBackGround2.png" id="13_gb5ks"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="14_vrbxi"]
 [ext_resource type="Texture2D" uid="uid://v3m8jfcwewkj" path="res://Assets/Sprites/Lighting/SunLightTexture.png" id="15_7wdrn"]
+[ext_resource type="AudioStream" uid="uid://d2ulpu26pblck" path="res://Assets/Sounds/Music/Dream.WAV" id="16_o2nvm"]
 [ext_resource type="Script" path="res://Scenes/Levels/Prison/PauseMenu.gd" id="17_tjyis"]
 [ext_resource type="AudioStream" uid="uid://xd7freyfwwrb" path="res://Assets/Sounds/MenuAndUI/Menu_Select.WAV" id="18_q46dg"]
 [ext_resource type="AudioStream" uid="uid://bd8usmux71oig" path="res://Assets/Sounds/MenuAndUI/Menu_Click.WAV" id="19_5u083"]
@@ -743,7 +744,7 @@ texture_scale = 1.65
 environment = ExtResource("27_2e2ax")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamWAV_mqv6b")
+stream = ExtResource("16_o2nvm")
 autoplay = true
 
 [node name="EndOfDream" type="Area2D" parent="."]

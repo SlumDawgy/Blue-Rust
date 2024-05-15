@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	position = get_global_mouse_position()
 	if is_colliding() and get_collider(0).is_class("TileMap") and owner.get_node_or_null("AimAssisted") != null:
 		var coords = get_collider(0).get_coords_for_body_rid(get_collider_rid(0))
