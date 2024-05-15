@@ -1,11 +1,11 @@
-Soothing_Voice: ...ke…up..
-Soothing_Voice: Wake Up...
+Soothing_Voice: ...ke…up.. #id:1c
+Soothing_Voice: Wake Up... #id:1d
 [wait time="1.0"]
 set {WakeUp} = true
-MC: Why is my head ringing and throbbing?
-MC: I don’t remember drinking last night. Wait..
-MC: Now that I think about it, where am I? I’m pretty sure I don’t live here.
-MC: Talk about a morbid scene. Not to mention the stench…
-MC: I don’t see any way out.
-MC: Sitting around and complaining isn’t going to solve anything.
+MC: Why is my head ringing and throbbing? #id:1e
+MC: I don’t remember drinking last night. Wait.. #id:1f
+MC: Now that I think about it, where am I? I’m pretty sure I don’t live here. #id:20
+MC: Talk about a morbid scene. Not to mention the stench… #id:21
+MC: I don’t see any way out. #id:22
+MC: Sitting around and complaining isn’t going to solve anything. #id:23
 set {Dialogue1} = true

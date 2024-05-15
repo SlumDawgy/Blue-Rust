@@ -1,7 +1,7 @@
-MC: Unbelievable... It's like stepping into the heart of a star.
-MC: Each crystal, a frozen shard of light from a universe I never dreamed could exist.
-MC: This place, it's more than just a figment of my imagination... It's a reflection of something deeper, something profound...
-MC: What is it trying to tell me?
-MC: I must remember this. There's so much to learn here, so much to understand. I can't let this be just a dream.
+MC: Unbelievable... It's like stepping into the heart of a star. #id:17
+MC: Each crystal, a frozen shard of light from a universe I never dreamed could exist. #id:18
+MC: This place, it's more than just a figment of my imagination... It's a reflection of something deeper, something profound... #id:19
+MC: What is it trying to tell me? #id:1a
+MC: I must remember this. There's so much to learn here, so much to understand. I can't let this be just a dream. #id:1b
 [wait time="2.0"]
 set {Dialogue8} = true
