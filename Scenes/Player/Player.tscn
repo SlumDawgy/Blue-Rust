@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=138 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -14,8 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://di6exgvdt27nm" path="res://Assets/Sprites/MC Animations/Left_Mantling.png" id="11_00gan"]
 [ext_resource type="Texture2D" uid="uid://b7boeksttn1ig" path="res://Assets/Sprites/MC Animations/Damage_Right-Sheet.png" id="11_rms3n"]
 [ext_resource type="Texture2D" uid="uid://c1lea37n36wg6" path="res://Assets/Sprites/MC Animations/Dash_Right-Sheet.png" id="12_kxqt7"]
+[ext_resource type="Texture2D" uid="uid://t42y581xbwkh" path="res://Assets/Sprites/MC Animations/Parasol_Exit_Left.png" id="13_clge3"]
 [ext_resource type="Texture2D" uid="uid://bbigywekddgan" path="res://Assets/Sprites/MC Animations/JumpAim.png" id="13_fvonn"]
 [ext_resource type="Texture2D" uid="uid://cjb7pcrhvhy3" path="res://Assets/Sprites/MC Animations/Hang.png" id="14_8iaf0"]
+[ext_resource type="Texture2D" uid="uid://db7aibyspu3h8" path="res://Assets/Sprites/MC Animations/Parasol_Gliding_Left.png" id="14_hf316"]
+[ext_resource type="Texture2D" uid="uid://ddun4lv0qtm7x" path="res://Assets/Sprites/MC Animations/Parasol_Enter_Left.png" id="15_q5hlc"]
 [ext_resource type="Texture2D" uid="uid://byqn5vjmkowyh" path="res://Assets/Sprites/MC Animations/IdleAim.png" id="15_thi2n"]
 [ext_resource type="Texture2D" uid="uid://cwir0opibhbg6" path="res://Assets/Sprites/MC Animations/Mantling.png" id="16_jw3ki"]
 [ext_resource type="Texture2D" uid="uid://d04y37r7rjqye" path="res://Assets/Sprites/MC Animations/RunningAim.png" id="17_gqew8"]
@@ -23,8 +26,11 @@
 [ext_resource type="Texture2D" uid="uid://cja1wnyiquxnh" path="res://Assets/Sprites/MC Animations/Arm.png" id="19_568wi"]
 [ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/Player/AimIndicatorLine.png" id="20_a1ajo"]
 [ext_resource type="Script" path="res://Scripts/Player/HookPath.gd" id="21_x7ebn"]
+[ext_resource type="Texture2D" uid="uid://dlvhlyo0nvb6g" path="res://Assets/Sprites/MC Animations/Parasol_Exit_Right.png" id="23_4g2rb"]
 [ext_resource type="PackedScene" uid="uid://bsoulh05m1dc6" path="res://Scenes/Components/mantleComponent.tscn" id="23_q6t21"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAudios.gd" id="24_yncxs"]
+[ext_resource type="Texture2D" uid="uid://coj7cxlube7f4" path="res://Assets/Sprites/MC Animations/Parasol_Gliding_Right.png" id="24_yt78g"]
+[ext_resource type="Texture2D" uid="uid://bsnvoaneajxp8" path="res://Assets/Sprites/MC Animations/Parasol_Enter_Right.png" id="25_n87gp"]
 [ext_resource type="AudioStream" uid="uid://dt1yrwlwaqi08" path="res://Assets/Sounds/Player_Sounds/Concrete_Step_1.WAV" id="26_d1dow"]
 [ext_resource type="AudioStream" uid="uid://beuepq02tj228" path="res://Assets/Sounds/Player_Sounds/Hurt.WAV" id="26_xdr5d"]
 [ext_resource type="Texture2D" uid="uid://bcvjkn2ipvh8u" path="res://Assets/Sprites/SmokeParticles1.png" id="27_0hu42"]
@@ -177,6 +183,30 @@ region = Rect2(64, 0, 32, 34)
 atlas = ExtResource("11_00gan")
 region = Rect2(96, 0, 32, 34)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv0lh"]
+atlas = ExtResource("13_clge3")
+region = Rect2(0, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd1qt"]
+atlas = ExtResource("14_hf316")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvmol"]
+atlas = ExtResource("14_hf316")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh1dx"]
+atlas = ExtResource("15_q5hlc")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb0ih"]
+atlas = ExtResource("15_q5hlc")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3uaw"]
+atlas = ExtResource("15_q5hlc")
+region = Rect2(64, 0, 32, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqmys"]
 atlas = ExtResource("10_re7el")
 region = Rect2(3, 0, 29, 32)
@@ -276,6 +306,30 @@ region = Rect2(60, 0, 27, 34)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c0cx"]
 atlas = ExtResource("16_jw3ki")
 region = Rect2(90, 0, 27, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpkm0"]
+atlas = ExtResource("23_4g2rb")
+region = Rect2(0, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqmgr"]
+atlas = ExtResource("24_yt78g")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cflwe"]
+atlas = ExtResource("24_yt78g")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gaqf"]
+atlas = ExtResource("25_n87gp")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7ko3"]
+atlas = ExtResource("25_n87gp")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmxxw"]
+atlas = ExtResource("25_n87gp")
+region = Rect2(64, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frnkp"]
 atlas = ExtResource("17_gqew8")
@@ -448,6 +502,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rv0lh")
+}],
+"loop": false,
+"name": &"left_parasol_close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd1qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvmol")
+}],
+"loop": true,
+"name": &"left_parasol_glid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh1dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb0ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3uaw")
+}],
+"loop": false,
+"name": &"left_parasol_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jqmys")
 }, {
 "duration": 1.0,
@@ -563,6 +650,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mpkm0")
+}],
+"loop": false,
+"name": &"right_parasol_close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqmgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cflwe")
+}],
+"loop": true,
+"name": &"right_parasol_glid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gaqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7ko3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmxxw")
+}],
+"loop": false,
+"name": &"right_parasol_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_frnkp")
 }, {
 "duration": 1.0,
@@ -671,7 +791,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_running"
+animation = &"left_parasol_close"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 

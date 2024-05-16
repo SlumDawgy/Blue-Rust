@@ -196,9 +196,6 @@ func gliding(delta):
 	if Input.is_action_just_pressed("GrapplingHook"):
 		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
-	
-	if Input.is_action_just_released("Parasol") and not is_on_floor():
-		currentMovement = movement.jumping
 	if is_on_floor():
 		currentMovement = movement.enabled
 	

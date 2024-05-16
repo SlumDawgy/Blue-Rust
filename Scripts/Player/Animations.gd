@@ -54,6 +54,18 @@ func chooseAnimation():
 		player.movement.dashing:
 			if animation != "left_dash" and animation != "right_dash" and player.dashEnabled:
 				playAnimation("dash")
+		player.movement.gliding:
+			if animation.contains("parasol") == false:
+				print(10)
+				playAnimation("parasol_open")
+				await animation_finished
+				playAnimation("parasol_glid")
+			elif animation.ends_with("glid"):
+				playAnimation("parasol_glid")
+			if Input.is_action_just_released("Parasol") and not owner.is_on_floor():
+				playAnimation("parasol_close")
+				await animation_finished
+				owner.currentMovement = owner.movement.jumping
 		player.movement.takingDamage:
 			playAnimation("damage")
 		player.movement.dying:
