@@ -9,7 +9,7 @@
 [node name="sbx" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("11_4d8wk")]
-position = Vector2(341, -130)
+position = Vector2(102, -52)
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(114, -37)
