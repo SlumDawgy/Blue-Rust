@@ -1,12 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcdq28o8ecvep"]
+[gd_scene load_steps=32 format=3 uid="uid://bcdq28o8ecvep"]
 
 [ext_resource type="Texture2D" uid="uid://cn5w0jtivvjms" path="res://Assets/Sprites/Elevators/Elevator_Closed-Sheet.png" id="1_wne8d"]
 [ext_resource type="Texture2D" uid="uid://cl5ng4b00vyic" path="res://Assets/Sprites/Elevators/Elevator_Moving-Sheet.png" id="2_wts3i"]
 [ext_resource type="Texture2D" uid="uid://e33fyejb5kb4" path="res://Assets/Sprites/Elevators/Elevator_Open-Sheet.png" id="3_b7ln0"]
+[ext_resource type="Script" path="res://Scripts/Objects/elevator.gd" id="4_7edwb"]
 [ext_resource type="Texture2D" uid="uid://bws0knmqmj5pq" path="res://Assets/Sprites/Elevators/Elevator_BG_Activate.png" id="4_u2o7p"]
 [ext_resource type="Texture2D" uid="uid://bko6m2irr5dul" path="res://Assets/Sprites/Elevators/Elevator_BG_Activated.png" id="5_md6rc"]
 [ext_resource type="Texture2D" uid="uid://cfc28yvng53mr" path="res://Assets/Sprites/Elevators/Elevator_BG_Inactive.png" id="6_do18p"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="7_85kio"]
+[ext_resource type="Script" path="res://Scripts/Objects/AudiosElevator.gd" id="9_gphng"]
+[ext_resource type="AudioStream" uid="uid://dkg50vqowqgh1" path="res://Assets/Sounds/Elevator/Elevator_Door_Close_1.0.wav" id="10_oblk4"]
+[ext_resource type="AudioStream" uid="uid://ronl18dblewf" path="res://Assets/Sounds/Elevator/Elevator_Door_Open_1.0.wav" id="11_6cb24"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbod4"]
 atlas = ExtResource("1_wne8d")
@@ -82,12 +86,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t0313")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_77i81")
 }],
 "loop": false,
 "name": &"ElevatorClose",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -101,7 +105,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_3vygr")
 }, {
 "duration": 1.0,
@@ -121,7 +125,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"ElevatorOpen",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nu6so"]
@@ -163,22 +167,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysw1u"]
+size = Vector2(1.5, 45)
+
 [node name="ElevatorToCity" type="AnimatedSprite2D"]
 z_index = 1
-position = Vector2(-1472, -552)
 sprite_frames = SubResource("SpriteFrames_iidyy")
-animation = &"ElevatorOpen"
-autoplay = "ElevatorOpen"
-frame = 5
-frame_progress = 1.0
+animation = &"ElevatorClose"
+script = ExtResource("4_7edwb")
 
 [node name="ElevatorBG" type="AnimatedSprite2D" parent="."]
 z_index = -2
 sprite_frames = SubResource("SpriteFrames_uksho")
-animation = &"Activated"
+animation = &"Inactive"
 autoplay = "Inactive"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="ElevatorBG"]
+motion_mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ElevatorBG/CharacterBody2D"]
 polygon = PackedVector2Array(15, 40, 13, 38, -15, 38, -15, 40)
@@ -190,3 +195,27 @@ polygon = PackedVector2Array(16, -6, -16, -6, -16, -9, 16, -9)
 position = Vector2(0, 13)
 texture = ExtResource("7_85kio")
 texture_scale = 0.2
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_ysw1u")
+
+[node name="Audios" type="Node2D" parent="."]
+script = ExtResource("9_gphng")
+close = ExtResource("10_oblk4")
+open = ExtResource("11_6cb24")
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+position = Vector2(0, -15)
+target_position = Vector2(0, -1)
+collision_mask = 8
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(0, 38)
+target_position = Vector2(0, 3)
+collision_mask = 9
+
+[connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="PlayerCheck" to="." method="_on_player_check_body_exited"]
