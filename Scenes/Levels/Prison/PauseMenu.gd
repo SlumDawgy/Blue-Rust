@@ -6,7 +6,7 @@ extends Panel
 @export var menuCloseSound: AudioStream
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("Pause"):
+	if Input.is_action_just_pressed("Pause") and Dialogic.current_timeline == null:
 		AudioManager.play_sound(menuOpenSound)
 		toggle_pause()
 

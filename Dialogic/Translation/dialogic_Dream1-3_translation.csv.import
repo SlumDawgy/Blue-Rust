@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b7s3c3kvwvjuy"
+
+[deps]
+
+files=["res://Dialogic/Translation/dialogic_Dream1-3_translation.en.translation", "res://Dialogic/Translation/dialogic_Dream1-3_translation.pt_BR.translation"]
+
+source_file="res://Dialogic/Translation/dialogic_Dream1-3_translation.csv"
+dest_files=["res://Dialogic/Translation/dialogic_Dream1-3_translation.en.translation", "res://Dialogic/Translation/dialogic_Dream1-3_translation.pt_BR.translation"]
+
+[params]
+
+compress=true
+delimiter=0
