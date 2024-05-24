@@ -25,6 +25,7 @@ driver/mix_rate=48000
 GlobalPaths="*res://Scripts/GlobalPaths.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+SaveSystem="*res://addons/save_system/save_system.gd"
 
 [dialogic]
 
@@ -91,7 +92,7 @@ mouse_cursor/tooltip_position_offset=Vector2(10, -10)
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/save_system/plugin.cfg")
 
 [input]
 

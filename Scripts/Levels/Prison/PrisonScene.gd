@@ -9,53 +9,11 @@ var dialogueFlag5 : bool = true
 
 func _ready():
 	get_tree().get_current_scene().get_node("Audio/MainLevelTheme").play()
-	if FileAccess.file_exists("user://savegame.save"):
-		load_game()
-	else:
-		player.currentMovement = player.movement.disabled
-		player.get_node("PlayerSprite").play("getting_up")
-		player.get_node("PlayerSprite").set_speed_scale(0)
-		Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
+	player.currentMovement = player.movement.disabled
+	player.get_node("PlayerSprite").play("getting_up")
+	player.get_node("PlayerSprite").set_speed_scale(0)
+	Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
 
-func load_game():
-	if not FileAccess.file_exists("user://savegame.save"):
-		print("Nothing to load!")
-		return
-	else:
-		Dialogic.VAR.WakeUp = false
-		Dialogic.VAR.Dialogue1 = true
-		Dialogic.VAR.Dialogue2 = true
-		Dialogic.VAR.Dialogue3 = true
-		dialogueFlag1 = false
-		dialogueFlag2 = false
-		dialogueFlag3 = false
-
-		var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
-		while save_game.get_position() < save_game.get_length():
-			var json_string = save_game.get_line()
-
-			# Creates the helper class to interact with JSON
-			var json = JSON.new()
-
-			# Check if there is any error while parsing the JSON string, skip in case of failure
-			var parse_result = json.parse(json_string)
-			if not parse_result == OK:
-				print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-				continue
-
-			# Get the data from the JSON object
-			var node_data = json.get_data()
-			player.position.x = node_data["player_position"]["x"]
-			player.position.y = node_data["player_position"]["y"]
-			player.currentMovement = player.movement.enabled
-			player.health.health = player.health.maxHealth
-			$"Audio/BossFight".playing = false
-			$"Audio/MainLevelTheme".playing = true
-			boss.currentMovement = boss.movement.starting
-			boss.get_node("HealthComponent").health = boss.get_node("HealthComponent").maxHealth
-			$"Cutscenes/Start_Boss".PROCESS_MODE_PAUSABLE
-
-			
 func PowerUp(body):
 	if body.name == "HitBoxComponent":
 		player.get_node("PlayerSprite").playAnimation("idle")
