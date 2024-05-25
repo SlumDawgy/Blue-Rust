@@ -43,6 +43,10 @@ var dashed : bool = false
 
 # Parasol
 @export var gravityVarParasol : float = 0.3
+@export var parasolEnabled : bool = false
+
+# Double Jump
+@export var doubleJumpEnabled : bool = false
 
 # Inputs
 var inputDirection : float = 0.0

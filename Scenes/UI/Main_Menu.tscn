@@ -172,21 +172,24 @@ alignment = 1
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_icons/grabber = ExtResource("14_xj555")
-min_value = -80.0
-max_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="MusicSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_icons/grabber = ExtResource("14_xj555")
-min_value = -80.0
-max_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="SFXSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
-min_value = -80.0
-max_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="Fullscreen" type="HBoxContainer" parent="OptionsPanel/Configs"]
 layout_mode = 2
