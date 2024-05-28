@@ -23,13 +23,6 @@ func PowerUp(body):
 		Dialogic.start("res://Dialogic/Timelines/Prison1-4.dtl")
 
 func _process(_delta):
-	if $SavePoints.canSave and Input.is_action_just_pressed("useItem"):
-		$SavePoints.save_game()
-		player.health.health = player.health.maxHealth
-		$"SavePoints/Save Point/Label".set_text("SAVED!")
-		$"SavePoints/Save Point2/Label".set_text("SAVED!")
-		$"SavePoints/Save Point3/Label".set_text("SAVED!")
-		
 	if Dialogic.VAR.WakeUp:
 		Dialogic.VAR.WakeUp = false
 		player.get_node("PlayerSprite").set_speed_scale(2)
@@ -106,15 +99,10 @@ func _on_hang_jump_area_2d_body_exited(body):
 		$ControlLabels/HangJumpLabel.visible = false
 
 func _on_save_point_body_entered(body):
-	if body.name == "Player":
-		$SavePoints.canSave = true
-		$"SavePoints/Save Point/Label".visible = true
+	pass
 
 func _on_save_point_body_exited(body):
-	if body.name == "Player":
-		$SavePoints.canSave = false
-		$"SavePoints/Save Point/Label".visible = false
-		$"SavePoints/Save Point/Label".set_text("PRESS E TO SAVE THE GAME")
+	pass
 
 func _on_save_point_2_body_entered(body):
 	if body.name == "Player":

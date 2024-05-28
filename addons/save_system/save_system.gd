@@ -25,7 +25,7 @@ extends Node
 # Crediting me is appreciated, but not a must!
 #
 # If you rely on save data in an AutoLoad's _ready function, you may need to wait for the
-# "loaded" signal of this AutoLoad. 
+# "loaded" signal of this AutoLoad.
 
 
 # The default file path of your save data. You can freely modify this.
