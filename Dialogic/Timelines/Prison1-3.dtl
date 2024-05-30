@@ -4,4 +4,4 @@ MC: Is that a tearvein rupture? I do seem to be underground, so the possibility 
 MC: Though this is a developed area, so why wasn’t it discovered earlier? #id:2b
 MC: Wait, why can I remember all of that but not my own name! #id:2c
 MC: Regardless, it might be worth it to investigate. #id:2d
-set {Dialogue3} = true
+do Dialogues.change("Prison1_3")

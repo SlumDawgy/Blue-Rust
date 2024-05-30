@@ -4,4 +4,4 @@ MC: This place, it's more than just a figment of my imagination... It's a reflec
 MC: What is it trying to tell me? #id:1a
 MC: I must remember this. There's so much to learn here, so much to understand. I can't let this be just a dream. #id:1b
 [wait time="2.0"]
-set {Dialogue8} = true
+do Dialogues.change("Dream1_3")

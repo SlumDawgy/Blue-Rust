@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bis8puyxq2i8f"]
+[gd_scene load_steps=14 format=3 uid="uid://bis8puyxq2i8f"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Main_Menu.gd" id="1_pu854"]
 [ext_resource type="AudioStream" uid="uid://73klxfni2msm" path="res://Assets/Sounds/MenuAndUI/Game_Start.WAV" id="2_lg28v"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://5lfbylbmwklr" path="res://Assets/Sprites/UI/UIBackGroundSprite.png" id="3_qq4la"]
 [ext_resource type="AudioStream" uid="uid://bd8usmux71oig" path="res://Assets/Sounds/MenuAndUI/Menu_Click.WAV" id="3_s886s"]
 [ext_resource type="AudioStream" uid="uid://xd7freyfwwrb" path="res://Assets/Sounds/MenuAndUI/Menu_Select.WAV" id="4_jp4gn"]
-[ext_resource type="Script" path="res://Scripts/UI/Start_Button.gd" id="6_55xu1"]
 [ext_resource type="Theme" uid="uid://d1xkgll5q80wr" path="res://Slider_Theme.tres" id="7_ofpi3"]
 [ext_resource type="PackedScene" uid="uid://xbddjqb3wxm2" path="res://Scenes/UI/scenetransition.tscn" id="14_0kjxk"]
 [ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="14_xj555"]
@@ -40,14 +39,19 @@ texture = ExtResource("2_mor0q")
 [node name="Sprite2D2" type="Sprite2D" parent="Menu"]
 modulate = Color(0.0784314, 0.117647, 0.133333, 0.345098)
 position = Vector2(336.5, 462.5)
-scale = Vector2(0.559896, 0.634259)
+scale = Vector2(0.639895, 0.914259)
 texture = ExtResource("3_qq4la")
 
-[node name="Start_Button" type="Button" parent="Menu"]
-offset_left = 237.0
-offset_top = 385.0
-offset_right = 594.0
-offset_bottom = 444.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+offset_left = 220.0
+offset_top = 366.0
+offset_right = 482.0
+offset_bottom = 586.0
+scale = Vector2(1, 0.992279)
+theme_override_constants/separation = -6
+
+[node name="New_Game" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
@@ -59,17 +63,30 @@ theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 48
-text = "Start
+text = "New GAME"
+flat = true
+alignment = 0
+
+[node name="Load" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_ofpi3")
+theme_override_colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("20_123r4")
+theme_override_font_sizes/font_size = 48
+text = "Load
 "
 flat = true
 alignment = 0
-script = ExtResource("6_55xu1")
 
-[node name="Options" type="Button" parent="Menu"]
-offset_left = 237.0
-offset_top = 429.0
-offset_right = 594.0
-offset_bottom = 488.0
+[node name="Options" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
@@ -86,11 +103,8 @@ text = "Options
 flat = true
 alignment = 0
 
-[node name="Quit" type="Button" parent="Menu"]
-offset_left = 237.0
-offset_top = 474.0
-offset_right = 594.0
-offset_bottom = 533.0
+[node name="Quit" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_colors/font_outline_color = Color(0.0431373, 0.12549, 0.180392, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
@@ -227,12 +241,14 @@ popup/item_1/id = 1
 [node name="Node" type="Node" parent="."]
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="mouse_entered" from="Menu/Start_Button" to="." method="_on_start_button_mouse_entered"]
-[connection signal="pressed" from="Menu/Start_Button" to="." method="_on_start_button_pressed"]
-[connection signal="mouse_entered" from="Menu/Options" to="." method="_on_options_mouse_entered"]
-[connection signal="pressed" from="Menu/Options" to="." method="_on_options_pressed"]
-[connection signal="mouse_entered" from="Menu/Quit" to="." method="_on_quit_mouse_entered"]
-[connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/New_Game" to="." method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="Menu/VBoxContainer/New_Game" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/Load" to="." method="_on_load_mouse_entered"]
+[connection signal="pressed" from="Menu/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/Options" to="." method="_on_options_mouse_entered"]
+[connection signal="pressed" from="Menu/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="OptionsPanel/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="OptionsPanel/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/Master" to="OptionsPanel" method="_on_master_value_changed"]

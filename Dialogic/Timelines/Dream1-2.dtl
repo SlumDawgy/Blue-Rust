@@ -1,4 +1,4 @@
 MC: Even if this is a dream... those crystals look sharp... #id:15
 MC: Best to avoid them. #id:16
 [wait time="2.0"]
-set {Dialogue7} = true
+do Dialogues.change("Dream1_2")

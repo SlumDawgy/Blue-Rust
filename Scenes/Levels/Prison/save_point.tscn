@@ -6,30 +6,45 @@
 [sub_resource type="GDScript" id="GDScript_m5uxp"]
 script/source = "extends Node2D
 
-var canSave = false
+@export var player : Player
+var canSave : bool = true
+
+func _input(event):
+	if event.is_action_pressed(\"useItem\") and canSave:
+		save_game()
 
 func save_game():
-	var save_game1 = FileAccess.open(\"user://savegame.save\", FileAccess.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group(\"Persist\")
-	for node in save_nodes:
-		# Check the node is an instanced scene so it can be instanced again during load.
-		if node.scene_file_path.is_empty():
-			print(\"persistent node '%s' is not an instanced scene, skipped\" % node.name)
-			continue
+	SaveSystem.set_var(\"player\", {\"positionX\":null, \"positionY\":null,\"dash\":null, \"doubleJump\":null, \"parasol\":null, \"health\":null})
+	SaveSystem.set_var(\"player:positionX\", player.global_position.x)
+	SaveSystem.set_var(\"player:positionY\", player.global_position.y)
+	SaveSystem.set_var(\"player:dash\", player.dashEnabled)
+	SaveSystem.set_var(\"player:doubleJump\", player.doubleJumpEnabled)
+	SaveSystem.set_var(\"player:parasol\", player.parasolEnabled)
+	SaveSystem.set_var(\"player:health\", player.health.health)
+	
+	SaveSystem.set_var(\"Dialogues\", {
+		\"Prison1_1\":Dialogues.Prison1_1,
+		\"Prison1_2\":Dialogues.Prison1_2,
+		\"Prison1_3\":Dialogues.Prison1_3,
+		\"Prison1_4\":Dialogues.Prison1_4,
+		\"Dream1_1\":Dialogues.Dream1_1,
+		\"Dream1_2\":Dialogues.Dream1_2,
+		\"Dream1_3\":Dialogues.Dream1_3
+	})
 
-		# Check the node has a save function.
-		if !node.has_method(\"save\"):
-			print(\"persistent node '%s' is missing a save() function, skipped\" % node.name)
-			continue
+	SaveSystem.save()
 
-		# Call the node's save function.
-		var node_data = node.call(\"save\")
 
-		# JSON provides a static method to serialized JSON string.
-		var json_string = JSON.stringify(node_data)
+func _on_body_entered(body : Player):
+	$Label.visible = true
+	canSave = true
+	pass # Replace with function body.
 
-		# Store the save dictionary as a new line in the save file.
-		save_game1.store_line(json_string)
+
+func _on_body_exited(body : Player):
+	$Label.visible = false
+	canSave = false
+	pass # Replace with function body.
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_itk3n"]
@@ -1332,3 +1347,6 @@ position = Vector2(0, -15)
 color = Color(0.780392, 0.823529, 0.85098, 1)
 texture = ExtResource("3_wurql")
 texture_scale = 0.2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

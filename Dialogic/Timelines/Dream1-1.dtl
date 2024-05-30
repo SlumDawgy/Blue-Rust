@@ -2,4 +2,4 @@ MC: Where... where am I? This isn’t the prison? Where did that shard go? I fee
 MC: Is this real? These formations... they're unlike any mineral I've ever seen. Could this be a lucid dream, or am I somewhere else entirely? #id:12
 MC: If it is a dream, I should be able to easily channel that shard's energy like I intended... #id:13
 MC: Okay, focus. Observe, learn, understand. There's a reason I'm here, there has to be. Let's find out what this place is trying to show me. #id:14
-set {Dialogue6} = true
+do Dialogues.change("Dream1_1")

@@ -28,6 +28,11 @@ func _on_start_button_pressed():
 	$Scenetransition.transition()
 	AudioManager.play_sound(startGameSFX)
 
+func _on_load_pressed():
+	$Scenetransition.transition()
+	$Scenetransition.loading = true
+	AudioManager.play_sound(startGameSFX)
+	pass # Replace with function body.
 
 func _on_options_pressed():
 	AudioManager.play_sound(buttonClickSFX)
@@ -58,3 +63,7 @@ func _on_fullscreen_button_toggled(_toggled_on):
 	
 func _off_fullscreen_button_toggled(_toggled_on):
 	AudioManager.play_sound(buttonClickSFX)
+
+
+func _on_load_mouse_entered():
+	AudioManager.play_sound(buttonSelectSFX)

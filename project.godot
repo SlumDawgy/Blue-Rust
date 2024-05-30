@@ -24,7 +24,9 @@ driver/mix_rate=48000
 
 GlobalPaths="*res://Scripts/GlobalPaths.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
+SaveSystem="*res://addons/save_system/save_system.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Dialogues="*res://Scripts/dialogues.gd"
 
 [dialogic]
 
@@ -45,14 +47,6 @@ glossary/default_case_sensitive=true
 layout/style_list=["res://Dialogic/Styles/Style.tres"]
 layout/default_style="res://Dialogic/Styles/Style.tres"
 variables={
-"Dialogue1": false,
-"Dialogue2": false,
-"Dialogue3": false,
-"Dialogue4": false,
-"Dialogue5": false,
-"Dialogue6": false,
-"Dialogue7": false,
-"Dialogue8": false,
 "WakeUp": false
 }
 text/letter_speed=0.01
@@ -91,7 +85,7 @@ mouse_cursor/tooltip_position_offset=Vector2(10, -10)
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/save_system/plugin.cfg")
 
 [input]
 
