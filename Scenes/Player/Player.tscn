@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=143 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -54,6 +54,10 @@
 [ext_resource type="AudioStream" uid="uid://bheyw07i30xno" path="res://Assets/Sounds/Player_Sounds/Player_Landing.WAV" id="39_dnjvn"]
 [ext_resource type="AudioStream" uid="uid://d1nfc5gbp5own" path="res://Assets/Sounds/Player_Sounds/Player_Landing_w_Grunt.WAV" id="40_75ce3"]
 [ext_resource type="Script" path="res://Scripts/Player/ParasolUpgrade.gd" id="48_10k6k"]
+[ext_resource type="AudioStream" uid="uid://cvdtu2mjy1fnl" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Open_1.wav" id="48_eemwm"]
+[ext_resource type="AudioStream" uid="uid://drshvnpe3r8vh" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Open_2.wav" id="49_44puo"]
+[ext_resource type="AudioStream" uid="uid://2pohlmdkby3p" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Close_1.wav" id="50_ucn2v"]
+[ext_resource type="AudioStream" uid="uid://c8c0pbuuinpqg" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Close_2.wav" id="51_hwjhg"]
 [ext_resource type="Script" path="res://Scenes/Player/DoubleJumpUpgrade.gd" id="55_6knbs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
@@ -836,6 +840,10 @@ playerJump = ExtResource("37_r8b8c")
 playerJump_w_Grunt = ExtResource("38_a18de")
 playerLanding = ExtResource("39_dnjvn")
 playerLanding_w_Grunt = ExtResource("40_75ce3")
+parasolOpen_A = ExtResource("48_eemwm")
+parasolOpen_B = ExtResource("49_44puo")
+parasolClose_A = ExtResource("50_ucn2v")
+parasolClose_B = ExtResource("51_hwjhg")
 
 [node name="DashUpgrade" type="Node2D" parent="."]
 script = ExtResource("27_tgcc7")
