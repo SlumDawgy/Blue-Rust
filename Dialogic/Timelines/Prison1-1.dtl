@@ -8,4 +8,4 @@ MC: Now that I think about it, where am I? I’m pretty sure I don’t live here
 MC: Talk about a morbid scene. Not to mention the stench… #id:21
 MC: I don’t see any way out. #id:22
 MC: Sitting around and complaining isn’t going to solve anything. #id:23
-set {Dialogue1} = true
+do Dialogues.change("Prison1_1")

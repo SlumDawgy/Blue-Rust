@@ -2,4 +2,4 @@ MC: Ow. That probably would've hurt more if it weren’t for this mechanical arm
 MC: Whoever designed this must’ve been brilliant. #id:25
 MC: I scarcely believed this wasn’t naturally a part of my body when I woke up. #id:26
 MC: Maybe I can modify the pressurized release to get out of this pit. #id:27
-set {Dialogue2} = true
+do Dialogues.change("Prison1_2")

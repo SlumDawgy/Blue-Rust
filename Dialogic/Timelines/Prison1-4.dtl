@@ -5,4 +5,4 @@ MC: Though maybe I could make better use of it… #id:31
 MC: Using it's energy, I be able to channel the unstable structure of the crystal to create a controlled explosion. That could propel me forward and help get me out of this Goddess forsaken place. #id:32
 MC: Now wher- #id:33
 MC: Aah! This ringing again! I need t- #id:34
-set {Dialogue4} = true
+do Dialogues.change("Prison1_4")

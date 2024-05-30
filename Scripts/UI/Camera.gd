@@ -5,8 +5,14 @@ extends Camera2D
 var speedX = 300
 var speedY = 200
 
-	
+
+func _ready():
+	position = player.global_position
+
 func _process(delta):
+	if position == player.global_position and position_smoothing_enabled == false:
+		position_smoothing_enabled = true
+	
 	if player.velocity.x > 0:
 		position.x += speedX * delta
 	elif player.velocity.x < 0:

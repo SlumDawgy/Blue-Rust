@@ -1,24 +1,31 @@
 extends Node2D
 @export var player : Player
-var dialogueFlag1 : bool = true
-var dialogueFlag2 : bool = true
-var dialogueFlag3 : bool = true
+var flagDream1_1 : bool = true
+var flagDream1_2 : bool = true
+var flagDream1_3 : bool = true
 
 func _ready():
+	if Dialogues.Dream1_1:
+		flagDream1_1 = false
+	if Dialogues.Dream1_2:
+		flagDream1_2 = false
+	if Dialogues.Dream1_3:
+		flagDream1_3 = false
+	
 	player.currentMovement = player.movement.disabled
 	player.get_node("PlayerSprite").play("getting_up")
 	Dialogic.start("res://Dialogic/Timelines/Dream1-1.dtl")
 
 func _process(delta):
-	if Dialogic.VAR.Dialogue6 and dialogueFlag1:
+	if Dialogues.Dream1_1 == false and flagDream1_1:
 		player.get_node("PlayerSprite").play("right_idle")
 		player.currentMovement = player.movement.enabled
-		dialogueFlag1 = false
-	if Dialogic.VAR.Dialogue7 and dialogueFlag2:
+		flagDream1_1 = false
+	if Dialogues.Dream1_2 == false and flagDream1_2:
 		player.currentMovement = player.movement.enabled
-		dialogueFlag2 = false
-	if Dialogic.VAR.Dialogue8 and dialogueFlag3:
-		dialogueFlag3 = false
+		flagDream1_2 = false
+	if Dialogues.Dream1_3 == false and flagDream1_3:
+		flagDream1_3 = false
 		player.currentMovement = player.movement.dying
 		
 

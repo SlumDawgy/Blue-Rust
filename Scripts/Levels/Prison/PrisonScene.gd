@@ -1,18 +1,29 @@
 extends Node2D
 @export var player : Player
 @export var boss : Enemy
-var dialogueFlag1 : bool = true
-var dialogueFlag2 : bool = true
-var dialogueFlag3 : bool = true
-var dialogueFlag4 : bool = true
-var dialogueFlag5 : bool = true
+
+var flagPrison1_1 : bool = true
+var flagPrison1_2 : bool = true
+var flagPrison1_3 : bool = true
+var flagPrison1_4 : bool = true
 
 func _ready():
+	if Dialogues.Prison1_1:
+		flagPrison1_1 = false
+	if Dialogues.Prison1_2:
+		flagPrison1_2 = false
+	if Dialogues.Prison1_3:
+		flagPrison1_3 = false
+	if Dialogues.Prison1_4:
+		flagPrison1_4 = false
+	
 	get_tree().get_current_scene().get_node("Audio/MainLevelTheme").play()
-	player.currentMovement = player.movement.disabled
-	player.get_node("PlayerSprite").play("getting_up")
-	player.get_node("PlayerSprite").set_speed_scale(0)
-	Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
+	
+	if Dialogues.Prison1_1 == false:
+		player.currentMovement = player.movement.disabled
+		player.get_node("PlayerSprite").play("getting_up")
+		player.get_node("PlayerSprite").set_speed_scale(0)
+		Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
 
 func PowerUp(body):
 	if body.name == "HitBoxComponent":
@@ -23,33 +34,34 @@ func PowerUp(body):
 		Dialogic.start("res://Dialogic/Timelines/Prison1-4.dtl")
 
 func _process(_delta):
-	if Dialogic.VAR.WakeUp:
-		Dialogic.VAR.WakeUp = false
-		player.get_node("PlayerSprite").set_speed_scale(2)
-	if Dialogic.VAR.Dialogue1 and dialogueFlag1:
+	if  Dialogues.Prison1_1 == false:
+		if Dialogic.VAR.WakeUp:
+			Dialogic.VAR.WakeUp = false
+			player.get_node("PlayerSprite").set_speed_scale(2)
+	if Dialogues.Prison1_1 and flagPrison1_1:
 		player.get_node("PlayerSprite").play("right_idle")
 		player.currentMovement = player.movement.enabled
-		dialogueFlag1 = false
 		$ControlLabels/MoveLabel.visible = true
-	if Dialogic.VAR.Dialogue2 and dialogueFlag2:
+		flagPrison1_1 = false
+	if Dialogues.Prison1_2 and flagPrison1_2:
 		player.currentMovement = player.movement.enabled
-		dialogueFlag2 = false
-	if Dialogic.VAR.Dialogue3 and dialogueFlag3:
+		flagPrison1_2 = false
+	if Dialogues.Prison1_3 and flagPrison1_3:
 		player.currentMovement = player.movement.enabled
-		dialogueFlag3 = false
-	if Dialogic.VAR.Dialogue4 and dialogueFlag4:
-		dialogueFlag4 = false
+		flagPrison1_3 = false
+	if Dialogues.Prison1_4 and flagPrison1_4:
 		player.get_node("PlayerSprite").play("death")
-	if Dialogic.VAR.Dialogue4 and player.get_node("PlayerSprite").is_playing() == false:
-		get_tree().root.get_node("Prison").process_mode = Node.PROCESS_MODE_DISABLED
-		get_tree().root.get_node("Prison").visible = false
-		get_tree().root.get_node("Prison").queue_free()
-		var DreamScene = load(GlobalPaths.DREAM_SCENE_PATH)
-		var instanceDreamScene = DreamScene.instantiate()
-		get_tree().root.add_child(instanceDreamScene)
+		if player.get_node("PlayerSprite").is_playing() == false:
+			get_tree().root.get_node("Prison").process_mode = Node.PROCESS_MODE_DISABLED
+			get_tree().root.get_node("Prison").visible = false
+			flagPrison1_4 = false
+			get_tree().root.get_node("Prison").queue_free()
+			var DreamScene = load(GlobalPaths.DREAM_SCENE_PATH)
+			var instanceDreamScene = DreamScene.instantiate()
+			get_tree().root.add_child(instanceDreamScene)
 
 func _on_dialogue_12_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and flagPrison1_2:
 		AudioManager.play_sound(player.audio.grappleShoot)
 		body.get_node("PlayerSprite").playAnimation("idle")
 		body.currentMovement = body.movement.disabled
@@ -57,7 +69,7 @@ func _on_dialogue_12_body_entered(body):
 		$"Cutscenes/dialogue1-2".queue_free()
 
 func _on_dialogue_13_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and flagPrison1_3:
 		body.get_node("PlayerSprite").playAnimation("idle")
 		body.currentMovement = body.movement.disabled
 		Dialogic.start("res://Dialogic/Timelines/Prison1-3.dtl")

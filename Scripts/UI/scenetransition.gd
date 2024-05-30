@@ -43,3 +43,8 @@ func loaded():
 	player.doubleJumpEnabled = bool(SaveSystem.get_var("player:doubleJump"))
 	player.dashEnabled = bool(SaveSystem.get_var("player:dash"))
 	player.parasolEnabled = bool(SaveSystem.get_var("player:parasol"))
+	
+	Dialogues.Prison1_1 = bool(SaveSystem.get_var("Dialogues:Prison1_1"))
+	Dialogues.Prison1_2 = bool(SaveSystem.get_var("Dialogues:Prison1_2"))
+	Dialogues.Prison1_3 = bool(SaveSystem.get_var("Dialogues:Prison1_3"))
+	Dialogues.Prison1_4 = bool(SaveSystem.get_var("Dialogues:Prison1_4"))
