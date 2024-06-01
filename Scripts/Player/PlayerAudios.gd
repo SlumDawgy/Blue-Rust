@@ -23,6 +23,12 @@ extends Node2D
 @export var playerLanding : AudioStream
 @export var playerLanding_w_Grunt: AudioStream
 
+# Parasol
+@export var parasolOpen_A : AudioStream
+@export var parasolOpen_B : AudioStream
+@export var parasolClose_A : AudioStream
+@export var parasolClose_B : AudioStream
+
 #preferabbly this is a list or an array so we can add more than two sounds
 func playrandom(r1:AudioStream, r2 :AudioStream):
 	var randomRange = RandomNumberGenerator.new()

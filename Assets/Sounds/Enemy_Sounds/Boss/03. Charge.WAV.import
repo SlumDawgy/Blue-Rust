@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cphsinmqxevqd"
+path="res://.godot/imported/03. Charge.WAV-ece2bda75437653b99921bf41cba686f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Enemy_Sounds/Boss/03. Charge.WAV"
+dest_files=["res://.godot/imported/03. Charge.WAV-ece2bda75437653b99921bf41cba686f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

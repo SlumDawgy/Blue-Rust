@@ -62,8 +62,21 @@ func chooseAnimation():
 				playAnimation("parasol_glid")
 			elif animation.ends_with("glid"):
 				playAnimation("parasol_glid")
+			if  owner.is_on_floor():
+				playAnimation("parasol_close")
+				owner.audio.playrandom(owner.audio.parasolClose_A, owner.audio.parasolClose_B)
+				await animation_finished
+				owner.currentMovement = owner.movement.enabled
+				
+			if Input.is_action_just_pressed("GrapplingHook"): 
+				playAnimation("parasol_close")
+				owner.audio.playrandom(owner.audio.parasolClose_A, owner.audio.parasolClose_B)
+				await animation_finished
+				owner.gravityModifier = owner.gravityVarGrapple
+				owner.currentMovement = owner.movement.grappling
 			if Input.is_action_just_released("Parasol") and not owner.is_on_floor():
 				playAnimation("parasol_close")
+				owner.audio.playrandom(owner.audio.parasolClose_A, owner.audio.parasolClose_B)
 				await animation_finished
 				owner.currentMovement = owner.movement.jumping
 		player.movement.takingDamage:

@@ -198,14 +198,9 @@ func dashing():
 
 func gliding(delta):
 	velocity.x = move_toward(0,0,0)
-	velocity.y = GRAVITY * gravityVarParasol * delta
+	velocity.y = GRAVITY * gravityVarParasol * delta	
 	
-	if Input.is_action_just_pressed("GrapplingHook"):
-		gravityModifier = gravityVarGrapple
-		currentMovement = movement.grappling
-	if is_on_floor():
-		currentMovement = movement.enabled
-	
+
 func takingDamage():
 	if !_takingDamage:
 		AudioManager.play_sound(audio.hurt)
