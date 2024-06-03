@@ -1,4 +1,6 @@
 extends Node2D
+class_name Scenes
+
 @export var player : Player
 @export var boss : Enemy
 
@@ -109,31 +111,3 @@ func _on_hang_jump_area_2d_body_entered(body):
 func _on_hang_jump_area_2d_body_exited(body):
 	if body.name == "Player":
 		$ControlLabels/HangJumpLabel.visible = false
-
-func _on_save_point_body_entered(body):
-	pass
-
-func _on_save_point_body_exited(body):
-	pass
-
-func _on_save_point_2_body_entered(body):
-	if body.name == "Player":
-		$SavePoints.canSave = true
-		$"SavePoints/Save Point2/Label".visible = true
-
-func _on_save_point_2_body_exited(body):
-	if body.name == "Player":
-		$SavePoints.canSave = false
-		$"SavePoints/Save Point2/Label".visible = false
-		$"SavePoints/Save Point2/Label".set_text("PRESS E TO SAVE THE GAME")
-
-func _on_save_point_3_body_entered(body):
-	if body.name == "Player":
-		$SavePoints.canSave = true
-		$"SavePoints/Save Point3/Label".visible = true
-
-func _on_save_point_3_body_exited(body):
-	if body.name == "Player":
-		$SavePoints.canSave = false
-		$"SavePoints/Save Point3/Label".visible = false
-		$"SavePoints/Save Point3/Label".set_text("PRESS E TO SAVE THE GAME")
