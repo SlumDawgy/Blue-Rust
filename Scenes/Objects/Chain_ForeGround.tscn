@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvuuox0f1owwv"]
+
+[ext_resource type="Shader" path="res://Materials/Shaders/RepeatableSprite.gdshader" id="1_rtkep"]
+[ext_resource type="Texture2D" uid="uid://duxac326x0pfj" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ChainLink.png" id="2_12040"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1bdj"]
+shader = ExtResource("1_rtkep")
+shader_parameter/scrollingSpeed = 0.5
+shader_parameter/color = Vector4(-1, -1, -0.46, 0)
+
+[node name="Chain" type="Line2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_p1bdj")
+points = PackedVector2Array(63, 72, 64, 17)
+texture = ExtResource("2_12040")
+texture_mode = 1
