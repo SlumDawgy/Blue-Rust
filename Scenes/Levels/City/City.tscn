@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://wnfah61vpeo" path="res://Assets/Sprites/TileSets/City/ClockTower_BG.png" id="7_xgx0m"]
 [ext_resource type="Texture2D" uid="uid://ceiqfib4ikgq4" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclosest.png" id="8_ct4uo"]
 [ext_resource type="Texture2D" uid="uid://1ls4v6il07t1" path="res://Assets/Sprites/TileSets/City/GriffinStatue.png" id="8_qlw3j"]
-[ext_resource type="Environment" uid="uid://dvo6eyhw6b3n5" path="res://PostProcessing.tres" id="9_41l18"]
+[ext_resource type="PackedScene" uid="uid://c4aishrkbwiif" path="res://Scenes/Objects/PostProcessing.tscn" id="9_c8bum"]
 [ext_resource type="Texture2D" uid="uid://cncldaa7gq5u3" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclose.png" id="9_mbunv"]
 [ext_resource type="Texture2D" uid="uid://exu7uutwmihf" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxFarBG.png" id="10_oq0j6"]
 [ext_resource type="Texture2D" uid="uid://cwvlxb1dnnmhs" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBG.png" id="11_hp0h5"]
@@ -17,7 +17,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ei8ut"]
 shader = ExtResource("14_1esiq")
-shader_parameter/base_color = Color(1, 0.956863, 0.870588, 0.0627451)
+shader_parameter/base_color = Color(1, 0.956863, 0.870588, 0.0980392)
 shader_parameter/location_fade = 0.02
 shader_parameter/fogSpeed = 0.01
 
@@ -93,8 +93,7 @@ texture = ExtResource("7_xgx0m")
 
 [node name="Lighting" type="Node" parent="---Environment---"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="---Environment---/Lighting"]
-environment = ExtResource("9_41l18")
+[node name="WorldEnvironment" parent="---Environment---/Lighting" instance=ExtResource("9_c8bum")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="---Environment---/Lighting"]
 color = Color(0.756863, 0.756863, 0.756863, 1)

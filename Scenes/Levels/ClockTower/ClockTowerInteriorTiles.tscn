@@ -1656,6 +1656,20 @@ texture = ExtResource("1_3iyao")
 17:5/0/physics_layer_1/angular_velocity = 0.0
 17:5/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 17:5/0/physics_layer_2/angular_velocity = 0.0
+7:12/0 = 0
+7:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:12/0/physics_layer_0/angular_velocity = 0.0
+7:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+7:12/0/physics_layer_1/angular_velocity = 0.0
+7:12/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+7:12/0/physics_layer_2/angular_velocity = 0.0
+8:12/0 = 0
+8:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:12/0/physics_layer_0/angular_velocity = 0.0
+8:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+8:12/0/physics_layer_1/angular_velocity = 0.0
+8:12/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+8:12/0/physics_layer_2/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_iky4i"]
 physics_layer_0/collision_layer = 8

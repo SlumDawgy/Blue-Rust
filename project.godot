@@ -179,3 +179,6 @@ locale/translations=PackedStringArray("res://Dialogic/Translation/dialogic_chara
 
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
+textures/webp_compression/lossless_compression_factor=25.0
+viewport/hdr_2d=true
+anti_aliasing/quality/use_debanding=true
