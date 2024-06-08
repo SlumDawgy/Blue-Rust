@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c72lhr20esxb0"]
+[gd_scene load_steps=19 format=3 uid="uid://c72lhr20esxb0"]
 
 [ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="1_6l0x3"]
 [ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/CityTiles.tscn" id="1_irim0"]
@@ -13,23 +13,31 @@
 [ext_resource type="Texture2D" uid="uid://cncldaa7gq5u3" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclose.png" id="9_mbunv"]
 [ext_resource type="Texture2D" uid="uid://exu7uutwmihf" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxFarBG.png" id="10_oq0j6"]
 [ext_resource type="Texture2D" uid="uid://cwvlxb1dnnmhs" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBG.png" id="11_hp0h5"]
-[ext_resource type="Shader" path="res://Materials/Shaders/FogSHader.gdshader" id="14_1esiq"]
+[ext_resource type="Shader" path="res://Materials/Shaders/FogShader.gdshader" id="14_1esiq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_do5ve"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_moybe"]
+width = 1024
+height = 1024
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+normalize = false
+noise = SubResource("FastNoiseLite_do5ve")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ei8ut"]
 shader = ExtResource("14_1esiq")
-shader_parameter/base_color = Color(1, 0.956863, 0.870588, 0.0980392)
-shader_parameter/location_fade = 0.02
-shader_parameter/fogSpeed = 0.01
+shader_parameter/color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = false
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(0.25, 0.25)
+shader_parameter/scroll_noise_tex = true
+shader_parameter/noise_scroll_direction = Vector2(0.15, 0)
+shader_parameter/fog_mask = SubResource("NoiseTexture2D_moybe")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_j1whn"]
-frequency = 0.0363
-domain_warp_fractal_lacunarity = 9.11
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h38cu"]
-seamless = true
-seamless_blend_skirt = 1.0
-normalize = false
-noise = SubResource("FastNoiseLite_j1whn")
+[sub_resource type="CanvasTexture" id="CanvasTexture_hb5ou"]
 
 [node name="CityLevel" type="Node2D"]
 
@@ -233,8 +241,9 @@ text = "To Forest
 texture_repeat = 2
 material = SubResource("ShaderMaterial_ei8ut")
 offset_left = -1410.0
-offset_top = -1665.0
+offset_top = -1720.0
 offset_right = 2201.0
 offset_bottom = 211.0
-texture = SubResource("NoiseTexture2D_h38cu")
-stretch_mode = 1
+texture = SubResource("CanvasTexture_hb5ou")
+expand_mode = 2
+stretch_mode = 6
