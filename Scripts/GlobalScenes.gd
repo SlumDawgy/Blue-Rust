@@ -1,6 +1,7 @@
 extends Node
 
-var locationID : int
+var loaded : bool = false
+var locationID : int = 0
 
 func _ready():
 	pass
@@ -17,6 +18,8 @@ func loadingScene(sceneID : String, entranceID : int):
 			pass
 		"ClockTower":
 			pass
+	
+	get_tree().paused = false
 
 func loadingSettings():
 	pass
