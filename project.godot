@@ -26,7 +26,7 @@ GlobalPaths="*res://Scripts/GlobalPaths.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 SaveSystem="*res://addons/save_system/save_system.gd"
 Dialogues="*res://Scripts/dialogues.gd"
-GlobalScenes="*res://Scripts/GlobalScenes.gd"
+Loadings="*res://Scripts/GlobalScenes.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
