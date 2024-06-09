@@ -1,21 +1,21 @@
 extends Node
 
+var locationID : int
+
 func _ready():
 	pass
 
-func loadingScene(sceneID : int, entranceID : int):
+func loadingScene(sceneID : String, entranceID : int):
+	locationID = entranceID
+
 	match sceneID:
-		1:
+		"Main_Menu":
+			get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
+		"Prison":
+			get_tree().change_scene_to_file(GlobalPaths.PRISON_SCENE_PATH)
+		"City":
 			pass
-		2:
-			pass
-		3:
-			pass
-		4:
-			pass
-		5:
-			pass
-		6:
+		"ClockTower":
 			pass
 
 func loadingSettings():

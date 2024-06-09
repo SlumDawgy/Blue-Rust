@@ -33,9 +33,6 @@ func _on_animation_player_animation_finished(anim_name):
 		if loading == true:
 			GlobalPaths.LOADING = true
 		get_tree().change_scene_to_file(GlobalPaths.PRISON_SCENE_PATH)
-	elif anim_name == "Fade_To_Black" and currentSceneName == "Prison":
-		await get_tree().create_timer(4.0).timeout
-		get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
 
 func loaded():
 	player.position.x = int(SaveSystem.get_var("player:positionX"))

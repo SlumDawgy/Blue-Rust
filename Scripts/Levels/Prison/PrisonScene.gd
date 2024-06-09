@@ -26,6 +26,8 @@ func _ready():
 		player.get_node("PlayerSprite").play("getting_up")
 		player.get_node("PlayerSprite").set_speed_scale(0)
 		Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
+	
+	entranceLoading()
 
 func PowerUp(body):
 	if body.name == "HitBoxComponent":
@@ -111,3 +113,10 @@ func _on_hang_jump_area_2d_body_entered(body):
 func _on_hang_jump_area_2d_body_exited(body):
 	if body.name == "Player":
 		$ControlLabels/HangJumpLabel.visible = false
+
+func entranceLoading():
+	match Loadings.locationID:
+		0:
+			pass
+		1:
+			pass
