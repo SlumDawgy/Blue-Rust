@@ -149,7 +149,8 @@ func grappling():
 		if get_tree().get_first_node_in_group("AimAssist") != null:
 			grapplingHook.positionToReach = get_tree().get_first_node_in_group("AimAssist").position
 		else:
-			grapplingHook.positionToReach = grapplingHook.maxGrappleDistance * aimVector#get_global_mouse_position()
+			grapplingHook.positionToReach = grappleOrigin.global_position + grapplingHook.maxGrappleDistance * aimVector#get_global_mouse_position()
+			print(grapplingHook.maxGrappleDistance * aimVector)
 		grapplingHook.player = self
 		
 		owner.add_child(grapplingHook)

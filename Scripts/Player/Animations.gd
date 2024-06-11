@@ -100,7 +100,7 @@ func _physics_process(_delta):
 			#armSprite.look_at(aimVector*10.0)
 			#armSprite.rotation = atan2(player.aimVector.y, player.aimVector.x)
 
-		armSprite.rotation = atan2(player.aimVector.x, player.aimVector.y)
+		armSprite.rotation = atan2(player.aimVector.y, player.aimVector.x)
 
 	movingPivot()
 	
