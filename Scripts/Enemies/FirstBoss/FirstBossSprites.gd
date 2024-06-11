@@ -28,8 +28,9 @@ func chooseAnimations():
 		FirstBoss.movement.leavingStun:
 			if animation != FirstBoss.healthState[FirstBoss.healthStateCounter] + "_BackUp":
 				play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_BackUp")
-			if animation_finished:
-				FirstBoss.currentMovement = FirstBoss.movement.enabled
+			if animation == FirstBoss.healthState[FirstBoss.healthStateCounter] + "_BackUp":
+				if frame == 5:
+					FirstBoss.currentMovement = FirstBoss.movement.enabled
 		FirstBoss.movement.takingDamage:
 			play(FirstBoss.healthState[FirstBoss.healthStateCounter] + "_Damage")
 

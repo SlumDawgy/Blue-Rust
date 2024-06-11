@@ -35,7 +35,9 @@ func _on_options_button_pressed():
 func _on_quit_button_pressed():
 	AudioManager.play_sound(buttonClickSound)
 	AudioManager.play_sound(menuCloseSound)
-	get_tree().quit()
+	$"../../../Scenetransition".transition()
+	await get_tree().create_timer(1.5).timeout
+	Loadings.loadingScene("Main_Menu", 0)
 
 func _on_resume_button_mouse_entered():
 	AudioManager.play_sound(buttonSelectSound)

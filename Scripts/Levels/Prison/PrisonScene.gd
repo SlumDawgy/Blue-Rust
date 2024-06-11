@@ -1,4 +1,6 @@
 extends Node2D
+class_name Scenes
+
 @export var player : Player
 @export var boss : Enemy
 
@@ -8,6 +10,10 @@ var flagPrison1_3 : bool = true
 var flagPrison1_4 : bool = true
 
 func _ready():
+	if Loadings.loaded == true:
+		Loadings.loadingPlayer(player)
+		Loadings.loaded = false
+	
 	if Dialogues.Prison1_1:
 		flagPrison1_1 = false
 	if Dialogues.Prison1_2:
@@ -24,6 +30,8 @@ func _ready():
 		player.get_node("PlayerSprite").play("getting_up")
 		player.get_node("PlayerSprite").set_speed_scale(0)
 		Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
+	
+	entranceLoading()
 
 func PowerUp(body):
 	if body.name == "HitBoxComponent":
@@ -50,15 +58,11 @@ func _process(_delta):
 		player.currentMovement = player.movement.enabled
 		flagPrison1_3 = false
 	if Dialogues.Prison1_4 and flagPrison1_4:
-		player.get_node("PlayerSprite").play("death")
+		if player.get_node("PlayerSprite").animation != "death":
+			player.get_node("PlayerSprite").play("death")
 		if player.get_node("PlayerSprite").is_playing() == false:
-			get_tree().root.get_node("Prison").process_mode = Node.PROCESS_MODE_DISABLED
-			get_tree().root.get_node("Prison").visible = false
 			flagPrison1_4 = false
-			get_tree().root.get_node("Prison").queue_free()
-			var DreamScene = load(GlobalPaths.DREAM_SCENE_PATH)
-			var instanceDreamScene = DreamScene.instantiate()
-			get_tree().root.add_child(instanceDreamScene)
+			Loadings.loadingScene("DashDream", 0)
 
 func _on_dialogue_12_body_entered(body):
 	if body.name == "Player" and flagPrison1_2:
@@ -110,30 +114,9 @@ func _on_hang_jump_area_2d_body_exited(body):
 	if body.name == "Player":
 		$ControlLabels/HangJumpLabel.visible = false
 
-func _on_save_point_body_entered(body):
-	pass
-
-func _on_save_point_body_exited(body):
-	pass
-
-func _on_save_point_2_body_entered(body):
-	if body.name == "Player":
-		$SavePoints.canSave = true
-		$"SavePoints/Save Point2/Label".visible = true
-
-func _on_save_point_2_body_exited(body):
-	if body.name == "Player":
-		$SavePoints.canSave = false
-		$"SavePoints/Save Point2/Label".visible = false
-		$"SavePoints/Save Point2/Label".set_text("PRESS E TO SAVE THE GAME")
-
-func _on_save_point_3_body_entered(body):
-	if body.name == "Player":
-		$SavePoints.canSave = true
-		$"SavePoints/Save Point3/Label".visible = true
-
-func _on_save_point_3_body_exited(body):
-	if body.name == "Player":
-		$SavePoints.canSave = false
-		$"SavePoints/Save Point3/Label".visible = false
-		$"SavePoints/Save Point3/Label".set_text("PRESS E TO SAVE THE GAME")
+func entranceLoading():
+	match Loadings.locationID:
+		0:
+			pass
+		1:
+			pass

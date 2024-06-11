@@ -25,11 +25,10 @@ class BasicAttack:
 	var knockupwards : int = 0
 
 func _physics_process(delta):
-	if position.distance_to(player.get_global_transform().origin) >= maxGrappleDistance:
+	if position.distance_to(player.get_global_transform().origin) > maxGrappleDistance:
 		if !returning:
 			AudioManager.play_sound(player.audio.grappleRetrieve)
 		returning = true
-		movingPlayer = false
 		
 	if movingPlayer:
 		player.position += (transform.origin - player.transform.origin).normalized() * speed * delta
@@ -46,7 +45,10 @@ func _physics_process(delta):
 		position += (startingPointNode.get_global_transform().get_origin() - position).normalized() * speed * delta
 		
 		if position.distance_to(startingPointNode.get_global_transform().origin) < 8:
-			player.currentMovement = player.movement.jumping
+			if player.is_on_floor():
+				player.currentMovement = player.movement.enabled
+			else:
+				player.currentMovement = player.movement.jumping
 			player.gravityModifier = player.gravityVarDownwards
 			queue_free()
 	
