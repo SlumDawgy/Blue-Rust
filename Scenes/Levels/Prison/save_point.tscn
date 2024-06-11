@@ -35,13 +35,13 @@ func save_game():
 	SaveSystem.save()
 
 
-func _on_body_entered(body : Player):
+func _on_body_entered(_body : Player):
 	$Label.visible = true
 	canSave = true
 	pass # Replace with function body.
 
 
-func _on_body_exited(body : Player):
+func _on_body_exited(_body : Player):
 	$Label.visible = false
 	canSave = false
 	pass # Replace with function body.

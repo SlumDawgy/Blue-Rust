@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3iyanrjxqjt8"]
+
+[ext_resource type="Shader" path="res://Materials/Shaders/RepeatableSprite.gdshader" id="1_kkgqu"]
+[ext_resource type="Texture2D" uid="uid://boau6t7sklg03" path="res://Assets/Sprites/Items/chain.png" id="2_b78kn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1bdj"]
+shader = ExtResource("1_kkgqu")
+shader_parameter/scrollingSpeed = 1.0
+
+[node name="Chain" type="Line2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_p1bdj")
+texture = ExtResource("2_b78kn")
+texture_mode = 1

@@ -5,15 +5,10 @@ extends AnimatedSprite2D
 @onready var raycastUp = $RayCastUp
 @onready var raycastDown = $RayCastDown
 
-var player
-var canActivate = false
+var player : Player
+var canActivate : bool = false
 
 @export var direction = 1
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -51,12 +46,11 @@ func _process(delta):
 			direction *= -1
 	
 
-func _on_player_check_body_entered(body : Player):
-	player = body
-	canActivate = true
-	pass # Replace with function body.
+func _on_player_check_body_entered(body : CharacterBody2D):
+	if body is Player:
+		player = body
+		canActivate = true
 
 
-func _on_player_check_body_exited(body : Player):
+func _on_player_check_body_exited(_body : Player):
 	canActivate = false
-	pass # Replace with function body.

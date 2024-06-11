@@ -188,7 +188,6 @@ func hangingJump():
 		currentMovement = movement.enabled
 
 func dashing():
-	#dashEnabled = true
 	if dashed and dashEnabled:
 		velocity.y = 0
 		if cursorXcoord <= 0:
@@ -248,6 +247,3 @@ func _physics_process(delta):
 			dying()
 	
 	move_and_slide()
-
-
-	

@@ -37,6 +37,3 @@ const SFX_BUS : String = &"SFX"
 const MASTER_BUS_INDEX : int = 0
 const SFX_BUS_INDEX : int = 1
 const BGM_BUS_INDEX : int = 2
-
-#LOADING
-var LOADING : bool = false
