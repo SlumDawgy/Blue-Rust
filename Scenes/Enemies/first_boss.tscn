@@ -859,7 +859,9 @@ shape = SubResource("SegmentShape2D_wf4o1")
 position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huc5v")
-animation = &"HalfHealth_BackUp"
+animation = &"Death"
+frame = 4
+frame_progress = 1.0
 script = ExtResource("24_vbx28")
 FirstBoss = NodePath("..")
 

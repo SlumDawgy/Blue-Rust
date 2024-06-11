@@ -10,7 +10,7 @@ var changeScale : bool = false
 @onready var animation : AnimatedSprite2D = $FirstBossSprites
 @onready var damageParticles : GPUParticles2D = $FirstBossSprites/Node2D/DamageParticle
 
-var speed : float = 70.0
+var speed : float = 35.0
 
 # Charge Attack
 var chargeSpeed : float = 200.0
@@ -36,8 +36,6 @@ var stunnedTimer : float
 var powerUpScene : PackedScene = preload(GlobalPaths.DASH_UPGRADE)
 
 var awaitTimer : float = 0
-
-var awaitTimerDebuff : float = 0
 
 var playedSound : bool = false
 @onready var audios = $Audios
@@ -74,6 +72,8 @@ func enabled():
 	steamChecking(movement.chargingSteam)
 	if attackCollision.is_colliding():
 		currentMovement = movement.attacking
+	elif abs(position.x - player.position.x) >= 180 and chargeAttackTimer.is_stopped():
+		currentMovement = movement.charging
 	elif position.x - bossSize.x >= player.position.x:
 		velocity.x = -speed
 		if changeScale == true:
@@ -84,8 +84,6 @@ func enabled():
 		if changeScale == false:
 			scale.x *= -1
 			changeScale = true
-	if abs(position.x - player.position.x) >= 180 and chargeAttackTimer.is_stopped():
-		currentMovement = movement.charging
 
 func attack(delta):
 	awaitTimer -= delta
@@ -101,16 +99,16 @@ func attack(delta):
 				if collision_direction.x < 0:
 					basicAttack.direction = -1
 				hitbox.damage(basicAttack)
-	if awaitTimer < -1:
+	if awaitTimer < -2:
 		currentMovement = movement.enabled
-		awaitTimer = awaitTimerDebuff
+		awaitTimer = 0
 
 func charging(delta):
 	playSound(audios.charge)
 	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	if awaitTimer < -2:
-		awaitTimer = awaitTimerDebuff
+		awaitTimer = 0
 		playedSound = false
 		currentMovement = movement.chargeAttacking
 
@@ -157,9 +155,11 @@ func chargingSteam(delta):
 	awaitTimer -= delta
 	velocity.x = move_toward(0,0,0)
 	steamChargingParticles.emitting = true
+	canBeDamaged = true
+	$StunnedIndicator.visible = true
 	if awaitTimer < -2.5:
 		playedSound = false
-		awaitTimer = awaitTimerDebuff
+		awaitTimer = 0
 		canBeDamaged = false
 		$StunnedIndicator.visible = false
 		steamChecking(movement.steamAttacking)
@@ -173,7 +173,7 @@ func steamAttacking(delta):
 		steamCollision.shape.a.y = 0
 		if awaitTimer < -1:
 			playedSound = false
-			awaitTimer = awaitTimerDebuff
+			awaitTimer = 0
 			steamAttackParticles.emitting = false
 			steamChargingParticles.emitting = false
 			currentMovement = movement.enabled
@@ -202,13 +202,8 @@ func takingDamage(delta):
 	$StunnedIndicator.visible = false
 	if awaitTimer < -1:
 		playedSound = false
-		awaitTimer = awaitTimerDebuff
+		awaitTimer = 0
 		currentMovement = movement.enabled
-		speed *= 1.15
-		chargeSpeed *= 1.15
-		stunnedTimer -= 0.5
-		chargeAttackTimer.wait_time -= 0.5
-		awaitTimerDebuff -= 0.2
 	
 func dying(_delta):
 	if animation.animation != "Death":

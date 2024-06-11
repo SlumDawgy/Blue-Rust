@@ -17,14 +17,14 @@ func _ready():
 	Dialogic.start("res://Dialogic/Timelines/Dream1-1.dtl")
 
 func _process(delta):
-	if Dialogues.Dream1_1 and flagDream1_1:
+	if Dialogues.Dream1_1 == false and flagDream1_1:
 		player.get_node("PlayerSprite").play("right_idle")
 		player.currentMovement = player.movement.enabled
 		flagDream1_1 = false
-	if Dialogues.Dream1_2 and flagDream1_2:
+	if Dialogues.Dream1_2 == false and flagDream1_2:
 		player.currentMovement = player.movement.enabled
 		flagDream1_2 = false
-	if Dialogues.Dream1_3 and flagDream1_3:
+	if Dialogues.Dream1_3 == false and flagDream1_3:
 		flagDream1_3 = false
 		player.currentMovement = player.movement.dying
 		
