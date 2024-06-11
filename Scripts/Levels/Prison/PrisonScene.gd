@@ -10,6 +10,10 @@ var flagPrison1_3 : bool = true
 var flagPrison1_4 : bool = true
 
 func _ready():
+	if Loadings.loaded == true:
+		Loadings.loadingPlayer(player)
+		Loadings.loaded = false
+	
 	if Dialogues.Prison1_1:
 		flagPrison1_1 = false
 	if Dialogues.Prison1_2:
@@ -54,15 +58,11 @@ func _process(_delta):
 		player.currentMovement = player.movement.enabled
 		flagPrison1_3 = false
 	if Dialogues.Prison1_4 and flagPrison1_4:
-		player.get_node("PlayerSprite").play("death")
+		if player.get_node("PlayerSprite").animation != "death":
+			player.get_node("PlayerSprite").play("death")
 		if player.get_node("PlayerSprite").is_playing() == false:
-			get_tree().root.get_node("Prison").process_mode = Node.PROCESS_MODE_DISABLED
-			get_tree().root.get_node("Prison").visible = false
 			flagPrison1_4 = false
-			get_tree().root.get_node("Prison").queue_free()
-			var DreamScene = load(GlobalPaths.DREAM_SCENE_PATH)
-			var instanceDreamScene = DreamScene.instantiate()
-			get_tree().root.add_child(instanceDreamScene)
+			Loadings.loadingScene("DashDream", 0)
 
 func _on_dialogue_12_body_entered(body):
 	if body.name == "Player" and flagPrison1_2:

@@ -14,6 +14,8 @@ func loadingScene(sceneID : String, entranceID : int):
 			get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
 		"Prison":
 			get_tree().change_scene_to_file(GlobalPaths.PRISON_SCENE_PATH)
+		"DashDream":
+			get_tree().change_scene_to_file(GlobalPaths.DREAM_SCENE_PATH)
 		"City":
 			pass
 		"ClockTower":
