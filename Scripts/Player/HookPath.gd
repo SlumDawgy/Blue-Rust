@@ -8,10 +8,11 @@ func _ready():
 	set_point_position(0, Vector2(0,0))
 
 func _physics_process(_delta):
-	if grappleArm.visible:
-		if points.size() == 2:
-			if !player.grapplingHook:
-				if get_point_position(1) != get_local_mouse_position():
-					set_point_position(1, get_local_mouse_position())
-		else:
-			remove_point(1)
+	#if grappleArm.visible:
+		#if points.size() == 2:
+			#if !player.grapplingHook:
+				#if get_point_position(1) != player.aimVector*player.grapplingHook. #get_local_mouse_position():
+					#set_point_position(1, get_local_mouse_position())
+		#else:
+			#remove_point(1)
+	pass

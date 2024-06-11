@@ -83,12 +83,6 @@ func disabled():
 	velocity.x = move_toward(0,0,0)
 	
 func enabled():
-	if not useController:
-		$PlayerSprite/Arm.look_at(get_global_mouse_position())
-	else:
-		aimVector = Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up")
-		$PlayerSprite/Arm.look_at(aimVector)
-		
 	velocity.x = speed * inputDirection
 	
 	if Input.is_action_just_pressed("GrapplingHook"):
@@ -155,7 +149,7 @@ func grappling():
 		if get_tree().get_first_node_in_group("AimAssist") != null:
 			grapplingHook.positionToReach = get_tree().get_first_node_in_group("AimAssist").position
 		else:
-			grapplingHook.positionToReach = get_global_mouse_position()
+			grapplingHook.positionToReach = grapplingHook.maxGrappleDistance * aimVector#get_global_mouse_position()
 		grapplingHook.player = self
 		
 		owner.add_child(grapplingHook)
@@ -183,7 +177,7 @@ func hangingJump():
 	if hangJumped:
 		velocity.y = -200
 		hangJumped = false
-		cursorXcoord = (to_local(position) - get_local_mouse_position()).x
+		cursorXcoord = aimVector.x
 	gravityModifier = gravityVarDownwards
 	if cursorXcoord <= 0:
 		velocity.x = 200
@@ -228,6 +222,7 @@ func dying():
 func _physics_process(delta):
 	if Input.is_action_just_pressed("changeDifficulty"):
 		currentMovement = movement.dying
+	aimVector = Input.get_vector("Aim_Left","Aim_Right","Aim_Up","Aim_Down")
 	
 	getInput()
 	

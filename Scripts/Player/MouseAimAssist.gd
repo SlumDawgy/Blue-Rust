@@ -4,10 +4,7 @@ extends ShapeCast2D
 var useController : bool = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if not useController:
-		position = get_global_mouse_position()
-	else:
-		position = Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up").normalized()*64.0
+	position = Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up").normalized()*64.0
 	if is_colliding() and get_collider(0).is_class("TileMap") and owner.get_node_or_null("AimAssisted") != null:
 		var coords = get_collider(0).get_coords_for_body_rid(get_collider_rid(0))
 		owner.get_node_or_null("AimAssisted").position = get_collider(0).map_to_local(coords)

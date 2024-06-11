@@ -19,7 +19,7 @@ func _input(event):
 		addAfterimageAndDashParticles()
 		player.currentMovement = player.movement.dashing
 		player.dashed = true
-		player.cursorXcoord = (player.to_global(position) - get_global_mouse_position()).x
+		player.cursorXcoord = player.aimVector.x
 		canDash = false
 		dashTimer.start(player.dashTime)
 		
@@ -35,7 +35,7 @@ func _on_dash_timer_timeout():
 
 
 func addAfterimageAndDashParticles():
-	if (get_local_mouse_position() - to_local(position)).x > 0 and dashDirection == 0:
+	if (player.aimVector).x > 0 and dashDirection == 0:
 		dashDirection = 1
 	elif  dashDirection == 0:
 		dashDirection = -1

@@ -8,22 +8,15 @@ class_name Animations
 var useController : bool = true
 var aimVector : Vector2
 var cursorXcoord 
-var direction : String
+var direction : String = "right_"
 	
 func playAnimation(type):
-	if not useController:
-		cursorXcoord = (to_global(position) - get_global_mouse_position()).normalized().x
-	else:
-		cursorXcoord = -1.0 * Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up").normalized().x
-				
-		print(cursorXcoord)
-		
+	cursorXcoord = -1.0 * Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up").normalized().x
+
 	if cursorXcoord < 0:
 		direction = "right_"
 	elif cursorXcoord > 0:
 		direction = "left_"
-	else:
-		pass
 
 	if get_parent().get_node_or_null("Grappling") != null:
 		pass
@@ -95,24 +88,19 @@ func _physics_process(_delta):
 		if animation.begins_with("left"):
 			armSprite.flip_v = true
 			armSprite.z_index = -1
-			if not useController:
-				armSprite.look_at(get_global_mouse_position())
-			else:
-				aimVector = Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up")
-				armSprite.look_at(aimVector)
-				#armSprite.rotation = aimVector
+			
+
+			#armSprite.look_at(aimVector*10.0) 
+			#armSprite.rotation = atan2(player.aimVector.y, player.aimVector.x)
 		if animation.begins_with("right"):
 			armSprite.flip_v = false
 			armSprite.z_index = 0
 			
-			if not useController:
-				armSprite.look_at(get_global_mouse_position())
-			else:
-				aimVector = Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up")
-				armSprite.look_at(aimVector)
-				#armSprite.rotation = aimVector
 
-		armSprite.rotation_degrees = fmod(armSprite.rotation_degrees, 360.0)
+			#armSprite.look_at(aimVector*10.0)
+			#armSprite.rotation = atan2(player.aimVector.y, player.aimVector.x)
+
+		armSprite.rotation = atan2(player.aimVector.x, player.aimVector.y)
 
 	movingPivot()
 	

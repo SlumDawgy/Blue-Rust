@@ -10,11 +10,6 @@ var canActivate = false
 
 @export var direction = 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if canActivate == true and Input.is_action_just_pressed("useItem"):
@@ -50,10 +45,6 @@ func _process(delta):
 			player.currentMovement = player.movement.enabled
 			direction *= -1
 	
-
-func _on_player_check_body_entered(body : Player):
-	if player == body:
-		canActivate = true
 
 func _on_player_check_body_exited(_body : Player):
 	canActivate = false

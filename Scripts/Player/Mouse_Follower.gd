@@ -60,6 +60,3 @@ func _on_aimAssistArea_area_shape_exited(_area_rid, area, _area_shape_index, _lo
 func aimAssistAreaFree():
 	var player = get_parent()
 	player.get_parent().get_node("aimAssistArea").queue_free()
-
-
-	pass # Replace with function body.
