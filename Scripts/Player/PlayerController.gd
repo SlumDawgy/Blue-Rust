@@ -51,6 +51,8 @@ var dashed : bool = false
 # Inputs
 var inputDirection : float = 0.0
 var inputJump : bool = false
+var useController : bool = true
+var aimVector : Vector2
 
 # Health
 @onready var health : HealthComponent = $HealthComponent
@@ -79,10 +81,14 @@ func getInput():
 
 func disabled():
 	velocity.x = move_toward(0,0,0)
-
-func enabled():
-	$PlayerSprite/Arm.look_at(get_global_mouse_position())
 	
+func enabled():
+	if not useController:
+		$PlayerSprite/Arm.look_at(get_global_mouse_position())
+	else:
+		aimVector = Input.get_vector("Aim_Left","Aim_Right","Aim_Down","Aim_Up")
+		$PlayerSprite/Arm.look_at(aimVector)
+		
 	velocity.x = speed * inputDirection
 	
 	if Input.is_action_just_pressed("GrapplingHook"):

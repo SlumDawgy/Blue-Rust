@@ -53,7 +53,7 @@ func load_game():
 			$"Audio/MainLevelTheme".playing = true
 			boss.currentMovement = boss.movement.starting
 			boss.get_node("HealthComponent").health = boss.get_node("HealthComponent").maxHealth
-			$"Cutscenes/Start_Boss".PROCESS_MODE_PAUSABLE
+			#$"Cutscenes/Start_Boss".PROCESS_MODE_PAUSABLE
 
 			
 func PowerUp(body):
@@ -116,7 +116,7 @@ func _on_start_boss_body_entered(body):
 	if body.name == "Player":
 		$"Audio/MainLevelTheme".playing = false
 		$"Audio/BossFight".playing = true
-		$"Cutscenes/Start_Boss".PROCESS_MODE_DISABLED
+		#$"Cutscenes/Start_Boss".PROCESS_MODE_DISABLED
 		$Boss/First_Boss.currentMovement = $Boss/First_Boss.movement.enabled
 
 func _on_move_label_area_2d_body_exited(body):

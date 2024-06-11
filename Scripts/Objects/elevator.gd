@@ -52,11 +52,8 @@ func _process(delta):
 	
 
 func _on_player_check_body_entered(body : Player):
-	player = body
-	canActivate = true
-	pass # Replace with function body.
+	if player == body:
+		canActivate = true
 
-
-func _on_player_check_body_exited(body : Player):
+func _on_player_check_body_exited(_body : Player):
 	canActivate = false
-	pass # Replace with function body.
