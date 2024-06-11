@@ -6,10 +6,10 @@ uid="uid://0312c1scglyx"
 
 [deps]
 
-files=["res://Dialogic/Translation/dialogic_character_translations.en.translation"]
+files=["res://Dialogic/Translation/dialogic_character_translations.en.translation", "res://Dialogic/Translation/dialogic_character_translations.pt_BR.translation"]
 
 source_file="res://Dialogic/Translation/dialogic_character_translations.csv"
-dest_files=["res://Dialogic/Translation/dialogic_character_translations.en.translation"]
+dest_files=["res://Dialogic/Translation/dialogic_character_translations.en.translation", "res://Dialogic/Translation/dialogic_character_translations.pt_BR.translation"]
 
 [params]
 
