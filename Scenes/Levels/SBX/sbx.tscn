@@ -15,6 +15,7 @@ position = Vector2(102, -52)
 dashEnabled = true
 parasolEnabled = true
 doubleJumpEnabled = true
+groundPoundEnabled = true
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(114, -37)

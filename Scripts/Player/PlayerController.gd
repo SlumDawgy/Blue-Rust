@@ -48,6 +48,11 @@ var dashed : bool = false
 # Double Jump
 @export var doubleJumpEnabled : bool = false
 
+# Ground Pound
+@export var groundPoundEnabled : bool = false
+var poundChargeSpeed : float = 200.0
+var gravityVarPound : float = 2.0
+
 # Inputs
 var inputDirection : float = 0.0
 var inputJump : bool = false
@@ -67,6 +72,7 @@ enum movement
 	hangingJump,
 	dashing,
 	gliding,
+	pounding,
 	takingDamage,
 	dying
 }
@@ -198,7 +204,16 @@ func dashing():
 func gliding(delta):
 	velocity.x = move_toward(0,0,0)
 	velocity.y = GRAVITY * gravityVarParasol * delta	
+
+func pounding(delta):
+	velocity.x = move_toward(0,0,0)
+	if get_node("PlayerSprite").animation.ends_with("poundCharge"):
+		velocity.y -= poundChargeSpeed
+	elif get_node("PlayerSprite").animation.ends_with("pounding"):
+		gravityModifier = gravityVarPound
 	
+	if is_on_floor():
+		currentMovement = movement.enabled
 
 func takingDamage():
 	if !_takingDamage:
@@ -241,6 +256,8 @@ func _physics_process(delta):
 			dashing()
 		movement.gliding:
 			gliding(delta)
+		movement.pounding:
+			pounding(delta)
 		movement.takingDamage:
 			takingDamage()
 		movement.dying:

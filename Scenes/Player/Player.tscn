@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=144 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -59,14 +59,15 @@
 [ext_resource type="AudioStream" uid="uid://2pohlmdkby3p" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Close_1.wav" id="50_ucn2v"]
 [ext_resource type="AudioStream" uid="uid://c8c0pbuuinpqg" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Close_2.wav" id="51_hwjhg"]
 [ext_resource type="Script" path="res://Scenes/Player/DoubleJumpUpgrade.gd" id="55_6knbs"]
+[ext_resource type="Script" path="res://Scripts/Player/GroundPoundUpgrade.gd" id="60_ha76h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
 radius = 10.5
-height = 34.0
+height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyc5k"]
 radius = 10.5
-height = 34.0
+height = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0waje"]
 atlas = ExtResource("5_ynqkm")
@@ -538,6 +539,16 @@ animations = [{
 "name": &"left_parasol_open",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"left_poundCharge",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"left_pounding",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jqmys")
@@ -686,6 +697,16 @@ animations = [{
 "name": &"right_parasol_open",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"right_poundCharge",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"right_pounding",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_frnkp")
@@ -790,13 +811,12 @@ target_position = Vector2(-10, 0)
 collision_mask = 8
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"death"
+animation = &"right_idle"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -903,6 +923,9 @@ script = ExtResource("48_10k6k")
 
 [node name="DoubleJumpUpgrade" type="Node2D" parent="."]
 script = ExtResource("55_6knbs")
+
+[node name="GroundPoundUpgrade" type="Node2D" parent="."]
+script = ExtResource("60_ha76h")
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]
