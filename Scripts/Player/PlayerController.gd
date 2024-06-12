@@ -7,7 +7,7 @@ class_name Player
 var GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Movements
-var currentMovement : int
+var currentMovement : movement
 @export var speed : float = 115.0
 
 # Jump Variables

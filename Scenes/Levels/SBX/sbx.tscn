@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://o6ucr1l65mpj"]
 
-[ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="2_563n5"]
 [ext_resource type="PackedScene" uid="uid://cp43vyf7fw63k" path="res://Scenes/Levels/SBX/sbx_level.tscn" id="3_n2m1n"]
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="4_45ru1"]
 [ext_resource type="PackedScene" uid="uid://dlfvlfcjgtiv" path="res://Scenes/UI/game_ui.tscn" id="4_xh0xt"]
 [ext_resource type="PackedScene" uid="uid://cr5g5ugrskfq" path="res://Scenes/Levels/Prison/save_point.tscn" id="6_i18s4"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="7_cku2p"]
+[ext_resource type="PackedScene" uid="uid://blrxslq56jo44" path="res://Scenes/Enemies/humanoid_enemy.tscn" id="8_l4nqr"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="11_4d8wk"]
 
 [node name="sbx" type="Node2D"]
@@ -29,11 +29,13 @@ player = NodePath("../Player")
 [node name="GameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_xh0xt")]
 player = NodePath("../Player")
 
-[node name="ElevatorToCity" parent="." instance=ExtResource("2_563n5")]
-position = Vector2(16, -57)
-
 [node name="Save Point" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_i18s4")]
 position = Vector2(173, -17)
 player = NodePath("../Player")
 
 [node name="MouseAimAssist" parent="." instance=ExtResource("7_cku2p")]
+
+[node name="HumanoidEnemy" parent="." instance=ExtResource("8_l4nqr")]
+position = Vector2(63, -40)
+wanderMinDistance = -64.0
+wanderMaxDistance = 64.0
