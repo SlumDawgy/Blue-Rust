@@ -11,7 +11,7 @@
 [node name="sbx" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("11_4d8wk")]
-position = Vector2(102, -52)
+position = Vector2(96, -32)
 dashEnabled = true
 parasolEnabled = true
 doubleJumpEnabled = true
@@ -37,5 +37,3 @@ player = NodePath("../Player")
 
 [node name="HumanoidEnemy" parent="." instance=ExtResource("8_l4nqr")]
 position = Vector2(63, -40)
-wanderMinDistance = -64.0
-wanderMaxDistance = 64.0

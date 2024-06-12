@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 var initialPosition : Vector2
 
+@onready var animation = $Sprite
+
+@onready var playerDetector = $PlayerDetector
+var player : Player
+
 @onready var wanderStartTimer = $WanderTimer
 @export var wanderMinTime : float = 1.0
 @export var wanderMaxTime : float = 3.0
@@ -47,9 +52,29 @@ func moving(delta):
 		velocity.x = 0
 		currentMovement = movement.enabled
 
+func running(delta):
+	if animation.frame == 2 or animation.frame == 3 or animation.frame == 7 or animation.frame == 8:
+		velocity.x = lerp(velocity.x, 0.0, 0.5)
+	else:
+		velocity.x = lerp(velocity.x, speed * direction * 3, 0.5)
+	
+	if global_position.x - player.global_position.x < 0:
+		direction = 1
+	else:
+		direction = -1
+	
+	if abs(global_position.x - player.global_position.x) > 196:
+		velocity.x = move_toward(0,0,0)
+		currentMovement = movement.enabled
+
+func attacking(delta):
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	print(wanderStartTimer.time_left)
+	if playerDetector.is_colliding():
+		player = playerDetector.get_collider(0)
+		currentMovement = movement.running
 	
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -62,9 +87,9 @@ func _physics_process(delta):
 		movement.moving:
 			moving(delta)
 		movement.running:
-			pass
+			running(delta)
 		movement.attacking:
-			pass
+			attacking(delta)
 		movement.takingDamage:
 			pass
 		movement.dying:

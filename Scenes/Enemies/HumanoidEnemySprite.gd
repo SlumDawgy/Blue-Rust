@@ -24,8 +24,10 @@ func _physics_process(_delta):
 	chooseAnimations()
 	
 	if enemy.direction == 1:
-		scale.x = -1
-		position = Vector2(-2, -1)
+		scale.x = -1.2
+		enemy.playerDetector.scale.x = -1.2
+		position = Vector2(4, -1)
 	elif enemy.direction == -1:
-		position = Vector2(2, -1)
-		scale.x = 1
+		position = Vector2(-2, -1)
+		enemy.playerDetector.scale.x = 1.2
+		scale.x = 1.2

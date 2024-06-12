@@ -796,7 +796,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"death"
+animation = &"right_idle"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 

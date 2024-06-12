@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://blrxslq56jo44"]
+[gd_scene load_steps=39 format=3 uid="uid://blrxslq56jo44"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/humanoid_enemy.gd" id="1_q5esn"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="1_qt577"]
@@ -13,7 +13,7 @@
 size = Vector2(14, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66o5m"]
-size = Vector2(14, 29)
+size = Vector2(19.2, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4dsb"]
 atlas = ExtResource("3_w63d0")
@@ -217,13 +217,18 @@ animations = [{
 }],
 "loop": true,
 "name": &"WalkingAgro",
-"speed": 18.0
+"speed": 8.0
 }]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_786r3"]
+points = PackedVector2Array(0, 0, -196, 40, -196, -15)
 
 [node name="HumanoidEnemy" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 9
 script = ExtResource("1_q5esn")
+wanderMinDistance = -64.0
+wanderMaxDistance = 64.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_qt577")]
 maxHealth = 2
@@ -235,16 +240,25 @@ healthComponentInstance = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_dii02")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.25)
 shape = SubResource("RectangleShape2D_66o5m")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -1)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_eeba2")
-animation = &"Walking"
+animation = &"WalkingAgro"
+frame = 4
 script = ExtResource("8_sxpqy")
 
 [node name="WanderTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="PlayerDetector" type="ShapeCast2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("ConvexPolygonShape2D_786r3")
+target_position = Vector2(0, 0)
+max_results = 1
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
