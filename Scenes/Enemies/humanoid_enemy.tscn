@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://blrxslq56jo44"]
+[gd_scene load_steps=38 format=3 uid="uid://blrxslq56jo44"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/humanoid_enemy.gd" id="1_q5esn"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="1_qt577"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bqoqa063ho4vl" path="res://Assets/Sprites/Enemies/HumanoidAutomaton/EnemyHumanoid_Idle.png" id="4_17277"]
 [ext_resource type="Texture2D" uid="uid://cnjmomlk85bhc" path="res://Assets/Sprites/Enemies/HumanoidAutomaton/EnemyHumanoid_Walking.png" id="5_lsvmy"]
 [ext_resource type="Texture2D" uid="uid://cc88dd50p58nt" path="res://Assets/Sprites/Enemies/HumanoidAutomaton/EnemyHumanoid_WalkAgro.png" id="6_3sokx"]
+[ext_resource type="Script" path="res://Scenes/Enemies/HumanoidEnemySprite.gd" id="8_sxpqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dii02"]
 size = Vector2(14, 20)
@@ -240,6 +241,7 @@ shape = SubResource("RectangleShape2D_66o5m")
 position = Vector2(-2, -1)
 sprite_frames = SubResource("SpriteFrames_eeba2")
 animation = &"Walking"
+script = ExtResource("8_sxpqy")
 
 [node name="WanderTimer" type="Timer" parent="."]
 process_callback = 0
