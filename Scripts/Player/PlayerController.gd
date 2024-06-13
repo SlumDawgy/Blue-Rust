@@ -50,8 +50,8 @@ var dashed : bool = false
 
 # Ground Pound
 @export var groundPoundEnabled : bool = false
-var poundChargeSpeed : float = 200.0
-var gravityVarPound : float = 2.0
+var poundChargeSpeed : float = 20.0
+var gravityVarPound : float = 4.0
 
 # Inputs
 var inputDirection : float = 0.0
@@ -207,12 +207,21 @@ func gliding(delta):
 
 func pounding(delta):
 	velocity.x = move_toward(0,0,0)
-	if get_node("PlayerSprite").animation.ends_with("poundCharge"):
+	if $GroundPoundUpgrade/GroundPoundTimer.time_left > 0:
 		velocity.y -= poundChargeSpeed
-	elif get_node("PlayerSprite").animation.ends_with("pounding"):
+		if $GroundPoundUpgrade/GroundPoundTimer.time_left <= 0:
+			velocity.y = 0
+	elif get_node("PlayerSprite").animation == "poundCharge":
 		gravityModifier = gravityVarPound
 	
-	if is_on_floor():
+	if $GroundPoundUpgrade.collider.is_colliding():
+		if $GroundPoundUpgrade.collider.get_collider(0) != null:
+			velocity.y = 0
+			$GroundPoundUpgrade.collider.get_collider(0).queue_free()
+	
+	elif is_on_floor():
+		$GroundPoundUpgrade/GroundPoundCollider.enabled = false
+		await get_tree().create_timer(0.3).timeout
 		currentMovement = movement.enabled
 
 func takingDamage():

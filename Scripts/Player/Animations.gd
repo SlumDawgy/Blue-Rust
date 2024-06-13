@@ -79,9 +79,10 @@ func chooseAnimation():
 				await animation_finished
 				owner.currentMovement = owner.movement.jumping
 		player.movement.pounding:
-			playAnimation("poundCharge")
-			await animation_finished
-			playAnimation("pounding")
+			if player.velocity.y < 0 and animation != "poundCharge":
+				play("poundCharge")
+			elif animation != "pounding" and player.is_on_floor():
+				play("pounding")
 		player.movement.takingDamage:
 			playAnimation("damage")
 		player.movement.dying:
@@ -156,7 +157,7 @@ func movingPivot():
 	elif animation == "right_dash":
 		armSprite.position = Vector2(0.5, -4.5)
 
-	if player.currentMovement == player.movement.hanging or player.currentMovement == player.movement.mantling or animation == "death" or animation == "getting_up":
+	if player.currentMovement == player.movement.hanging or animation == "pounding" or animation == "poundCharge" or player.currentMovement == player.movement.mantling or animation == "death" or animation == "getting_up":
 		armSprite.visible = false
 	else:
 		armSprite.visible = true

@@ -180,6 +180,7 @@ locale/translations=PackedStringArray("res://Dialogic/Translation/dialogic_chara
 2d_physics/layer_4="Walls"
 2d_physics/layer_5="Enemy"
 2d_physics/layer_6="BossDamage"
+2d_physics/layer_7="BreakableObjects"
 
 [rendering]
 

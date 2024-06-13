@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=151 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://byqn5vjmkowyh" path="res://Assets/Sprites/MC Animations/IdleAim.png" id="15_thi2n"]
 [ext_resource type="Texture2D" uid="uid://cwir0opibhbg6" path="res://Assets/Sprites/MC Animations/Mantling.png" id="16_jw3ki"]
 [ext_resource type="Texture2D" uid="uid://d04y37r7rjqye" path="res://Assets/Sprites/MC Animations/RunningAim.png" id="17_gqew8"]
+[ext_resource type="Texture2D" uid="uid://qhodx7d3x21i" path="res://Assets/Sprites/MC Animations/GroundPound-Sheet.png" id="17_tjhxt"]
 [ext_resource type="Script" path="res://Scripts/Player/Animations.gd" id="18_ns8m1"]
 [ext_resource type="Texture2D" uid="uid://cja1wnyiquxnh" path="res://Assets/Sprites/MC Animations/Arm.png" id="19_568wi"]
 [ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/Player/AimIndicatorLine.png" id="20_a1ajo"]
@@ -244,6 +245,26 @@ region = Rect2(177, 0, 29, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfcni"]
 atlas = ExtResource("10_re7el")
 region = Rect2(206, 0, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idroj"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rpaw"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a76h"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kij0m"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndej1"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqw0j"]
 atlas = ExtResource("11_rms3n")
@@ -539,16 +560,6 @@ animations = [{
 "name": &"left_parasol_open",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"left_poundCharge",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"left_pounding",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jqmys")
@@ -576,6 +587,31 @@ animations = [{
 }],
 "loop": true,
 "name": &"left_running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_idroj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rpaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a76h")
+}],
+"loop": false,
+"name": &"poundCharge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kij0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndej1")
+}],
+"loop": false,
+"name": &"pounding",
 "speed": 5.0
 }, {
 "frames": [{
@@ -697,16 +733,6 @@ animations = [{
 "name": &"right_parasol_open",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"right_poundCharge",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"right_pounding",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_frnkp")
@@ -765,6 +791,9 @@ frame_3/duration = 0.1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.974227, 0), -2.82848, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2rdrn"]
+b = Vector2(0, 1)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 57
 script = ExtResource("1_0ljdo")
@@ -816,7 +845,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_idle"
+animation = &"pounding"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -926,6 +955,18 @@ script = ExtResource("55_6knbs")
 
 [node name="GroundPoundUpgrade" type="Node2D" parent="."]
 script = ExtResource("60_ha76h")
+
+[node name="GroundPoundTimer" type="Timer" parent="GroundPoundUpgrade"]
+process_callback = 0
+one_shot = true
+
+[node name="GroundPoundCollider" type="ShapeCast2D" parent="GroundPoundUpgrade"]
+position = Vector2(-6, 21)
+enabled = false
+shape = SubResource("SegmentShape2D_2rdrn")
+target_position = Vector2(12, 0)
+max_results = 1
+collision_mask = 64
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]
