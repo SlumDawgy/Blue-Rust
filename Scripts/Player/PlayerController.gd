@@ -50,7 +50,7 @@ var dashed : bool = false
 
 # Ground Pound
 @export var groundPoundEnabled : bool = false
-var poundChargeSpeed : float = 20.0
+var poundChargeSpeed : float = 80.0
 var gravityVarPound : float = 4.0
 
 # Inputs
@@ -228,8 +228,6 @@ func pounding(delta):
 	elif is_on_floor():
 		$GroundPoundUpgrade.groundPoundEndParticles.emitting = true
 		$GroundPoundUpgrade/GroundPoundCollider.enabled = false
-		await get_tree().create_timer(0.3).timeout
-		currentMovement = movement.enabled
 
 func takingDamage():
 	if !_takingDamage:

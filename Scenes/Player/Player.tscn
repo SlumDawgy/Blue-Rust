@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=162 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -265,6 +265,22 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndej1"]
 atlas = ExtResource("17_tjhxt")
 region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j0uf"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6ls8"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2mj4"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2yif"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqw0j"]
 atlas = ExtResource("11_rms3n")
@@ -609,6 +625,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ndej1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j0uf")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_m6ls8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_m2mj4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_d2yif")
 }],
 "loop": false,
 "name": &"pounding",
@@ -808,8 +836,9 @@ offsets = PackedFloat32Array(0, 0.708333, 0.944444)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_02s5d"]
+min_value = -235.4
 max_value = 100.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.472763, 63.7736), 140.0, 0.0, 0, 0]
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(0.95679, -231.714), 140.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_l7qs8"]
@@ -875,9 +904,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"poundCharge"
-frame = 2
-frame_progress = 1.0
+animation = &"right_dash"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -1043,23 +1070,19 @@ color_ramp = SubResource("Gradient_qewwm")
 [node name="GroundPoundEndParticles" type="CPUParticles2D" parent="GroundPoundUpgrade"]
 position = Vector2(-2, 16)
 emitting = false
-amount = 100
+amount = 300
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 1.0
-direction = Vector2(0, -1)
-spread = 90.0
-gravity = Vector2(0, 1000)
-initial_velocity_min = 14.81
-initial_velocity_max = 500.0
-damping_min = 50.0
-damping_max = 100.0
-damping_curve = SubResource("Curve_02s5d")
-angle_min = -35.0
-angle_max = 160.0
-scale_amount_min = 2.0
-scale_amount_max = 5.0
-scale_amount_curve = SubResource("Curve_l7qs8")
+emission_shape = 5
+emission_points = PackedVector2Array(0, 0, 1, 0)
+emission_normals = PackedVector2Array(0.6, -0.3, -0.6, -0.3)
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+spread = 20.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
 color_ramp = SubResource("Gradient_e2se4")
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
