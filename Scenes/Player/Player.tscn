@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=158 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -794,6 +794,36 @@ point_count = 2
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2rdrn"]
 b = Vector2(0, 1)
 
+[sub_resource type="Curve" id="Curve_30r3u"]
+_data = [Vector2(0.0384615, 1), 0.0, 0.0, 0, 0, Vector2(0.82967, 0.441509), -1.71698, -1.71698, 0, 0, Vector2(0.983516, 0), -5.23679, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_drs18"]
+offsets = PackedFloat32Array(0, 0.763889, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_gsa6f"]
+offsets = PackedFloat32Array(0, 0.708333, 0.944444)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_02s5d"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.472763, 63.7736), 140.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_l7qs8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qewwm"]
+offsets = PackedFloat32Array(0.0210084, 0.117647, 0.878151, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_e2se4"]
+offsets = PackedFloat32Array(0, 0.0672269, 0.903361, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 57
 script = ExtResource("1_0ljdo")
@@ -845,7 +875,9 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"pounding"
+animation = &"poundCharge"
+frame = 2
+frame_progress = 1.0
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -967,6 +999,68 @@ shape = SubResource("SegmentShape2D_2rdrn")
 target_position = Vector2(12, 0)
 max_results = 1
 collision_mask = 64
+
+[node name="GroundPoundStartParticles" type="CPUParticles2D" parent="GroundPoundUpgrade"]
+position = Vector2(-5, -6)
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+speed_scale = 10.0
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_30r3u")
+color_ramp = SubResource("Gradient_drs18")
+color_initial_ramp = SubResource("Gradient_gsa6f")
+
+[node name="GroundPoundActiveParticles" type="CPUParticles2D" parent="GroundPoundUpgrade"]
+position = Vector2(0, 5)
+emitting = false
+amount = 100
+lifetime = 0.25
+lifetime_randomness = 1.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 8.42
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 14.81
+initial_velocity_max = 500.0
+damping_curve = SubResource("Curve_02s5d")
+angle_min = -35.0
+angle_max = 160.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_l7qs8")
+color_ramp = SubResource("Gradient_qewwm")
+
+[node name="GroundPoundEndParticles" type="CPUParticles2D" parent="GroundPoundUpgrade"]
+position = Vector2(-2, 16)
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 1000)
+initial_velocity_min = 14.81
+initial_velocity_max = 500.0
+damping_min = 50.0
+damping_max = 100.0
+damping_curve = SubResource("Curve_02s5d")
+angle_min = -35.0
+angle_max = 160.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_l7qs8")
+color_ramp = SubResource("Gradient_e2se4")
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]

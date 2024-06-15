@@ -212,14 +212,21 @@ func pounding(delta):
 		if $GroundPoundUpgrade/GroundPoundTimer.time_left <= 0:
 			velocity.y = 0
 	elif get_node("PlayerSprite").animation == "poundCharge":
+		dashUpgrade.addAfterimage()
 		gravityModifier = gravityVarPound
+		$GroundPoundUpgrade.groundPoundActiveParticles.emitting = true
 	
 	if $GroundPoundUpgrade.collider.is_colliding():
+		$GroundPoundUpgrade.groundPoundEndParticles.emitting = true
 		if $GroundPoundUpgrade.collider.get_collider(0) != null:
 			velocity.y = 0
+			$GroundPoundUpgrade/GroundPoundCollider.enabled = false
+			await get_tree().create_timer(0.3).timeout
+			currentMovement = movement.enabled
 			$GroundPoundUpgrade.collider.get_collider(0).queue_free()
 	
 	elif is_on_floor():
+		$GroundPoundUpgrade.groundPoundEndParticles.emitting = true
 		$GroundPoundUpgrade/GroundPoundCollider.enabled = false
 		await get_tree().create_timer(0.3).timeout
 		currentMovement = movement.enabled
