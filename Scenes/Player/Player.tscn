@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=163 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -849,6 +849,10 @@ point_count = 2
 offsets = PackedFloat32Array(0.0210084, 0.117647, 0.878151, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Curve" id="Curve_idjqp"]
+_data = [Vector2(0.737288, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Gradient" id="Gradient_e2se4"]
 offsets = PackedFloat32Array(0, 0.0672269, 0.903361, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
@@ -1071,18 +1075,21 @@ color_ramp = SubResource("Gradient_qewwm")
 position = Vector2(-2, 16)
 emitting = false
 amount = 300
+lifetime = 0.5
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.56
 lifetime_randomness = 1.0
 emission_shape = 5
-emission_points = PackedVector2Array(0, 0, 1, 0)
-emission_normals = PackedVector2Array(0.6, -0.3, -0.6, -0.3)
+emission_points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+emission_normals = PackedVector2Array(0.75, 0, -0.75, 0, 0.2, -0.05, -0.2, -0.05)
 emission_colors = PackedColorArray()
 direction = Vector2(0, 0)
-spread = 20.0
-gravity = Vector2(0, 100)
+spread = 9.23
+gravity = Vector2(0, -50)
 initial_velocity_min = 100.0
 initial_velocity_max = 300.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_idjqp")
 color_ramp = SubResource("Gradient_e2se4")
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]

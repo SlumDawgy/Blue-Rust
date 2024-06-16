@@ -226,6 +226,7 @@ func pounding(delta):
 			$GroundPoundUpgrade.collider.get_collider(0).queue_free()
 	
 	elif is_on_floor():
+		
 		$GroundPoundUpgrade.groundPoundEndParticles.emitting = true
 		$GroundPoundUpgrade/GroundPoundCollider.enabled = false
 
