@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4n5l4v5px338"
-path="res://.godot/imported/Johann_Idle-Sheet.png-d1872927a1196223e14056489c924e1f.ctex"
+uid="uid://qhodx7d3x21i"
+path="res://.godot/imported/GroundPound-Sheet.png-520b2f3f3401f43973275f910a79bc78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/NPCs/Johann/Johann_Idle-Sheet.png"
-dest_files=["res://.godot/imported/Johann_Idle-Sheet.png-d1872927a1196223e14056489c924e1f.ctex"]
+source_file="res://Assets/Sprites/MC Animations/GroundPound-Sheet.png"
+dest_files=["res://.godot/imported/GroundPound-Sheet.png-520b2f3f3401f43973275f910a79bc78.ctex"]
 
 [params]
 

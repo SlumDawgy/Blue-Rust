@@ -16,7 +16,8 @@ var dashDirection : int = 0
 func _input(event):
 	if event.is_action_pressed("Dash") and canDash and player.dashEnabled:
 		AudioManager.play_sound(player.audio.dash)
-		addAfterimageAndDashParticles()
+		addAfterimage()
+		handleDashParticles()
 		player.currentMovement = player.movement.dashing
 		player.dashed = true
 		player.cursorXcoord = (player.to_global(position) - get_global_mouse_position()).x
@@ -34,7 +35,7 @@ func _on_dash_timer_timeout():
 		canDash = true
 
 
-func addAfterimageAndDashParticles():
+func addAfterimage():
 	if (get_local_mouse_position() - to_local(position)).x > 0 and dashDirection == 0:
 		dashDirection = 1
 	elif  dashDirection == 0:
@@ -45,6 +46,8 @@ func addAfterimageAndDashParticles():
 			afterImageParticles.gravity.x = dashDirection * 200
 			afterImageParticles.emitting = true
 	
+	
+func handleDashParticles():
 	if dashStartParticles.emitting == false :
 		dashStartParticles.direction.x = dashDirection
 		dashStartParticles.gravity.x = dashStartParticles.direction.x * 200

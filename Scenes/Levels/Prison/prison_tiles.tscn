@@ -2818,6 +2818,7 @@ texture = ExtResource("1_qp46f")
 20:5/0/physics_layer_2/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_b03c0"]
+occlusion_layer_0/light_mask = 31
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 31
 physics_layer_1/collision_layer = 2
