@@ -632,10 +632,10 @@ animations = [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_m6ls8")
 }, {
-"duration": 2.0,
+"duration": 0.75,
 "texture": SubResource("AtlasTexture_m2mj4")
 }, {
-"duration": 2.0,
+"duration": 0.75,
 "texture": SubResource("AtlasTexture_d2yif")
 }],
 "loop": false,
@@ -908,7 +908,9 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_dash"
+animation = &"pounding"
+frame = 5
+frame_progress = 1.0
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
