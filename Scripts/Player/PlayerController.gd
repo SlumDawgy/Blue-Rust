@@ -50,6 +50,7 @@ var dashed : bool = false
 
 # Ground Pound
 @export var groundPoundEnabled : bool = false
+@onready var groundPoundUpgrade : Node2D = $GroundPoundUpgrade
 var poundChargeSpeed : float = 80.0
 var gravityVarPound : float = 4.0
 
@@ -207,28 +208,25 @@ func gliding(delta):
 
 func pounding(delta):
 	velocity.x = move_toward(0,0,0)
-	if $GroundPoundUpgrade/GroundPoundTimer.time_left > 0:
+	if groundPoundUpgrade.poundTimer.time_left > 0:
 		velocity.y -= poundChargeSpeed
-		if $GroundPoundUpgrade/GroundPoundTimer.time_left <= 0:
-			velocity.y = 0
 	elif get_node("PlayerSprite").animation == "poundCharge":
 		dashUpgrade.addAfterimage()
 		gravityModifier = gravityVarPound
-		$GroundPoundUpgrade.groundPoundActiveParticles.emitting = true
+		groundPoundUpgrade.ActiveParticles.emitting = true
 	
-	if $GroundPoundUpgrade.collider.is_colliding():
-		$GroundPoundUpgrade.groundPoundEndParticles.emitting = true
-		if $GroundPoundUpgrade.collider.get_collider(0) != null:
+	if groundPoundUpgrade.collider.is_colliding():
+		groundPoundUpgrade.EndParticles.emitting = true
+		if groundPoundUpgrade.collider.get_collider(0) != null:
 			velocity.y = 0
-			$GroundPoundUpgrade/GroundPoundCollider.enabled = false
+			groundPoundUpgrade.collider.enabled = false
 			await get_tree().create_timer(0.3).timeout
 			currentMovement = movement.enabled
-			$GroundPoundUpgrade.collider.get_collider(0).queue_free()
+			groundPoundUpgrade.collider.get_collider(0).queue_free()
 	
-	elif is_on_floor():
-		
-		$GroundPoundUpgrade.groundPoundEndParticles.emitting = true
-		$GroundPoundUpgrade/GroundPoundCollider.enabled = false
+	elif is_on_floor() and groundPoundUpgrade.collider.enabled:
+		groundPoundUpgrade.EndParticles.emitting = true
+		groundPoundUpgrade.collider.enabled = false
 
 func takingDamage():
 	if !_takingDamage:
