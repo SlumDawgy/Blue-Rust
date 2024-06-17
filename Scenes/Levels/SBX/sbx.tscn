@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://o6ucr1l65mpj"]
+[gd_scene load_steps=11 format=3 uid="uid://o6ucr1l65mpj"]
 
 [ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="2_563n5"]
 [ext_resource type="PackedScene" uid="uid://cp43vyf7fw63k" path="res://Scenes/Levels/SBX/sbx_level.tscn" id="3_n2m1n"]
@@ -6,8 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://dlfvlfcjgtiv" path="res://Scenes/UI/game_ui.tscn" id="4_xh0xt"]
 [ext_resource type="PackedScene" uid="uid://cr5g5ugrskfq" path="res://Scenes/Levels/Prison/save_point.tscn" id="6_i18s4"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="7_cku2p"]
-[ext_resource type="PackedScene" uid="uid://dj7br8u5ja4rm" path="res://Scenes/Objects/BreakingBridge.tscn" id="8_0ddkj"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="11_4d8wk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw680"]
+
+[sub_resource type="Gradient" id="Gradient_70cpe"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_umjcm"]
+gradient = SubResource("Gradient_70cpe")
 
 [node name="sbx" type="Node2D"]
 
@@ -16,6 +22,7 @@ position = Vector2(102, -52)
 dashEnabled = true
 parasolEnabled = true
 doubleJumpEnabled = true
+groundPoundEnabled = true
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(114, -37)
@@ -39,5 +46,13 @@ player = NodePath("../Player")
 
 [node name="MouseAimAssist" parent="." instance=ExtResource("7_cku2p")]
 
-[node name="BreakingBridge" parent="." instance=ExtResource("8_0ddkj")]
-position = Vector2(241, -9)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(247, 4)
+collision_layer = 72
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_lw680")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.320002, 0.32)
+texture = SubResource("GradientTexture2D_umjcm")

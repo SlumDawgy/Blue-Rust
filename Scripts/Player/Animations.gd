@@ -67,7 +67,6 @@ func chooseAnimation():
 				owner.audio.playrandom(owner.audio.parasolClose_A, owner.audio.parasolClose_B)
 				await animation_finished
 				owner.currentMovement = owner.movement.enabled
-				
 			if Input.is_action_just_pressed("GrapplingHook"): 
 				playAnimation("parasol_close")
 				owner.audio.playrandom(owner.audio.parasolClose_A, owner.audio.parasolClose_B)
@@ -79,6 +78,14 @@ func chooseAnimation():
 				owner.audio.playrandom(owner.audio.parasolClose_A, owner.audio.parasolClose_B)
 				await animation_finished
 				owner.currentMovement = owner.movement.jumping
+		player.movement.pounding:
+			if player.velocity.y < 0 and animation != "poundCharge":
+				play("poundCharge")
+			elif animation != "pounding" or animation != "recoveringPound" and player.is_on_floor():
+				play("pounding")
+			if animation == "pounding":
+				await animation_finished
+				owner.currentMovement = owner.movement.enabled
 		player.movement.takingDamage:
 			playAnimation("damage")
 		player.movement.dying:
@@ -153,7 +160,7 @@ func movingPivot():
 	elif animation == "right_dash":
 		armSprite.position = Vector2(0.5, -4.5)
 
-	if player.currentMovement == player.movement.hanging or player.currentMovement == player.movement.mantling or animation == "death" or animation == "getting_up":
+	if player.currentMovement == player.movement.hanging or animation == "recoveryPound" or animation == "pounding" or animation == "poundCharge" or player.currentMovement == player.movement.mantling or animation == "death" or animation == "getting_up":
 		armSprite.visible = false
 	else:
 		armSprite.visible = true
