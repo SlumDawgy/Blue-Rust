@@ -12,7 +12,9 @@ var startBreaking : bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	pass
+	if sprite.visible == false:
+		await get_tree().create_timer(3.0).timeout
+		queue_free()
 
 
 func _on_start_breaking_body_entered(body : Player):
@@ -21,10 +23,6 @@ func _on_start_breaking_body_entered(body : Player):
 		sprite.play("BeginBreak")
 		particles.emitting = true
 		AudioManager.play_sound(breakingAudio)
-		
-		if sprite.visible == false:
-			await get_tree().create_timer(8).timeout
-			queue_free()
 
 
 func _on_broke_body_entered(body : Player):

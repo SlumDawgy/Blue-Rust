@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://dj7br8u5ja4rm"]
 
 [ext_resource type="Texture2D" uid="uid://dk2e2hl1ggea0" path="res://Assets/Sprites/TileSets/Prison/BridgeBreak.png" id="1_l5qrg"]
-[ext_resource type="AudioStream" uid="uid://8u4umhp364ql" path="res://Assets/Sounds/Bridge/SFX_Bridge_BeginBreak.wav" id="2_jhwtn"]
+[ext_resource type="AudioStream" uid="uid://de7kgmivr2bak" path="res://Assets/Sounds/Bridge/SFX_Bridge_BeginBreak_4.wav" id="2_jimy7"]
 [ext_resource type="Script" path="res://Scripts/Objects/BreakingBridge.gd" id="2_o472l"]
-[ext_resource type="AudioStream" uid="uid://bmi8kf4d8oaik" path="res://Assets/Sounds/Bridge/SFX_Bridge_Broken.wav" id="3_qqutl"]
+[ext_resource type="AudioStream" uid="uid://lttfg8keqr1g" path="res://Assets/Sounds/Bridge/SFX_Bridge_Broken_4.wav" id="3_4870t"]
 [ext_resource type="Texture2D" uid="uid://cnt8acvnfmt6w" path="res://Assets/Sprites/TileSets/Prison/BridgeBreakPieces.png" id="4_7tsdf"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6jn0j"]
@@ -101,14 +101,14 @@ gravity = Vector3(0, 98, 0)
 anim_offset_max = 1.0
 collision_mode = 2
 sub_emitter_mode = 3
-sub_emitter_amount_at_collision = 18
+sub_emitter_amount_at_collision = 12
 
 [node name="BreakingBridge" type="RigidBody2D"]
 collision_layer = 8
 freeze = true
 script = ExtResource("2_o472l")
-breakingAudio = ExtResource("2_jhwtn")
-brokeAudio = ExtResource("3_qqutl")
+breakingAudio = ExtResource("2_jimy7")
+brokeAudio = ExtResource("3_4870t")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
