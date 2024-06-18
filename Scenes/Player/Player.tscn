@@ -859,6 +859,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 57
+floor_snap_length = 8.0
 script = ExtResource("1_0ljdo")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_6rn2i")]
