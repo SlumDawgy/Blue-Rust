@@ -6,6 +6,8 @@ extends Sprite2D
 
 @onready var option_button = %OptionButton
 
+@onready var fullscreen_button = %FullscreenButton
+
 
 var user_prefs : UserPreferences
 
@@ -19,6 +21,9 @@ func _ready():
 		master.value = user_prefs.master_audio_level
 	if option_button:
 		_on_option_button_item_selected(user_prefs.language_selected)
+	if fullscreen_button:
+		fullscreen_button.button_pressed = user_prefs.fullscreen_mode
+		_on_fullscreen_button_toggled(user_prefs.fullscreen_mode)
 	
 
 func _on_button_pressed():
@@ -46,7 +51,11 @@ func _on_fullscreen_button_toggled(toggled_on):
 	if toggled_on:
 		get_tree().root.set_mode(Window.MODE_FULLSCREEN)
 	else:
-		get_tree().root.set_mode(Window.MODE_MAXIMIZED)
+		get_tree().root.set_mode(Window.MODE_MINIMIZED)
+	
+	if user_prefs:
+		user_prefs.fullscreen_mode = fullscreen_button.button_pressed
+		user_prefs.save()
 
 func _on_option_button_item_selected(index):
 	if index == 0:

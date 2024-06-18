@@ -5,6 +5,7 @@ class_name UserPreferences extends Resource
 @export_range(0, 1, 0.05) var master_audio_level : float = 1.0
 
 @export_range(0, 1, 1) var language_selected : int = 0
+@export var fullscreen_mode : bool = true
 
 
 func save() -> void:

@@ -217,6 +217,7 @@ theme_override_font_sizes/font_size = 20
 text = "FullScreen"
 
 [node name="FullscreenButton" type="CheckButton" parent="OptionsPanel/Configs/Fullscreen"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 button_pressed = true
