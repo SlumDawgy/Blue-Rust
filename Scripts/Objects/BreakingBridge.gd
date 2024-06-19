@@ -1,8 +1,9 @@
 extends RigidBody2D
 
 @onready var sprite = $Sprite
-@onready var particles = $BeginBreakParticles
+@onready var beginBreakParticles = $BeginBreakParticles
 @onready var brokeParticle = $BrokeParticle
+@onready var smokeParticles = $SmokeParticles
 
 @export var breakingAudio : AudioStream
 @export var brokeAudio : AudioStream
@@ -21,7 +22,8 @@ func _on_start_breaking_body_entered(body : Player):
 	if startBreaking == false:
 		startBreaking = true
 		sprite.play("BeginBreak")
-		particles.emitting = true
+		beginBreakParticles.emitting = true
+		smokeParticles.emitting = true
 		AudioManager.play_sound(breakingAudio)
 
 

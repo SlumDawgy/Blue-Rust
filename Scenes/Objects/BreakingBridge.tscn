@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dj7br8u5ja4rm"]
+[gd_scene load_steps=24 format=3 uid="uid://dj7br8u5ja4rm"]
 
 [ext_resource type="Texture2D" uid="uid://dk2e2hl1ggea0" path="res://Assets/Sprites/TileSets/Prison/BridgeBreak.png" id="1_l5qrg"]
 [ext_resource type="AudioStream" uid="uid://de7kgmivr2bak" path="res://Assets/Sounds/Bridge/SFX_Bridge_BeginBreak_4.wav" id="2_jimy7"]
 [ext_resource type="Script" path="res://Scripts/Objects/BreakingBridge.gd" id="2_o472l"]
 [ext_resource type="AudioStream" uid="uid://lttfg8keqr1g" path="res://Assets/Sounds/Bridge/SFX_Bridge_Broken_4.wav" id="3_4870t"]
 [ext_resource type="Texture2D" uid="uid://cnt8acvnfmt6w" path="res://Assets/Sprites/TileSets/Prison/BridgeBreakPieces.png" id="4_7tsdf"]
+[ext_resource type="Texture2D" uid="uid://d0cr56ddspco0" path="res://Assets/Sprites/SmokeParticles.png" id="5_q8pga"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6jn0j"]
 a = Vector2(-48, -7)
@@ -59,16 +60,49 @@ gradient = SubResource("Gradient_h4uqb")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ueqwk"]
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
-spread = 120.0
+spread = 76.957
+flatness = 0.696
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, 300, 0)
+damping_min = 32.963
+damping_max = 39.13
 scale_min = 1.5
 scale_max = 2.5
 color = Color(0.631373, 0.376471, 0.137255, 1)
 color_initial_ramp = SubResource("GradientTexture1D_toyq0")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ic57n"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_fwbnx"]
+offsets = PackedFloat32Array(0, 0.113924, 0.936709, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.6, 0.6, 0.6, 0.537255, 1, 1, 1, 0.427451, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gqdwk"]
+gradient = SubResource("Gradient_fwbnx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ondnh"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(42.665, 1, 1)
+angle_min = -90.0
+angle_max = -90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 47.41
+linear_accel_max = 76.19
+scale_min = 2.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_gqdwk")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hhs8j"]
 a = Vector2(0, -2.85896)
@@ -149,6 +183,15 @@ randomness = 0.5
 fixed_fps = 0
 collision_base_size = 0.1
 draw_order = 0
+
+[node name="SmokeParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+material = SubResource("CanvasItemMaterial_ic57n")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ondnh")
+texture = ExtResource("5_q8pga")
+one_shot = true
 
 [node name="StartBreaking" type="Area2D" parent="."]
 position = Vector2(-38, -21)
