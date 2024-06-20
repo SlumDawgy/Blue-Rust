@@ -29,6 +29,10 @@ Dialogues="*res://Scripts/dialogues.gd"
 Loadings="*res://Scripts/GlobalScenes.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [dialogic]
 
 directories/dch_directory={
