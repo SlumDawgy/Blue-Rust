@@ -48,6 +48,12 @@ var dashed : bool = false
 # Double Jump
 @export var doubleJumpEnabled : bool = false
 
+# Ground Pound
+@export var groundPoundEnabled : bool = false
+@onready var groundPoundUpgrade : Node2D = $GroundPoundUpgrade
+var poundChargeSpeed : float = 80.0
+var gravityVarPound : float = 4.0
+
 # Inputs
 var inputDirection : float = 0.0
 var inputJump : bool = false
@@ -67,6 +73,7 @@ enum movement
 	hangingJump,
 	dashing,
 	gliding,
+	pounding,
 	takingDamage,
 	dying
 }
@@ -198,7 +205,28 @@ func dashing():
 func gliding(delta):
 	velocity.x = move_toward(0,0,0)
 	velocity.y = GRAVITY * gravityVarParasol * delta	
+
+func pounding(delta):
+	velocity.x = move_toward(0,0,0)
+	if groundPoundUpgrade.poundTimer.time_left > 0:
+		velocity.y -= poundChargeSpeed
+	elif get_node("PlayerSprite").animation == "poundCharge":
+		dashUpgrade.addAfterimage()
+		gravityModifier = gravityVarPound
+		groundPoundUpgrade.ActiveParticles.emitting = true
 	
+	if groundPoundUpgrade.collider.is_colliding():
+		groundPoundUpgrade.EndParticles.emitting = true
+		if groundPoundUpgrade.collider.get_collider(0) != null:
+			velocity.y = 0
+			groundPoundUpgrade.collider.enabled = false
+			await get_tree().create_timer(0.3).timeout
+			currentMovement = movement.enabled
+			groundPoundUpgrade.collider.get_collider(0).queue_free()
+	
+	elif is_on_floor() and groundPoundUpgrade.collider.enabled:
+		groundPoundUpgrade.EndParticles.emitting = true
+		groundPoundUpgrade.collider.enabled = false
 
 func takingDamage():
 	if !_takingDamage:
@@ -241,6 +269,8 @@ func _physics_process(delta):
 			dashing()
 		movement.gliding:
 			gliding(delta)
+		movement.pounding:
+			pounding(delta)
 		movement.takingDamage:
 			takingDamage()
 		movement.dying:
