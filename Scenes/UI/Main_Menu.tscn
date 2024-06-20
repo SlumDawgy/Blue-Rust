@@ -183,6 +183,7 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="Master" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_icons/grabber = ExtResource("14_xj555")
@@ -191,6 +192,7 @@ step = 0.01
 value = 1.0
 
 [node name="MusicSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 theme_override_icons/grabber = ExtResource("14_xj555")
@@ -199,6 +201,7 @@ step = 0.01
 value = 1.0
 
 [node name="SFXSlider" type="HSlider" parent="OptionsPanel/Configs/Sounds/Sliders"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
 max_value = 1.0
@@ -215,8 +218,10 @@ theme_override_font_sizes/font_size = 20
 text = "FullScreen"
 
 [node name="FullscreenButton" type="CheckButton" parent="OptionsPanel/Configs/Fullscreen"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("7_ofpi3")
+button_pressed = true
 
 [node name="Language" type="HBoxContainer" parent="OptionsPanel/Configs"]
 layout_mode = 2
@@ -228,6 +233,7 @@ theme_override_font_sizes/font_size = 20
 text = "LANGUAGE"
 
 [node name="OptionButton" type="OptionButton" parent="OptionsPanel/Configs/Language"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("20_123r4")
 theme_override_font_sizes/font_size = 10
