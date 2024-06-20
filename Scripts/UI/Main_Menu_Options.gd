@@ -51,7 +51,7 @@ func _on_fullscreen_button_toggled(toggled_on):
 	if toggled_on:
 		get_tree().root.set_mode(Window.MODE_FULLSCREEN)
 	else:
-		get_tree().root.set_mode(Window.MODE_MINIMIZED)
+		get_tree().root.set_mode(Window.MODE_WINDOWED)
 	
 	if user_prefs:
 		user_prefs.fullscreen_mode = fullscreen_button.button_pressed
