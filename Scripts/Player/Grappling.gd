@@ -1,70 +1,47 @@
 extends Area2D
 class_name Grapple
 
-const speed : float = 250.0
-const characterSpeed : float = 350.0
-const maxGrappleDistance : int = 150
+# TODO: sound FX
+# TODO: Grapple rope effect
+# TODO: Hanging
 
-var startingPointNode : Node2D
-var startPosition : Vector2
-var positionToReach : Vector2
-var returning : bool = false
-var movingPlayer : bool = false
-var player : Player
-
-var audios
-var canPlayRetrieve = true
-
-func _ready():
-	startPosition = position
-
-class BasicAttack:
-	var damage : int = 1
-	var knockback : int = 0
-	var direction : int = 1
-	var knockupwards : int = 0
+@export var max_speed : float = 200.0
+@export var max_range : float = .65
+var grapple_speed : float = max_speed
+var attached : bool = false
+var retracting : bool = false
+var distance_travelled : float = 0.0
+var distance_retracted : float = 0.0
 
 func _physics_process(delta):
-	if position.distance_to(player.get_global_transform().origin) >= maxGrappleDistance:
-		if !returning:
-			AudioManager.play_sound(player.audio.grappleRetrieve)
-		returning = true
-		movingPlayer = false
-		
-	if movingPlayer:
-		player.position += (transform.origin - player.transform.origin).normalized() * speed * delta
-		if position.distance_to(player.get_global_transform().origin) < 16:
-			if Input.is_action_pressed("GrapplingHook"):
-				startHanging()
-			else:
-				player.currentMovement = player.movement.jumping
-				player.gravityModifier = player.gravityVarDownwards
-				queue_free()
-	elif !returning:
-		position += (positionToReach - startPosition).normalized() * speed * delta
-	else:
-		position += (startingPointNode.get_global_transform().get_origin() - position).normalized() * speed * delta
-		
-		if position.distance_to(startingPointNode.get_global_transform().origin) < 8:
-			player.currentMovement = player.movement.jumping
-			player.gravityModifier = player.gravityVarDownwards
-			queue_free()
+	position += transform.x * grapple_speed * delta
 	
-func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
-	if body.is_class("TileMap"):
-		if body.get_layer_for_body_rid(body_rid) == 1:
-			AudioManager.play_sound(player.audio.hookAttach)
-			var coords = body.get_coords_for_body_rid(body_rid)
-			position = body.map_to_local(coords)
-			movingPlayer = true
+	if !attached and !retracting:
+		distance_travelled += delta
+	if !attached and retracting:
+		distance_retracted += delta
+
+	if distance_travelled >= max_range:
+		retract()
+	if distance_travelled >= max_range * 2.0:
+		queue_free()
+	if distance_retracted >= distance_travelled:
+		queue_free()
 		
-		elif body.get_layer_for_body_rid(body_rid) == 0:
-			if !returning:
-				AudioManager.play_sound(player.audio.hookHitWall)
-				AudioManager.play_sound(player.audio.grappleRetrieve)
-			returning = true
-				
-func startHanging():
-	player.currentMovement = player.movement.hanging
-	player.position = position + Vector2(0, 24)
-	queue_free()
+func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
+	if grapple_speed > 0.0:
+		if body.is_class("TileMap"):
+			var rid = body.get_layer_for_body_rid(body_rid)
+			if rid == 0: # Wall and floor RID
+				retract()
+			if rid == 1: # Hook RID
+				grapple_speed = 0.0
+				attached = true
+	if grapple_speed <= 0.0:
+		if body.is_class("CharacterBody2D"):
+			queue_free()
+
+func retract():
+	retracting = true
+	grapple_speed = -1.0 * max_speed
+	
