@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=163 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://byqn5vjmkowyh" path="res://Assets/Sprites/MC Animations/IdleAim.png" id="15_thi2n"]
 [ext_resource type="Texture2D" uid="uid://cwir0opibhbg6" path="res://Assets/Sprites/MC Animations/Mantling.png" id="16_jw3ki"]
 [ext_resource type="Texture2D" uid="uid://d04y37r7rjqye" path="res://Assets/Sprites/MC Animations/RunningAim.png" id="17_gqew8"]
+[ext_resource type="Texture2D" uid="uid://qhodx7d3x21i" path="res://Assets/Sprites/MC Animations/GroundPound-Sheet.png" id="17_tjhxt"]
 [ext_resource type="Script" path="res://Scripts/Player/Animations.gd" id="18_ns8m1"]
 [ext_resource type="Texture2D" uid="uid://cja1wnyiquxnh" path="res://Assets/Sprites/MC Animations/Arm.png" id="19_568wi"]
 [ext_resource type="Texture2D" uid="uid://lknikypg370e" path="res://Assets/Sprites/Player/AimIndicatorLine.png" id="20_a1ajo"]
@@ -59,14 +60,15 @@
 [ext_resource type="AudioStream" uid="uid://2pohlmdkby3p" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Close_1.wav" id="50_ucn2v"]
 [ext_resource type="AudioStream" uid="uid://c8c0pbuuinpqg" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Close_2.wav" id="51_hwjhg"]
 [ext_resource type="Script" path="res://Scenes/Player/DoubleJumpUpgrade.gd" id="55_6knbs"]
+[ext_resource type="Script" path="res://Scripts/Player/GroundPoundUpgrade.gd" id="60_ha76h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
 radius = 10.5
-height = 34.0
+height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyc5k"]
 radius = 10.5
-height = 34.0
+height = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0waje"]
 atlas = ExtResource("5_ynqkm")
@@ -243,6 +245,42 @@ region = Rect2(177, 0, 29, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfcni"]
 atlas = ExtResource("10_re7el")
 region = Rect2(206, 0, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idroj"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rpaw"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a76h"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kij0m"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndej1"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j0uf"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6ls8"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2mj4"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2yif"]
+atlas = ExtResource("17_tjhxt")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqw0j"]
 atlas = ExtResource("11_rms3n")
@@ -568,6 +606,43 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_idroj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rpaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a76h")
+}],
+"loop": false,
+"name": &"poundCharge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kij0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndej1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j0uf")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_m6ls8")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_m2mj4")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_d2yif")
+}],
+"loop": false,
+"name": &"pounding",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yqw0j")
 }, {
@@ -744,8 +819,47 @@ frame_3/duration = 0.1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.974227, 0), -2.82848, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2rdrn"]
+b = Vector2(0, 1)
+
+[sub_resource type="Curve" id="Curve_30r3u"]
+_data = [Vector2(0.0384615, 1), 0.0, 0.0, 0, 0, Vector2(0.82967, 0.441509), -1.71698, -1.71698, 0, 0, Vector2(0.983516, 0), -5.23679, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_drs18"]
+offsets = PackedFloat32Array(0, 0.763889, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_gsa6f"]
+offsets = PackedFloat32Array(0, 0.708333, 0.944444)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_02s5d"]
+min_value = -235.4
+max_value = 100.0
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(0.95679, -231.714), 140.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_l7qs8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qewwm"]
+offsets = PackedFloat32Array(0.0210084, 0.117647, 0.878151, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_idjqp"]
+_data = [Vector2(0.737288, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_e2se4"]
+offsets = PackedFloat32Array(0, 0.0672269, 0.903361, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 57
+floor_snap_length = 8.0
 script = ExtResource("1_0ljdo")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_6rn2i")]
@@ -790,13 +904,14 @@ target_position = Vector2(-10, 0)
 collision_mask = 8
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_idle"
+animation = &"pounding"
+frame = 5
+frame_progress = 1.0
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -903,6 +1018,82 @@ script = ExtResource("48_10k6k")
 
 [node name="DoubleJumpUpgrade" type="Node2D" parent="."]
 script = ExtResource("55_6knbs")
+
+[node name="GroundPoundUpgrade" type="Node2D" parent="."]
+script = ExtResource("60_ha76h")
+
+[node name="GroundPoundTimer" type="Timer" parent="GroundPoundUpgrade"]
+process_callback = 0
+one_shot = true
+
+[node name="GroundPoundCollider" type="ShapeCast2D" parent="GroundPoundUpgrade"]
+position = Vector2(-6, 21)
+enabled = false
+shape = SubResource("SegmentShape2D_2rdrn")
+target_position = Vector2(12, 0)
+max_results = 1
+collision_mask = 64
+
+[node name="GroundPoundStartParticles" type="CPUParticles2D" parent="GroundPoundUpgrade"]
+position = Vector2(-5, -6)
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+speed_scale = 10.0
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_30r3u")
+color_ramp = SubResource("Gradient_drs18")
+color_initial_ramp = SubResource("Gradient_gsa6f")
+
+[node name="GroundPoundActiveParticles" type="CPUParticles2D" parent="GroundPoundUpgrade"]
+position = Vector2(0, 5)
+emitting = false
+amount = 100
+lifetime = 0.25
+lifetime_randomness = 1.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 8.42
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 14.81
+initial_velocity_max = 500.0
+damping_curve = SubResource("Curve_02s5d")
+angle_min = -35.0
+angle_max = 160.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_l7qs8")
+color_ramp = SubResource("Gradient_qewwm")
+
+[node name="GroundPoundEndParticles" type="CPUParticles2D" parent="GroundPoundUpgrade"]
+position = Vector2(-2, 16)
+emitting = false
+amount = 300
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.56
+lifetime_randomness = 1.0
+emission_shape = 5
+emission_points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+emission_normals = PackedVector2Array(0.75, 0, -0.75, 0, 0.2, -0.05, -0.2, -0.05)
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+spread = 9.23
+gravity = Vector2(0, -50)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_idjqp")
+color_ramp = SubResource("Gradient_e2se4")
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]

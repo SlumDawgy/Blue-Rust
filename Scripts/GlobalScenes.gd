@@ -23,9 +23,6 @@ func loadingScene(sceneID : String, entranceID : int):
 	
 	get_tree().paused = false
 
-func loadingSettings():
-	pass
-
 func loadingPlayer(player : Player):
 	player.position.x = int(SaveSystem.get_var("player:positionX"))
 	player.position.y = int(SaveSystem.get_var("player:positionY"))
