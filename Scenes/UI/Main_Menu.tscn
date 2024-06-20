@@ -259,7 +259,7 @@ popup/item_1/id = 1
 [connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/Master" to="OptionsPanel" method="_on_master_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="OptionsPanel" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="OptionsPanel" method="_on_sfx_slider_value_changed"]
-[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_off_fullscreen_button_toggled"]
+[connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="OptionsPanel/Configs/Fullscreen/FullscreenButton" to="OptionsPanel" method="_on_fullscreen_button_toggled"]
 [connection signal="item_selected" from="OptionsPanel/Configs/Language/OptionButton" to="OptionsPanel" method="_on_option_button_item_selected"]

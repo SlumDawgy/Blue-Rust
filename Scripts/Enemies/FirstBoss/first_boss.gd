@@ -62,7 +62,6 @@ class BasicAttack:
 	var knockback : int = 15
 	var direction : int = 1
 	var knockupwards : int = -250
-	
 
 func _ready():
 	currentMovement = movement.starting

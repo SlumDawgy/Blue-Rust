@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://blrxslq56jo44"]
+[gd_scene load_steps=40 format=3 uid="uid://bin1gntk0ps30"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/humanoid_enemy.gd" id="1_q5esn"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="1_qt577"]
@@ -223,6 +223,8 @@ animations = [{
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_786r3"]
 points = PackedVector2Array(0, 0, -196, 40, -196, -15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fccnv"]
+
 [node name="HumanoidEnemy" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 9
@@ -247,8 +249,7 @@ shape = SubResource("RectangleShape2D_66o5m")
 position = Vector2(-2, -1)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_eeba2")
-animation = &"WalkingAgro"
-frame = 4
+animation = &"Attack"
 script = ExtResource("8_sxpqy")
 
 [node name="WanderTimer" type="Timer" parent="."]
@@ -260,5 +261,11 @@ position = Vector2(0, -10)
 shape = SubResource("ConvexPolygonShape2D_786r3")
 target_position = Vector2(0, 0)
 max_results = 1
+
+[node name="AttackShape" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-21, -8)
+shape = SubResource("RectangleShape2D_fccnv")
+target_position = Vector2(0, 16)
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

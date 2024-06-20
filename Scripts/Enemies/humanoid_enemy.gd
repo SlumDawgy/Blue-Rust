@@ -21,8 +21,18 @@ var direction : int = 0
 
 var currentMovement : movement
 
+
+var attackTimer : float = 0.0
+@onready var attack_shape = %AttackShape
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
+class BasicAttack:
+	var damage : int = 1
+	var knockback : int = 15
+	var direction : int = 1
+	var knockupwards : int = -250
 
 enum movement
 {
@@ -53,6 +63,14 @@ func moving(delta):
 		currentMovement = movement.enabled
 
 func running(delta):
+	if attack_shape.is_colliding():
+		currentMovement = movement.attacking
+		velocity.x = move_toward(0,0,0)
+	
+	elif abs(global_position.x - player.global_position.x) > 196:
+		velocity.x = move_toward(0,0,0)
+		currentMovement = movement.enabled
+	
 	if animation.frame == 2 or animation.frame == 3 or animation.frame == 7 or animation.frame == 8:
 		velocity.x = lerp(velocity.x, 0.0, 0.5)
 	else:
@@ -62,17 +80,27 @@ func running(delta):
 		direction = 1
 	else:
 		direction = -1
-	
-	if abs(global_position.x - player.global_position.x) > 196:
-		velocity.x = move_toward(0,0,0)
-		currentMovement = movement.enabled
 
 func attacking(delta):
-	pass
+	attackTimer -= delta
+	velocity.x = move_toward(0,0,0)
+	if animation.frame == 3:
+		if attack_shape.is_colliding():
+			var collision = attack_shape.get_collider(0)
+			if collision is Player:
+				var hitbox : HitBoxComponent = collision.get_node("HitBoxComponent")		
+				var basicAttack = BasicAttack.new()
+				var collision_direction = (collision.global_position - global_position).normalized()
+				if collision_direction.x < 0:
+					basicAttack.direction = -1
+				hitbox.damage(basicAttack)
+	if attackTimer < -1:
+		currentMovement = movement.running
+		attackTimer = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if playerDetector.is_colliding():
+	if playerDetector.is_colliding() and (currentMovement == movement.moving or currentMovement == movement.enabled):
 		player = playerDetector.get_collider(0)
 		currentMovement = movement.running
 	
