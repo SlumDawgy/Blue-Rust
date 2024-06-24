@@ -13,7 +13,11 @@ size = Vector2(703, 341)
 [node name="Sewer" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_y6c76")]
-position = Vector2(225, 207)
+position = Vector2(162, 124)
+dashEnabled = true
+parasolEnabled = true
+doubleJumpEnabled = true
+groundPoundEnabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 zoom = Vector2(2, 2)

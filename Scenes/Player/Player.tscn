@@ -798,7 +798,6 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_um3uc"]
 closed = false
 cull_mode = 1
-polygon = PackedVector2Array(-13, 19, -12, -14, 9, -15, 11, 18)
 
 [sub_resource type="Gradient" id="Gradient_hd8fm"]
 offsets = PackedFloat32Array(0, 0.513889, 1)
@@ -921,11 +920,12 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 light_mask = 2
 material = SubResource("CanvasItemMaterial_eg4rg")
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"left_jump"
+animation = &"left_fall"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
+visible = false
 light_mask = 2
 position = Vector2(-1.5, -7.5)
 texture = ExtResource("19_568wi")
@@ -946,6 +946,11 @@ player = NodePath("../../../..")
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_um3uc")
 script = ExtResource("32_f23nn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSprite/LightOccluder2D"]
+z_index = 1
+z_as_relative = false
+build_mode = 1
 
 [node name="JumpBuffering" type="RayCast2D" parent="."]
 visible = false
@@ -1111,9 +1116,6 @@ initial_velocity_max = 300.0
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_idjqp")
 color_ramp = SubResource("Gradient_e2se4")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-disabled = true
 
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]

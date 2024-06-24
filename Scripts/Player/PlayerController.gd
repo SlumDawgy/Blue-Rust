@@ -281,17 +281,3 @@ func _physics_process(delta):
 			dying()
 	
 	move_and_slide()
-	#sprite_to_polygon()
-
-
-func sprite_to_polygon() -> void:
-	var texture = $PlayerSprite.sprite_frames.get_frame_texture($PlayerSprite.animation, $PlayerSprite.frame)
-	var data = texture.get_image()
-	
-	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(data)
-	
-	var polys = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, texture.get_size()), 0.5)
-	for polygon in polys:
-		$CollisionPolygon2D.polygon = polygon
-	position = initialPosition - Vector2(bitmap.get_size()/2)
