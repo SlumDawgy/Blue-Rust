@@ -1,0 +1,247 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1rcrgf7cegoc"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Sewer/ReverbDebug.gd" id="1_2er1i"]
+
+[node name="DebugReverbPanel" type="Node" node_paths=PackedStringArray("roomSize", "damping", "spread", "hipass", "dryLevel", "wetLevel", "predelayMsec", "predelayFeedBack")]
+script = ExtResource("1_2er1i")
+roomSize = NodePath("")
+damping = NodePath("")
+spread = NodePath("")
+hipass = NodePath("")
+dryLevel = NodePath("")
+wetLevel = NodePath("")
+predelayMsec = NodePath("")
+predelayFeedBack = NodePath("")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+position = Vector2(59, 243)
+scale = Vector2(2.15028, 2.15028)
+
+[node name="RoomSize" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_right = 107.0
+offset_bottom = 16.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/RoomSize"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "RoomSize"
+
+[node name="RoomValue" type="Label" parent="CanvasLayer/Node2D/RoomSize"]
+layout_mode = 0
+offset_left = 128.355
+offset_top = 2.79034
+offset_right = 204.355
+offset_bottom = 25.7903
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[node name="Damping" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_top = 9.0
+offset_right = 107.0
+offset_bottom = 25.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/Damping"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "Damping
+"
+
+[node name="DampingValue" type="Label" parent="CanvasLayer/Node2D/Damping"]
+layout_mode = 0
+offset_left = 127.425
+offset_top = 4.0
+offset_right = 203.425
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[node name="Spread" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 34.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/Spread"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "Spread
+"
+
+[node name="SpreadValue" type="Label" parent="CanvasLayer/Node2D/Spread"]
+layout_mode = 0
+offset_left = 127.425
+offset_top = 4.0
+offset_right = 203.425
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[node name="HiPass" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_top = 27.0
+offset_right = 107.0
+offset_bottom = 43.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/HiPass"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "Hipass
+"
+
+[node name="hiPassValue" type="Label" parent="CanvasLayer/Node2D/HiPass"]
+layout_mode = 0
+offset_left = 127.425
+offset_top = 4.0
+offset_right = 203.425
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[node name="DryLevel" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_top = 36.0
+offset_right = 107.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/DryLevel"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "Dry Level
+"
+
+[node name="DryValue" type="Label" parent="CanvasLayer/Node2D/DryLevel"]
+layout_mode = 0
+offset_left = 127.425
+offset_top = 4.0
+offset_right = 203.425
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[node name="WetLevel" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_top = 45.0
+offset_right = 107.0
+offset_bottom = 61.0
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/WetLevel"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "Wet Level
+"
+
+[node name="WetValue" type="Label" parent="CanvasLayer/Node2D/WetLevel"]
+layout_mode = 0
+offset_left = 127.425
+offset_top = 4.0
+offset_right = 203.425
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[node name="PreDelayFeedback" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_top = 54.0
+offset_right = 107.0
+offset_bottom = 70.0
+scale = Vector2(0.5, 0.5)
+max_value = 98.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/PreDelayFeedback"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "Predelay
+Feedback
+"
+
+[node name="FeedBackValue" type="Label" parent="CanvasLayer/Node2D/PreDelayFeedback"]
+layout_mode = 0
+offset_left = 127.425
+offset_top = 4.0
+offset_right = 203.425
+offset_bottom = 53.0
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[node name="PreDelayMsec" type="HSlider" parent="CanvasLayer/Node2D"]
+offset_top = 69.0
+offset_right = 107.0
+offset_bottom = 85.0
+scale = Vector2(0.5, 0.5)
+max_value = 500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D/PreDelayMsec"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+scale = Vector2(0.46, 0.46)
+text = "Predelay 
+Msec
+"
+
+[node name="MsecValue" type="Label" parent="CanvasLayer/Node2D/PreDelayMsec"]
+layout_mode = 0
+offset_left = 127.425
+offset_top = 4.0
+offset_right = 203.425
+offset_bottom = 53.0
+scale = Vector2(0.46, 0.46)
+text = "0
+"
+
+[connection signal="value_changed" from="CanvasLayer/Node2D/RoomSize" to="." method="_on_room_size_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Node2D/Damping" to="." method="_on_damping_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Node2D/Spread" to="." method="_on_spread_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Node2D/HiPass" to="." method="_on_hi_pass_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Node2D/DryLevel" to="." method="_on_dry_level_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Node2D/WetLevel" to="." method="_on_wet_level_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Node2D/PreDelayFeedback" to="." method="_on_pre_delay_feedback_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Node2D/PreDelayMsec" to="." method="_on_pre_delay_msec_value_changed"]

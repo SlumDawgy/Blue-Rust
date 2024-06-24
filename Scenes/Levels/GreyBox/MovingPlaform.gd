@@ -1,4 +1,4 @@
-extends AnimatableBody2D
+extends Node2D
 
 @export var distance : Vector2
 @export_range(1.0,20.0)var speed:float = 6.0

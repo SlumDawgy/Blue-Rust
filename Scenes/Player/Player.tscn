@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=164 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -819,6 +819,10 @@ frame_3/duration = 0.1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.974227, 0), -2.82848, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_um3uc"]
+cull_mode = 1
+polygon = PackedVector2Array(-3, 15, -3, -11, 4, -11, 4, 15)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2rdrn"]
 b = Vector2(0, 1)
 
@@ -1009,9 +1013,13 @@ process_callback = 0
 [node name="PlayerLight" type="PointLight2D" parent="."]
 energy = 0.25
 shadow_enabled = true
-shadow_item_cull_mask = 31
+shadow_color = Color(0, 0, 0, 0.439216)
+shadow_item_cull_mask = 64
 texture = ExtResource("32_0ex78")
 texture_scale = 0.2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_um3uc")
 
 [node name="ParasolUpgrade" type="Node2D" parent="."]
 script = ExtResource("48_10k6k")

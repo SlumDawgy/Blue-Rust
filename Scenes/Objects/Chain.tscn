@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://duxac326x0pfj" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ChainLink.png" id="2_igfsj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1bdj"]
+resource_local_to_scene = true
 shader = ExtResource("1_kkgqu")
 shader_parameter/scrollingSpeed = 0.5
 shader_parameter/color = Vector4(0, 0, 0, 0)
