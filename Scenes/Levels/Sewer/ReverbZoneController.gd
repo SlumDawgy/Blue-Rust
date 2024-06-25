@@ -10,8 +10,8 @@ extends Area2D
 @export var predelayFeedback : float
 @export var reverbOn : bool
 
-func _on_area_entered(area):
-	
-	print("Changed Reverb")
-	AudioManager.configure_Reverb_Zone(roomSize,damping,spread,hipass,dryLevel,wetLevel,predelayMsec,predelayFeedback,reverbOn)
-	queue_free()
+func _on_body_entered(body):
+	if "Player" in body.name :
+		print("Changed Reverb")
+		AudioManager.configure_Reverb_Zone(roomSize,damping,spread,hipass,dryLevel,wetLevel,predelayMsec,predelayFeedback,reverbOn)
+		queue_free()

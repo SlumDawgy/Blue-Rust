@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://dul3l6s52fb6k"]
+[gd_scene load_steps=45 format=3 uid="uid://dul3l6s52fb6k"]
 
 [ext_resource type="PackedScene" uid="uid://cftg07li6niyj" path="res://Scenes/Levels/GreyBox/grey_box_tiles.tscn" id="1_btcdx"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="1_ituca"]
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="2_wbl05"]
 [ext_resource type="AudioStream" uid="uid://cgnuvnnxbijsk" path="res://Assets/Sounds/Music/ClockTower.wav" id="3_4r7ew"]
+[ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="4_kfhrn"]
 [ext_resource type="PackedScene" uid="uid://cdemljln3ppe8" path="res://Scenes/Levels/ClockTower/MovingPlatform.tscn" id="4_mj7l6"]
 [ext_resource type="PackedScene" uid="uid://ck7ywd20468oy" path="res://Scenes/Levels/ClockTower/ClockTowerInteriorTiles.tscn" id="4_y6d7s"]
 [ext_resource type="Texture2D" uid="uid://dx5oj2vjur5jr" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockTower_Gears-Sheet.png" id="7_cjasi"]
@@ -107,6 +108,16 @@ autoplay = true
 bus = &"BGM"
 
 [node name="---Environment---" type="Node" parent="."]
+
+[node name="ReverbZone" parent="---Environment---" instance=ExtResource("4_kfhrn")]
+position = Vector2(129, -458)
+roomSize = 0.93
+damping = 0.3
+hipass = 0.6
+predelayFeedback = 0.1
+
+[node name="CollisionShape2D" parent="---Environment---/ReverbZone" index="0"]
+position = Vector2(77.5, 565.25)
 
 [node name="GreyBoxTiles" parent="---Environment---" instance=ExtResource("1_btcdx")]
 layer_1/tile_data = PackedInt32Array(-458725, 65536, 4, -1834989, 65536, 4, -2293723, 65536, 4)
@@ -745,4 +756,5 @@ distance = Vector2(0, 30)
 material = SubResource("ShaderMaterial_ao1g7")
 points = PackedVector2Array(63, 72, 62.5, -318.75)
 
+[editable path="---Environment---/ReverbZone"]
 [editable path="ClockWeights"]

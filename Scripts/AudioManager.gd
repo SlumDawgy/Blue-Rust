@@ -26,7 +26,7 @@ func configure_Reverb_Zone(RoomSize : float, damping : float, spread : float, hi
 	var reverb = AudioServer.get_bus_effect(AudioServer.get_bus_index("SFX"), 1)
 	reverb.room_size = RoomSize
 	reverb.damping = damping
-	reverb. spread = spread
+	reverb.spread = spread
 	reverb.hipass = highPass
 	reverb.dry = dryLevel
 	reverb.wet = wetLevel

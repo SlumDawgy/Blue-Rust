@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c72lhr20esxb0"]
+[gd_scene load_steps=21 format=3 uid="uid://c72lhr20esxb0"]
 
 [ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="1_6l0x3"]
 [ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/CityTiles.tscn" id="1_irim0"]
@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://1ls4v6il07t1" path="res://Assets/Sprites/TileSets/City/GriffinStatue.png" id="8_qlw3j"]
 [ext_resource type="PackedScene" uid="uid://c4aishrkbwiif" path="res://Scenes/Objects/PostProcessing.tscn" id="9_c8bum"]
 [ext_resource type="Texture2D" uid="uid://cncldaa7gq5u3" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclose.png" id="9_mbunv"]
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="10_i1rnk"]
 [ext_resource type="Texture2D" uid="uid://exu7uutwmihf" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxFarBG.png" id="10_oq0j6"]
 [ext_resource type="Texture2D" uid="uid://cwvlxb1dnnmhs" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBG.png" id="11_hp0h5"]
 [ext_resource type="Shader" path="res://Materials/Shaders/FogShader.gdshader" id="14_1esiq"]
+[ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="15_ag4l0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_do5ve"]
 
@@ -105,6 +107,26 @@ texture = ExtResource("7_xgx0m")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="---Environment---/Lighting"]
 color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting"]
+position = Vector2(276, -74)
+texture = ExtResource("10_i1rnk")
+
+[node name="PointLight2D2" type="PointLight2D" parent="---Environment---/Lighting"]
+position = Vector2(545, -74)
+texture = ExtResource("10_i1rnk")
+
+[node name="PointLight2D3" type="PointLight2D" parent="---Environment---/Lighting"]
+position = Vector2(817, -121)
+texture = ExtResource("10_i1rnk")
+
+[node name="PointLight2D4" type="PointLight2D" parent="---Environment---/Lighting"]
+position = Vector2(1052, -134)
+texture = ExtResource("10_i1rnk")
+
+[node name="PointLight2D5" type="PointLight2D" parent="---Environment---/Lighting"]
+position = Vector2(1220, -134)
+texture = ExtResource("10_i1rnk")
 
 [node name="Parallaxing" type="ParallaxBackground" parent="---Environment---"]
 
@@ -240,10 +262,21 @@ text = "To Forest
 [node name="Fog" type="TextureRect" parent="---Environment---"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_ei8ut")
-offset_left = -1410.0
-offset_top = -1720.0
-offset_right = 2201.0
-offset_bottom = 211.0
+offset_left = -953.0
+offset_top = -1871.0
+offset_right = 2658.0
+offset_bottom = 60.0
 texture = SubResource("CanvasTexture_hb5ou")
 expand_mode = 2
 stretch_mode = 6
+
+[node name="ReverbZone" parent="---Environment---" instance=ExtResource("15_ag4l0")]
+position = Vector2(137, -723)
+roomSize = 0.8
+hipass = 0.5
+wetLevel = 0.2
+
+[node name="CollisionShape2D" parent="---Environment---/ReverbZone" index="0"]
+position = Vector2(84.5, 488.375)
+
+[editable path="---Environment---/ReverbZone"]

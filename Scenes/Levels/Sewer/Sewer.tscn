@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://roqm1rqorrsk"]
+[gd_scene load_steps=6 format=3 uid="uid://roqm1rqorrsk"]
 
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="1_y6c76"]
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="2_7vn28"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="3_3ngpe"]
 [ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="4_fc0ev"]
-[ext_resource type="Script" path="res://Scenes/Levels/Sewer/ReverbZoneController.gd" id="6_6ysv7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnub3"]
-size = Vector2(703, 341)
+[ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="5_2y7x2"]
 
 [node name="Sewer" type="Node2D"]
 
@@ -93,21 +90,4 @@ shadow_item_cull_mask = 65
 texture = ExtResource("4_fc0ev")
 offset = Vector2(4.93408, 234.476)
 
-[node name="ReverbZone" type="Area2D" parent="---Environment---"]
-position = Vector2(129, 55)
-collision_layer = 2
-script = ExtResource("6_6ysv7")
-roomSize = 0.4
-damping = 0.12
-spread = 1.0
-dryLevel = 1.0
-wetLevel = 0.35
-predelayMsec = 155.0
-predelayFeedback = 0.2
-reverbOn = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/ReverbZone"]
-position = Vector2(5.5, 101.5)
-shape = SubResource("RectangleShape2D_xnub3")
-
-[connection signal="area_entered" from="---Environment---/ReverbZone" to="---Environment---/ReverbZone" method="_on_area_entered"]
+[node name="ReverbZone" parent="---Environment---" instance=ExtResource("5_2y7x2")]
