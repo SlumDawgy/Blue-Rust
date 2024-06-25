@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="2_wbl05"]
 [ext_resource type="AudioStream" uid="uid://cgnuvnnxbijsk" path="res://Assets/Sounds/Music/ClockTower.wav" id="3_4r7ew"]
 [ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="4_kfhrn"]
-[ext_resource type="PackedScene" uid="uid://cdemljln3ppe8" path="res://Scenes/Levels/ClockTower/MovingPlatform.tscn" id="4_mj7l6"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/ClockTower/MovingPlatform.tscn" id="4_mj7l6"]
 [ext_resource type="PackedScene" uid="uid://ck7ywd20468oy" path="res://Scenes/Levels/ClockTower/ClockTowerInteriorTiles.tscn" id="4_y6d7s"]
 [ext_resource type="Texture2D" uid="uid://dx5oj2vjur5jr" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockTower_Gears-Sheet.png" id="7_cjasi"]
 [ext_resource type="Script" path="res://Scenes/Levels/ClockTower/AutoPlayAnimatedSprite.gd" id="8_q7acx"]
@@ -15,13 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://wwx680rq05uc" path="res://Assets/Sprites/Lighting/LightTextureWallRight.png" id="10_ou4ch"]
 [ext_resource type="Script" path="res://Scenes/Levels/ClockTower/RotateObject.gd" id="11_s2qcw"]
 [ext_resource type="PackedScene" uid="uid://da1gqvnueu2gf" path="res://Scenes/Objects/Chain.tscn" id="12_cy02f"]
-[ext_resource type="PackedScene" uid="uid://c4aishrkbwiif" path="res://Scenes/Objects/PostProcessing.tscn" id="12_hytqp"]
-[ext_resource type="PackedScene" uid="uid://dvuuox0f1owwv" path="res://Scenes/Objects/Chain_ForeGround.tscn" id="13_olqrc"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/PostProcessing.tscn" id="12_hytqp"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/Chain_ForeGround.tscn" id="13_olqrc"]
 [ext_resource type="Shader" path="res://Materials/Shaders/RepeatableSprite.gdshader" id="15_vffq5"]
-[ext_resource type="PackedScene" uid="uid://m2k3w7ibsruj" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Right.tscn" id="17_0ucgm"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Right.tscn" id="17_0ucgm"]
 [ext_resource type="Texture2D" uid="uid://c6mhy2lcoi4db" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockFace.png" id="17_rh4yc"]
 [ext_resource type="Texture2D" uid="uid://okju7eq8217w" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers1.png" id="18_vg4sn"]
-[ext_resource type="PackedScene" uid="uid://dau45do44gcup" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Left.tscn" id="18_y8gjn"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Left.tscn" id="18_y8gjn"]
 [ext_resource type="Texture2D" uid="uid://bc5rh6x4hu66j" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers2.png" id="19_di3si"]
 [ext_resource type="Texture2D" uid="uid://bf4tij3oudbt8" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers3.png" id="20_axn4y"]
 [ext_resource type="Texture2D" uid="uid://cb0j17vloeeke" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers4.png" id="21_unh0m"]
@@ -168,7 +168,6 @@ script = ExtResource("8_q7acx")
 position = Vector2(-269, 36)
 color = Color(0.454902, 0.643137, 0.647059, 1)
 blend_mode = 2
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_4385r")
 texture_scale = 0.75
@@ -177,7 +176,6 @@ texture_scale = 0.75
 position = Vector2(595, 41)
 color = Color(0.454902, 0.643137, 0.647059, 1)
 blend_mode = 2
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("10_ou4ch")
 texture_scale = 0.75
@@ -186,7 +184,6 @@ texture_scale = 0.75
 position = Vector2(266, -10)
 color = Color(0.454902, 0.643137, 0.647059, 1)
 blend_mode = 2
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_irknc")
 texture_scale = 0.75
@@ -195,7 +192,6 @@ texture_scale = 0.75
 position = Vector2(460, -6)
 color = Color(0.454902, 0.643137, 0.647059, 1)
 blend_mode = 2
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_irknc")
 texture_scale = 0.75
@@ -204,7 +200,6 @@ texture_scale = 0.75
 position = Vector2(72, -9)
 color = Color(0.454902, 0.643137, 0.647059, 1)
 blend_mode = 2
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_irknc")
 texture_scale = 0.75
@@ -213,7 +208,6 @@ texture_scale = 0.75
 position = Vector2(-119, -7)
 color = Color(0.454902, 0.643137, 0.647059, 1)
 blend_mode = 2
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_irknc")
 texture_scale = 0.75
@@ -224,7 +218,6 @@ scale = Vector2(1.85938, 1)
 color = Color(0.647059, 0.54902, 0.792157, 1)
 energy = 2.0
 blend_mode = 1
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_irknc")
 texture_scale = 0.5
@@ -233,7 +226,6 @@ texture_scale = 0.5
 position = Vector2(-65, 217)
 color = Color(0.454902, 0.643137, 0.647059, 1)
 energy = 2.0
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_irknc")
 texture_scale = 0.5
@@ -244,7 +236,6 @@ scale = Vector2(1.73022, 1.35938)
 color = Color(0.619608, 0.541176, 0.866667, 1)
 energy = 1.48
 blend_mode = 1
-range_z_max = 100
 shadow_enabled = true
 texture = ExtResource("9_irknc")
 texture_scale = 0.5
