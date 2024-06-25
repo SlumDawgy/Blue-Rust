@@ -205,7 +205,7 @@ func dashing():
 
 func gliding(delta):
 	velocity.x = move_toward(0,0,0)
-	velocity.y = GRAVITY * gravityVarParasol * delta	
+	velocity.y = GRAVITY * gravityVarParasol * delta
 
 func pounding(delta):
 	velocity.x = move_toward(0,0,0)

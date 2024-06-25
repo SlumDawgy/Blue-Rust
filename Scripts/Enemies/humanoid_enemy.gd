@@ -88,7 +88,7 @@ func attacking(delta):
 		if attack_shape.is_colliding():
 			var collision = attack_shape.get_collider(0)
 			if collision is Player:
-				var hitbox : HitBoxComponent = collision.get_node("HitBoxComponent")		
+				var hitbox : HitBoxComponent = collision.get_node("HitBoxComponent")
 				var basicAttack = BasicAttack.new()
 				var collision_direction = (collision.global_position - global_position).normalized()
 				if collision_direction.x < 0:

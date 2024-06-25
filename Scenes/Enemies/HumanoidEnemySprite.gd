@@ -15,7 +15,8 @@ func chooseAnimations():
 		enemy.movement.running:
 			play("WalkingAgro")
 		enemy.movement.attacking:
-			play("Attack")
+			if animation != "Attack":
+				play("Attack")
 		enemy.movement.takingDamage:
 			pass
 

@@ -18,7 +18,7 @@ func _physics_process(delta):
 		queue_free()
 
 
-func _on_start_breaking_body_entered(body : Player):
+func _on_start_breaking_body_entered(body : CharacterBody2D):
 	if startBreaking == false:
 		startBreaking = true
 		sprite.play("BeginBreak")
@@ -27,7 +27,7 @@ func _on_start_breaking_body_entered(body : Player):
 		AudioManager.play_sound(breakingAudio)
 
 
-func _on_broke_body_entered(body : Player):
+func _on_broke_body_entered(body : CharacterBody2D):
 	startBreaking = true
 	sprite.visible = false
 	brokeParticle.emitting = true
