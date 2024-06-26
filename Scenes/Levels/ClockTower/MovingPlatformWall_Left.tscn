@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dau45do44gcup"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/GreyBox/MovingPlaform.gd" id="1_mv5r2"]
+[ext_resource type="Texture2D" uid="uid://7e3lhck2ulmu" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockTowerMovingWallPlatform_left.png" id="2_451dn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gofta"]
+size = Vector2(31, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6fe"]
+atlas = ExtResource("2_451dn")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibwki"]
+atlas = ExtResource("2_451dn")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k511p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibwki")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MovingPlatform_Left" type="AnimatableBody2D"]
+script = ExtResource("1_mv5r2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_gofta")
+one_way_collision = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k511p")

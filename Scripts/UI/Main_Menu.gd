@@ -26,15 +26,11 @@ func _on_back_button_mouse_entered():
 func _on_start_button_pressed():
 	$Scenetransition.transition()
 	AudioManager.play_sound(startGameSFX)
-	await get_tree().create_timer(2).timeout
-	Loadings.loadingScene("Prison", 0)
 
 func _on_load_pressed():
 	$Scenetransition.transition()
+	$Scenetransition.loading = true
 	AudioManager.play_sound(startGameSFX)
-	await get_tree().create_timer(2).timeout
-	Loadings.loadingScene("Prison", 1)
-	Loadings.loaded = true
 	pass # Replace with function body.
 
 func _on_options_pressed():

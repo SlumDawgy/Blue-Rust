@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://2bjgc5mbceqq"]
+
+[ext_resource type="Texture2D" uid="uid://dx4eonfgafger" path="res://Assets/Sprites/TileSets/ClockTowerInterior/Weight.png" id="1_u6apl"]
+[ext_resource type="Texture2D" uid="uid://duxac326x0pfj" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ChainLink.png" id="3_gwmt8"]
+[ext_resource type="Shader" path="res://Materials/Shaders/RepeatableSprite.gdshader" id="3_nax0k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdhj2"]
+resource_local_to_scene = true
+shader = ExtResource("3_nax0k")
+shader_parameter/scrollingSpeed = 0.0
+shader_parameter/color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tday"]
+size = Vector2(26, 46)
+
+[node name="ClockWeights" type="Sprite2D"]
+texture = ExtResource("1_u6apl")
+
+[node name="Chain" type="Line2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vdhj2")
+position = Vector2(-101, -131)
+scale = Vector2(1.6, 1.6)
+points = PackedVector2Array(63, 72, 63.125, 31.25)
+texture = ExtResource("3_gwmt8")
+texture_mode = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_0tday")

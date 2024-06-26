@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=166 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://cpdml0y8o0ib4" path="res://Assets/Sprites/SmokeParticles4.png" id="30_igr4l"]
 [ext_resource type="AudioStream" uid="uid://dhd8equuwemtc" path="res://Assets/Sounds/Player_Sounds/GrappleRetrieve.WAV" id="31_lpb3x"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="32_0ex78"]
+[ext_resource type="Script" path="res://Scripts/Player/LightOccluder2D.gd" id="32_f23nn"]
 [ext_resource type="AudioStream" uid="uid://wbffryedxy1u" path="res://Assets/Sounds/Player_Sounds/GrappleShoot.WAV" id="32_ge0bb"]
 [ext_resource type="AudioStream" uid="uid://ur6mqt2cxmf" path="res://Assets/Sounds/Player_Sounds/Hook_Attach.WAV" id="33_x5fry"]
 [ext_resource type="AudioStream" uid="uid://bthwxorrodtsh" path="res://Assets/Sounds/Player_Sounds/HookMiss.wav" id="34_jxk2o"]
@@ -69,6 +70,9 @@ height = 32.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyc5k"]
 radius = 10.5
 height = 32.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eg4rg"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0waje"]
 atlas = ExtResource("5_ynqkm")
@@ -791,6 +795,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_um3uc"]
+cull_mode = 1
+polygon = PackedVector2Array(-7, -14, 7, -15, 6, 15, -8, 15)
+
 [sub_resource type="Gradient" id="Gradient_hd8fm"]
 offsets = PackedFloat32Array(0, 0.513889, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.677584, 0.869188, 0, 1, 1, 1, 1, 0)
@@ -867,6 +875,7 @@ maxHealth = 3
 damageImmunity = 1.0
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("healthComponentInstance") instance=ExtResource("3_chxby")]
+visible = false
 collision_mask = 52
 healthComponentInstance = NodePath("../HealthComponent")
 
@@ -908,14 +917,16 @@ position = Vector2(0.5, 0)
 shape = SubResource("CapsuleShape2D_gyc5k")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+material = SubResource("CanvasItemMaterial_eg4rg")
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"pounding"
-frame = 5
-frame_progress = 1.0
+animation = &"left_fall"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
 [node name="Arm" type="Sprite2D" parent="PlayerSprite"]
+visible = false
+light_mask = 2
 position = Vector2(-1.5, -7.5)
 texture = ExtResource("19_568wi")
 offset = Vector2(4.5, 0)
@@ -930,6 +941,16 @@ texture = ExtResource("20_a1ajo")
 texture_mode = 1
 script = ExtResource("21_x7ebn")
 player = NodePath("../../../..")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerSprite"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_um3uc")
+script = ExtResource("32_f23nn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSprite/LightOccluder2D"]
+z_index = 1
+z_as_relative = false
+build_mode = 1
 
 [node name="JumpBuffering" type="RayCast2D" parent="."]
 visible = false
@@ -1009,7 +1030,8 @@ process_callback = 0
 [node name="PlayerLight" type="PointLight2D" parent="."]
 energy = 0.25
 shadow_enabled = true
-shadow_item_cull_mask = 31
+shadow_color = Color(0, 0, 0, 0.439216)
+shadow_item_cull_mask = 64
 texture = ExtResource("32_0ex78")
 texture_scale = 0.2
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boau6t7sklg03"
-path="res://.godot/imported/chain.png-e2e7a61d6f73a8851655705c46535873.ctex"
+uid="uid://c6mhy2lcoi4db"
+path="res://.godot/imported/ClockFace.png-ded787324ec3ca3b8f91ab498d063535.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Items/chain.png"
-dest_files=["res://.godot/imported/chain.png-e2e7a61d6f73a8851655705c46535873.ctex"]
+source_file="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockFace.png"
+dest_files=["res://.godot/imported/ClockFace.png-ded787324ec3ca3b8f91ab498d063535.ctex"]
 
 [params]
 

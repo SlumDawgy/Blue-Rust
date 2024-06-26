@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e6otqn14ok7y"
-path="res://.godot/imported/output-onlinepngtools.png-02ccc4a205ebe431854e68593e6e5b68.ctex"
+uid="uid://d1rwtr83wt6jg"
+path="res://.godot/imported/ClockNumbers6.png-70648c3f9ca1b4797353edd2d4e493ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Items/output-onlinepngtools.png"
-dest_files=["res://.godot/imported/output-onlinepngtools.png-02ccc4a205ebe431854e68593e6e5b68.ctex"]
+source_file="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers6.png"
+dest_files=["res://.godot/imported/ClockNumbers6.png-70648c3f9ca1b4797353edd2d4e493ae.ctex"]
 
 [params]
 

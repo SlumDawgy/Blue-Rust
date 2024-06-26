@@ -78,7 +78,10 @@ enum movement
 	dying
 }
 
+var initialPosition
+
 func _ready():
+	initialPosition = position
 	currentMovement = movement.enabled
 
 func getInput():
@@ -196,6 +199,7 @@ func hangingJump():
 		currentMovement = movement.enabled
 
 func dashing():
+	#dashEnabled = true
 	if dashed and dashEnabled:
 		velocity.y = 0
 		if cursorXcoord <= 0:

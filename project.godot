@@ -26,7 +26,6 @@ GlobalPaths="*res://Scripts/GlobalPaths.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 SaveSystem="*res://addons/save_system/save_system.gd"
 Dialogues="*res://Scripts/dialogues.gd"
-Loadings="*res://Scripts/GlobalScenes.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -80,6 +79,7 @@ translation/intern/translation_folder="res://Dialogic/Translation"
 [display]
 
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://Assets/Sprites/Player/Aim.png"
 mouse_cursor/custom_image_hotspot=Vector2(14.5, 15.5)
 mouse_cursor/tooltip_position_offset=Vector2(10, -10)
@@ -186,3 +186,6 @@ locale/translations=PackedStringArray("res://Dialogic/Translation/dialogic_chara
 
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
+textures/webp_compression/lossless_compression_factor=25.0
+viewport/hdr_2d=true
+anti_aliasing/quality/use_debanding=true

@@ -122,6 +122,7 @@ flat = true
 alignment = 0
 
 [node name="Scenetransition" parent="." instance=ExtResource("14_0kjxk")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ywlu5")
