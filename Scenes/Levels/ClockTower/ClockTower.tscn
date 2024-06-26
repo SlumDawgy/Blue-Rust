@@ -1,11 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://dul3l6s52fb6k"]
+[gd_scene load_steps=46 format=3 uid="uid://dul3l6s52fb6k"]
 
 [ext_resource type="PackedScene" uid="uid://cftg07li6niyj" path="res://Scenes/Levels/GreyBox/grey_box_tiles.tscn" id="1_btcdx"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="1_ituca"]
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="2_wbl05"]
 [ext_resource type="AudioStream" uid="uid://cgnuvnnxbijsk" path="res://Assets/Sounds/Music/ClockTower.wav" id="3_4r7ew"]
 [ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="4_kfhrn"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/ClockTower/MovingPlatform.tscn" id="4_mj7l6"]
+[ext_resource type="PackedScene" uid="uid://cdemljln3ppe8" path="res://Scenes/Levels/ClockTower/MovingPlatform.tscn" id="4_mj7l6"]
 [ext_resource type="PackedScene" uid="uid://ck7ywd20468oy" path="res://Scenes/Levels/ClockTower/ClockTowerInteriorTiles.tscn" id="4_y6d7s"]
 [ext_resource type="Texture2D" uid="uid://dx5oj2vjur5jr" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockTower_Gears-Sheet.png" id="7_cjasi"]
 [ext_resource type="Script" path="res://Scenes/Levels/ClockTower/AutoPlayAnimatedSprite.gd" id="8_q7acx"]
@@ -15,13 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://wwx680rq05uc" path="res://Assets/Sprites/Lighting/LightTextureWallRight.png" id="10_ou4ch"]
 [ext_resource type="Script" path="res://Scenes/Levels/ClockTower/RotateObject.gd" id="11_s2qcw"]
 [ext_resource type="PackedScene" uid="uid://da1gqvnueu2gf" path="res://Scenes/Objects/Chain.tscn" id="12_cy02f"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/PostProcessing.tscn" id="12_hytqp"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/Chain_ForeGround.tscn" id="13_olqrc"]
+[ext_resource type="PackedScene" uid="uid://c4aishrkbwiif" path="res://Scenes/Objects/PostProcessing.tscn" id="12_hytqp"]
+[ext_resource type="PackedScene" uid="uid://dvuuox0f1owwv" path="res://Scenes/Objects/Chain_ForeGround.tscn" id="13_olqrc"]
 [ext_resource type="Shader" path="res://Materials/Shaders/RepeatableSprite.gdshader" id="15_vffq5"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Right.tscn" id="17_0ucgm"]
+[ext_resource type="PackedScene" uid="uid://m2k3w7ibsruj" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Right.tscn" id="17_0ucgm"]
 [ext_resource type="Texture2D" uid="uid://c6mhy2lcoi4db" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockFace.png" id="17_rh4yc"]
 [ext_resource type="Texture2D" uid="uid://okju7eq8217w" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers1.png" id="18_vg4sn"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Left.tscn" id="18_y8gjn"]
+[ext_resource type="PackedScene" uid="uid://dau45do44gcup" path="res://Scenes/Levels/ClockTower/MovingPlatformWall_Left.tscn" id="18_y8gjn"]
 [ext_resource type="Texture2D" uid="uid://bc5rh6x4hu66j" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers2.png" id="19_di3si"]
 [ext_resource type="Texture2D" uid="uid://bf4tij3oudbt8" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers3.png" id="20_axn4y"]
 [ext_resource type="Texture2D" uid="uid://cb0j17vloeeke" path="res://Assets/Sprites/TileSets/ClockTowerInterior/ClockNumbers4.png" id="21_unh0m"]
@@ -37,6 +37,10 @@
 [ext_resource type="Texture2D" uid="uid://bc06n0gfj43oh" path="res://Assets/Sprites/TileSets/ClockTowerInterior/Minute Hand.png" id="31_f5eut"]
 [ext_resource type="PackedScene" uid="uid://2bjgc5mbceqq" path="res://Scenes/Objects/ClockWeights.tscn" id="35_d7yye"]
 [ext_resource type="Script" path="res://Scenes/Levels/GreyBox/MovingPlaform.gd" id="36_2yn0h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf4uq"]
+resource_local_to_scene = true
+size = Vector2(3896, 1923)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xv6i7"]
 atlas = ExtResource("7_cjasi")
@@ -94,10 +98,12 @@ groundPoundEnabled = true
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(344, -335)
 zoom = Vector2(2, 2)
+process_callback = 0
 limit_left = -360
 limit_top = -1345
 limit_right = 750
 limit_bottom = 120
+position_smoothing_enabled = true
 editor_draw_limits = true
 script = ExtResource("2_wbl05")
 player = NodePath("../Player")
@@ -117,7 +123,8 @@ hipass = 0.6
 predelayFeedback = 0.1
 
 [node name="CollisionShape2D" parent="---Environment---/ReverbZone" index="0"]
-position = Vector2(77.5, 565.25)
+position = Vector2(105, -155)
+shape = SubResource("RectangleShape2D_yf4uq")
 
 [node name="GreyBoxTiles" parent="---Environment---" instance=ExtResource("1_btcdx")]
 layer_1/tile_data = PackedInt32Array(-458725, 65536, 4, -1834989, 65536, 4, -2293723, 65536, 4)

@@ -24,11 +24,19 @@ func play_Music(stream: AudioStream):
 func configure_Reverb_Zone(RoomSize : float, damping : float, spread : float, highPass : float, dryLevel : float, wetLevel : float, feedbackMsec : float, feedback : float, reverbOn : bool ) :
 	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("SFX"), 1, reverbOn)
 	var reverb = AudioServer.get_bus_effect(AudioServer.get_bus_index("SFX"), 1)
-	reverb.room_size = RoomSize
-	reverb.damping = damping
-	reverb.spread = spread
-	reverb.hipass = highPass
-	reverb.dry = dryLevel
-	reverb.wet = wetLevel
-	reverb.predelay_msec = feedbackMsec
-	reverb.predelay_feedback = feedback
+	if reverb.room_size != RoomSize :
+		reverb.room_size = RoomSize
+	if reverb.damping != damping :
+		reverb.damping = damping
+	if reverb.spread != spread :
+		reverb.spread = spread
+	if reverb.hipass != highPass :
+		reverb.hipass = highPass
+	if reverb.dry != dryLevel :
+		reverb.dry = dryLevel
+	if reverb.wet != wetLevel :
+		reverb.wet = wetLevel
+	if reverb.predelay_msec != feedbackMsec :
+		reverb.predelay_msec = feedbackMsec
+	if reverb.predelay_feedback != feedback :
+		reverb.predelay_feedback = feedback

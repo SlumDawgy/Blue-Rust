@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Levels/Sewer/ReverbZoneController.gd" id="1_kxiva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnub3"]
-size = Vector2(1655, 587.25)
+resource_local_to_scene = true
+size = Vector2(4042, 1923)
 
 [node name="ReverbZone" type="Area2D"]
 position = Vector2(129, 55)

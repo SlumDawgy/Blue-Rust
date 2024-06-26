@@ -14,4 +14,4 @@ func _on_body_entered(body):
 	if "Player" in body.name :
 		print("Changed Reverb")
 		AudioManager.configure_Reverb_Zone(roomSize,damping,spread,hipass,dryLevel,wetLevel,predelayMsec,predelayFeedback,reverbOn)
-		queue_free()
+		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://roqm1rqorrsk"]
+[gd_scene load_steps=8 format=3 uid="uid://roqm1rqorrsk"]
 
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="1_y6c76"]
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="2_7vn28"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="4_fc0ev"]
 [ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="5_2y7x2"]
 [ext_resource type="Script" path="res://Label.gd" id="6_jr258"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydln3"]
+resource_local_to_scene = true
+size = Vector2(4042, 1923)
 
 [node name="Sewer" type="Node2D"]
 
@@ -93,8 +97,13 @@ offset = Vector2(4.93408, 234.476)
 
 [node name="ReverbZone" parent="---Environment---" instance=ExtResource("5_2y7x2")]
 
+[node name="CollisionShape2D" parent="---Environment---/ReverbZone" index="0"]
+shape = SubResource("RectangleShape2D_ydln3")
+
 [node name="Label" type="Label" parent="."]
 z_index = 1
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("6_jr258")
+
+[editable path="---Environment---/ReverbZone"]

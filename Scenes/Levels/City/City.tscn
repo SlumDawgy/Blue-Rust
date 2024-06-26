@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c72lhr20esxb0"]
+[gd_scene load_steps=22 format=3 uid="uid://c72lhr20esxb0"]
 
 [ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="1_6l0x3"]
 [ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/CityTiles.tscn" id="1_irim0"]
@@ -41,6 +41,10 @@ shader_parameter/fog_mask = SubResource("NoiseTexture2D_moybe")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hb5ou"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8n2w"]
+resource_local_to_scene = true
+size = Vector2(4042, 1923)
+
 [node name="CityLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_vxbmt")]
@@ -48,6 +52,7 @@ position = Vector2(0, -31)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 zoom = Vector2(3, 3)
+process_callback = 0
 limit_left = -1015
 limit_top = -649
 limit_right = 1590
@@ -277,6 +282,7 @@ hipass = 0.5
 wetLevel = 0.2
 
 [node name="CollisionShape2D" parent="---Environment---/ReverbZone" index="0"]
-position = Vector2(84.5, 488.375)
+position = Vector2(53, 64)
+shape = SubResource("RectangleShape2D_x8n2w")
 
 [editable path="---Environment---/ReverbZone"]

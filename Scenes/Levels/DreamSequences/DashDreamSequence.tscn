@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bqqmqsa25nhxm"]
+[gd_scene load_steps=42 format=3 uid="uid://bqqmqsa25nhxm"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/DreamScene/DashDreamSequence.gd" id="1_4ss1x"]
 [ext_resource type="PackedScene" uid="uid://ddcwy5gvmfeyc" path="res://Scenes/Levels/Grasslands/grasslands_tile_map.tscn" id="1_af8jq"]
@@ -28,6 +28,8 @@
 [ext_resource type="Theme" uid="uid://d1xkgll5q80wr" path="res://Slider_Theme.tres" id="25_vy82c"]
 [ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="26_kxhhd"]
 [ext_resource type="Environment" uid="uid://dvo6eyhw6b3n5" path="res://PostProcessing.tres" id="27_2e2ax"]
+[ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="29_3eotw"]
+[ext_resource type="PackedScene" uid="uid://b1rcrgf7cegoc" path="res://Scenes/Audio/debug_reverb_panel.tscn" id="30_xa0k4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xatia"]
 shader = ExtResource("2_t43vh")
@@ -182,6 +184,10 @@ size = Vector2(36, 111.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkc7l"]
 size = Vector2(115, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b0rv"]
+resource_local_to_scene = true
+size = Vector2(2187, 492.5)
 
 [node name="DashDreamSequence" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_4ss1x")
@@ -773,6 +779,33 @@ text = "Right Click to Dash"
 position = Vector2(77, 98)
 shape = SubResource("RectangleShape2D_fkc7l")
 
+[node name="ReverbZone" parent="." instance=ExtResource("29_3eotw")]
+roomSize = 0.6
+damping = 0.3
+hipass = 0.45
+wetLevel = 0.15
+predelayMsec = 150.0
+predelayFeedback = 0.1
+
+[node name="CollisionShape2D" parent="ReverbZone" index="0"]
+position = Vector2(1026.5, -669.25)
+shape = SubResource("RectangleShape2D_6b0rv")
+
+[node name="ReverbZone2" parent="." instance=ExtResource("29_3eotw")]
+position = Vector2(130, 559)
+roomSize = 0.72
+damping = 0.3
+hipass = 0.16
+wetLevel = 0.45
+predelayMsec = 165.0
+predelayFeedback = 0.15
+
+[node name="CollisionShape2D" parent="ReverbZone2" index="0"]
+position = Vector2(1026.5, -669.25)
+shape = SubResource("RectangleShape2D_6b0rv")
+
+[node name="DebugReverbPanel" parent="." instance=ExtResource("30_xa0k4")]
+
 [connection signal="pressed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/BackButton" to="Camera/CanvasLayer/PauseMenu" method="_on_back_button_pressed"]
 [connection signal="value_changed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders/Master" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_master_value_changed"]
 [connection signal="value_changed" from="Camera/CanvasLayer/PauseMenu/OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="Camera/CanvasLayer/PauseMenu/OptionsPanel" method="_on_music_slider_value_changed"]
@@ -790,3 +823,6 @@ shape = SubResource("RectangleShape2D_fkc7l")
 [connection signal="body_exited" from="CrystalWarning" to="." method="_on_crystal_warning_body_exited"]
 [connection signal="body_entered" from="Label/DashTutorialLabel" to="." method="_on_dash_tutorial_label_body_entered"]
 [connection signal="body_exited" from="Label/DashTutorialLabel" to="." method="_on_dash_tutorial_label_body_exited"]
+
+[editable path="ReverbZone"]
+[editable path="ReverbZone2"]
