@@ -4,6 +4,8 @@ extends Panel
 @export var buttonClickSound : AudioStream
 @export var menuOpenSound: AudioStream
 @export var menuCloseSound: AudioStream
+
+@export var player : Player
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause") and Dialogic.current_timeline == null:
@@ -56,5 +58,5 @@ func _on_load_last_save_button_mouse_entered():
 
 func _on_load_last_save_button_pressed():
 	AudioManager.play_sound(buttonSelectSound)
-	$"../../..".load_game()
+	Loadings.loadingPlayer(player)
 	toggle_pause()

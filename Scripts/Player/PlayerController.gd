@@ -164,6 +164,7 @@ func grappling():
 		
 		owner.add_child(grapplingHook)
 		
+		floor_snap_length = 1
 		velocity.y = 0.0
 		velocity.x = 0.0
 

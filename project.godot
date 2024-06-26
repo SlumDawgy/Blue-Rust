@@ -28,10 +28,6 @@ SaveSystem="*res://addons/save_system/save_system.gd"
 Dialogues="*res://Scripts/dialogues.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [dialogic]
 
 directories/dch_directory={
