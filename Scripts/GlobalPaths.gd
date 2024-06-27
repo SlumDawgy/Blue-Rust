@@ -15,7 +15,12 @@ const END_GAME_SCENE_PATH: String = "res://Scenes/UI/endGame.tscn"
 const PRISON_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison.tscn"
 # SCENES/LEVELS/DREAMSCENE
 const DREAM_SCENE_PATH: String = "res://Scenes/Levels/DreamSequences/DashDreamSequence.tscn"
-
+#SCENES/LEVELS/SEWER
+const 	SEWER_SCENE_PATH: String = "res://Scenes/Levels/Sewer/Sewer.tscn"
+#SCENES/LEVELS/CITY
+const  CITY_SCENE_PATH: String ="res://Scenes/Levels/City/City.tscn"
+#SCENES/LEVELS/CLOCKTOWER
+const  CLOCKTOWER_SCENE_PATH: String ="res://Scenes/Levels/ClockTower/ClockTower.tscn"
 # ASSETS
 # ASSETS/SPRITES
 # ASSETS/SPRITES/LANTURN

@@ -21,7 +21,8 @@ func save_game():
 	SaveSystem.set_var(\"player:doubleJump\", player.doubleJumpEnabled)
 	SaveSystem.set_var(\"player:parasol\", player.parasolEnabled)
 	SaveSystem.set_var(\"player:health\", player.health.health)
-	
+	SaveSystem.set_var(\"currentScene\", get_tree().current_scene.name)
+	print(SaveSystem.get_var(\"currentScene\"))
 	SaveSystem.set_var(\"Dialogues\", {
 		\"Prison1_1\":Dialogues.Prison1_1,
 		\"Prison1_2\":Dialogues.Prison1_2,

@@ -17,8 +17,11 @@ func loadingScene(sceneID : String, entranceID : int):
 		"DashDream":
 			get_tree().change_scene_to_file(GlobalPaths.DREAM_SCENE_PATH)
 		"City":
-			pass
+			get_tree().change_scene_to_file(GlobalPaths.CITY_SCENE_PATH)
 		"ClockTower":
+			get_tree().change_scene_to_file(GlobalPaths.CLOCKTOWER_SCENE_PATH)
+		"Sewer" :
+			get_tree().change_scene_to_file(GlobalPaths.SEWER_SCENE_PATH)
 			pass
 	
 	get_tree().paused = false

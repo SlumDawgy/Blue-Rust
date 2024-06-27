@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://c72lhr20esxb0"]
+[gd_scene load_steps=23 format=3 uid="uid://c72lhr20esxb0"]
 
-[ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="1_6l0x3"]
 [ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/CityTiles.tscn" id="1_irim0"]
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="1_vxbmt"]
 [ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="2_ai8vi"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="3_gfdc8"]
+[ext_resource type="PackedScene" uid="uid://xbddjqb3wxm2" path="res://Scenes/UI/scenetransition.tscn" id="3_pn4j1"]
+[ext_resource type="PackedScene" uid="uid://bma2o321hsvpc" path="res://Scenes/Objects/level_change.tscn" id="4_16f04"]
 [ext_resource type="Texture2D" uid="uid://72l0k2d53h4m" path="res://Assets/Sprites/TileSets/City/ClockTowerr.png" id="6_gwq8x"]
 [ext_resource type="Texture2D" uid="uid://wnfah61vpeo" path="res://Assets/Sprites/TileSets/City/ClockTower_BG.png" id="7_xgx0m"]
 [ext_resource type="Texture2D" uid="uid://ceiqfib4ikgq4" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBGclosest.png" id="8_ct4uo"]
@@ -48,7 +49,7 @@ size = Vector2(4042, 1923)
 [node name="CityLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_vxbmt")]
-position = Vector2(0, -31)
+position = Vector2(28, -30)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 zoom = Vector2(3, 3)
@@ -66,8 +67,26 @@ player = NodePath("../Player")
 
 [node name="Elevators and Transitions" type="Node" parent="."]
 
-[node name="ElevatorToCity" parent="Elevators and Transitions" instance=ExtResource("1_6l0x3")]
-position = Vector2(0, -54)
+[node name="Scenetransition" parent="Elevators and Transitions" node_paths=PackedStringArray("player") instance=ExtResource("3_pn4j1")]
+player = NodePath("../../Player")
+
+[node name="LevelChangeToSewers" parent="Elevators and Transitions" node_paths=PackedStringArray("sceneTransitionNode", "playerStartPosition") instance=ExtResource("4_16f04")]
+position = Vector2(117, 25)
+entranceID = 2
+sceneTransitionNode = NodePath("../Scenetransition")
+playerStartPosition = NodePath("PlayerStartPosition")
+
+[node name="PlayerStartPosition" type="Node2D" parent="Elevators and Transitions/LevelChangeToSewers"]
+position = Vector2(-94, -54)
+
+[node name="LevelChangeToClockTower" parent="Elevators and Transitions" node_paths=PackedStringArray("sceneTransitionNode", "playerStartPosition") instance=ExtResource("4_16f04")]
+position = Vector2(1757, -149)
+sceneToLoad = "ClockTower"
+sceneTransitionNode = NodePath("../Scenetransition")
+playerStartPosition = NodePath("PlayerStartPosition")
+
+[node name="PlayerStartPosition" type="Node2D" parent="Elevators and Transitions/LevelChangeToClockTower"]
+position = Vector2(-205, 26)
 
 [node name="---Environment---" type="Node" parent="."]
 

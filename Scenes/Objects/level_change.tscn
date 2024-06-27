@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bma2o321hsvpc"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Prison/LevelChangeController.gd" id="1_ped0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_233ri"]
+size = Vector2(169.296, 81)
+
+[node name="LevelChange" type="Node2D"]
+position = Vector2(-1696.8, -586.035)
+script = ExtResource("1_ped0o")
+sceneToLoad = "Sewer"
+entranceID = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-87.8522, 35.5347)
+shape = SubResource("RectangleShape2D_233ri")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

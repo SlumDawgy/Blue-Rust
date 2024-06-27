@@ -10,6 +10,7 @@ var optionsScene = preload(GlobalPaths.OPTIONS_SCREEN_PATH)
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	$Scenetransition.fadetonormal()
+	AudioManager.configure_Reverb_Zone(0,0,0,0,0,0,0,0,false)
 
 func _on_back_button_pressed():
 	AudioManager.play_sound(buttonClickSFX)
@@ -24,11 +25,12 @@ func _on_back_button_mouse_entered():
 
 
 func _on_start_button_pressed():
-	$Scenetransition.transition()
+	$Scenetransition. changeLevel("Prison", -1)
 	AudioManager.play_sound(startGameSFX)
 
 func _on_load_pressed():
-	$Scenetransition.transition()
+	var savedScene = SaveSystem.get_var("currentScene")
+	$Scenetransition.changeLevel(savedScene, -1)
 	$Scenetransition.loading = true
 	AudioManager.play_sound(startGameSFX)
 	pass # Replace with function body.
