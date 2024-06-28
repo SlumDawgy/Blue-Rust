@@ -51,20 +51,6 @@ size = Vector2(4042, 1923)
 [node name="Player" parent="." instance=ExtResource("1_vxbmt")]
 position = Vector2(28, -30)
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-zoom = Vector2(3, 3)
-process_callback = 0
-limit_left = -1015
-limit_top = -649
-limit_right = 1590
-limit_bottom = 15
-position_smoothing_enabled = true
-editor_draw_limits = true
-script = ExtResource("2_ai8vi")
-player = NodePath("../Player")
-
-[node name="Enemies" type="Node" parent="."]
-
 [node name="Elevators and Transitions" type="Node" parent="."]
 
 [node name="Scenetransition" parent="Elevators and Transitions" node_paths=PackedStringArray("player") instance=ExtResource("3_pn4j1")]
@@ -87,6 +73,20 @@ playerStartPosition = NodePath("PlayerStartPosition")
 
 [node name="PlayerStartPosition" type="Node2D" parent="Elevators and Transitions/LevelChangeToClockTower"]
 position = Vector2(-205, 26)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+zoom = Vector2(3, 3)
+process_callback = 0
+limit_left = -1015
+limit_top = -649
+limit_right = 1590
+limit_bottom = 15
+position_smoothing_enabled = true
+editor_draw_limits = true
+script = ExtResource("2_ai8vi")
+player = NodePath("../Player")
+
+[node name="Enemies" type="Node" parent="."]
 
 [node name="---Environment---" type="Node" parent="."]
 

@@ -119,14 +119,14 @@ func _physics_process(_delta):
 func movingPivot():
 	if animation == "right_running":
 		match frame:
-				0: armSprite.position = Vector2(2, -4.5)
-				1: armSprite.position = Vector2(3, -6.5)
-				2: armSprite.position = Vector2(2, -6.5)
+				0: armSprite.position = Vector2(4, -4.5)
+				1: armSprite.position = Vector2(4, -6.5)
+				2: armSprite.position = Vector2(4, -6.5)
 				3: armSprite.position = Vector2(4, -5.5)
-				4: armSprite.position = Vector2(3, -4.5)
-				5: armSprite.position = Vector2(3, -6.5)
-				6: armSprite.position = Vector2(3, -5.5)
-				7: armSprite.position = Vector2(5, -5.5)
+				4: armSprite.position = Vector2(4, -3.5)
+				5: armSprite.position = Vector2(4, -6.5)
+				6: armSprite.position = Vector2(4, -5.5)
+				7: armSprite.position = Vector2(4, -4.5)
 	elif animation == "right_jump":
 		match frame:
 				0: armSprite.position = Vector2(-1.5, -7.5)
@@ -139,14 +139,14 @@ func movingPivot():
 		armSprite.position = Vector2(-1.5, -7.5)
 	elif animation == "left_running":
 		match frame:
-				0: armSprite.position = Vector2(-7, -4.5)
-				1: armSprite.position = Vector2(-6, -6.5)
+				0: armSprite.position = Vector2(-4, -4.5)
+				1: armSprite.position = Vector2(-4, -6.5)
 				2: armSprite.position = Vector2(-4, -6.5)
-				3: armSprite.position = Vector2(-5, -5.5)
-				4: armSprite.position = Vector2(-6, -4.5)
-				5: armSprite.position = Vector2(-7, -6.5)
-				6: armSprite.position = Vector2(-3, -5.5)
-				7: armSprite.position = Vector2(-3, -5.5)
+				3: armSprite.position = Vector2(-4, -5.5)
+				4: armSprite.position = Vector2(-4, -3.5)
+				5: armSprite.position = Vector2(-4, -6.5)
+				6: armSprite.position = Vector2(-4, -5.5)
+				7: armSprite.position = Vector2(-4, -4.5)
 	elif animation == "left_idle":
 		armSprite.position = Vector2(1.5, -7.5)
 	elif animation == "left_jump":
