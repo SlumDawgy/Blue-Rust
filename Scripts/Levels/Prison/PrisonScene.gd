@@ -41,7 +41,7 @@ func _process(_delta):
 	if Dialogues.Prison1_1 and flagPrison1_1:
 		player.get_node("PlayerSprite").play("right_idle")
 		player.currentMovement = player.movement.enabled
-		$ControlLabels/MoveLabel.visible = true
+		#$ControlLabels/MoveLabel.visible = true
 		flagPrison1_1 = false
 	if Dialogues.Prison1_2 and flagPrison1_2:
 		player.currentMovement = player.movement.enabled
