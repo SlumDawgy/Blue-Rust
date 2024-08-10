@@ -88,6 +88,13 @@ mouse_cursor/tooltip_position_offset=Vector2(10, -10)
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/save_system/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Scenes/": "green",
+"res://Scripts/": "red"
+}
+
 [input]
 
 MoveLeft={
