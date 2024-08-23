@@ -4,10 +4,12 @@ extends Camera2D
 
 var speedX = 300
 var speedY = 200
+var _zoom : Vector2 = Vector2(3,3)
 
 
 func _ready():
 	position = player.global_position
+	zoom = _zoom
 
 func _process(delta):
 	if position == player.global_position and position_smoothing_enabled == false:

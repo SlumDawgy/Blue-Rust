@@ -6,8 +6,11 @@ var flagPrison1_1 : bool = true
 var flagPrison1_2 : bool = true
 var flagPrison1_3 : bool = true
 var flagPrison1_4 : bool = true
+var prisonStartRoom: bool = false
 
 func _ready():
+	
+	
 	if Dialogues.Prison1_1:
 		flagPrison1_1 = false
 	if Dialogues.Prison1_2:
@@ -17,14 +20,21 @@ func _ready():
 	if Dialogues.Prison1_4:
 		flagPrison1_4 = false
 	
+	if get_tree().get_current_scene().name == "Prison_Start" :
+		prisonStartRoom = true
+	
 	get_tree().get_current_scene().get_node("Audio/MainLevelTheme").play()
 	
 	if Dialogues.Prison1_1 == false:
-		player.currentMovement = player.movement.disabled
-		player.get_node("PlayerSprite").play("getting_up")
-		player.get_node("PlayerSprite").set_speed_scale(0)
-		Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
-
+		if prisonStartRoom :
+			player.currentMovement = player.movement.disabled
+			player.get_node("PlayerSprite").play("getting_up")
+			player.get_node("PlayerSprite").set_speed_scale(0)
+			Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
+		else :
+			Dialogues.Prison1_1 = true
+			player.currentMovement = player.movement.enabled
+		
 func PowerUp(body):
 	if body.name == "HitBoxComponent":
 		player.get_node("PlayerSprite").playAnimation("idle")
