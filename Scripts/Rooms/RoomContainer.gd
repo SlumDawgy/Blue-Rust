@@ -15,8 +15,8 @@ var current_room: String
 var current_entrance: String 
 
 func _ready():
-	#if SaveSystem.get_var("savedScene") != null :
-	#	first_room = SaveSystem.get_var("savedScene")
+	if SaveSystem.get_var("savedScene") != null :
+		first_room = SaveSystem.get_var("savedScene")
 	load_room(first_room, first_room_entrance)
 
 # Function to load a level

@@ -347,7 +347,7 @@ shape = SubResource("RectangleShape2D_82ak6")
 [node name="TransitionPoint_1" parent="TransitionPoints" instance=ExtResource("14_o6e3r")]
 position = Vector2(94, -31)
 target_room = "PRISON_START_SCENE_PATH"
-target_room_entrance = "TransitionPoints/TransitionPoint_1"
+target_room_entrance = "TransitionPoint_1"
 
 [node name="TransitionCollider" parent="TransitionPoints/TransitionPoint_1" index="0"]
 position = Vector2(-126, -3)

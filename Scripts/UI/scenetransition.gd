@@ -38,8 +38,8 @@ func _on_animation_player_animation_finished(anim_name):
 		get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)
 
 func loaded():
-	player.position.x = int(SaveSystem.get_var("player:positionX"))
-	player.position.y = int(SaveSystem.get_var("player:positionY"))
+	#player.position.x = int(SaveSystem.get_var("player:positionX"))
+	#player.position.y = int(SaveSystem.get_var("player:positionY"))
 	player.doubleJumpEnabled = bool(SaveSystem.get_var("player:doubleJump"))
 	player.dashEnabled = bool(SaveSystem.get_var("player:dash"))
 	player.parasolEnabled = bool(SaveSystem.get_var("player:parasol"))
