@@ -11,11 +11,12 @@
 [node name="RoomContainer" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("2_p2hb4")]
 player = NodePath("../Player")
 camera = NodePath("../Camera2D")
-first_room_entrance = "Transition_1"
+first_room_entrance = "TransitionPoint_1"
 
 [node name="Player" parent="." instance=ExtResource("1_eannj")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_smoothed = true
 script = ExtResource("3_ixo8e")
 
 [node name="CanvasLayer" parent="Camera2D" instance=ExtResource("4_8651e")]

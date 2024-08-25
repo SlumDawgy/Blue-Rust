@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_sbc5h"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_35mmy"]
 [ext_resource type="AudioStream" uid="uid://4w6rytb27jt2" path="res://Assets/Sounds/Music/Symbol.WAV" id="2_qhqh7"]
+[ext_resource type="PackedScene" uid="uid://cgta64a3ydf4" path="res://Scenes/Levels/Rooms/camera_bounds.tscn" id="3_tskx0"]
 [ext_resource type="Texture2D" uid="uid://sf7i2ap7i5ul" path="res://Assets/Sprites/UI/Icons/ASprite.png" id="4_80co8"]
 [ext_resource type="Texture2D" uid="uid://0ke3fdjrj2f5" path="res://Assets/Sprites/UI/Icons/DSprite.png" id="5_ohoin"]
 [ext_resource type="Texture2D" uid="uid://kpravxoanote" path="res://Assets/Sprites/UI/Icons/SpaceSprite.png" id="6_h3ha6"]
@@ -14,9 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="23_5thlc"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="24_fgaib"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="25_jtlul"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_82ak6"]
-size = Vector2(1385, 418)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l705p"]
 size = Vector2(130, 66)
@@ -334,13 +332,7 @@ process_mode = 1
 script = ExtResource("1_sbc5h")
 level_bgm = ExtResource("2_qhqh7")
 
-[node name="CameraBounds" type="Area2D" parent="."]
-visible = false
-
-[node name="CameraBoundsShape" type="CollisionShape2D" parent="CameraBounds"]
-z_index = 1
-position = Vector2(653.5, -150)
-shape = SubResource("RectangleShape2D_82ak6")
+[node name="CameraBounds" parent="." instance=ExtResource("3_tskx0")]
 
 [node name="TransitionPoints" type="Node2D" parent="."]
 
@@ -351,6 +343,14 @@ target_room_entrance = "TransitionPoint_1"
 
 [node name="TransitionCollider" parent="TransitionPoints/TransitionPoint_1" index="0"]
 position = Vector2(-126, -3)
+
+[node name="TransitionPoint_2" parent="TransitionPoints" instance=ExtResource("14_o6e3r")]
+position = Vector2(1354, -249)
+target_room = "PRISON_BREAKING_BRIDGE_SCENE_PATH"
+target_room_entrance = "TransitionPoint_2"
+
+[node name="TransitionCollider" parent="TransitionPoints/TransitionPoint_2" index="0"]
+position = Vector2(45, -4)
 
 [node name="MouseAimAssist" parent="." instance=ExtResource("2_35mmy")]
 position = Vector2(-446, -310)
@@ -979,3 +979,4 @@ layer_0/tile_data = PackedInt32Array(-589807, 1179648, 4, -524271, 1179648, 5, -
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
 
 [editable path="TransitionPoints/TransitionPoint_1"]
+[editable path="TransitionPoints/TransitionPoint_2"]
