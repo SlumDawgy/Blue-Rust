@@ -14,6 +14,7 @@ func _input(event):
 		save_game()
 
 func save_game():
+	SaveSystem.set_var(\"savedScene\", get_tree().edited_scene_root.get_resource_path())
 	SaveSystem.set_var(\"player\", {\"positionX\":null, \"positionY\":null,\"dash\":null, \"doubleJump\":null, \"parasol\":null, \"health\":null})
 	SaveSystem.set_var(\"player:positionX\", player.global_position.x)
 	SaveSystem.set_var(\"player:positionY\", player.global_position.y)

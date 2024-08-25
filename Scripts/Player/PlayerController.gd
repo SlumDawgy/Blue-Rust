@@ -81,6 +81,7 @@ enum movement
 var initialPosition
 
 func _ready():
+	GlobalReferences.player = self
 	initialPosition = position
 	currentMovement = movement.enabled
 

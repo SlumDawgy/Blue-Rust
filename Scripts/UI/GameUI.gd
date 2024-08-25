@@ -12,6 +12,7 @@ var lanturnEmpty = load(GlobalPaths.LANTURN_EMPTY_PATH)
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
+	player = GlobalReferences.player
 	health = player.get_node("HealthComponent")
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -8,8 +8,11 @@ var flagPrison1_3 : bool = true
 var flagPrison1_4 : bool = true
 var prisonStartRoom: bool = false
 
+@export var level_bgm : AudioStream
+
 func _ready():
 	
+	player = GlobalReferences.player
 	
 	if Dialogues.Prison1_1:
 		flagPrison1_1 = false
@@ -23,8 +26,9 @@ func _ready():
 	if get_tree().get_current_scene().name == "Prison_Start" :
 		prisonStartRoom = true
 	
-	get_tree().get_current_scene().get_node("Audio/MainLevelTheme").play()
-	
+	if GlobalReferences.bgm_audioStreamPlayer.stream != level_bgm :
+		GlobalReferences.bgm_audioStreamPlayer.stream = level_bgm	
+	GlobalReferences.bgm_audioStreamPlayer.play()
 	if Dialogues.Prison1_1 == false:
 		if prisonStartRoom :
 			player.currentMovement = player.movement.disabled

@@ -10,6 +10,11 @@ const MAIN_MENU_SCREEN_PATH: String = "res://Scenes/UI/Main_Menu.tscn"
 const DEATH_SCREEN_PATH: String = "res://Scenes/UI/death_ui.tscn"
 const OPTIONS_SCREEN_PATH: String = "res://Scenes/UI/Main_Menu_Options.tscn"
 const END_GAME_SCENE_PATH: String = "res://Scenes/UI/endGame.tscn"
+
+# SCENES/LEVELS
+# SCENES/LEVELS/MAIN_SCENE
+const MAIN_SCENE_PATH: String = "res://Scenes/Levels/MainScene.tscn"
+
 # SCENES/LEVELS
 # SCENES/LEVELS/PRISON
 const PRISON_START_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_start_1.tscn"

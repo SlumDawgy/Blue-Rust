@@ -15,8 +15,8 @@ var current_room: String
 var current_entrance: String 
 
 func _ready():
-	
-	if 
+	#if SaveSystem.get_var("savedScene") != null :
+	#	first_room = SaveSystem.get_var("savedScene")
 	load_room(first_room, first_room_entrance)
 
 # Function to load a level
@@ -57,7 +57,7 @@ func _deferred_load_room(room_path: String, room_entrance: String):
 
 	if target_entrance:
 		player.global_position = target_entrance.global_position
-		player.state = player.STATE_IDLE
+		#player.state = player.STATE_IDLE
 		
 	var camera_bounds = new_level.get_node("CameraBounds/CameraBoundsShape")
 	

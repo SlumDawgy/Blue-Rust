@@ -32,7 +32,7 @@ func _on_animation_player_animation_finished(anim_name):
 		emit_signal("transitioned")
 		if loading == true:
 			GlobalPaths.LOADING = true
-		get_tree().change_scene_to_file(GlobalPaths.PRISON_SCENE_PATH)
+		get_tree().change_scene_to_file(GlobalPaths.MAIN_SCENE_PATH)
 	elif anim_name == "Fade_To_Black" and currentSceneName == "Prison":
 		await get_tree().create_timer(4.0).timeout
 		get_tree().change_scene_to_file(GlobalPaths.MAIN_MENU_SCREEN_PATH)

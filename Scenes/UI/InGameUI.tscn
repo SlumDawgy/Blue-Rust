@@ -14,17 +14,16 @@
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="GameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_edgmg")]
+[node name="GameUI" parent="." instance=ExtResource("1_edgmg")]
 anchors_preset = -1
 anchor_right = 0.673611
 anchor_bottom = 0.432099
 offset_left = -16.0
 offset_right = -16.0
 scale = Vector2(2, 2)
-player = NodePath("")
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseMenu" type="Panel" parent="." node_paths=PackedStringArray("player")]
+[node name="PauseMenu" type="Panel" parent="."]
 process_mode = 3
 visible = false
 offset_left = 1.0
@@ -36,7 +35,6 @@ buttonSelectSound = ExtResource("3_eh0rw")
 buttonClickSound = ExtResource("4_806ji")
 menuOpenSound = ExtResource("5_ir8er")
 menuCloseSound = ExtResource("6_75xpd")
-player = NodePath("")
 
 [node name="OptionsPanel" type="Sprite2D" parent="PauseMenu"]
 process_mode = 2
