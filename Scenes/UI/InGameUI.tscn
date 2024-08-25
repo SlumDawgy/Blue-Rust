@@ -1,0 +1,212 @@
+[gd_scene load_steps=12 format=3 uid="uid://dbc6irhpstqa7"]
+
+[ext_resource type="PackedScene" uid="uid://dlfvlfcjgtiv" path="res://Scenes/UI/game_ui.tscn" id="1_edgmg"]
+[ext_resource type="Script" path="res://Scenes/Levels/Prison/PauseMenu.gd" id="2_6jsp5"]
+[ext_resource type="AudioStream" uid="uid://xd7freyfwwrb" path="res://Assets/Sounds/MenuAndUI/Menu_Select.WAV" id="3_eh0rw"]
+[ext_resource type="AudioStream" uid="uid://bd8usmux71oig" path="res://Assets/Sounds/MenuAndUI/Menu_Click.WAV" id="4_806ji"]
+[ext_resource type="AudioStream" uid="uid://drkfym6amewxa" path="res://Assets/Sounds/MenuAndUI/Menu_Open.WAV" id="5_ir8er"]
+[ext_resource type="AudioStream" uid="uid://cd1uugnaw84q6" path="res://Assets/Sounds/MenuAndUI/Menu_Close.WAV" id="6_75xpd"]
+[ext_resource type="Texture2D" uid="uid://dyte8fqt7m5c6" path="res://Assets/Sprites/UI/OptionsPanel.png" id="7_hcjio"]
+[ext_resource type="Script" path="res://Scripts/UI/Main_Menu_Options.gd" id="8_g01kx"]
+[ext_resource type="FontFile" uid="uid://sifmsaaopv75" path="res://Assets/Fonts/upheavtt.ttf" id="9_33tnb"]
+[ext_resource type="Theme" uid="uid://d1xkgll5q80wr" path="res://Slider_Theme.tres" id="10_xvil8"]
+[ext_resource type="Texture2D" uid="uid://dy0t1p7yuibu1" path="res://Assets/Sprites/UI/Sliders/Knob16x16.png" id="11_rreou"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="GameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_edgmg")]
+anchors_preset = -1
+anchor_right = 0.673611
+anchor_bottom = 0.432099
+offset_left = -16.0
+offset_right = -16.0
+scale = Vector2(2, 2)
+player = NodePath("")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Panel" parent="." node_paths=PackedStringArray("player")]
+process_mode = 3
+visible = false
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1158.0
+offset_bottom = 645.0
+script = ExtResource("2_6jsp5")
+buttonSelectSound = ExtResource("3_eh0rw")
+buttonClickSound = ExtResource("4_806ji")
+menuOpenSound = ExtResource("5_ir8er")
+menuCloseSound = ExtResource("6_75xpd")
+player = NodePath("")
+
+[node name="OptionsPanel" type="Sprite2D" parent="PauseMenu"]
+process_mode = 2
+visible = false
+position = Vector2(579.722, 325)
+scale = Vector2(3.04832, 3.06019)
+texture = ExtResource("7_hcjio")
+script = ExtResource("8_g01kx")
+
+[node name="BackButton" type="Button" parent="PauseMenu/OptionsPanel"]
+offset_left = 120.157
+offset_top = 73.525
+offset_right = 173.157
+offset_bottom = 98.525
+theme_override_fonts/font = ExtResource("9_33tnb")
+theme_override_font_sizes/font_size = 20
+text = "Back"
+
+[node name="Configs" type="VBoxContainer" parent="PauseMenu/OptionsPanel"]
+offset_left = -183.0
+offset_top = -97.0
+offset_right = 69.0
+offset_bottom = 29.0
+
+[node name="Sounds" type="HBoxContainer" parent="PauseMenu/OptionsPanel/Configs"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="PauseMenu/OptionsPanel/Configs/Sounds"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="PauseMenu/OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_33tnb")
+theme_override_font_sizes/font_size = 20
+text = "Master"
+
+[node name="BGM" type="Label" parent="PauseMenu/OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_33tnb")
+theme_override_font_sizes/font_size = 20
+text = "BGM"
+
+[node name="SFX" type="Label" parent="PauseMenu/OptionsPanel/Configs/Sounds/Names"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_33tnb")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+
+[node name="Sliders" type="VBoxContainer" parent="PauseMenu/OptionsPanel/Configs/Sounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Master" type="HSlider" parent="PauseMenu/OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+theme = ExtResource("10_xvil8")
+theme_override_icons/grabber = ExtResource("11_rreou")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicSlider" type="HSlider" parent="PauseMenu/OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+theme = ExtResource("10_xvil8")
+theme_override_icons/grabber = ExtResource("11_rreou")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXSlider" type="HSlider" parent="PauseMenu/OptionsPanel/Configs/Sounds/Sliders"]
+layout_mode = 2
+theme = ExtResource("10_xvil8")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Fullscreen" type="HBoxContainer" parent="PauseMenu/OptionsPanel/Configs"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="PauseMenu/OptionsPanel/Configs/Fullscreen"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_33tnb")
+theme_override_font_sizes/font_size = 20
+text = "FullScreen"
+
+[node name="FullscreenButton" type="CheckButton" parent="PauseMenu/OptionsPanel/Configs/Fullscreen"]
+layout_mode = 2
+theme = ExtResource("10_xvil8")
+
+[node name="Language" type="HBoxContainer" parent="PauseMenu/OptionsPanel/Configs"]
+layout_mode = 2
+
+[node name="Language" type="Label" parent="PauseMenu/OptionsPanel/Configs/Language"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_33tnb")
+theme_override_font_sizes/font_size = 20
+text = "LANGUAGE"
+
+[node name="OptionButton" type="OptionButton" parent="PauseMenu/OptionsPanel/Configs/Language"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_33tnb")
+theme_override_font_sizes/font_size = 10
+item_count = 2
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Portuguese"
+popup/item_1/id = 1
+
+[node name="PauseMenuButtons" type="Control" parent="PauseMenu"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Area2D" type="Sprite2D" parent="PauseMenu/PauseMenuButtons"]
+position = Vector2(583.167, 325.5)
+scale = Vector2(3.03038, 3.03241)
+texture = ExtResource("7_hcjio")
+
+[node name="LoadLastSaveButton" type="Button" parent="PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 158.0
+offset_right = 255.0
+offset_bottom = 181.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("10_xvil8")
+text = "Load Save"
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 108.0
+offset_right = 255.0
+offset_bottom = 131.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("10_xvil8")
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 204.0
+offset_right = 255.0
+offset_bottom = 227.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("10_xvil8")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/PauseMenuButtons"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 255.0
+offset_right = 255.0
+offset_bottom = 278.0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("10_xvil8")
+text = "Quit"
+
+[connection signal="pressed" from="PauseMenu/OptionsPanel/BackButton" to="PauseMenu" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="PauseMenu/OptionsPanel/Configs/Sounds/Sliders/Master" to="PauseMenu/OptionsPanel" method="_on_master_value_changed"]
+[connection signal="value_changed" from="PauseMenu/OptionsPanel/Configs/Sounds/Sliders/MusicSlider" to="PauseMenu/OptionsPanel" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/OptionsPanel/Configs/Sounds/Sliders/SFXSlider" to="PauseMenu/OptionsPanel" method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="PauseMenu/OptionsPanel/Configs/Fullscreen/FullscreenButton" to="PauseMenu/OptionsPanel" method="_on_fullscreen_button_toggled"]
+[connection signal="item_selected" from="PauseMenu/OptionsPanel/Configs/Language/OptionButton" to="PauseMenu/OptionsPanel" method="_on_option_button_item_selected"]
+[connection signal="mouse_entered" from="PauseMenu/PauseMenuButtons/LoadLastSaveButton" to="PauseMenu" method="_on_load_last_save_button_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/PauseMenuButtons/LoadLastSaveButton" to="PauseMenu" method="_on_load_last_save_button_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenuButtons/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/PauseMenuButtons/OptionsButton" to="PauseMenu" method="_on_options_button_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/PauseMenuButtons/OptionsButton" to="PauseMenu" method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/PauseMenuButtons/QuitButton" to="PauseMenu" method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/PauseMenuButtons/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]
