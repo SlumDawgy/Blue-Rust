@@ -10,6 +10,10 @@
 [node name="MainScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_eannj")]
+dashEnabled = true
+parasolEnabled = true
+doubleJumpEnabled = true
+groundPoundEnabled = true
 
 [node name="RoomContainer" type="Node" parent="." node_paths=PackedStringArray("player", "camera")]
 script = ExtResource("2_cb07s")

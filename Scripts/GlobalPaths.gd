@@ -31,7 +31,8 @@ const PRISON_SAVE_ROOM_ONE_SCENE_PATH: String = "res://Scenes/Levels/Prison/pris
 const PRISON_SAVE_ROOM_TWO_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_Save_Room_2.tscn"
 # SCENES/LEVELS/DREAMSCENE
 const DREAM_SCENE_PATH: String = "res://Scenes/Levels/DreamSequences/DashDreamSequence.tscn"
-
+#SCENES/LEVELS/SEWER_WEST
+const SEWER_WEST_SCENE_PATH: String = "res://Scenes/Levels/Sewer/Sewer_West.tscn"
 # ASSETS
 # ASSETS/SPRITES
 # ASSETS/SPRITES/LANTURN

@@ -315,10 +315,9 @@ size = Vector2(71, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_annig"]
 size = Vector2(27, 174.5)
 
-[node name="Prison" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Prison" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_m3e32")
-player = NodePath("")
 
 [node name="CameraBounds" type="Area2D" parent="."]
 
