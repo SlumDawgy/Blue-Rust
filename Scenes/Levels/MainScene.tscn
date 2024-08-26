@@ -19,7 +19,7 @@ groundPoundEnabled = true
 script = ExtResource("2_cb07s")
 player = NodePath("../Player")
 camera = NodePath("../Camera2D")
-first_room = "PRISON_TRANSITION_TO_BOSS_SCENE_PATH"
+first_room = "PRISON_START_SCENE_PATH"
 first_room_entrance = "TransitionPoint_1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
