@@ -14,11 +14,17 @@ func remove_node(instance : AudioStreamPlayer):
 	instance.queue_free()
 
 func play_Music(stream: AudioStream):
-	var instance = AudioStreamPlayer2D.new()
-	instance.stream = stream
-	instance.bus = GlobalPaths.BGM_BUS
-	add_child(instance)
-	instance.play()
+	
+	var asP = GlobalReferences.bgm_audioStreamPlayer
+	if stream != null  and stream != asP.stream:
+		asP.stop()
+		asP.stream = stream
+		asP.play()
+	#var instance = AudioStreamPlayer2D.new()
+	#instance.stream = stream
+	#instance.bus = GlobalPaths.BGM_BUS
+	#add_child(instance)
+	#instance.play()
 	
 #Controls the reverb of a level
 func configure_Reverb_Zone(RoomSize : float, damping : float, spread : float, highPass : float, dryLevel : float, wetLevel : float, feedbackMsec : float, feedback : float, reverbOn : bool ) :

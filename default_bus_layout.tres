@@ -1,4 +1,10 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://b2bna5hvtu4cn"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://b2bna5hvtu4cn"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_2coi1"]
+resource_name = "Compressor"
+threshold = -7.0
+attack_us = 40.0
+release_ms = 240.0
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_4ya6q"]
 resource_name = "Compressor"
@@ -17,6 +23,8 @@ threshold = -4.0
 
 [resource]
 bus/0/volume_db = -0.328256
+bus/0/effect/0/effect = SubResource("AudioEffectCompressor_2coi1")
+bus/0/effect/0/enabled = true
 bus/1/name = &"SFX"
 bus/1/solo = false
 bus/1/mute = false

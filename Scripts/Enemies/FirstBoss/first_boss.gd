@@ -40,6 +40,8 @@ var awaitTimer : float = 0
 var playedSound : bool = false
 @onready var audios = $Audios
 
+@onready var levelController = $"../.."
+
 enum movement
 {
 	starting,
@@ -63,6 +65,7 @@ class BasicAttack:
 	
 
 func _ready():
+	player = GlobalReferences.player
 	currentMovement = movement.starting
 
 func starting():
@@ -210,13 +213,12 @@ func dying(_delta):
 		animation.play("Death")
 	velocity.x = 0
 	if animation.frame == 1:
-		get_tree().root.get_node("Prison/Audio/BossFight").playing = false
-		get_tree().root.get_node("Prison/Audio/MainLevelTheme").playing = true
+		AudioManager.play_Music(levelController.level_bgm)
 		$Audios/Die.play()
 
 	if animation.is_playing() == false:
 		var powerUp = powerUpScene.instantiate()
-		get_tree().root.get_node("Prison").add_child(powerUp)
+		levelController.add_child(powerUp)
 		powerUp.get_node("FragmentArea2D").position = global_position
 
 		powerUp.get_node("FragmentArea2D").connect("area_entered", Callable(get_tree().root.get_node("Prison"), "PowerUp"))

@@ -8,7 +8,8 @@ var flagPrison1_3 : bool = true
 var flagPrison1_4 : bool = true
 var prisonStartRoom: bool = false
 
-@export var level_bgm : AudioStream
+@export var level_bgm = preload("res://Assets/Sounds/Music/Symbol.WAV") 
+@onready var boss_BGM = preload("res://Assets/Sounds/Music/Mechanical (2).WAV")
 
 
 func _ready():
@@ -26,10 +27,8 @@ func _ready():
 	
 	if get_tree().get_current_scene().name == "Prison_Start" :
 		prisonStartRoom = true
-	
-	if GlobalReferences.bgm_audioStreamPlayer.stream != level_bgm :
-		GlobalReferences.bgm_audioStreamPlayer.stream = level_bgm	
-		GlobalReferences.bgm_audioStreamPlayer.play()
+	if level_bgm != null:
+		AudioManager.play_Music(level_bgm)
 	if Dialogues.Prison1_1 == false:
 		if prisonStartRoom :
 			player.currentMovement = player.movement.disabled
@@ -91,9 +90,8 @@ func _on_dialogue_13_body_entered(body):
 		$"Cutscenes/dialogue1-3".queue_free()
 
 func _on_start_boss_body_entered(body):
-	if body.name == "Player":
-		$"Audio/MainLevelTheme".playing = false
-		$"Audio/BossFight".playing = true
+	if body.name == "Player":		
+		AudioManager.play_Music(boss_BGM)
 		$"Cutscenes/Start_Boss".PROCESS_MODE_DISABLED
 		$Boss/First_Boss.currentMovement = $Boss/First_Boss.movement.enabled
 
