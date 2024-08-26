@@ -2,6 +2,7 @@ extends Area2D
 
 @export var target_room: String
 @export var target_room_entrance: String
+@onready var camera_bounds = $"../../CameraBounds/CameraBoundsShape"
 
 func _ready():
 	connect("body_entered", _on_body_entered)

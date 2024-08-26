@@ -30,12 +30,19 @@ func _process(delta):
 		position.y -= speedY * delta
 	position.y = clamp(position.y, player.position.y - 25, player.position.y + 25)
 
+func reset_bounds():
+	limit_bottom = 500
+	limit_top = -500
+	limit_left = -500
+	limit_right = 500
 
 func set_camera_bounds(camera_bounds):
 	limit_bottom = camera_bounds.position.y + camera_bounds.shape.size.y/2.
 	limit_top = camera_bounds.position.y - camera_bounds.shape.size.y/2.
 	limit_left = camera_bounds.position.x - camera_bounds.shape.size.x/2.
 	limit_right = camera_bounds.position.x + camera_bounds.shape.size.x/2.
+	
+	print("camera", limit_bottom,limit_top, limit_left, limit_right)
 	
 	
 func handle_camerea_zoom(new_zoom):

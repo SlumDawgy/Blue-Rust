@@ -59,9 +59,9 @@ func _deferred_load_room(room_path: String, room_entrance: String):
 		player.global_position = target_entrance.global_position
 		#player.state = player.STATE_IDLE
 		
-	var camera_bounds = new_level.get_node("CameraBounds/CameraBoundsShape")
+	#var camera_bounds = target_entrance.camera_bounds
 	
-	await camera.set_camera_bounds(camera_bounds)
+	await camera.set_camera_bounds(target_entrance.camera_bounds)
 	await get_tree().create_timer(0.5).timeout
 	
 	transition_fader.fade_in()

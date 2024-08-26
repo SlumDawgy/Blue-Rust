@@ -1,8 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://bsqo1jyrqtpr4"]
+[gd_scene load_steps=25 format=3 uid="uid://bsqo1jyrqtpr4"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_mskso"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_uhevh"]
-[ext_resource type="Script" path="res://Scripts/UI/endGame.gd" id="3_s0ggt"]
 [ext_resource type="Texture2D" uid="uid://sf7i2ap7i5ul" path="res://Assets/Sprites/UI/Icons/ASprite.png" id="5_wn5ec"]
 [ext_resource type="Texture2D" uid="uid://0ke3fdjrj2f5" path="res://Assets/Sprites/UI/Icons/DSprite.png" id="6_rtlo1"]
 [ext_resource type="Texture2D" uid="uid://kpravxoanote" path="res://Assets/Sprites/UI/Icons/SpaceSprite.png" id="7_76jfe"]
@@ -19,19 +18,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpem6"]
 resource_local_to_scene = true
-size = Vector2(854, 509)
+size = Vector2(852, 514)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmhcw"]
 size = Vector2(271.75, 23)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7irm"]
-size = Vector2(77.5, 88)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv1s1"]
-size = Vector2(160, 136)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jicm"]
-size = Vector2(150, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l705p"]
 size = Vector2(130, 66)
@@ -349,12 +339,10 @@ process_mode = 1
 script = ExtResource("1_mskso")
 
 [node name="CameraBounds" type="Area2D" parent="."]
-visible = false
-position = Vector2(624, -209)
 
 [node name="CameraBoundsShape" type="CollisionShape2D" parent="CameraBounds"]
 z_index = 1
-position = Vector2(423, 14.5)
+position = Vector2(1077, -210)
 shape = SubResource("RectangleShape2D_qpem6")
 
 [node name="TransitionPoints" type="Node2D" parent="."]
@@ -365,6 +353,14 @@ target_room = "PRISON_START_SCENE_PATH"
 target_room_entrance = "TransitionPoint_2"
 
 [node name="TransitionCollider" parent="TransitionPoints/TransitionPoint_2" index="0"]
+position = Vector2(-34, 0)
+
+[node name="TransitionPoint_3" parent="TransitionPoints" instance=ExtResource("16_mqhsq")]
+position = Vector2(619, -393)
+target_room = "PRISON_GRAPPLE_ROOM_SCENE_PATH"
+target_room_entrance = "TransitionPoint_3"
+
+[node name="TransitionCollider" parent="TransitionPoints/TransitionPoint_3" index="0"]
 position = Vector2(-34, 0)
 
 [node name="MouseAimAssist" parent="." instance=ExtResource("2_uhevh")]
@@ -378,27 +374,6 @@ position = Vector2(605, -111)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/dialogue1-2"]
 position = Vector2(570, 118)
 shape = SubResource("RectangleShape2D_xmhcw")
-
-[node name="dialogue1-3" type="Area2D" parent="Cutscenes"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/dialogue1-3"]
-position = Vector2(-406, -512)
-shape = SubResource("RectangleShape2D_d7irm")
-
-[node name="endGame" type="Area2D" parent="Cutscenes"]
-position = Vector2(-1345, -584)
-script = ExtResource("3_s0ggt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/endGame"]
-position = Vector2(-64, 4)
-shape = SubResource("RectangleShape2D_uv1s1")
-
-[node name="Start_Boss" type="Area2D" parent="Cutscenes"]
-position = Vector2(1096, -1064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscenes/Start_Boss"]
-position = Vector2(-8, -10)
-shape = SubResource("RectangleShape2D_4jicm")
 
 [node name="ControlLabels" type="Node2D" parent="."]
 top_level = true
@@ -1023,10 +998,6 @@ layer_0/tile_data = PackedInt32Array(-589807, 1179648, 4, -524271, 1179648, 5, -
 position = Vector2(1088, -168)
 
 [connection signal="body_entered" from="Cutscenes/dialogue1-2" to="." method="_on_dialogue_12_body_entered"]
-[connection signal="body_entered" from="Cutscenes/dialogue1-3" to="." method="_on_dialogue_13_body_entered"]
-[connection signal="body_entered" from="Cutscenes/endGame" to="Cutscenes/endGame" method="_on_body_entered"]
-[connection signal="body_entered" from="Cutscenes/Start_Boss" to="." method="_on_start_boss_body_entered"]
-[connection signal="body_entered" from="Cutscenes/Start_Boss" to="Cutscenes/Start_Boss" method="_on_body_entered"]
 [connection signal="body_exited" from="ControlLabels/MoveLabel/MoveLabelArea2D" to="." method="_on_move_label_area_2d_body_exited"]
 [connection signal="body_entered" from="ControlLabels/JumpLabel/JumpLabelArea2D" to="." method="_on_jump_label_area_2d_body_entered"]
 [connection signal="body_exited" from="ControlLabels/JumpLabel/JumpLabelArea2D" to="." method="_on_jump_label_area_2d_body_exited"]
@@ -1037,3 +1008,4 @@ position = Vector2(1088, -168)
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
 
 [editable path="TransitionPoints/TransitionPoint_2"]
+[editable path="TransitionPoints/TransitionPoint_3"]
