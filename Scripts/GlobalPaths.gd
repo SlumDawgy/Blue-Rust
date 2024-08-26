@@ -26,6 +26,7 @@ const PRISON_WATER_GRAPPLE_SCENE_PATH: String = "res://Scenes/Levels/Prison/pris
 const PRISON_TRANSITION_TO_BOSS_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_Transition_To_Boss_7.tscn"
 const PRISON_BOSS_ROOM_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_Boss_Room.tscn"
 const PRISON_AFTER_BOSS_ROOM_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_After_Boss_Room.tscn"
+const PRISON_PATH_TO_SEWER_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_Path_to_Sewer.tscn"
 const PRISON_SAVE_ROOM_ONE_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_Save_Room_1.tscn"
 const PRISON_SAVE_ROOM_TWO_SCENE_PATH: String = "res://Scenes/Levels/Prison/prison_Save_Room_2.tscn"
 # SCENES/LEVELS/DREAMSCENE

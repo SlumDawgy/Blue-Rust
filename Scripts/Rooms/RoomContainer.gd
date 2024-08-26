@@ -5,7 +5,7 @@ class_name RoomContainer
 @export var camera: Camera2D
 @export var first_room: String
 @export var first_room_entrance: String = "TransitionPoints/Transition_1"
-@onready var transition_fader = $TransitionFadeout
+@onready var transition_fader = $"../Camera2D/TransitionFadeout"
 
 var can_transition: bool = true
 var transition_complete: bool = true
@@ -26,6 +26,8 @@ func load_room(room_path: String, room_entrance: String):
 	
 	# Defer the entire process to avoid modification during physics processing
 	can_transition = false
+	if !player.isTransitioning:
+		player.isTransitioning = true
 #	for child in get_tree().root.get_children():
 #		if child is Lantern:
 #			if !child.held:
@@ -57,7 +59,6 @@ func _deferred_load_room(room_path: String, room_entrance: String):
 
 	if target_entrance:
 		player.global_position = target_entrance.global_position
-		#player.state = player.STATE_IDLE
 		
 	#var camera_bounds = target_entrance.camera_bounds
 	
@@ -66,6 +67,8 @@ func _deferred_load_room(room_path: String, room_entrance: String):
 	
 	transition_fader.fade_in()
 	can_transition = true
+	player.isTransitioning = false
+	
 
 
 # Helper function to clear children

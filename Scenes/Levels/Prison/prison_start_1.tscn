@@ -337,7 +337,7 @@ level_bgm = ExtResource("2_qhqh7")
 [node name="TransitionPoints" type="Node2D" parent="."]
 
 [node name="TransitionPoint_1" parent="TransitionPoints" instance=ExtResource("14_o6e3r")]
-position = Vector2(94, -31)
+position = Vector2(94, -25)
 target_room = "PRISON_START_SCENE_PATH"
 target_room_entrance = "TransitionPoint_1"
 
@@ -345,7 +345,7 @@ target_room_entrance = "TransitionPoint_1"
 position = Vector2(-126, -3)
 
 [node name="TransitionPoint_2" parent="TransitionPoints" instance=ExtResource("14_o6e3r")]
-position = Vector2(1354, -249)
+position = Vector2(1354, -223)
 target_room = "PRISON_BREAKING_BRIDGE_SCENE_PATH"
 target_room_entrance = "TransitionPoint_2"
 

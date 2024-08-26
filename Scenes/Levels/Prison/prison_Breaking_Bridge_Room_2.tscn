@@ -348,20 +348,20 @@ shape = SubResource("RectangleShape2D_qpem6")
 [node name="TransitionPoints" type="Node2D" parent="."]
 
 [node name="TransitionPoint_2" parent="TransitionPoints" instance=ExtResource("16_mqhsq")]
-position = Vector2(617, -234)
+position = Vector2(640, -217)
 target_room = "PRISON_START_SCENE_PATH"
 target_room_entrance = "TransitionPoint_2"
 
 [node name="TransitionCollider" parent="TransitionPoints/TransitionPoint_2" index="0"]
-position = Vector2(-34, 0)
+position = Vector2(-53, -20)
 
 [node name="TransitionPoint_3" parent="TransitionPoints" instance=ExtResource("16_mqhsq")]
-position = Vector2(619, -393)
+position = Vector2(642, -377)
 target_room = "PRISON_GRAPPLE_ROOM_SCENE_PATH"
 target_room_entrance = "TransitionPoint_3"
 
 [node name="TransitionCollider" parent="TransitionPoints/TransitionPoint_3" index="0"]
-position = Vector2(-34, 0)
+position = Vector2(-55, -22)
 
 [node name="MouseAimAssist" parent="." instance=ExtResource("2_uhevh")]
 position = Vector2(-446, -310)

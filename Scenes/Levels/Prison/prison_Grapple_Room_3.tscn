@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dj7br8u5ja4rm" path="res://Scenes/Objects/BreakingBridge.tscn" id="31_y0b2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vlfa"]
-size = Vector2(43, 187)
+size = Vector2(116, 55.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61lct"]
 resource_local_to_scene = true
@@ -344,14 +344,27 @@ player = NodePath("")
 [node name="TransitionPoint_3" type="Area2D" parent="TransitionPoints"]
 process_priority = -1
 process_physics_priority = -1
-position = Vector2(655, -392)
+position = Vector2(654, -380)
 collision_priority = -1.0
 script = ExtResource("2_w4cmi")
 target_room = "PRISON_BREAKING_BRIDGE_SCENE_PATH"
 target_room_entrance = "TransitionPoint_3"
 
 [node name="TransitionCollider" type="CollisionShape2D" parent="TransitionPoints/TransitionPoint_3"]
-position = Vector2(56.5, 0)
+position = Vector2(101, -13)
+shape = SubResource("RectangleShape2D_6vlfa")
+
+[node name="TransitionPoint_4" type="Area2D" parent="TransitionPoints"]
+process_priority = -1
+process_physics_priority = -1
+position = Vector2(-558, -542)
+collision_priority = -1.0
+script = ExtResource("2_w4cmi")
+target_room = "PRISON_VERTICLE_ONE_SCENE_PATH"
+target_room_entrance = "TransitionPoint_4"
+
+[node name="TransitionCollider" type="CollisionShape2D" parent="TransitionPoints/TransitionPoint_4"]
+position = Vector2(31, -65.75)
 shape = SubResource("RectangleShape2D_6vlfa")
 
 [node name="CameraBounds" type="Area2D" parent="."]
