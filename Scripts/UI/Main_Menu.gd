@@ -30,7 +30,7 @@ func _on_start_button_pressed():
 
 func _on_load_pressed():
 	$Scenetransition.transition()
-	$Scenetransition.loading = true
+	GlobalPaths.LOADING = true
 	AudioManager.play_sound(startGameSFX)
 	pass # Replace with function body.
 

@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bbra1f43w0rlh"]
+[gd_scene load_steps=22 format=3 uid="uid://bbra1f43w0rlh"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_sbc5h"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_35mmy"]
-[ext_resource type="AudioStream" uid="uid://4w6rytb27jt2" path="res://Assets/Sounds/Music/Symbol.WAV" id="2_qhqh7"]
 [ext_resource type="PackedScene" uid="uid://cgta64a3ydf4" path="res://Scenes/Levels/Rooms/camera_bounds.tscn" id="3_tskx0"]
 [ext_resource type="Texture2D" uid="uid://sf7i2ap7i5ul" path="res://Assets/Sprites/UI/Icons/ASprite.png" id="4_80co8"]
 [ext_resource type="Texture2D" uid="uid://0ke3fdjrj2f5" path="res://Assets/Sprites/UI/Icons/DSprite.png" id="5_ohoin"]
@@ -330,7 +329,6 @@ sources/0 = SubResource("TileSetAtlasSource_xyriy")
 [node name="Prison_Start" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_sbc5h")
-level_bgm = ExtResource("2_qhqh7")
 
 [node name="CameraBounds" parent="." instance=ExtResource("3_tskx0")]
 

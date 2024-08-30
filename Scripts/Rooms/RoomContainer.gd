@@ -14,10 +14,15 @@ var first_load: bool = true
 var current_room: String
 var current_entrance: String 
 
+var user_prefs : UserPreferences
+
 func _ready():
-	if SaveSystem.get_var("savedScene") != null :
-		first_room = SaveSystem.get_var("savedScene")
-	load_room(first_room, first_room_entrance)
+	user_prefs = UserPreferences.load_or_create()
+	
+	if GlobalPaths.LOADING:
+		load_room(user_prefs.room, user_prefs.entrance)
+	else:
+		load_room(first_room, first_room_entrance)
 
 # Function to load a level
 func load_room(room_path: String, room_entrance: String):
@@ -76,4 +81,3 @@ func queue_free_children():
 	for child in get_children():
 		if child != transition_fader:
 			child.queue_free()
-

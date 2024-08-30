@@ -9,32 +9,28 @@ script/source = "extends Node2D
 @export var player : Player
 var canSave : bool = true
 
+var user_prefs : UserPreferences
+
+@export var room : String
+@export var entrance : String
+
+func _ready():
+	player = GlobalReferences.player
+
 func _input(event):
 	if event.is_action_pressed(\"useItem\") and canSave:
 		save_game()
 
 func save_game():
-	#SaveSystem.set_var(\"savedScene\", get_tree().edited_scene_root.get_resource_path())
-	SaveSystem.set_var(\"player\", {\"positionX\":null, \"positionY\":null,\"dash\":null, \"doubleJump\":null, \"parasol\":null, \"health\":null})
-	SaveSystem.set_var(\"player:positionX\", player.global_position.x)
-	SaveSystem.set_var(\"player:positionY\", player.global_position.y)
-	SaveSystem.set_var(\"player:dash\", player.dashEnabled)
-	SaveSystem.set_var(\"player:doubleJump\", player.doubleJumpEnabled)
-	SaveSystem.set_var(\"player:parasol\", player.parasolEnabled)
-	SaveSystem.set_var(\"player:health\", player.health.health)
+	# Save functions
+	user_prefs = UserPreferences.load_or_create()
+	user_prefs.room = room
+	user_prefs.entrance = entrance
+	user_prefs.player_dash = player.dashEnabled
+	user_prefs.player_double_jump = player.doubleJumpEnabled
+	user_prefs.player_parasol = player.parasolEnabled
 	
-	SaveSystem.set_var(\"Dialogues\", {
-		\"Prison1_1\":Dialogues.Prison1_1,
-		\"Prison1_2\":Dialogues.Prison1_2,
-		\"Prison1_3\":Dialogues.Prison1_3,
-		\"Prison1_4\":Dialogues.Prison1_4,
-		\"Dream1_1\":Dialogues.Dream1_1,
-		\"Dream1_2\":Dialogues.Dream1_2,
-		\"Dream1_3\":Dialogues.Dream1_3
-	})
-
-	SaveSystem.save()
-
+	user_prefs.save()
 
 func _on_body_entered(body : Player):
 	$Label.visible = true
@@ -1320,6 +1316,7 @@ animations = [{
 }]
 
 [node name="Save Point" type="Area2D"]
+visible = false
 script = SubResource("GDScript_m5uxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

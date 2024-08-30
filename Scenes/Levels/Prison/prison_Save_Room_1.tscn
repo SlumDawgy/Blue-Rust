@@ -325,7 +325,10 @@ position = Vector2(-446, -310)
 script = ExtResource("3_hkjsw")
 
 [node name="Save Point2" parent="SavePoints" instance=ExtResource("4_xqbhr")]
+visible = true
 position = Vector2(479, -1073)
+room = "PRISON_SAVE_ROOM_ONE_SCENE_PATH"
+entrance = "TransitionPoint_1"
 
 [node name="---Environment---" type="Node" parent="."]
 
