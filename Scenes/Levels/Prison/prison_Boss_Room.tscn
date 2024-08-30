@@ -465,7 +465,7 @@ layer_4/tile_data = PackedInt32Array(-4718535, 720896, 2, -4718534, 720896, 2, -
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
-energy = 0.25
+energy = 0.1
 
 [node name="EnemyRoom" type="Node" parent="---Environment---/Lighting"]
 

@@ -334,10 +334,9 @@ texture = ExtResource("30_035ck")
 [sub_resource type="TileSet" id="TileSet_q1gfa"]
 sources/0 = SubResource("TileSetAtlasSource_xyriy")
 
-[node name="Prison" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Prison" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_6kixw")
-player = NodePath("")
 
 [node name="TransitionPoints" type="Node2D" parent="."]
 
@@ -473,6 +472,7 @@ layer_4/tile_data = PackedInt32Array(-1507301, 720896, 2, -1572837, 720896, 2, -
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
+energy = 0.01
 
 [node name="StartingArea" type="Node" parent="---Environment---/Lighting"]
 

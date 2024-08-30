@@ -316,10 +316,9 @@ sources/0 = SubResource("TileSetAtlasSource_xyriy")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vlfa"]
 size = Vector2(89.5, 187)
 
-[node name="Prison" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Prison" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_j2rq3")
-player = NodePath("")
 
 [node name="CameraBounds" type="Area2D" parent="."]
 
@@ -365,6 +364,7 @@ layer_4/tile_data = PackedInt32Array(-1900582, 720896, 2, -1835046, 720896, 2, -
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
+energy = 0.01
 
 [node name="ElevatorRoom" type="Node" parent="---Environment---/Lighting"]
 

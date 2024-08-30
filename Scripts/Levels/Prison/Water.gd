@@ -9,6 +9,13 @@ class WaterDamage:
 func _on_body_entered(body):
 	
 	if body.name == "Player":
-		body.currentMovement = body.movement.takingDamage
-		var waterDamage = WaterDamage.new()
-		body.get_node("HitBoxComponent").damage(waterDamage)
+		body.speed = body.waterSpeed
+		body.jumpSpeed = body.waterJumpSpeed
+	
+
+
+
+func _on_body_exited(body):
+	if body.name == "Player":
+		body.speed = body.landSpeed
+		body.jumpSpeed = body.landJumpSpeed

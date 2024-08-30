@@ -8,10 +8,15 @@ var GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Movements
 var currentMovement : int
-@export var speed : float = 115.0
+var speed
+@export var landSpeed : float = 115.0
+@export var waterSpeed : float = 55.0
 
 # Jump Variables
-@export var jumpSpeed : float = -250.0
+var jumpSpeed 
+@export var landJumpSpeed : float = -250.0
+@export var waterJumpSpeed : float = -125.0
+
 var jumped : bool = false
 
 var gravityModifier : float = 0.65
@@ -79,12 +84,15 @@ enum movement
 	pounding,
 	takingDamage,
 	transitioning,
+	waterTraverse,
 	dying
 }
 
 var initialPosition
 
 func _ready():
+	speed = landSpeed
+	jumpSpeed = landJumpSpeed
 	GlobalReferences.player = self
 	initialPosition = position
 	currentMovement = movement.enabled
@@ -267,6 +275,9 @@ func takingDamage():
 	currentMovement = movement.enabled
 	_takingDamage = false
 	gravityModifier = gravityVarDownwards
+
+func waterTraverse():
+	speed = waterSpeed
 
 func transitioning():
 	

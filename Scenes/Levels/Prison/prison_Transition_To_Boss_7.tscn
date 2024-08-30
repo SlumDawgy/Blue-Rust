@@ -316,10 +316,9 @@ size = Vector2(117, 131.5)
 resource_local_to_scene = true
 size = Vector2(1325.5, 341)
 
-[node name="Prison" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Prison" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_47weg")
-player = NodePath("")
 
 [node name="MouseAimAssist" parent="." instance=ExtResource("2_ai2i3")]
 position = Vector2(-446, -310)
@@ -358,7 +357,7 @@ layer_4/tile_data = PackedInt32Array(-1507301, 720896, 2, -1572837, 720896, 2, -
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
-energy = 0.25
+energy = 0.01
 
 [node name="PathToBoss" type="Node" parent="---Environment---/Lighting"]
 
