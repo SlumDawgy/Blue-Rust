@@ -10,7 +10,7 @@ var startPosition : Vector2
 var positionToReach : Vector2
 var returning : bool = false
 var movingPlayer : bool = false
-var player : Player
+@onready var player = GlobalReferences.player
 
 var audios
 var canPlayRetrieve = true

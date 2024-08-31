@@ -40,3 +40,6 @@ offset_bottom = 3113.0
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"BGM"
 script = ExtResource("5_lho4q")
+
+[editable path="Player"]
+[editable path="Player/HitBoxComponent"]

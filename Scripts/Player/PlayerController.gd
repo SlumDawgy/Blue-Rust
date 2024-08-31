@@ -11,6 +11,7 @@ var currentMovement : int
 var speed
 @export var landSpeed : float = 115.0
 @export var waterSpeed : float = 55.0
+var inWater: bool = false
 
 # Jump Variables
 var jumpSpeed 
@@ -111,7 +112,7 @@ func enabled():
 	
 	velocity.x = speed * inputDirection
 	
-	if Input.is_action_just_pressed("GrapplingHook"):
+	if Input.is_action_just_pressed("GrapplingHook") and !inWater:
 		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
 		return
@@ -135,7 +136,7 @@ func jumping():
 		audio.playrandom(audio.playerJump, audio.playerJump_w_Grunt)
 		jumped = false
 	
-	if Input.is_action_just_pressed("GrapplingHook"):
+	if Input.is_action_just_pressed("GrapplingHook")  and !inWater:
 		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
 		return
@@ -172,8 +173,8 @@ func mantling():
 
 func grappling():
 	if isTransitioning:
-		currentMovement = movement.transitioning
-	if not grapplingHook:
+		currentMovement = movement.transitioning	
+	if not grapplingHook :
 		AudioManager.play_sound(audio.grappleShoot)
 		grapplingHook = grapplingHookScene.instantiate()
 		grapplingHook.startingPointNode = grappleOrigin
@@ -265,19 +266,27 @@ func pounding(delta):
 		groundPoundUpgrade.EndParticles.emitting = true
 		groundPoundUpgrade.collider.enabled = false
 
+func handleKnockback(knockbackX, knockbackY) :
+	
+	velocity.x = knockbackX
+	velocity.y = knockbackY
+	if $HealthComponent.health > 0 :
+		currentMovement = movement.takingDamage
+	else :
+		currentMovement = movement.dying
+	
+
 func takingDamage():
 	if isTransitioning:
 		currentMovement = movement.transitioning
 	if !_takingDamage:
 		AudioManager.play_sound(audio.hurt)
 		_takingDamage = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(.5).timeout
+	
 	currentMovement = movement.enabled
 	_takingDamage = false
 	gravityModifier = gravityVarDownwards
-
-func waterTraverse():
-	speed = waterSpeed
 
 func transitioning():
 	
