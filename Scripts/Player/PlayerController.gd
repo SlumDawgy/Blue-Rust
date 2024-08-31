@@ -268,13 +268,13 @@ func pounding(delta):
 
 func handleKnockback(knockbackX, knockbackY) :
 	
-	velocity.x = knockbackX
-	velocity.y = knockbackY
 	if $HealthComponent.health > 0 :
 		currentMovement = movement.takingDamage
 	else :
 		currentMovement = movement.dying
-	
+	velocity.x = knockbackX
+	velocity.y = knockbackY
+
 
 func takingDamage():
 	if isTransitioning:
@@ -297,6 +297,7 @@ func transitioning():
 
 
 func dying():
+	AudioManager.play_sound(audio.die)
 	velocity.x = move_toward(0,0,0)
 
 

@@ -6,16 +6,24 @@ var health : int
 var damageImmunityTimer : float
 @export var damageImmunity : float
 
+#breath
+@export var maxBreath: = 5
+var currentBreath
+@export var holdBreathTime: float = 10
+var holdBreathTimer : float
+
 
 func _ready():
 	health = maxHealth
+	currentBreath = maxBreath
 	damageImmunityTimer = damageImmunity
 
 func _process(delta):
 	damageImmunityTimer -= delta
 
 func damage(attack):
-	if damageImmunityTimer <= 0:
+	if damageImmunityTimer <= 0 and health > 0:
+		
 		health -= attack.damage
 		damageImmunityTimer = damageImmunity
 		var knockbackX : int = attack.knockback * 2 * attack.direction

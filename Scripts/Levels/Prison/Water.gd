@@ -1,7 +1,14 @@
 extends Area2D
 
-@export var isPolutedWater : bool = false
+# Player References
 var player 
+var healthComponent
+
+# Drowning 
+
+
+@export var isPolutedWater : bool = false
+
 
 @export var damage : int = 1
 @export var knockback : int = 25
@@ -15,19 +22,41 @@ class WaterDamage:
 	var knockupwards 
 
 func  _process(delta):
-	if player !=null and isPolutedWater :
+	
+	# If player doesn't have item
+	if player !=null and isPolutedWater and !player._takingDamage:
+		deal_damage()
+		
+	# If player doesn't have item
+	if player != null and player.inWater :
+		handle_drown(delta)
+	
+
+func handle_drown(delta) :
+	healthComponent.holdBreathTimer -= delta
+	if healthComponent.holdBreathTimer <= 0 :
+		healthComponent.currentBreath -= 1
+		if healthComponent.currentBreath <= 0 :
+			deal_damage()
+		healthComponent.holdBreathTimer = healthComponent.holdBreathTime
+	
+	
+	
+
+func deal_damage():
+	
 		var waterDamage = WaterDamage.new()
 		waterDamage.damage = damage
 		waterDamage.knockback = knockback
 		waterDamage.direction = direction
-		waterDamage.knockupwards = knockupwards		
+		waterDamage.knockupwards = knockupwards
 		player.get_node("HitBoxComponent").damage(waterDamage)
-		
 
 func _on_body_entered(body):
 	
 	if body.name == "Player":
 		player = body
+		healthComponent = body.get_node("HitBoxComponent").healthComponentInstance
 		body.speed = body.waterSpeed
 		body.jumpSpeed = body.waterJumpSpeed
 		body.inWater = true
@@ -41,3 +70,5 @@ func _on_body_exited(body):
 		body.speed = body.landSpeed
 		body.jumpSpeed = body.landJumpSpeed
 		body.inWater = false
+		healthComponent.holdBreathTimer =  healthComponent.holdBreathTime
+		healthComponent.currentBreath = healthComponent.maxBreath
