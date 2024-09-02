@@ -7,6 +7,8 @@ var health : HealthComponent
 
 var lanturnFull = load(GlobalPaths.LANTURN_FULL_PATH)
 var lanturnEmpty = load(GlobalPaths.LANTURN_EMPTY_PATH)
+var breathFull = load(GlobalPaths.BREATH_FULL_PATH)
+var breathEmpty = load(GlobalPaths.BREATH_EMPTY_ICON)
 
 @onready var healthContainer : HBoxContainer = $HBoxContainer
 @onready var breathContainer : HBoxContainer = $BreathContainer
@@ -45,9 +47,9 @@ func handleBreath ():
 		else :
 			breathContainer.visible = false
 		if breathContainer.get_child_count() - breaths > (health.maxBreath - health.currentBreath):
-			breathContainer.get_node("Breath" + str(breaths + 1)).texture = lanturnFull
+			breathContainer.get_node("Breath" + str(breaths + 1)).texture = breathFull
 		else:
-			breathContainer.get_node("Breath" + str(breaths + 1)).texture = lanturnEmpty
+			breathContainer.get_node("Breath" + str(breaths + 1)).texture = breathEmpty
 
 #func decreaseHealth():
 	#if currentHealth > 0:

@@ -40,6 +40,10 @@ const LANTURN_EMPTY_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_empty.p
 const LANTURN_FULL_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_full.png"
 const LANTURN_ANIMATION_PATH: String = "res://Assets/Sprites/Lanturn/lanturn_animation.png"
 
+# ASSETS/SPRITES/BREATH
+const BREATH_FULL_PATH: String = "res://Assets/Sprites/UI/BreathIcon.png"
+const BREATH_EMPTY_ICON: String = "res://Assets/Sprites/UI/BreathEmptyIcon.png"
+
 # ASSETS/SPRITES/MC
 const PLAYER_AIM_PATH: String = "res://Assets/Sprites/Player/Aim.png"
 const PLAYER_AIMING_PATH: String = "res://Assets/Sprites/Player/Aiming.png"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/GameUI.gd" id="1_eu326"]
 [ext_resource type="Texture2D" uid="uid://cjtfh567jyugy" path="res://Assets/Sprites/Lanturn/lanturn_full.png" id="2_ham3w"]
-[ext_resource type="Texture2D" uid="uid://d0t1twfy5falu" path="res://Assets/Sprites/Player/Aiming.png" id="3_1ui30"]
+[ext_resource type="Texture2D" uid="uid://b4khotpkhsnna" path="res://Assets/Sprites/UI/BreathIcon.png" id="3_4sv77"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -15,8 +15,8 @@ script = ExtResource("1_eu326")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 104.0
+offset_bottom = 32.0
 
 [node name="Heart1" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
@@ -32,19 +32,19 @@ texture = ExtResource("2_ham3w")
 
 [node name="BreathContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 35.0
-offset_right = 111.0
-offset_bottom = 75.0
+offset_left = 11.0
+offset_top = 32.0
+offset_right = 115.0
+offset_bottom = 48.0
 
 [node name="Breath1" type="TextureRect" parent="BreathContainer"]
 layout_mode = 2
-texture = ExtResource("3_1ui30")
+texture = ExtResource("3_4sv77")
 
 [node name="Breath2" type="TextureRect" parent="BreathContainer"]
 layout_mode = 2
-texture = ExtResource("3_1ui30")
+texture = ExtResource("3_4sv77")
 
 [node name="Breath3" type="TextureRect" parent="BreathContainer"]
 layout_mode = 2
-texture = ExtResource("3_1ui30")
+texture = ExtResource("3_4sv77")
