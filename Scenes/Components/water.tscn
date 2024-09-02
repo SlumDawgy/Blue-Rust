@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/Water.gd" id="1_rfqyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44duj"]
-size = Vector2(646, 37.75)
+size = Vector2(546, 44.875)
 
 [node name="Water" type="Area2D"]
 collision_layer = 4

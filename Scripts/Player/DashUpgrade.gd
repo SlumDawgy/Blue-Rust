@@ -14,7 +14,7 @@ var canDash : bool = true
 var dashDirection : int = 0
 
 func _input(event):
-	if event.is_action_pressed("Dash") and canDash and player.dashEnabled:
+	if event.is_action_pressed("Dash") and canDash and player.dashEnabled and !player.inWater:
 		AudioManager.play_sound(player.audio.dash)
 		addAfterimage()
 		handleDashParticles()
