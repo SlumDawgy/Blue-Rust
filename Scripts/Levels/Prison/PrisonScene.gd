@@ -25,12 +25,14 @@ func _ready():
 	if Dialogues.Prison1_4:
 		flagPrison1_4 = false
 	
-	if get_tree().get_current_scene().name == "Prison_Start" :
+	if self.name == "Prison_Start" :
 		prisonStartRoom = true
+	
 	if level_bgm != null:
 		AudioManager.play_Music(level_bgm)
-	if Dialogues.Prison1_1 == false:
-		if prisonStartRoom :
+	if prisonStartRoom :
+		if Dialogues.Prison1_1 == false:
+		
 			player.currentMovement = player.movement.disabled
 			player.get_node("PlayerSprite").play("getting_up")
 			player.get_node("PlayerSprite").set_speed_scale(0)
