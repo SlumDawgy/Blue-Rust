@@ -314,10 +314,9 @@ size = Vector2(117, 131.5)
 resource_local_to_scene = true
 size = Vector2(393, 265)
 
-[node name="Prison" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Prison" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_yjg8w")
-player = NodePath("")
 
 [node name="MouseAimAssist" parent="." instance=ExtResource("2_qn4dt")]
 position = Vector2(-446, -310)
@@ -325,9 +324,8 @@ position = Vector2(-446, -310)
 [node name="SavePoints" type="Node2D" parent="."]
 script = ExtResource("4_dm3u8")
 
-[node name="Save Point2" parent="SavePoints" node_paths=PackedStringArray("player") instance=ExtResource("5_lhy74")]
-position = Vector2(479, -1073)
-player = NodePath("")
+[node name="Save Point2" parent="SavePoints" instance=ExtResource("5_lhy74")]
+position = Vector2(479, -1071)
 
 [node name="---Environment---" type="Node" parent="."]
 
@@ -354,7 +352,7 @@ layer_4/tile_data = PackedInt32Array(-5505019, 720896, 2, -5505018, 720896, 2, -
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
-energy = 0.1
+energy = 0.97
 
 [node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting"]
 position = Vector2(616, -1109)
@@ -786,6 +784,7 @@ position = Vector2(85, -18)
 shape = SubResource("RectangleShape2D_6vlfa")
 
 [node name="CameraBounds" type="Area2D" parent="."]
+visible = false
 
 [node name="CameraBoundsShape" type="CollisionShape2D" parent="CameraBounds"]
 z_index = 1
