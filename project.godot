@@ -30,6 +30,7 @@ SaveSystem="*res://addons/save_system/save_system.gd"
 Dialogues="*res://Scripts/dialogues.gd"
 GlobalReferences="*res://Scripts/GlobalReferences.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+SaveManager="*res://Scripts/SaveManager.gd"
 
 [dialogic]
 
