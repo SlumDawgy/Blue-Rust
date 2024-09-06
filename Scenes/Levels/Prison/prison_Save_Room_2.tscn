@@ -352,7 +352,7 @@ layer_4/tile_data = PackedInt32Array(-5505019, 720896, 2, -5505018, 720896, 2, -
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
-energy = 0.97
+energy = 0.01
 
 [node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting"]
 position = Vector2(616, -1109)

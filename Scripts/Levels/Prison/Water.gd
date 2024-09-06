@@ -2,6 +2,7 @@ extends Area2D
 
 # Player References
 var player 
+var breathCollider
 var healthComponent
 
 # Drowning 
@@ -28,9 +29,8 @@ func  _process(delta):
 		deal_damage()
 		
 	# If player doesn't have item
-	if player != null and player.inWater :
+	if player != null and player.inWater and player.isInWaterOverHead :
 		handle_drown(delta)
-	
 
 func handle_drown(delta) :
 	healthComponent.holdBreathTimer -= delta
@@ -39,9 +39,6 @@ func handle_drown(delta) :
 		if healthComponent.currentBreath <= 0 :
 			deal_damage()
 		healthComponent.holdBreathTimer = healthComponent.holdBreathTime
-	
-	
-	
 
 func deal_damage():
 	
@@ -60,9 +57,6 @@ func _on_body_entered(body):
 		body.speed = body.waterSpeed
 		body.jumpSpeed = body.waterJumpSpeed
 		body.inWater = true
-		
-		
-	
 
 func _on_body_exited(body):
 	if body.name == "Player":
@@ -70,5 +64,5 @@ func _on_body_exited(body):
 		body.speed = body.landSpeed
 		body.jumpSpeed = body.landJumpSpeed
 		body.inWater = false
-		healthComponent.holdBreathTimer =  healthComponent.holdBreathTime
-		healthComponent.currentBreath = healthComponent.maxBreath
+
+

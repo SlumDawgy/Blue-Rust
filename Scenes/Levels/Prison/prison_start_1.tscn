@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bbra1f43w0rlh"]
+[gd_scene load_steps=24 format=3 uid="uid://bbra1f43w0rlh"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_sbc5h"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_35mmy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kpravxoanote" path="res://Assets/Sprites/UI/Icons/SpaceSprite.png" id="6_h3ha6"]
 [ext_resource type="Texture2D" uid="uid://kfk63k47u46g" path="res://Assets/Sprites/UI/Icons/MouseInputSprite.png" id="7_4nj1b"]
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/Water.gd" id="9_wr6jt"]
+[ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="12_bjoff"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/Rooms/transition_point.tscn" id="14_o6e3r"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="21_rjxq5"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="22_euubk"]
@@ -28,7 +29,7 @@ size = Vector2(327, 113.5)
 radius = 79.7621
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44duj"]
-size = Vector2(546, 44.875)
+size = Vector2(546, 50.4375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyu8w"]
 size = Vector2(114, 47)
@@ -334,6 +335,7 @@ process_mode = 1
 script = ExtResource("1_sbc5h")
 
 [node name="CameraBounds" parent="." instance=ExtResource("3_tskx0")]
+visible = true
 
 [node name="TransitionPoints" type="Node2D" parent="."]
 
@@ -440,13 +442,13 @@ position = Vector2(138, 75)
 shape = SubResource("CircleShape2D_a2bqb")
 
 [node name="Water" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 5
 script = ExtResource("9_wr6jt")
 knockback = 50
 knockupwards = 0
 
 [node name="WaterCollider1" type="CollisionShape2D" parent="Water"]
-position = Vector2(753, 30)
+position = Vector2(754, 9)
 shape = SubResource("RectangleShape2D_44duj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
@@ -480,7 +482,7 @@ layer_5/tile_data = PackedInt32Array(47, 851968, 6, -65489, 589824, 6, 46, 85196
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
-energy = 1.61
+energy = 0.01
 
 [node name="StartingArea" type="Node" parent="---Environment---/Lighting"]
 
@@ -526,6 +528,54 @@ texture_scale = 0.5
 
 [node name="PointLight2D5" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
 position = Vector2(551, -104)
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="PointLight2D7" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(552, -39)
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="PointLight2D14" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(665, -39)
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="PointLight2D15" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(777, -39)
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="PointLight2D16" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(890, -39)
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="PointLight2D17" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(1224, -56)
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="PointLight2D18" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(1000, -43)
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
@@ -581,11 +631,13 @@ texture = ExtResource("22_euubk")
 texture_scale = 0.5
 
 [node name="PointLight2D13" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(1275, -246)
+position = Vector2(1394.7, -250.676)
+rotation = 1.55759
+scale = Vector2(0.739536, 1.00574)
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
+texture = ExtResource("12_bjoff")
 texture_scale = 0.5
 
 [node name="Parallax" type="ParallaxBackground" parent="---Environment---"]

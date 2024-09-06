@@ -38,7 +38,7 @@ func changeHealth():
 			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnFull
 		else:
 			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnEmpty
-	print(health.health)
+	
 	
 func handleBreath (): 
 	for breaths in range(breathContainer.get_child_count()):

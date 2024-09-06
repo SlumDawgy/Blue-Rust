@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://d2jv66q883sl3"]
+[gd_scene load_steps=168 format=3 uid="uid://d2jv66q883sl3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_0ljdo"]
 [ext_resource type="PackedScene" uid="uid://ckrupt4l820p8" path="res://Scenes/Components/healthComponent.tscn" id="2_6rn2i"]
@@ -62,6 +62,7 @@
 [ext_resource type="AudioStream" uid="uid://c8c0pbuuinpqg" path="res://Assets/Sounds/Player_Sounds/SFX_Parasol_Close_2.wav" id="51_hwjhg"]
 [ext_resource type="Script" path="res://Scenes/Player/DoubleJumpUpgrade.gd" id="55_6knbs"]
 [ext_resource type="Script" path="res://Scripts/Player/GroundPoundUpgrade.gd" id="60_ha76h"]
+[ext_resource type="Script" path="res://Scenes/Player/BreathCollider.gd" id="63_q5bre"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jts5u"]
 radius = 10.5
@@ -865,6 +866,9 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.0672269, 0.903361, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqfj8"]
+size = Vector2(3, 3)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 57
 floor_snap_length = 8.0
@@ -920,9 +924,7 @@ shape = SubResource("CapsuleShape2D_gyc5k")
 light_mask = 2
 material = SubResource("CanvasItemMaterial_eg4rg")
 sprite_frames = SubResource("SpriteFrames_fwlpx")
-animation = &"right_running"
-frame = 7
-frame_progress = 0.980505
+animation = &"right_jump"
 speed_scale = 2.0
 script = ExtResource("18_ns8m1")
 
@@ -1119,8 +1121,20 @@ scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_idjqp")
 color_ramp = SubResource("Gradient_e2se4")
 
+[node name="BreathCollider" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("63_q5bre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreathCollider"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_cqfj8")
+
 [connection signal="animation_finished" from="PlayerSprite" to="PlayerSprite" method="_on_animation_finished"]
 [connection signal="frame_changed" from="PlayerSprite" to="Audios" method="_on_player_sprite_frame_changed"]
 [connection signal="timeout" from="DashUpgrade/DashTimer" to="DashUpgrade" method="_on_dash_timer_timeout"]
+[connection signal="area_entered" from="BreathCollider" to="BreathCollider" method="_on_area_entered"]
+[connection signal="area_exited" from="BreathCollider" to="BreathCollider" method="_on_area_exited"]
+[connection signal="body_entered" from="BreathCollider" to="BreathCollider" method="_on_body_entered"]
+[connection signal="body_exited" from="BreathCollider" to="BreathCollider" method="_on_body_exited"]
 
 [editable path="HitBoxComponent"]

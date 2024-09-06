@@ -320,6 +320,7 @@ process_mode = 1
 script = ExtResource("1_m3e32")
 
 [node name="CameraBounds" type="Area2D" parent="."]
+visible = false
 
 [node name="CameraBoundsShape" type="CollisionShape2D" parent="CameraBounds"]
 z_index = 1

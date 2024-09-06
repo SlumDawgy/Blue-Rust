@@ -12,6 +12,7 @@ var speed
 @export var landSpeed : float = 115.0
 @export var waterSpeed : float = 55.0
 var inWater: bool = false
+var isInWaterOverHead: bool = false
 
 # Jump Variables
 var jumpSpeed 
