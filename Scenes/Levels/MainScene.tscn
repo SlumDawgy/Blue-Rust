@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxylkgx85fn3p"]
+[gd_scene load_steps=9 format=3 uid="uid://bxylkgx85fn3p"]
 
 [ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="1_eannj"]
 [ext_resource type="Script" path="res://Scripts/Rooms/RoomContainer.gd" id="2_cb07s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbc6irhpstqa7" path="res://Scenes/UI/InGameUI.tscn" id="4_8651e"]
 [ext_resource type="Script" path="res://Scenes/Levels/MainBGMPlayer.gd" id="5_lho4q"]
 [ext_resource type="PackedScene" uid="uid://bc0dr5caoiwv2" path="res://Scenes/Levels/Rooms/transition_fadeout.tscn" id="5_s4qba"]
+[ext_resource type="Environment" uid="uid://dvo6eyhw6b3n5" path="res://PostProcessing.tres" id="6_rd4ag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkbe1"]
 size = Vector2(1874, 1189)
@@ -50,6 +51,7 @@ position = Vector2(591, 318.5)
 shape = SubResource("RectangleShape2D_fkbe1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("6_rd4ag")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"BGM"
