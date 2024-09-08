@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbra1f43w0rlh"]
+[gd_scene load_steps=26 format=3 uid="uid://bbra1f43w0rlh"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_sbc5h"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_35mmy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://kfk63k47u46g" path="res://Assets/Sprites/UI/Icons/MouseInputSprite.png" id="7_4nj1b"]
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/Water.gd" id="9_wr6jt"]
 [ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="12_bjoff"]
+[ext_resource type="Script" path="res://Scenes/Levels/LightSwitch.gd" id="12_eak77"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/Rooms/transition_point.tscn" id="14_o6e3r"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="21_rjxq5"]
 [ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="22_euubk"]
@@ -33,6 +34,8 @@ size = Vector2(546, 50.4375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyu8w"]
 size = Vector2(114, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mp3cc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyriy"]
 texture = ExtResource("25_jtlul")
@@ -488,157 +491,214 @@ energy = 0.01
 
 [node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
 position = Vector2(25, -54)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D2" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(136, -54)
+position = Vector2(138, -54)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D2"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D3" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(216, -54)
+position = Vector2(222, -53)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D3"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D3/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D4" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(328, -54)
+position = Vector2(330, -54)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
 
-[node name="PointLight2D23" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(441, -101)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D4"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D4/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D5" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(551, -104)
+position = Vector2(440, -104)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
 
-[node name="PointLight2D7" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(552, -39)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D5"]
+script = ExtResource("12_eak77")
 
-[node name="PointLight2D14" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(665, -39)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
-
-[node name="PointLight2D15" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(777, -39)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
-
-[node name="PointLight2D16" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(890, -39)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
-
-[node name="PointLight2D17" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(1224, -56)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
-
-[node name="PointLight2D18" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(1000, -43)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D5/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D6" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(665, -104)
+position = Vector2(553, -104)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D6"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D6/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
+
+[node name="PointLight2D7" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(668, -101)
+enabled = false
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D7"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D7/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D8" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(776, -103)
+position = Vector2(776, -102)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D8"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D8/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D9" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(890, -104)
+position = Vector2(890, -103)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D9"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D9/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D10" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(1003, -105)
+position = Vector2(1000, -104)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D10"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D10/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D11" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(1113, -105)
+position = Vector2(1116, -103)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D11"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D11/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="PointLight2D12" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(1225, -106)
+position = Vector2(1226, -106)
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("22_euubk")
 texture_scale = 0.5
 
-[node name="PointLight2D13" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(1394.7, -250.676)
-rotation = 1.55759
-scale = Vector2(0.739536, 1.00574)
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D12"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D12/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
+
+[node name="PointLight2D14" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(1273, -244)
+enabled = false
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("22_euubk")
+texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D14"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D14/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
+
+[node name="PointLight2D15" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
+position = Vector2(1393, -263)
+rotation = 1.07199
+enabled = false
 color = Color(0.537255, 0.627451, 0.662745, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 31
 texture = ExtResource("12_bjoff")
 texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D15"]
+script = ExtResource("12_eak77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D15/Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
 
 [node name="Parallax" type="ParallaxBackground" parent="---Environment---"]
 
@@ -1038,6 +1098,34 @@ layer_0/tile_data = PackedInt32Array(-589807, 1179648, 4, -524271, 1179648, 5, -
 [connection signal="body_exited" from="ControlLabels/HangJumpLabel/HangJumpArea2D" to="." method="_on_hang_jump_area_2d_body_exited"]
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
 [connection signal="body_exited" from="Water" to="Water" method="_on_body_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D3/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D3/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D3/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D3/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D4/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D4/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D4/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D4/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D5/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D5/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D5/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D5/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D6/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D6/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D6/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D6/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D7/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D7/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D7/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D7/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D8/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D8/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D8/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D8/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D9/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D9/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D9/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D9/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D10/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D10/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D10/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D10/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D11/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D11/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D11/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D11/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D12/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D12/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D12/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D12/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D14/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D14/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D14/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D14/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D15/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D15/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D15/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D15/Area2D" method="_on_area_exited"]
 
 [editable path="TransitionPoints/TransitionPoint_1"]
 [editable path="TransitionPoints/TransitionPoint_2"]

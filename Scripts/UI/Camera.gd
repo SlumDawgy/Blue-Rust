@@ -13,8 +13,8 @@ func _ready():
 	GlobalReferences.camera = self
 	position = player.global_position
 	handle_camerea_zoom(_zoom)
-
-func _process(delta):
+	
+func _physics_process(delta):
 	if position == player.global_position and position_smoothing_enabled == false:
 		position_smoothing_enabled = true
 	
