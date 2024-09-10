@@ -129,7 +129,7 @@ process_physics_priority = -1
 position = Vector2(158, -6)
 collision_priority = -1.0
 script = ExtResource("4_d0gyt")
-target_room = "PRISON_PATH_TO_SEWER_SCENE_PATH"
+target_room = "CITY_SCENE_PATH"
 target_room_entrance = "TransitionPoint_3"
 
 [node name="TransitionCollider" type="CollisionShape2D" parent="TransitionPoints/TransitionPoint_3"]

@@ -9,7 +9,7 @@
 [ext_resource type="Environment" uid="uid://dvo6eyhw6b3n5" path="res://PostProcessing.tres" id="6_rd4ag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkbe1"]
-size = Vector2(1874, 1189)
+size = Vector2(2061, 1189)
 
 [node name="MainScene" type="Node2D"]
 
@@ -47,7 +47,7 @@ offset_bottom = 3113.0
 [node name="LightSwitch" type="Area2D" parent="Camera2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/LightSwitch"]
-position = Vector2(591, 318.5)
+position = Vector2(573.5, 318.5)
 shape = SubResource("RectangleShape2D_fkbe1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
