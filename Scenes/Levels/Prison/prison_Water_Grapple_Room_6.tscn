@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_pq0ro"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_1r0fa"]
+[ext_resource type="PackedScene" uid="uid://b5a4nwmc0od15" path="res://Scenes/Objects/point_light_2d.tscn" id="5_ck5di"]
 [ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="6_e5ose"]
 [ext_resource type="Script" path="res://Scripts/Rooms/TransitionPointHandler.gd" id="9_7hnkf"]
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/Water.gd" id="24_uuggj"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="26_u77w2"]
-[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="27_7pnso"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="28_hftio"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="29_xys0a"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="30_sv5ui"]
@@ -363,146 +363,54 @@ energy = 0.01
 
 [node name="PathToBoss" type="Node" parent="---Environment---/Lighting"]
 
-[node name="PointLight2D27" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(138, -1139)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(201, -1205)
 
-[node name="PointLight2D13" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(199, -1208)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D2" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(202, -1299)
 
-[node name="PointLight2D14" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(314.2, -1188.8)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D3" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(316, -1205)
 
-[node name="PointLight2D15" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(426.2, -1188.8)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D4" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(378, -1290)
 
-[node name="PointLight2D16" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(537.2, -1188.8)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D5" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(425, -1208)
 
-[node name="PointLight2D17" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(650.2, -1188.8)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D6" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(474, -1267)
 
-[node name="PointLight2D19" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(873, -1210)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D7" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(534, -1207)
 
-[node name="PointLight2D20" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(759, -1207)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D8" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(646, -1206)
 
-[node name="PointLight2D21" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(617, -1284)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D9" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(618, -1287)
 
-[node name="PointLight2D25" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(698, -1285)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D10" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(697, -1284)
 
-[node name="PointLight2D22" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(475, -1269)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D11" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(760, -1206)
 
-[node name="PointLight2D23" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(377, -1286)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
+[node name="PointLight2D12" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(871, -1206)
 
-[node name="PointLight2D24" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(199, -1326)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_7pnso")
-texture_scale = 0.45
-
-[node name="PointLight2D28" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(55.8554, -1308.73)
-rotation = -1.48647
-scale = Vector2(1.43865, 1)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
+[node name="PointLight2D13" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(1099.83, -1246.99)
+rotation = 1.53402
 texture = ExtResource("6_e5ose")
-offset = Vector2(-0.238892, 99.5273)
-texture_scale = 0.45
+offset = Vector2(1.46448, 122.971)
 
-[node name="PointLight2D29" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(1103, -1239)
-rotation = 1.35678
-scale = Vector2(1.43865, 1)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
+[node name="PointLight2D14" parent="---Environment---/Lighting/PathToBoss" instance=ExtResource("5_ck5di")]
+position = Vector2(3.28963, -1325.39)
+rotation = -1.22224
+scale = Vector2(1.20365, 1)
 texture = ExtResource("6_e5ose")
-offset = Vector2(-1.41205, 111.293)
-texture_scale = 0.45
+offset = Vector2(13.4286, 117.343)
 
 [node name="Parallax" type="ParallaxBackground" parent="---Environment---"]
 

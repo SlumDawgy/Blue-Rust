@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5a4nwmc0od15"]
+
+[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="1_k6sg5"]
+[ext_resource type="Script" path="res://Scenes/Levels/LightSwitch.gd" id="2_wy8dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mp3cc"]
+
+[node name="PointLight2D" type="PointLight2D"]
+position = Vector2(25, -54)
+enabled = false
+color = Color(0.537255, 0.627451, 0.662745, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 31
+texture = ExtResource("1_k6sg5")
+texture_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_wy8dd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mp3cc")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]

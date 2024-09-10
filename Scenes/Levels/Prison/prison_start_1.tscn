@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbra1f43w0rlh"]
+[gd_scene load_steps=27 format=3 uid="uid://bbra1f43w0rlh"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_sbc5h"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_35mmy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kpravxoanote" path="res://Assets/Sprites/UI/Icons/SpaceSprite.png" id="6_h3ha6"]
 [ext_resource type="Texture2D" uid="uid://kfk63k47u46g" path="res://Assets/Sprites/UI/Icons/MouseInputSprite.png" id="7_4nj1b"]
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/Water.gd" id="9_wr6jt"]
+[ext_resource type="PackedScene" uid="uid://b5a4nwmc0od15" path="res://Scenes/Objects/point_light_2d.tscn" id="11_qhlxn"]
 [ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="12_bjoff"]
 [ext_resource type="Script" path="res://Scenes/Levels/LightSwitch.gd" id="12_eak77"]
 [ext_resource type="PackedScene" uid="uid://c31me33blsoov" path="res://Scenes/Levels/Rooms/transition_point.tscn" id="14_o6e3r"]
@@ -489,20 +490,7 @@ energy = 0.01
 
 [node name="StartingArea" type="Node" parent="---Environment---/Lighting"]
 
-[node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(25, -54)
-enabled = false
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("22_euubk")
-texture_scale = 0.5
-
-[node name="Area2D" type="Area2D" parent="---Environment---/Lighting/StartingArea/PointLight2D"]
-script = ExtResource("12_eak77")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="---Environment---/Lighting/StartingArea/PointLight2D/Area2D"]
-shape = SubResource("RectangleShape2D_mp3cc")
+[node name="PointLight2D" parent="---Environment---/Lighting/StartingArea" instance=ExtResource("11_qhlxn")]
 
 [node name="PointLight2D2" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
 position = Vector2(138, -54)
@@ -1098,8 +1086,6 @@ layer_0/tile_data = PackedInt32Array(-589807, 1179648, 4, -524271, 1179648, 5, -
 [connection signal="body_exited" from="ControlLabels/HangJumpLabel/HangJumpArea2D" to="." method="_on_hang_jump_area_2d_body_exited"]
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
 [connection signal="body_exited" from="Water" to="Water" method="_on_body_exited"]
-[connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D/Area2D" method="_on_area_exited"]
 [connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" method="_on_area_entered"]
 [connection signal="area_exited" from="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D2/Area2D" method="_on_area_exited"]
 [connection signal="area_entered" from="---Environment---/Lighting/StartingArea/PointLight2D3/Area2D" to="---Environment---/Lighting/StartingArea/PointLight2D3/Area2D" method="_on_area_entered"]

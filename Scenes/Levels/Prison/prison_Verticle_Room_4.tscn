@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0iln53pcd13f"]
+[gd_scene load_steps=15 format=3 uid="uid://c0iln53pcd13f"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_m3e32"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_5r4fo"]
+[ext_resource type="PackedScene" uid="uid://b5a4nwmc0od15" path="res://Scenes/Objects/point_light_2d.tscn" id="4_glt2i"]
+[ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="5_y60s3"]
 [ext_resource type="Script" path="res://Scripts/Rooms/TransitionPointHandler.gd" id="8_whjfm"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="26_hfbra"]
-[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="27_6a3nw"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="28_d7mwt"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="29_hcbth"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="30_0dedf"]
@@ -320,7 +321,6 @@ process_mode = 1
 script = ExtResource("1_m3e32")
 
 [node name="CameraBounds" type="Area2D" parent="."]
-visible = false
 
 [node name="CameraBoundsShape" type="CollisionShape2D" parent="CameraBounds"]
 z_index = 1
@@ -358,360 +358,72 @@ color = Color(0, 0, 0, 1)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
 energy = 0.01
 
-[node name="PathToBoss" type="Node" parent="---Environment---/Lighting"]
+[node name="PointLight2D" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-567, -551)
 
-[node name="PointLight2D12" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-568, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D2" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-485, -564)
 
-[node name="PointLight2D14" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-513, -452)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D3" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-425, -504)
 
-[node name="PointLight2D15" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-266, -489)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D4" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-377, -491)
 
-[node name="PointLight2D16" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-155, -485)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D5" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-267, -488)
 
-[node name="PointLight2D17" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-82, -485)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D6" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-152, -487)
 
-[node name="PointLight2D18" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-373, -488)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D7" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-106, -488)
 
-[node name="PointLight2D19" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-483, -858)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D8" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-422, -663)
 
-[node name="PointLight2D20" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-466, -721)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D9" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-539, -664)
 
-[node name="PointLight2D13" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-646, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D10" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-535, -811)
 
-[node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-486, -565)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D11" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-485, -1013)
 
-[node name="PointLight2D2" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-422, -662)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D12" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-344, -985)
 
-[node name="PointLight2D3" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-535, -662)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D13" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-262, -986)
 
-[node name="PointLight2D4" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-535, -806)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D14" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-187, -987)
 
-[node name="PointLight2D5" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-487, -1013)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D15" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-102, -985)
 
-[node name="PointLight2D6" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-343, -982)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D16" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-23, -984)
 
-[node name="PointLight2D7" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-263, -983)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D17" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-635, -578)
+rotation = -1.38801
+scale = Vector2(0.621039, 1)
+texture = ExtResource("5_y60s3")
 
-[node name="PointLight2D8" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-184, -983)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D19" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-20.3781, -1025.99)
+rotation = 1.30139
+scale = Vector2(0.704262, 1)
+texture = ExtResource("5_y60s3")
 
-[node name="PointLight2D9" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-104, -982)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D10" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-22, -983)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D11" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(87, -983)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="EnemyRoom" type="Node" parent="---Environment---/Lighting"]
-
-[node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1031, -1000)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D2" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1031, -918)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D3" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1145, -918)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D4" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1145, -999)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D5" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1256, -999)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D6" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1256, -918)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D7" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1368, -999)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D19" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1308, -1087)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D8" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1368, -920)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D9" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1562, -1077)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D10" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1640, -1077)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D11" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1738, -1078)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D12" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1930, -1177)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D13" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1786, -1335)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D14" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1625, -1335)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D15" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1498, -1334)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D16" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1369, -1334)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D17" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1208, -1334)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
-
-[node name="PointLight2D18" type="PointLight2D" parent="---Environment---/Lighting/EnemyRoom"]
-position = Vector2(1112, -1270)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_6a3nw")
-texture_scale = 0.45
+[node name="PointLight2D18" parent="---Environment---/Lighting" instance=ExtResource("4_glt2i")]
+position = Vector2(-13.1146, -499.669)
+rotation = 1.5098
+scale = Vector2(0.497676, 1)
+texture = ExtResource("5_y60s3")
+offset = Vector2(-7.35504, 21.7026)
 
 [node name="Parallax" type="ParallaxBackground" parent="---Environment---"]
 

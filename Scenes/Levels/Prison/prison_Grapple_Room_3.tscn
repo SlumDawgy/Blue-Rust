@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_q0eo5"]
 [ext_resource type="Script" path="res://Scripts/Rooms/TransitionPointHandler.gd" id="2_w4cmi"]
 [ext_resource type="Script" path="res://Scripts/UI/endGame.gd" id="3_uhisu"]
+[ext_resource type="PackedScene" uid="uid://b5a4nwmc0od15" path="res://Scenes/Objects/point_light_2d.tscn" id="8_bbmfm"]
 [ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="9_kbp2t"]
 [ext_resource type="Texture2D" uid="uid://kpravxoanote" path="res://Assets/Sprites/UI/Icons/SpaceSprite.png" id="10_lwea8"]
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/Water.gd" id="24_x2bnf"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="26_ec6er"]
-[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="27_n65nd"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="28_m6qkt"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="29_er7xe"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="30_035ck"]
@@ -467,191 +467,68 @@ color = Color(0, 0, 0, 1)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="---Environment---/Lighting"]
 energy = 0.01
 
-[node name="StartingArea" type="Node" parent="---Environment---/Lighting"]
+[node name="PointLight2D" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(568, -280)
 
-[node name="PointLight2D30" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(698, -405)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D2" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(489, -280)
 
-[node name="PointLight2D11" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(567, -281)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D3" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(503, -421)
 
-[node name="PointLight2D12" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(488, -281)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D4" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(374, -309)
 
-[node name="PointLight2D13" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(375, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D5" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(328, -407)
 
-[node name="PointLight2D14" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(266, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D6" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(265, -310)
 
-[node name="PointLight2D15" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(151, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D7" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(153, -311)
 
-[node name="PointLight2D16" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(104, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D8" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(104, -312)
 
-[node name="PointLight2D17" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(24, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D9" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(23, -312)
 
-[node name="PointLight2D18" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-87, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D10" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-87, -310)
 
-[node name="PointLight2D19" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-201, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D11" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-117, -406)
 
-[node name="PointLight2D20" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-312, -311)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D12" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-205, -312)
 
-[node name="PointLight2D21" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-423, -309)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D13" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-245, -410)
 
-[node name="PointLight2D22" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-472, -309)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D14" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-314, -311)
 
-[node name="PointLight2D24" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-246, -407)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D15" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-428, -311)
 
-[node name="PointLight2D28" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-438, -420)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D16" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-475, -310)
 
-[node name="PointLight2D29" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(329, -405)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D17" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-438, -422)
 
-[node name="PointLight2D25" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(-118, -405)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
-
-[node name="PointLight2D31" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(20, -407)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
-
-[node name="PointLight2D26" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(185, -439)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
-
-[node name="PointLight2D27" type="PointLight2D" parent="---Environment---/Lighting/StartingArea"]
-position = Vector2(508, -424)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
-
-[node name="ElevatorRoom" type="Node" parent="---Environment---/Lighting"]
-
-[node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-527, -614)
-scale = Vector2(1, 1.27691)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
+[node name="PointLight2D18" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(-526, -646)
 texture = ExtResource("9_kbp2t")
-offset = Vector2(0, 112)
-texture_scale = 0.45
+offset = Vector2(2, 120)
 
-[node name="PathToBoss" type="Node" parent="---Environment---/Lighting"]
-
-[node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting/PathToBoss"]
-position = Vector2(-486, -565)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_n65nd")
-texture_scale = 0.45
+[node name="PointLight2D19" parent="---Environment---/Lighting" instance=ExtResource("8_bbmfm")]
+position = Vector2(786.367, -431.83)
+rotation = 1.28073
+scale = Vector2(0.623572, 1)
+texture = ExtResource("9_kbp2t")
+offset = Vector2(-1.22687, 124.342)
 
 [node name="Parallax" type="ParallaxBackground" parent="---Environment---"]
 

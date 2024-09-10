@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmsnfwf54ytad"]
+[gd_scene load_steps=16 format=3 uid="uid://dmsnfwf54ytad"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/PrisonScene.gd" id="1_j2rq3"]
 [ext_resource type="PackedScene" uid="uid://bf3aaouphecwn" path="res://Scenes/Player/mouse_aim_assist.tscn" id="2_fayxo"]
+[ext_resource type="PackedScene" uid="uid://b5a4nwmc0od15" path="res://Scenes/Objects/point_light_2d.tscn" id="5_h16ug"]
+[ext_resource type="Texture2D" uid="uid://d27qr3ohkwred" path="res://Assets/Sprites/Lighting/EntranceLight.png" id="6_qcc2q"]
 [ext_resource type="Script" path="res://Scripts/Rooms/TransitionPointHandler.gd" id="9_cog6k"]
 [ext_resource type="Script" path="res://Scripts/Levels/Prison/Water.gd" id="24_4cb4v"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="26_byim8"]
-[ext_resource type="Texture2D" uid="uid://dfym20t4pynia" path="res://Assets/Sprites/Lighting/LightTexture.png" id="27_grmnr"]
 [ext_resource type="Texture2D" uid="uid://ywbo3mqe0q1r" path="res://Assets/Sprites/TileSets/Prison/ParallaxImageBG.png" id="28_o46gd"]
 [ext_resource type="Texture2D" uid="uid://c2bsobcf5na5e" path="res://Assets/Sprites/TileSets/Prison/ParallaxImage.png" id="29_3g1n6"]
 [ext_resource type="Texture2D" uid="uid://dwkdcinctiobw" path="res://Assets/Sprites/TileSets/Prison/PrisonTileSet.png" id="30_rejsk"]
@@ -368,86 +369,44 @@ energy = 0.01
 
 [node name="ElevatorRoom" type="Node" parent="---Environment---/Lighting"]
 
-[node name="PointLight2D" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-568, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-534, -552)
 
-[node name="PointLight2D2" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-646, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D2" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-649, -551)
 
-[node name="PointLight2D3" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-728, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D3" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-728, -551)
 
-[node name="PointLight2D4" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-840, -553)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D4" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-837, -552)
 
-[node name="PointLight2D5" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-952, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D5" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-951, -553)
 
-[node name="PointLight2D6" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-1065, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D6" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-1063, -553)
 
-[node name="PointLight2D7" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-1177, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D7" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-1175, -553)
 
-[node name="PointLight2D8" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-1255, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D8" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-1255, -554)
 
-[node name="PointLight2D9" type="PointLight2D" parent="---Environment---/Lighting/ElevatorRoom"]
-position = Vector2(-1304, -550)
-color = Color(0.537255, 0.627451, 0.662745, 1)
-energy = 0.75
-shadow_enabled = true
-shadow_item_cull_mask = 31
-texture = ExtResource("27_grmnr")
-texture_scale = 0.45
+[node name="PointLight2D9" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-1305, -552)
+
+[node name="PointLight2D10" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-1698.98, -554.699)
+rotation = -1.53589
+scale = Vector2(0.850815, 1.66798)
+texture = ExtResource("6_qcc2q")
+offset = Vector2(7.57251, 126.882)
+
+[node name="PointLight2D11" parent="---Environment---/Lighting/ElevatorRoom" instance=ExtResource("5_h16ug")]
+position = Vector2(-460, -545)
+rotation = 1.3223
+texture = ExtResource("6_qcc2q")
 
 [node name="Parallax" type="ParallaxBackground" parent="---Environment---"]
 
@@ -843,14 +802,14 @@ layer_0/tile_data = PackedInt32Array(-589807, 1179648, 4, -524271, 1179648, 5, -
 [node name="TransitionPoint_1" type="Area2D" parent="TransitionPoints"]
 process_priority = -1
 process_physics_priority = -1
-position = Vector2(-1692, -535)
+position = Vector2(-1686, -535)
 collision_priority = -1.0
 script = ExtResource("9_cog6k")
 target_room = "SEWER_WEST_SCENE_PATH"
 target_room_entrance = "TransitionPoint_1"
 
 [node name="TransitionCollider" type="CollisionShape2D" parent="TransitionPoints/TransitionPoint_1"]
-position = Vector2(-45, 4)
+position = Vector2(-58, 5)
 shape = SubResource("RectangleShape2D_6vlfa")
 
 [node name="TransitionPoint_2" type="Area2D" parent="TransitionPoints"]
@@ -863,7 +822,7 @@ target_room = "PRISON_VERTICLE_ONE_SCENE_PATH"
 target_room_entrance = "TransitionPoint_2"
 
 [node name="TransitionCollider" type="CollisionShape2D" parent="TransitionPoints/TransitionPoint_2"]
-position = Vector2(43, 7)
+position = Vector2(65, 6)
 shape = SubResource("RectangleShape2D_6vlfa")
 
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
