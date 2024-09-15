@@ -8,10 +8,17 @@ var GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Movements
 var currentMovement : int
-@export var speed : float = 115.0
+var speed
+@export var landSpeed : float = 115.0
+@export var waterSpeed : float = 55.0
+var inWater: bool = false
+var isInWaterOverHead: bool = false
 
 # Jump Variables
-@export var jumpSpeed : float = -250.0
+var jumpSpeed 
+@export var landJumpSpeed : float = -250.0
+@export var waterJumpSpeed : float = -125.0
+
 var jumped : bool = false
 
 var gravityModifier : float = 0.65
@@ -54,6 +61,9 @@ var dashed : bool = false
 var poundChargeSpeed : float = 80.0
 var gravityVarPound : float = 4.0
 
+# Transitioning
+var isTransitioning: bool = false
+
 # Inputs
 var inputDirection : float = 0.0
 var inputJump : bool = false
@@ -75,14 +85,20 @@ enum movement
 	gliding,
 	pounding,
 	takingDamage,
+	transitioning,
+	waterTraverse,
 	dying
 }
 
 var initialPosition
 
 func _ready():
+	speed = landSpeed
+	jumpSpeed = landJumpSpeed
+	GlobalReferences.player = self
 	initialPosition = position
 	currentMovement = movement.enabled
+	
 
 func getInput():
 	inputDirection = Input.get_axis("MoveLeft", "MoveRight")
@@ -91,11 +107,13 @@ func disabled():
 	velocity.x = move_toward(0,0,0)
 
 func enabled():
+	if isTransitioning:
+		currentMovement = movement.transitioning
 	$PlayerSprite/Arm.look_at(get_global_mouse_position())
 	
 	velocity.x = speed * inputDirection
 	
-	if Input.is_action_just_pressed("GrapplingHook"):
+	if Input.is_action_just_pressed("GrapplingHook") and !inWater:
 		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
 		return
@@ -111,13 +129,15 @@ func enabled():
 		return
 
 func jumping():
+	if isTransitioning:
+		currentMovement = movement.transitioning
 	velocity.x = speed * inputDirection
 	if jumped == true:
 		velocity.y = jumpSpeed
 		audio.playrandom(audio.playerJump, audio.playerJump_w_Grunt)
 		jumped = false
 	
-	if Input.is_action_just_pressed("GrapplingHook"):
+	if Input.is_action_just_pressed("GrapplingHook")  and !inWater:
 		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
 		return
@@ -139,6 +159,8 @@ func jumping():
 		currentMovement = movement.enabled
 
 func mantling():
+	if isTransitioning:
+		currentMovement = movement.transitioning
 	if velocity.y != 0:
 		velocity.y = 0
 	if Input.is_action_just_pressed("Crouch"):
@@ -151,7 +173,9 @@ func mantling():
 		canMantle = true
 
 func grappling():
-	if not grapplingHook:
+	if isTransitioning:
+		currentMovement = movement.transitioning	
+	if not grapplingHook :
 		AudioManager.play_sound(audio.grappleShoot)
 		grapplingHook = grapplingHookScene.instantiate()
 		grapplingHook.startingPointNode = grappleOrigin
@@ -169,6 +193,8 @@ func grappling():
 		velocity.x = 0.0
 
 func hanging():
+	if isTransitioning:
+		currentMovement = movement.transitioning
 	velocity.y = move_toward(0,0,0)
 	if Input.is_action_just_pressed("Jump"):
 		audio.playrandom(audio.playerJump, audio.playerJump_w_Grunt)
@@ -180,6 +206,8 @@ func hanging():
 		gravityModifier = gravityVarDownwards
 
 func hangingJump():
+	if isTransitioning:
+		currentMovement = movement.transitioning
 	if Input.is_action_just_pressed("GrapplingHook"):
 		gravityModifier = gravityVarGrapple
 		currentMovement = movement.grappling
@@ -199,6 +227,8 @@ func hangingJump():
 		currentMovement = movement.enabled
 
 func dashing():
+	if isTransitioning:
+		currentMovement = movement.transitioning
 	#dashEnabled = true
 	if dashed and dashEnabled:
 		velocity.y = 0
@@ -208,41 +238,72 @@ func dashing():
 			velocity.x = -dashSpeed
 
 func gliding(delta):
+	if isTransitioning:
+		currentMovement = movement.transitioning
+	if inWater:
+		currentMovement = movement.enabled
 	velocity.x = move_toward(0,0,0)
 	velocity.y = GRAVITY * gravityVarParasol * delta	
 
 func pounding(delta):
-	velocity.x = move_toward(0,0,0)
-	if groundPoundUpgrade.poundTimer.time_left > 0:
-		velocity.y -= poundChargeSpeed
-	elif get_node("PlayerSprite").animation == "poundCharge":
-		dashUpgrade.addAfterimage()
-		gravityModifier = gravityVarPound
-		groundPoundUpgrade.ActiveParticles.emitting = true
-	
-	if groundPoundUpgrade.collider.is_colliding():
-		groundPoundUpgrade.EndParticles.emitting = true
-		if groundPoundUpgrade.collider.get_collider(0) != null:
-			velocity.y = 0
+	if isTransitioning:
+		currentMovement = movement.transitioning
+	if inWater:
+		currentMovement = movement.enabled
+	else:
+		velocity.x = move_toward(0,0,0)
+		if groundPoundUpgrade.poundTimer.time_left > 0:
+			velocity.y -= poundChargeSpeed
+		elif get_node("PlayerSprite").animation == "poundCharge":
+			dashUpgrade.addAfterimage()
+			gravityModifier = gravityVarPound
+			groundPoundUpgrade.ActiveParticles.emitting = true
+		
+		if groundPoundUpgrade.collider.is_colliding():
+			groundPoundUpgrade.EndParticles.emitting = true
+			if groundPoundUpgrade.collider.get_collider(0) != null:
+				velocity.y = 0
+				groundPoundUpgrade.collider.enabled = false
+				await get_tree().create_timer(0.3).timeout
+				currentMovement = movement.enabled
+				groundPoundUpgrade.collider.get_collider(0).queue_free()
+		
+		elif is_on_floor() and groundPoundUpgrade.collider.enabled:
+			groundPoundUpgrade.EndParticles.emitting = true
 			groundPoundUpgrade.collider.enabled = false
-			await get_tree().create_timer(0.3).timeout
-			currentMovement = movement.enabled
-			groundPoundUpgrade.collider.get_collider(0).queue_free()
+
+func handleKnockback(knockbackX, knockbackY) :
 	
-	elif is_on_floor() and groundPoundUpgrade.collider.enabled:
-		groundPoundUpgrade.EndParticles.emitting = true
-		groundPoundUpgrade.collider.enabled = false
+	if $HealthComponent.health > 0 :
+		currentMovement = movement.takingDamage
+	else :
+		currentMovement = movement.dying
+	velocity.x = knockbackX
+	velocity.y = knockbackY
+
 
 func takingDamage():
+	if isTransitioning:
+		currentMovement = movement.transitioning
 	if !_takingDamage:
 		AudioManager.play_sound(audio.hurt)
 		_takingDamage = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(.5).timeout
+	
 	currentMovement = movement.enabled
 	_takingDamage = false
 	gravityModifier = gravityVarDownwards
 
+func transitioning():
+	
+	velocity.x = move_toward(0,0,0)
+	velocity.y = move_toward(0,0,0)
+	if !isTransitioning:
+		currentMovement = movement.enabled
+
+
 func dying():
+	AudioManager.play_sound(audio.die)
 	velocity.x = move_toward(0,0,0)
 
 
@@ -278,6 +339,8 @@ func _physics_process(delta):
 			pounding(delta)
 		movement.takingDamage:
 			takingDamage()
+		movement.transitioning:
+			transitioning()
 		movement.dying:
 			dying()
 	

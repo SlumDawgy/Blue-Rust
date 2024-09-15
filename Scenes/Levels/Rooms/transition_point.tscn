@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31me33blsoov"]
+
+[ext_resource type="Script" path="res://Scripts/Rooms/TransitionPointHandler.gd" id="1_kmiei"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vlfa"]
+size = Vector2(24, 187)
+
+[node name="TransitionPoint" type="Area2D"]
+process_priority = -1
+process_physics_priority = -1
+collision_priority = -1.0
+script = ExtResource("1_kmiei")
+target_room = "SBX_SCENE_2_PATH"
+target_room_entrance = "TransitionPoints/Transition_1"
+
+[node name="TransitionCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-66, 0)
+shape = SubResource("RectangleShape2D_6vlfa")

@@ -6,8 +6,16 @@ var flagPrison1_1 : bool = true
 var flagPrison1_2 : bool = true
 var flagPrison1_3 : bool = true
 var flagPrison1_4 : bool = true
+var prisonStartRoom: bool = false
+
+@export var level_bgm = preload("res://Assets/Sounds/Music/Symbol.WAV") 
+@onready var boss_BGM = preload("res://Assets/Sounds/Music/Mechanical (2).WAV")
+
 
 func _ready():
+	
+	player = GlobalReferences.player
+	
 	if Dialogues.Prison1_1:
 		flagPrison1_1 = false
 	if Dialogues.Prison1_2:
@@ -17,14 +25,22 @@ func _ready():
 	if Dialogues.Prison1_4:
 		flagPrison1_4 = false
 	
-	get_tree().get_current_scene().get_node("Audio/MainLevelTheme").play()
+	if self.name == "Prison_Start" :
+		prisonStartRoom = true
 	
-	if Dialogues.Prison1_1 == false:
-		player.currentMovement = player.movement.disabled
-		player.get_node("PlayerSprite").play("getting_up")
-		player.get_node("PlayerSprite").set_speed_scale(0)
-		Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
-
+	if level_bgm != null:
+		AudioManager.play_Music(level_bgm)
+	if prisonStartRoom :
+		if Dialogues.Prison1_1 == false:
+		
+			player.currentMovement = player.movement.disabled
+			player.get_node("PlayerSprite").play("getting_up")
+			player.get_node("PlayerSprite").set_speed_scale(0)
+			Dialogic.start("res://Dialogic/Timelines/Prison1-1.dtl")
+		else :
+			Dialogues.Prison1_1 = true
+			player.currentMovement = player.movement.enabled
+		
 func PowerUp(body):
 	if body.name == "HitBoxComponent":
 		player.get_node("PlayerSprite").playAnimation("idle")
@@ -41,7 +57,7 @@ func _process(_delta):
 	if Dialogues.Prison1_1 and flagPrison1_1:
 		player.get_node("PlayerSprite").play("right_idle")
 		player.currentMovement = player.movement.enabled
-		$ControlLabels/MoveLabel.visible = true
+		#$ControlLabels/MoveLabel.visible = true
 		flagPrison1_1 = false
 	if Dialogues.Prison1_2 and flagPrison1_2:
 		player.currentMovement = player.movement.enabled
@@ -76,9 +92,8 @@ func _on_dialogue_13_body_entered(body):
 		$"Cutscenes/dialogue1-3".queue_free()
 
 func _on_start_boss_body_entered(body):
-	if body.name == "Player":
-		$"Audio/MainLevelTheme".playing = false
-		$"Audio/BossFight".playing = true
+	if body.name == "Player":		
+		AudioManager.play_Music(boss_BGM)
 		$"Cutscenes/Start_Boss".PROCESS_MODE_DISABLED
 		$Boss/First_Boss.currentMovement = $Boss/First_Boss.movement.enabled
 

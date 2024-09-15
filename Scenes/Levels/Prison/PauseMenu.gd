@@ -58,5 +58,5 @@ func _on_load_last_save_button_mouse_entered():
 
 func _on_load_last_save_button_pressed():
 	AudioManager.play_sound(buttonSelectSound)
-	Loadings.loadingPlayer(player)
+#	Loadings.loadingPlayer(player)
 	toggle_pause()

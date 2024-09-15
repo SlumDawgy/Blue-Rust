@@ -10,7 +10,7 @@ extends Node2D
 @export var woodStepTwo : AudioStream
 
 # Other
-@export var hurt : AudioStream
+
 @export var grappleRetrieve: AudioStream
 @export var grappleShoot : AudioStream
 @export var hookAttach : AudioStream
@@ -28,6 +28,10 @@ extends Node2D
 @export var parasolOpen_B : AudioStream
 @export var parasolClose_A : AudioStream
 @export var parasolClose_B : AudioStream
+
+#Damage and Dying
+@export var hurt : AudioStream
+@export var die : AudioStream
 
 #preferabbly this is a list or an array so we can add more than two sounds
 func playrandom(r1:AudioStream, r2 :AudioStream):

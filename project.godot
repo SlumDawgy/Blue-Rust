@@ -14,7 +14,10 @@ config/name="Blue Rust"
 run/main_scene="res://Scenes/UI/Main_Menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/delta_smoothing=false
+boot_splash/bg_color=Color(0.0980392, 0.129412, 0.137255, 1)
+boot_splash/image="res://Assets/Sprites/UI/SplashLogo.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=5000
 
 [audio]
 
@@ -26,7 +29,12 @@ GlobalPaths="*res://Scripts/GlobalPaths.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 SaveSystem="*res://addons/save_system/save_system.gd"
 Dialogues="*res://Scripts/dialogues.gd"
+GlobalReferences="*res://Scripts/GlobalReferences.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [dialogic]
 
@@ -87,6 +95,13 @@ mouse_cursor/tooltip_position_offset=Vector2(10, -10)
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/save_system/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Scenes/": "green",
+"res://Scripts/": "red"
+}
 
 [input]
 

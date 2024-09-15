@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3wjnfc11s701"]
+
+[ext_resource type="Script" path="res://Scripts/Rooms/RoomContainer.gd" id="1_bj4vi"]
+[ext_resource type="PackedScene" uid="uid://bc0dr5caoiwv2" path="res://Scenes/Levels/Rooms/transition_fadeout.tscn" id="2_g6555"]
+
+[node name="RoomContainer" type="Node" node_paths=PackedStringArray("player", "camera")]
+script = ExtResource("1_bj4vi")
+player = NodePath("")
+camera = NodePath("")
+first_room = "PRISON_START_SCENE_PATH"
+
+[node name="TransitionFadeout" parent="." instance=ExtResource("2_g6555")]

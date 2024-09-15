@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgta64a3ydf4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82ak6"]
+resource_local_to_scene = true
+size = Vector2(1385, 418)
+
+[node name="CameraBounds" type="Area2D"]
+visible = false
+
+[node name="CameraBoundsShape" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(653.5, -150)
+shape = SubResource("RectangleShape2D_82ak6")

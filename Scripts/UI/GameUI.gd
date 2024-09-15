@@ -7,16 +7,21 @@ var health : HealthComponent
 
 var lanturnFull = load(GlobalPaths.LANTURN_FULL_PATH)
 var lanturnEmpty = load(GlobalPaths.LANTURN_EMPTY_PATH)
+var breathFull = load(GlobalPaths.BREATH_FULL_PATH)
+var breathEmpty = load(GlobalPaths.BREATH_EMPTY_ICON)
 
 @onready var healthContainer : HBoxContainer = $HBoxContainer
+@onready var breathContainer : HBoxContainer = $BreathContainer
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
+	player = GlobalReferences.player
 	health = player.get_node("HealthComponent")
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	changeHealth()
+	handleBreath()
 	#if Input.is_action_just_pressed("ui_right"):
 		#increaseHealth()
 	#elif Input.is_action_just_pressed("ui_left"):
@@ -33,6 +38,18 @@ func changeHealth():
 			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnFull
 		else:
 			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnEmpty
+	
+	
+func handleBreath (): 
+	for breaths in range(breathContainer.get_child_count()):
+		if health.currentBreath < health.maxBreath :
+			breathContainer.visible = true
+		else :
+			breathContainer.visible = false
+		if breathContainer.get_child_count() - breaths > (health.maxBreath - health.currentBreath):
+			breathContainer.get_node("Breath" + str(breaths + 1)).texture = breathFull
+		else:
+			breathContainer.get_node("Breath" + str(breaths + 1)).texture = breathEmpty
 
 #func decreaseHealth():
 	#if currentHealth > 0:

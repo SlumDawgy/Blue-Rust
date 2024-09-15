@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc0dr5caoiwv2"]
+
+[ext_resource type="Shader" path="res://Materials/Shaders/TransitionShader.gdshader" id="1_thxir"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/curtain.png" id="2_qop4q"]
+[ext_resource type="Script" path="res://Scripts/Rooms/TransitionFadeout.gd" id="3_e6wyw"]
+
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m75uq"]
+shader = ExtResource("1_thxir")
+shader_parameter/cutoff = 0.0
+shader_parameter/smooth_size = 0.202
+shader_parameter/color = null
+shader_parameter/mask = ExtResource("2_qop4q")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rv31h"]
+
+[sub_resource type="Animation" id="Animation_oqpd5"]
+resource_name = "FadeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_thwxg"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bb3do"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qd8c"]
+_data = {
+"FadeIn": SubResource("Animation_oqpd5"),
+"FadeOut": SubResource("Animation_thwxg"),
+"RESET": SubResource("Animation_bb3do")
+}
+
+[node name="TransitionFadeout" type="TextureRect"]
+z_index = 10
+material = SubResource("ShaderMaterial_m75uq")
+offset_left = -215.0
+offset_top = -395.0
+offset_right = 1365.0
+offset_bottom = 1248.0
+texture = SubResource("CanvasTexture_rv31h")
+expand_mode = 4
+script = ExtResource("3_e6wyw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_3qd8c")
+}

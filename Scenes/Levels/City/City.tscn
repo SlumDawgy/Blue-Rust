@@ -1,9 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c72lhr20esxb0"]
 
-[ext_resource type="PackedScene" uid="uid://bcdq28o8ecvep" path="res://Scenes/Levels/Elevators/elevator.tscn" id="1_6l0x3"]
 [ext_resource type="PackedScene" uid="uid://tbgpw3p26lqc" path="res://Scenes/Levels/City/CityTiles.tscn" id="1_irim0"]
-[ext_resource type="PackedScene" uid="uid://d2jv66q883sl3" path="res://Scenes/Player/Player.tscn" id="1_vxbmt"]
-[ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="2_ai8vi"]
 [ext_resource type="PackedScene" uid="uid://mgq8m1i40iei" path="res://Scenes/Levels/Prison/prison_tiles.tscn" id="3_gfdc8"]
 [ext_resource type="Texture2D" uid="uid://72l0k2d53h4m" path="res://Assets/Sprites/TileSets/City/ClockTowerr.png" id="6_gwq8x"]
 [ext_resource type="Texture2D" uid="uid://wnfah61vpeo" path="res://Assets/Sprites/TileSets/City/ClockTower_BG.png" id="7_xgx0m"]
@@ -15,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://exu7uutwmihf" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxFarBG.png" id="10_oq0j6"]
 [ext_resource type="Texture2D" uid="uid://cwvlxb1dnnmhs" path="res://Assets/Sprites/TileSets/City/CityBG_ParallaxBG.png" id="11_hp0h5"]
 [ext_resource type="Shader" path="res://Materials/Shaders/FogShader.gdshader" id="14_1esiq"]
+[ext_resource type="Script" path="res://Scripts/Rooms/TransitionPointHandler.gd" id="14_deiom"]
 [ext_resource type="PackedScene" uid="uid://cwc5l0w6x0pqe" path="res://Scenes/Audio/reverb_zone.tscn" id="15_ag4l0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_do5ve"]
@@ -45,29 +43,14 @@ shader_parameter/fog_mask = SubResource("NoiseTexture2D_moybe")
 resource_local_to_scene = true
 size = Vector2(4042, 1923)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo8l7"]
+resource_local_to_scene = true
+size = Vector2(2565, 581)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vlfa"]
+size = Vector2(101, 187)
+
 [node name="CityLevel" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_vxbmt")]
-position = Vector2(0, -31)
-
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-zoom = Vector2(3, 3)
-process_callback = 0
-limit_left = -1015
-limit_top = -649
-limit_right = 1590
-limit_bottom = 15
-position_smoothing_enabled = true
-editor_draw_limits = true
-script = ExtResource("2_ai8vi")
-player = NodePath("../Player")
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="Elevators and Transitions" type="Node" parent="."]
-
-[node name="ElevatorToCity" parent="Elevators and Transitions" instance=ExtResource("1_6l0x3")]
-position = Vector2(0, -54)
 
 [node name="---Environment---" type="Node" parent="."]
 
@@ -284,5 +267,27 @@ wetLevel = 0.2
 [node name="CollisionShape2D" parent="---Environment---/ReverbZone" index="0"]
 position = Vector2(53, 64)
 shape = SubResource("RectangleShape2D_x8n2w")
+
+[node name="CameraBounds" type="Area2D" parent="."]
+
+[node name="CameraBoundsShape" type="CollisionShape2D" parent="CameraBounds"]
+z_index = 1
+position = Vector2(295.5, -275.5)
+shape = SubResource("RectangleShape2D_fo8l7")
+
+[node name="TransitionPoints" type="Node2D" parent="."]
+
+[node name="TransitionPoint_3" type="Area2D" parent="TransitionPoints"]
+process_priority = -1
+process_physics_priority = -1
+position = Vector2(31, -36)
+collision_priority = -1.0
+script = ExtResource("14_deiom")
+target_room = "SEWER_WEST_SCENE_PATH"
+target_room_entrance = "TransitionPoint_3"
+
+[node name="TransitionCollider" type="CollisionShape2D" parent="TransitionPoints/TransitionPoint_3"]
+position = Vector2(-29, 155)
+shape = SubResource("RectangleShape2D_6vlfa")
 
 [editable path="---Environment---/ReverbZone"]

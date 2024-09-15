@@ -10,6 +10,7 @@ var optionsScene = preload(GlobalPaths.OPTIONS_SCREEN_PATH)
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	$Scenetransition.fadetonormal()
+	AudioManager.configure_Reverb_Zone(0,0,0,0,0,0,0,0,false)
 
 func _on_back_button_pressed():
 	AudioManager.play_sound(buttonClickSFX)
