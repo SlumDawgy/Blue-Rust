@@ -38,7 +38,7 @@ script = ExtResource("3_ixo8e")
 [node name="CanvasLayer" parent="Camera2D" instance=ExtResource("4_8651e")]
 
 [node name="TransitionFadeout" parent="Camera2D" instance=ExtResource("5_s4qba")]
-z_index = 100
+z_index = 200
 offset_left = -2047.0
 offset_top = -2299.0
 offset_right = 3365.0
