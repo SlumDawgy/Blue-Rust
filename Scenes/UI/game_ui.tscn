@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlfvlfcjgtiv"]
+[gd_scene load_steps=10 format=3 uid="uid://dlfvlfcjgtiv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/GameUI.gd" id="1_eu326"]
 [ext_resource type="Texture2D" uid="uid://cjtfh567jyugy" path="res://Assets/Sprites/Lanturn/lanturn_full.png" id="2_ham3w"]
 [ext_resource type="Texture2D" uid="uid://b4khotpkhsnna" path="res://Assets/Sprites/UI/BreathIcon.png" id="3_4sv77"]
+[ext_resource type="Texture2D" uid="uid://62sccspgadem" path="res://Assets/Sprites/UI/Health Guage.png" id="4_obrk6"]
+[ext_resource type="Texture2D" uid="uid://dqclx4bvhnajf" path="res://Assets/Sprites/UI/BreathMask.png" id="5_amlxo"]
+[ext_resource type="Texture2D" uid="uid://cy4qxmv6gjv8l" path="res://Assets/Sprites/UI/BreathFill.png" id="6_j847j"]
+[ext_resource type="Texture2D" uid="uid://7tq3vpsis4qn" path="res://Assets/Sprites/UI/Health GuageBG.png" id="7_p12ln"]
+[ext_resource type="Texture2D" uid="uid://0q41pirh2wbr" path="res://Assets/Sprites/UI/HealthBarHolder.png" id="7_xj2on"]
+[ext_resource type="Texture2D" uid="uid://berynpvqsjbls" path="res://Assets/Sprites/UI/HealthBar.png" id="8_v1j3d"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = 4.0
+offset_right = -21.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eu326")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 104.0
 offset_bottom = 32.0
@@ -31,6 +42,7 @@ layout_mode = 2
 texture = ExtResource("2_ham3w")
 
 [node name="BreathContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 11.0
 offset_top = 32.0
@@ -48,3 +60,73 @@ texture = ExtResource("3_4sv77")
 [node name="Breath3" type="TextureRect" parent="BreathContainer"]
 layout_mode = 2
 texture = ExtResource("3_4sv77")
+
+[node name="HealthGuage" type="Sprite2D" parent="."]
+position = Vector2(85.5001, 37.5)
+scale = Vector2(1.34375, 1.34375)
+texture = ExtResource("4_obrk6")
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="HealthBar" type="TextureProgressBar" parent="HealthGuage"]
+z_index = -1
+offset_left = -21.2094
+offset_top = -14.5116
+offset_right = 63.7906
+offset_bottom = 30.4884
+max_value = 3.0
+step = 0.0
+value = 3.0
+texture_under = ExtResource("7_xj2on")
+texture_progress = ExtResource("8_v1j3d")
+
+[node name="BreathBar" type="TextureProgressBar" parent="HealthGuage"]
+z_index = -1
+offset_left = -48.0001
+offset_top = -16.0
+offset_right = 47.9999
+offset_bottom = 29.0
+max_value = 4.0
+step = 0.15
+value = 4.0
+fill_mode = 3
+texture_under = ExtResource("7_p12ln")
+texture_progress = ExtResource("6_j847j")
+
+[node name="Sprite2D5" type="Sprite2D" parent="HealthGuage"]
+visible = false
+clip_children = 1
+z_index = -1
+scale = Vector2(1, 1)
+texture = ExtResource("5_amlxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="HealthGuage/Sprite2D5"]
+position = Vector2(-19.1278, 0.962418)
+scale = Vector2(0.586467, 1.06015)
+texture = ExtResource("6_j847j")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HealthGuage"]
+visible = false
+z_index = -1
+offset_left = -21.0
+offset_top = -15.0
+offset_right = 9.0
+offset_bottom = -7.0
+texture = ExtResource("7_xj2on")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HealthGuage/NinePatchRect"]
+self_modulate = Color(0, 0, 0, 1)
+clip_children = 2
+position = Vector2(14.8668, 3.988)
+scale = Vector2(0.643, 1.207)
+texture = ExtResource("8_v1j3d")
+
+[node name="Sprite2D2" type="Sprite2D" parent="HealthGuage/NinePatchRect/Sprite2D"]
+position = Vector2(0.0806127, 4.47035e-08)
+scale = Vector2(1.02129, 1)
+texture = ExtResource("8_v1j3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

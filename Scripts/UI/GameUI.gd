@@ -4,6 +4,8 @@ class_name GameUI
 @export var player : Player
 
 var health : HealthComponent
+@onready var healthbar = $HealthGuage/HealthBar
+@onready var breathbar = $HealthGuage/BreathBar
 
 var lanturnFull = load(GlobalPaths.LANTURN_FULL_PATH)
 var lanturnEmpty = load(GlobalPaths.LANTURN_EMPTY_PATH)
@@ -17,6 +19,8 @@ var breathEmpty = load(GlobalPaths.BREATH_EMPTY_ICON)
 func _ready():
 	player = GlobalReferences.player
 	health = player.get_node("HealthComponent")
+	healthbar.max_value = health.maxHealth
+	breathbar.max_value = health.maxBreath
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
@@ -33,23 +37,10 @@ func _physics_process(_delta):
 	pass
 
 func changeHealth():
-	for lanturns in range(healthContainer.get_child_count()):
-		if healthContainer.get_child_count() - lanturns > (health.maxHealth - health.health):
-			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnFull
-		else:
-			healthContainer.get_node("Heart" + str(lanturns + 1)).texture = lanturnEmpty
-	
+	healthbar.value = lerp(healthbar.value,  health.health, 0.2)
 	
 func handleBreath (): 
-	for breaths in range(breathContainer.get_child_count()):
-		if health.currentBreath < health.maxBreath :
-			breathContainer.visible = true
-		else :
-			breathContainer.visible = false
-		if breathContainer.get_child_count() - breaths > (health.maxBreath - health.currentBreath):
-			breathContainer.get_node("Breath" + str(breaths + 1)).texture = breathFull
-		else:
-			breathContainer.get_node("Breath" + str(breaths + 1)).texture = breathEmpty
+	breathbar.value = lerp(breathbar.value,  health.currentBreath, 0.2)
 
 #func decreaseHealth():
 	#if currentHealth > 0:

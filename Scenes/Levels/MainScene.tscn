@@ -20,7 +20,6 @@ doubleJumpEnabled = true
 groundPoundEnabled = true
 
 [node name="HealthComponent" parent="Player" index="0"]
-maxBreath = 3
 holdBreathTime = 2.0
 
 [node name="RoomContainer" type="Node" parent="." node_paths=PackedStringArray("player", "camera")]

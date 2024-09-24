@@ -2,13 +2,13 @@ extends Node2D
 class_name HealthComponent
 
 @export var maxHealth : int = 3
-var health : int 
+var health : float 
 var damageImmunityTimer : float
 @export var damageImmunity : float
 
 #breath
-@export var maxBreath: = 5
-var currentBreath
+@export var maxBreath: int = 5
+var currentBreath : float
 @export var holdBreathTime: float = 10
 var holdBreathTimer : float
 
