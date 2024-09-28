@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlfvlfcjgtiv"]
+[gd_scene load_steps=12 format=3 uid="uid://dlfvlfcjgtiv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/GameUI.gd" id="1_eu326"]
 [ext_resource type="Texture2D" uid="uid://cjtfh567jyugy" path="res://Assets/Sprites/Lanturn/lanturn_full.png" id="2_ham3w"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://7tq3vpsis4qn" path="res://Assets/Sprites/UI/Health GuageBG.png" id="7_p12ln"]
 [ext_resource type="Texture2D" uid="uid://0q41pirh2wbr" path="res://Assets/Sprites/UI/HealthBarHolder.png" id="7_xj2on"]
 [ext_resource type="Texture2D" uid="uid://berynpvqsjbls" path="res://Assets/Sprites/UI/HealthBar.png" id="8_v1j3d"]
+[ext_resource type="Texture2D" uid="uid://jkq5053xm144" path="res://Assets/Sprites/UI/Healthbar needle.png" id="10_os5e1"]
+[ext_resource type="Texture2D" uid="uid://xqly7g48q78r" path="res://Assets/Sprites/UI/NeedleCover.png" id="11_sqx1f"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -62,17 +64,17 @@ layout_mode = 2
 texture = ExtResource("3_4sv77")
 
 [node name="HealthGuage" type="Sprite2D" parent="."]
-position = Vector2(85.5001, 37.5)
-scale = Vector2(1.34375, 1.34375)
+position = Vector2(134, 42)
+scale = Vector2(1.04929, 1.04929)
 texture = ExtResource("4_obrk6")
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="HealthBar" type="TextureProgressBar" parent="HealthGuage"]
 z_index = -1
-offset_left = -21.2094
-offset_top = -14.5116
-offset_right = 63.7906
-offset_bottom = 30.4884
+offset_left = -60.6512
+offset_top = -30.1395
+offset_right = 46.3488
+offset_bottom = 14.8605
 max_value = 3.0
 step = 0.0
 value = 3.0
@@ -81,10 +83,10 @@ texture_progress = ExtResource("8_v1j3d")
 
 [node name="BreathBar" type="TextureProgressBar" parent="HealthGuage"]
 z_index = -1
-offset_left = -48.0001
-offset_top = -16.0
-offset_right = 47.9999
-offset_bottom = 29.0
+offset_left = -96.3722
+offset_top = -32.3721
+offset_right = 95.6278
+offset_bottom = 31.6279
 max_value = 4.0
 step = 0.15
 value = 4.0
@@ -96,7 +98,6 @@ texture_progress = ExtResource("6_j847j")
 visible = false
 clip_children = 1
 z_index = -1
-scale = Vector2(1, 1)
 texture = ExtResource("5_amlxo")
 
 [node name="Sprite2D" type="Sprite2D" parent="HealthGuage/Sprite2D5"]
@@ -129,4 +130,11 @@ position = Vector2(0.0806127, 4.47035e-08)
 scale = Vector2(1.02129, 1)
 texture = ExtResource("8_v1j3d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Needle" type="Sprite2D" parent="HealthGuage"]
+position = Vector2(-63.8525, 0)
+scale = Vector2(1.33385, 1.33385)
+texture = ExtResource("10_os5e1")
+offset = Vector2(0, -4)
+
+[node name="NeedleCover" type="Sprite2D" parent="HealthGuage"]
+texture = ExtResource("11_sqx1f")
